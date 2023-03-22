@@ -1,0 +1,35 @@
+# Quest Pro
+
+## Introduction
+The Meta Quest Pro provides eye gaze tracking, detailed eye expression tracking, and face tracking.
+All eye and face tracking hardware is internal to the device (no additional hardware setup required).
+All eye and face tracking data is accessed via Meta’s Face and Eye OpenXR extensions.
+
+### Why is this setup required?
+The Quest Pro provides developers with both eye and face tracking data from a single, contained device, making it easy for native Quest developers to incorporate.
+However, having it only accessible through Meta’s Oculus OpenXR extensions means there must be an OpenXR application using the Oculus runtime running somewhere.
+There is currently no way for VRCFT to provide eye and face tracking to the Quest version of VRChat, the following solutions are only for PCVR.
+
+## Setup
+The Quest Pro currently has 2 different face-tracking compatible ways to connect to the PC:
+- Oculus Link (or Airlink)
+- ALVR
+
+
+The user is free to choose whatever method they prefer more. ALVR is an open-source project and thus has many for features and customizability in the PCVR connection as compared to Airlink, but also has more bugs or quirks.
+Oculus Link/Airlink is Meta’s own PCVR streaming solution, and is generally more straight-forward to set up and network stable, but also is limited in customization.
+
+
+In both cases the user is expected to have the VR PC and the Quest Pro on the same network, with the PC ideally connected to the network via ethernet cable.
+
+### Enabling Developer Mode on the Headset
+Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-quest/enable-developer-mode
+
+1. [Set up a Meta Oculus developer account](https://developer.oculus.com/sign-up/)
+    * A developer account is necessary (for now) as the eye and face OpenXR extensions are currently considered “developer features”.
+   It is rather trivial to apply for and there is no check for being a "real organization".
+2. Install the Oculus (“Meta Quest”) app on mobile device (if it isn’t already) and login with your (developer) Oculus account. Register your headset in the app.
+3. In the Oculus mobile App, tap Menu at the bottom right, then Devices. Select your Quest Pro, then go to `Settings -> Developer Mode` and set the Developer Mode switch to enabled.
+    * Reboot the headset after enabling Developer Mode.
+
+

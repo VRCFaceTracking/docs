@@ -25,8 +25,23 @@ export const Highlight = ({children, color}) => (
 ## Common Issues
 - A regular Vive Pro is occasionally mistaken to be a Vive Pro Eye. 
 A Vive Pro Eye will have <Highlight color="#2aa5cd">light blue rings</Highlight> around the front two passthrough cameras and a plastic covered IR LED ring on the inside
-![Front View](./img/vpe_front.jpg)
-![Inside View](./img/vpe_inside.jpg)
+<div style={{
+    display: 'flex',
+    'justify-content': 'space-between'
+}}>
+    <div style={{
+        width: '50%',
+        height: 'auto'
+    }}>
+        <img src="/img/vive/vpe_front.jpg" alt="Front View" />
+    </div>
+    <div style={{
+        width: '50%',
+        height: 'auto'
+    }}>
+        <img src="/img/vive/vpe_inside.jpg" alt="Inside View" />
+    </div>
+</div>
 
 - The headset cable can be damaged with heavy use, especially if it gets tangled around or used with a ceiling pulley system.
 A damaged cable may not show tell-tale “display snow” or even obvious physical indicators, but can affect USB connectivity of the Eye
