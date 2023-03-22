@@ -42,14 +42,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-              'https://github.com/VRCFaceTracking/docs',
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-              'https://github.com/benaclejames/VRCFaceTracking',
+              'https://github.com/VRCFaceTracking/docs/edit/master',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -128,7 +121,7 @@ const config = {
               ],
             },
           ],
-          copyright: `Copyright © ${new Date().getFullYear()} VRCFaceTracking, Inc. Built with Docusaurus.`,
+          copyright: `Copyright © ${new Date().getFullYear()} VRCFaceTracking. Built with Docusaurus.`,
         },
         prism: {
           theme: lightCodeTheme,
