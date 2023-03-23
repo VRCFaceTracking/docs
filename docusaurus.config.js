@@ -9,6 +9,16 @@ const config = {
   title: 'VRCFaceTracking',
   tagline: '"Trust me it\'s not even that hard"',
   favicon: 'img/favicon.ico',
+  customFields: {
+    discord: {
+      label: "Discord",
+      href: "https://discord.gg/vrcft",
+    },
+    github: {
+      label: "GitHub",
+      href: "https://github.com/benaclejames/VRCFaceTracking",
+    },
+  },
 
   // Set the production url of your site here
   url: 'https://docs.vrcft.io',
@@ -44,12 +54,12 @@ const config = {
           editUrl:
               'https://github.com/VRCFaceTracking/docs/edit/master',
           lastVersion: 'current',
-            versions: {
-                current: {
-                  label: 'Current',
-                  path: '',
-                }
+          versions: {
+            current: {
+              label: 'Current',
+              path: '',
             }
+          }
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

@@ -2,26 +2,15 @@
 sidebar_position: 1
 ---
 
-# 👀 Welcome to VRCFT Setup documentation!
+import {EditUrl, CustomLink} from '@site/src/components/Utils.tsx'
+
+# 👀 Welcome to VRCFT!
 
 ### ❔ Resources
 
-Join the [Discord](https://discord.gg/vrcft) for the community, discussion, and live support.
+Join the <CustomLink to="discord"/> for the community, discussion, and live support.
 
-Visit the [GitHub](https://github.com/benaclejames/VRCFaceTracking) to view the **source code** and to **download new releases**!
-
-import {useDoc} from '@docusaurus/theme-common/internal';
-
-export const EditUrl = ({children}) => {
-    const {metadata} = useDoc();
-    const {editUrl} = metadata;
-    const linkText = children.trim()
-    return (
-        <a href={editUrl} target="_blank" rel="noopener noreferrer">
-            {linkText}
-        </a>
-    )
-};
+Visit the <CustomLink to="github"/> to view the **source code** and to **download new releases**!
 
 :::info Joining the Discord is highly recommended
 
