@@ -43,6 +43,13 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
               'https://github.com/VRCFaceTracking/docs/edit/master',
+          lastVersion: 'current',
+            versions: {
+                current: {
+                  label: 'Current',
+                  path: '',
+                }
+            }
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -72,6 +79,9 @@ const config = {
               docId: 'intro',
               position: 'left',
               label: 'Tutorial',
+            },
+            {
+              type: 'docsVersionDropdown',
             },
             {
               type: 'search',
