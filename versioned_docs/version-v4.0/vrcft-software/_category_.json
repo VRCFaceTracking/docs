@@ -1,0 +1,8 @@
+{
+  "label": "VRCFT Software",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Documentation for the VRCFaceTracking Program itself, and other software"
+  }
+}
