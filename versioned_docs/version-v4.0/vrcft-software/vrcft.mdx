@@ -14,30 +14,46 @@ export const TextColor = ({children, color}) => (
 VRChat has no native implementation of Vive' SRanipal software needed to interface with the Facial Tracker nor Vive Pro Eye, or any other face tracking hardware, 
 which means there must be an intermediary software accessing the face tracking data and sending it to VRC via OSC.
 VRCFaceTracking fulfills this role as the intermediary, creating a standard face-tracking parameter set for use with VRChat avatars. 
+VRCFaceTracking works by the concept of "modules", which are add-on files that let the program pull eye and face tracking data from different sources.
+VRCFaceTracking has the SRanipal module built-in as default, but other modules for other headsets or hardware can be added. 
+
+## Getting started with VRCFaceTracking
 
 Download the latest version from the <CustomLink to="github" append="/tree/v4.0.0"/> repo!
 
-## Using VRCFaceTracking
+* If you are using a Vive Facial Tracker or other hardware that relies on SRanipal, simply launch the downloaded VRCFaceTracking executable. 
+It will prompt you to start SRanipal if it wasn't running already. 
+
+* If you are using some other hardware such as a Varjo headset or HP Reverb Omnicept, you will need to download the respective module, add it to the VRCFaceTracking CustomLibs folder, then run the program. 
+You can find more instructions specific to your hardware on its documentation page here or Github page. 
 
 To be able to use VRCFT, OSC must be enabled in VRChat.
 VRCFaceTracking will automatically set OSC to "Enabled" if it detects that it was not already, but you can (and should) also enable it manually to avoid having to restart the game for the automatic switch to take effect.
 
-Changing the OSC IP and Ports
+## VRCFaceTracking "Housekeeping"
 
-Use ``--osc=[output port]:[ip address]:[input port]`` launch argument.
+There are occasionally small things that are good to be aware of when using face tracking with VRCFT and VRChat.
+
+### Changing the OSC IP and Ports
+
+Generally, you shouldn't need to change the default OSC address and ports to use VRCFaceTracking. 
+However, there are situations where you might want to, so in case you do: 
+
+Use ``--osc=[output port]:[ip address]:[input port]`` as launch argument.
 
 For example: ``--osc=9000:127.0.0.1:9100`` is the common option when using VRCFaceTracking with [VRChatOSCRouter](../intro.mdx)
 
-To set this permanently, create a shortcut to the VRCFaceTracking program, right-click the newly-created shortcut and open "Properties", and add the line to the shortcut "Target". 
+For an easy way to handle with command argument, create a shortcut to the VRCFaceTracking program, right-click the newly-created shortcut and open "Properties", and add the line to the shortcut "Target". 
 Make sure to maintain a space between the flags and what was in the box already, and keep the flags outside of the quotation marks of the file path if they exist.
+Run VRCFaceTracking using this shortcut will start the program using the given OSC address and port settings. 
 
 ![VRCFT shortcut example](img/vrcft_shortcut_example.png)
 
-## VRCFaceTracking "Housekeeping"
-
-There are occasionally small things good to be aware of when using face tracking with VRCFT and VRChat.
 
 ### Unblocking Downloaded Dynamic Link Libraries (.dlls)
+
+When downloading `.dll` files from the Internet, Windows may block them from being able to be used for security reasons. 
+In case this happens, follow these simple steps
 
 1. Right-click on the .dll file, open "Properties"
 2. Down at the bottom of the Properties window check the checkbox option for 'Security' to "Unblock".
@@ -81,5 +97,5 @@ There are two ways of resetting the configs:
   - Cause: Your avatar either doesn't have face tracking parameters, or is using an old OSC config that didn't have the face tracking parameters.
   - Solution: Follow option 1 and/or 2 in [resetting OSC config](#resetting-vrchat-osc-configs). If completely clearing the OSC configs still results in loading 0 parameters, the avatar does not use VRCFT-compatible parameters.
 
-Don't see your problem here? Make sure to check the pages specific to your hardware setup.
+Don't see your problem here? Make sure to check the page(s) specific to your hardware setup.
 If you still cannot find an answer to your specific problem, create a help request in the <TextColor color="#5763ee">#setup-help-forum</TextColor> in the <CustomLink to="discord"/>. 
