@@ -1,11 +1,61 @@
+---
+description: Detailed explanation of Binary-typed parameters. 
+---
+
 # Binary Parameters
-Nearly all VRCFaceTracking expression parameters can be used as a Binary parameter. Exceptions are listed in the Parameters list above.
 
-Binary parameters are a set of parameters which take advantage of the binary counting system in order to save space inside of the VRC Avatar Descriptor's parameters. All Binary parameters are able to be smoothed using animation transitions, so if you are looking to compact your face tracking setup, Binary parameters are a good solution for that purpose.
+***
 
-**You can use the [Binary Parameter Tool](https://github.com/regzo2/BinaryParameterTool/releases), a Unity Editor plugin, to create animation layers that a Binary parameter can be used with. Highly recommended as creating the animation layers for a Binary parameter is very tedious.**
+**Binary Parameters** refers to a parameter system that 
+VRCFaceTracking uses to send tracking data through a collection 
+of **Bool** parameters that represent a parameter. 
 
-Binary parameters can also control a single Float parameter inside of an animator to be able to interface with Blend Trees and other Float-exclusive fields inside an Animator, using animations that control a Float parameter. The [Binary Parameter Tool](https://github.com/regzo2/BinaryParameterTool/releases) can generate these as well.
+**Binary Parameters** represent the value of a parameter 
+in the `Base-2` counting system, which is indicated by each 
+**Binary Parameter** having a `Base-10` value attached
+to the represented parameter. This can be thought of as the 
+*resolution* of a parameter.
+
+### Why use Binary Parameters on an avatar?
+
+**Binary Parameters** are primarily used for controlling the 
+amount of space a face tracking parameter uses on an avatar. 
+
+In **VRChat** for example, avatars have a limited amount of Expression 
+Parameter space that can be used, and using **Binary Parameters** can 
+drastically reduce the footprint of a face tracking setup on an avatar.
+Other platforms such as **ChilloutVR** can use binary parameters, 
+but don't necessarily need to as there are no such limitations.
+
+:::caution Binary Parameters require an advanced setup to use optimally 
+
+The caveat is that avatar setup complexity will increase 
+quite drastically. This can lead to issues such as animation bugs and crashes 
+if not managed properly.
+
+Use tools such as this [OSCmooth fork](https://github.com/Adjerry91/OSCmooth/releases/tag/V1.1.1-BETA) 
+to create stable and safe **Binary Parameter** conversions in VRChat.
+
+:::
+
+:::tip All **VRCFaceTracking** expression parameters can be used as a **Binary Parameter**. 
+
+**VRCFaceTracking** will dynamically detect **Binary Parameters** allocated on your avatar 
+on load.
+
+:::
+
+:::info Binary Parameters convert to a Float parameter.
+
+**Binary Parameters** get converted to **Floats** within an avatar's Animation Controller 
+via parameter driving animations.
+
+This means they retain all the qualities of a **Float** parameter, with the ability to 
+also set the amount of bits used at the cost of tracking fidelity.
+
+:::
+
+### Binary Parameter Avatar Implementation
 
 Example of a Binary Parameter compatible animation layer:
 
@@ -15,36 +65,23 @@ Example of a single transition from AnyState to a State (in this case: JawForwar
 
 ![](https://i.imgur.com/15a4OmM.png)
 
-|Parameter Name (**Case Sensitive**)|Description|
-|--|--|
-|`~~~1`|(Float Parameter) 2<sup>0</sup>|
-|`~~~2`|(Float Parameter) 2<sup>1</sup>|
-|`~~~4`|(Float Parameter) 2<sup>2</sup>|
-|`~~~8`|(Float Parameter) 2<sup>3</sup>|
-|...||
-|`~~~X` |(Float Parameter) 2<sup>X</sup>|
-|`~~~Negative`|(Negative bit for Combined Lip Parameters) |
+### Binary Parameter Representation
 
-### Unique Binary Parameters
+The following table shows how Binary Parameters work.
 
-The following Binary parameters are setup differently compared to their Float counterparts.
+| Naming Scheme | Base-2 | Base-10 |
+| :-----------: | :----: | :-----: |
+| `Parameter` `Negative` | `0 0 0 0` `1` | `+`/`-` |
+|||
+| `Parameter` `1` | `0 0 0 1` `0` | 2<sup>0</sup> (1) |
+| `Parameter` `2` | `0 0 1 0` `0` | 2<sup>1</sup> (2) |
+| `Parameter` `4` | `0 1 0 0` `0`  | 2<sup>2</sup> (4) |
+| `Parameter` `8` | `1 0 0 0` `0` | 2<sup>3</sup> (8) |
+|||
+| `Parameter` `x` | `x` << `0 0 0 0` `0` | `x` |
 
-* `EyeLidExpanded` will return the value of a Blink when `EyeWidenToggle` is false, and returns the value of Eye Widen when `EyeWidenToggle` is true.
-* `EyeLidExpandedSqueeze` functions exactly as `EyeLidExpanded`, but also returns the value of Eye Squeeze when `EyeSqueezeToggle` is true.
+The `Negative` parameter represents the sign of the parameter, whether it is 
+positive or negative (`+`/`-`)
 
-|Parameter Name (**Case Sensitive**)|Description|
-|--|--|
-|<sup>1</sup>`LeftEyeLidExpandedX`|LeftEyeLidExpanded 2<sup>**X**</sup>|
-|`LeftEyeWidenToggle`|LeftEyeWiden Widen State|
-|<sup>1</sup>`RightEyeLidExpandedX`|RightEyeLidExpanded 2<sup>**X**</sup>|
-|`RightEyeWidenToggle`|RightEyeWiden Widen State|
-|<sup>1</sup>`CombinedEyeLidExpandedX`|CombinedEyeLidExpanded 2<sup>X</sup>|
-|`CombinedEyeWidenToggle`|CombinedEyeWiden Widen State|
-|<sup>1</sup>`LeftEyeLidExpandedSqueezeX`|LeftEyeLidExpandedSqueeze 2<sup>X</sup>|
-|`LeftEyeSqueezeToggle`|LeftEyeSqueeze Squeeze State|
-|<sup>1</sup>`RightEyeLidExpandedSqueezeX`|RightEyeLidExpandedSqueeze 2<sup>X</sup>|
-|`RightEyeSqueezeToggle`|RightEyeSqueeze Squeeze State|
-|<sup>1</sup>`CombinedEyeLidExpandedSqueezeX`|CombinedEyeLidExpandedSqueeze 2<sup>X</sup>|
-|`CombinedEyeSqueezeToggle`|CombinedEyeSqueeze Squeeze State|
-
-<sup>1</sup> **X** Represents an up-to number of params, so you would have 1, 2, 4, ... , **X** Binary parameters.
+The value is normalized to a **Float** in an *Animation Controller* 
+by casting the **Binary Parameters** from `<0.0 - 1.0>`.
