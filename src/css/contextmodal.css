@@ -1,0 +1,42 @@
+.context-modal-wrapper {
+  display: inline-block;
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+}
+
+.context-modal-spawn {
+  position: fixed;
+  top: 50%;
+  left: auto;
+  transform: translate(5%, -50%);
+  width: auto;
+  max-width: 30vw;
+  height: auto;
+  max-height: 50vh;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  padding: 16px;
+  opacity: 1;
+  transition: opacity .3s ease-in-out;
+  scroll-behavior: smooth;
+}
+[data-theme='dark'] .context-modal-spawn {
+  background-color: var(--ifm-background-color);
+}
+
+.context-modal-spawn::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
+}
+
+.context-modal-content {
+  z-index: 99999;
+  padding: 16px;
+  align-self: center;
+  color: var(--ifm-font-color-base);
+}
