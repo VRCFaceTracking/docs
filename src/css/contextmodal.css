@@ -1,3 +1,8 @@
+.context-modal-base {
+  font-style: italic;
+  color: var(--ifm-color-primary);
+}
+
 .context-modal-wrapper {
   display: inline-block;
   position: sticky;

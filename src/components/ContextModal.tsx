@@ -23,8 +23,8 @@ const ContextModal: React.FC<ContextModalProps> = ({ comp: Component, children }
 
   return (
     <>
-      <span className="context-modal-base" onMouseOver={handleModalMouseEnter} onMouseLeave={handleModalMouseLeave}>
-        {children}<sup>🕮</sup>
+      <span onMouseOver={handleModalMouseEnter} onMouseLeave={handleModalMouseLeave}>
+        {children} <sup className="context-modal-base">i</sup>
       </span>
       {showModal && (
         <div className="context-modal-wrapper">
