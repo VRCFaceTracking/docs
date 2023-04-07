@@ -1,5 +1,6 @@
 import React, { useState, FC, useRef } from 'react';
 import '../css/contextmodal.css';
+import InfoLogo from '@site/static/img/info-icon.svg'
 
 interface ContextModalProps {
   comp: FC;
@@ -24,7 +25,7 @@ const ContextModal: React.FC<ContextModalProps> = ({ comp: Component, children }
   return (
     <>
       <span onMouseOver={handleModalMouseEnter} onMouseLeave={handleModalMouseLeave}>
-        {children} <sup className="context-modal-base">i</sup>
+        {children} <sup><InfoLogo className="context-modal-svg"/></sup>
       </span>
       {showModal && (
         <div className="context-modal-wrapper">

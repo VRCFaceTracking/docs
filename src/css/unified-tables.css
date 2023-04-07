@@ -1,0 +1,22 @@
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+th, td {
+    width: 33.33vh;
+    text-align: center;
+}
+
+.table-ue-name {
+    width: 18vh;
+}
+
+.table-ue-description {
+    width: 60vh;
+}
+
+.table-ue-ref {
+    width: 22vh;
+}
+

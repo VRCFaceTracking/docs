@@ -1,0 +1,9 @@
+table {
+    table-layout: auto;
+    width: auto;
+}
+
+th, td {
+    width: auto;
+}
+
