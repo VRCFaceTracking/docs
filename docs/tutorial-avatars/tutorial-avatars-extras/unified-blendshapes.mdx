@@ -1,0 +1,170 @@
+---
+sidebar_position: 1
+description: Overview of Unified Expressions and shape references.
+---
+
+import ContextModal from '@site/src/components/ContextModal.tsx'
+import {EditUrl, CustomLink} from '@site/src/components/Utils.tsx'
+
+# Unified Expressions
+
+***
+
+:::danger Still under construction!
+
+This reference document is still actively being worked on. 
+Changes are subject to happen discretionally.
+
+Please consider contributing by <EditUrl>editing this page!</EditUrl>
+
+:::
+
+### Summary
+
+**Unified Expressions** is an open source face expression standard used as 
+the tracking standard for VRCFaceTracking and the expression shape standard 
+for avatars. It is fully compatible with existing face tracking shapes from other 
+expression standards such as `ARKit` / `PerfectSync`, `SRanipal`, `FACS`, and others. 
+
+This document contains information about **Unified Expressions**, including 
+the overall usage of it and references for shapes to use on avatars.
+
+***
+
+### Unified Expressions Overview {#ue-overview}
+
+* [Why use Unified Expressions](#ue-why)
+* [Unified Expressions Best Practices](#ue-best-practice)
+* [Unified Expressions Shapes](#ue-ref)
+
+
+## Why use Unified Expressions? {#ue-why}
+
+***
+
+### Unified Expressions is a high fidelity and adaptable standard.
+
+**Unified Expressions** is a robust face expression standard that avatars can use to 
+create face tracking shapes, and gives avatar creators a huge amount of choice in how 
+they want to best adapt tracking behaviors to their avatars.
+
+### Unified Expressions is designed to unify all shape and tracking standards.
+
+**VRCFaceTracking** uses **Unified Expressions** as the bridge between tracking interfaces and 
+avatar shapes. This allows for a huge amount of tracking customization, specialization, and backwards 
+compatibility for many existing VRCFaceTracking avatars.
+
+It is able to use shapes designed for other tracking standards and provide tracking transformations 
+to work with different shape standards such as `ARKit`, `FACS`, `SRanipal`, and others.
+
+Building an avatar for **Unified Expressions** also means that you will only have to build a 
+single set of shapes for an avatar that will work nearly identically across different face 
+tracking devices and interfaces. **Unified Expressions** shapes are untied to any device 
+or interface implementation; the shapes instead wholely reliant on anatomical basis to give 
+grounding to the shapes.
+
+### Unified Expressions is formatted to be able to be improved over time.
+
+The **Unified Expressions** standard is also formatted in a heirarchy of fidelity, powered 
+by **VRCFaceTracking**'s dynamic parameter system, allowing avatars to adopt either more *simplistic* 
+or more *complex* tracking behaviors out of the expression shapes. **Unified Expressions** was 
+built out this way in order to retain backwards compatibility with future revisions and to allow 
+the standard to evolve over time (if and when the need for updating arises).
+
+
+## Unified Expressions Best Practices {#ue-best-practice}
+
+***
+
+**Unified Expressions** is similar to most other facial expression standards available, with the addition of 
+many additional transformed expression shapes provided that allow avatars to highly specialize 
+or even optimise their face tracking setups to work best with their avatars.
+
+:::info **Unified Expressions** has many *Blended* shapes available for use on avatars that can affect tracking.
+
+Blended shapes can be used to simplify, combine, or alleviate both shape creation and offer more simplified 
+tracking behavior on avatars. Creators should familiarize with all available shapes and decide what shapes 
+work best on certain avatars.
+
+:::
+
+:::tip Consistency is Key!
+
+While any shape or animation setup on an avatar can be controlled 
+using any Unified Expressions shape, correlating to the available 
+Unified Expressions shapes will ensure that your avatar 
+will track in the best and most consistent way possible.
+
+This means that the expression on the avatar's face should generally 
+correlate to the shape that is being tracked. This means that JawOpen 
+should open the jaw, or a blended shape like MouthOpen should part open 
+the avatar's lips, and so forth.
+
+Any extra expressions outside of the face such as ear movement that could be 
+controlled by specific expressions are highly encouraged to give life to 
+your avatars!
+
+:::
+
+
+## Unified Expressions Shapes {#ue-ref}
+
+***
+
+This sections contains documentation for all currently implemented **Unified Expressions** 
+shapes available for use in **VRCFaceTracking** on avatars.
+
+
+### Unified Expressions Base Shapes {#ue-base-shapes}
+
+The following tables contain all base shapes that are used on avatars and as the basis of **VRCFaceTracking**'s 
+avatar parameters.
+
+:::info These are shape references, not parameters.
+
+For **VRCFaceTracking** specific avatar parameters please refer to Avatar [Parameters](./parameters/parameters.mdx), which 
+lists the parameters that are intended to control these shapes.
+
+:::
+
+import ExampleExpl from './unified-explanations/_example_explain.mdx'
+
+:::danger Documentation still actively in development
+
+Information may be sparse, and we are working to incorporate features that 
+allow us to give highly detailed explanations in the future.
+
+To see what that would look like, <ContextModal comp={ExampleExpl}>**hover over this text!**</ContextModal>
+
+:::
+
+import ShapeTable from './_unified-shape-table.mdx'
+
+<ShapeTable/>
+
+### Unified Expressions Blended Shapes {#ue-blended-shapes}
+
+***
+
+The following shapes are intended to simplify and blend together the 
+Unified Expressions Base Shapes above. Creating shapes for these 
+Blended shapes instead can be used to simplify shape creation, optimise 
+avatars for specific face tracking setups, or allow an avatar to exhibit 
+certain tracking behaviors.
+
+The following shapes also are categorized by what their general 
+expression functionality is based on.
+
+:::info Unified Expressions is designed to be flexible
+
+Many shapes may be able to be discretionally mixed and matched 
+together that are not otherwise listed here. The listed shapes 
+below also have direct tracking transformations available in 
+VRCFaceTracking. Many shapes can make up a Blended shape listed 
+here.
+
+:::
+
+import ShapeBlendedTable from './_unified-blended-table.mdx'
+
+<ShapeBlendedTable/>
