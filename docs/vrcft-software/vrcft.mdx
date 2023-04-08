@@ -1,0 +1,105 @@
+# VRCFaceTracking Program
+
+import {EditUrl, CustomLink} from '@site/src/components/Utils.tsx'
+
+export const TextColor = ({children, color}) => (
+    <span
+        style={{
+            color: color,
+        }}>
+    {children}
+  </span>
+);
+
+VRChat has no native face tracking integration, at least for PC,
+which means there must be an intermediary software accessing face tracking data from whatever hardware and sending it to VRC via OSC as avatar parameters.
+VRCFaceTracking fulfills this intermediary role, creating a standard face-tracking parameter set for use with VRChat avatars. 
+VRCFaceTracking works by the concept of "modules", which are add-on files that let the program access eye and face tracking data from different sources.
+
+## Getting started with VRCFaceTracking
+
+~~Download the latest version of the program from the <CustomLink to="github"/> repo!~~
+
+:::note
+The version of VRCFaceTracking these docs are based on is **not publically released** yet.
+If you want to try out [Unified Expressions](../tutorial-avatars/tutorial-avatars-extras/unified-blendshapes.mdx) and the new module loading system, you can either
+build your own version of the latest VRCFT from the main repo, or download [Azimid's old UE prelease test build](https://github.com/regzo2/VRCFaceTracking/releases/tag/v5.0.0-pre-2),
+just note that it, and its packaged modules, will not be compatible with the release version.
+:::
+
+* If you are using a Vive Facial Tracker or other Vive hardware that relies on SRanipal, download the SRanipal module and add it to the VRCFaceTracking CustomLibs folder.
+
+* If you are using some other hardware such as a Quest Pro, you will need to download the respective module for the headset, add it to the VRCFaceTracking CustomLibs folder, then run the program. 
+You can find more instructions specific to your hardware on its documentation page in [Modules](../tutorial-modules/modules.mdx)
+
+To be able to use VRCFT, OSC must be enabled in VRChat.
+VRCFaceTracking will automatically set OSC to "Enabled" if it detects that it was not already, but you can (and should) also enable it manually to avoid having to restart the game for the automatic switch to take effect.
+
+## VRCFaceTracking "Housekeeping"
+
+These are a few small things that are good to be aware of when using face tracking with VRCFT and VRChat.
+
+### Changing the OSC IP and Ports
+
+Generally, you shouldn't need to change the default OSC address and ports to use VRCFaceTracking. 
+However, there are situations where you might want to, so in case you do: 
+
+Use ``--osc=[output port]:[ip address]:[input port]`` as launch argument.
+
+For example: ``--osc=9000:127.0.0.1:9100`` is the common option when using VRCFaceTracking with [VRChatOSCRouter](../intro.mdx)
+
+For an easy way to handle with command argument, create a shortcut to the VRCFaceTracking program, right-click the newly-created shortcut and open "Properties", and add the line to the shortcut "Target". 
+Make sure to maintain a space between the flags and what was in the box already, and keep the flags outside of the quotation marks of the file path if they exist.
+Run VRCFaceTracking using this shortcut will start the program using the given OSC address and port settings. 
+
+![VRCFT shortcut example](img/vrcft_shortcut_example.png)
+
+### Unblocking Downloaded Dynamic Link Libraries (.dlls)
+
+When downloading `.dll` files from the Internet, Windows may block them from being able to be used for security reasons. 
+In case this happens, follow these simple steps
+
+1. Right-click on the .dll file, open "Properties"
+2. Down at the bottom of the Properties window check the checkbox option for 'Security' to "Unblock".
+
+:::note
+   If you don't see a checkbox to "Unblock", then it was not blocked automatically by Windows and you can safely continue.
+:::
+
+### Resetting VRChat OSC Configs
+
+Because of the sheer number of possible face tracking parameter configurations, VRCFaceTracking does not blindly send OSC messages for every possible parameter.
+Until VRChat releases the ["OSC Query" update](https://ask.vrchat.com/t/developer-update-2-september-2022/13470#oscquery-9), which is [currently in closed beta](https://github.com/vrchat-community/osc/issues/143#issuecomment-1304419543),
+VRCFaceTracking will rely on the static OSC config .json generated for each avatar to know what parameters to send.
+This configuration file is **never** updated automatically, it must be reset manually to force VRC to generate an up-to-date version or manually edited yourself.
+
+There are two ways of resetting the configs:
+
+1. Using the OSC Radial Menu (In-game)
+
+   1. While in VRC, open the Radial Menu.
+   2. Navigate to Options -> OSC 
+   3. Make sure that "Enabled" is set to True (white bar on the right side). Setting this will cause an avatar refresh. 
+
+2. Deleting the config .json files
+
+   1. Navigate to your AppData folder. You can get to ``AppData\Roaming`` by typing ``%appdata%`` into the search bar in the Windows Start Menu, or in the address bar of any Explorer window.
+   2. Go to ``..\AppData\LocalLow\VRChat\VRChat\`` and delete the OSC folder.
+   3. Restart VRC or refresh your avatar (by resetting or swapping avatar)
+
+## Common Problems and How to Solve Them
+
+- **VRCFaceTracking isn't starting at all**
+  - Cause: VRCFaceTracking is likely trying to access a module library (.dll) that is blocked by Windows Security.
+  - Solution: [unblocking downloaded dynamic link libraries](#unblocking-downloaded-dynamic-link-libraries-dlls)
+
+- **VRCFaceTracking is crashing when I join a world / change avatars**
+  - Cause: VRCFaceTracking failed to parse an invalid avatar OSC config.
+  - Solution: Clear out your VRChat Avatar OSC folder. Follow option 2 in [resetting OSC config](#resetting-vrchat-osc-configs)
+
+- **My personally uploaded Avatar loads 0 parameters!**
+  - Cause: Your avatar either doesn't have face tracking parameters, or is using an old OSC config that didn't have the face tracking parameters.
+  - Solution: Follow option 1 and/or 2 in [resetting OSC config](#resetting-vrchat-osc-configs). If completely clearing the OSC configs still results in loading 0 parameters, the avatar does not use VRCFT-compatible parameters.
+
+Don't see your problem here? Make sure to check the page(s) specific to your hardware setup.
+If you still cannot find an answer to your specific problem, create a help request in the <TextColor color="#5763ee">#setup-help-forum</TextColor> in the <CustomLink to="discord"/>. 
