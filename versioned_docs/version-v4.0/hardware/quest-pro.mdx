@@ -188,23 +188,19 @@ The customizability of ALVR allows a few options in this regard. All following m
 
 ## Common Issues (and How to Solve Them)
 
-#### ALXR/ALVR methods: "[ERROR] No connection could be made because the target machine actively refused it"
+- **ALXR/ALVR methods: "[ERROR] No connection could be made because the target machine actively refused it"**
+  - Cause: The ALXR VRCFT server is not running.
+  - Solution: Usually the problem is related to [missing a step](#oculus-linkairlink-setup)
+     and the ALXR log may make it clear as to what step exactly was forgotten.
 
-   - Cause: The ALXR VRCFT server is not running.
-   - Solution: Review the ALXR window client commandline output. Usually the problem is related to [missing a step](#oculus-linkairlink-setup)
-     and the text output may make it clear as to what step exactly was forgotten.
+- **OpenXR VRCFT module method: "[QuestOpenXR] Failed to GetFaceExpressionWeightsFB"**
+  - Cause: There is some permission in the setup that was not set correctly.
+  - Solution: *Carefully* re-run through [the setup](#oculus-linkairlink-setup), paying careful attention to all the steps before the method split.
 
-#### OpenXR VRCFT module method: "[QuestOpenXR] Failed to GetFaceExpressionWeightsFB"
+- **"I 100% made sure I followed all setup correctly, and I'm *not getting any visible errors anywhere*, but VRC only receives 0 values for all parameters (and VRC loaded a non-zero number of parameters from config)"**
+  - Solution: Try toggling the eye and face tracking enables in the headset settings.
 
-   - Cause: There is some permission in the setup that was not set correctly.
-   - Solution: *Carefully* re-run through [the setup](#oculus-linkairlink-setup), paying careful attention to all the steps before the method split.
-
-#### "I 100% made sure I followed all setup correctly, and I'm *not getting any visible errors anywhere*, but VRC only receives 0 values for all parameters (and VRC loaded a non-zero number of parameters from config)"**
-
-   - Solution: Try toggling the eye and face tracking enables in the headset settings.
-
-#### Oculus Link/Airlink: My playspace calibration resets if I take off the headset.
-
-   - Cause: When the Quest headset enters sleep mode after detecting you have taken off the headset, it loses it's original reference space to which the SteamVR space was calibrated to.
-   - Solution: Download the [Meta Quest Developer Hub](https://developer.oculus.com/documentation/unity/ts-odh/) and follow the instructions for *Connect Headset to MQDH* and *Disable proximity sensor and guardian*.
+- **Oculus Link/Airlink: My playspace calibration resets if I take off the headset.**
+  - Cause: When the Quest headset enters sleep mode after detecting you have taken off the headset, it loses it's original reference space to which the SteamVR space was calibrated to.
+  - Solution: Download the [Meta Quest Developer Hub](https://developer.oculus.com/documentation/unity/ts-odh/) and follow the instructions for *Connect Headset to MQDH* and *Disable proximity sensor and guardian*.
      This will prevent the headset from entering sleep, but does mean your headset stays fully active even if you take it off.
