@@ -85,13 +85,25 @@ const config = {
           },
           items: [
             {
+              type: 'docsVersionDropdown',
+            },
+            {
               type: 'doc',
               docId: 'intro',
               position: 'left',
-              label: 'Tutorial',
+              label: 'Intro',
             },
             {
-              type: 'docsVersionDropdown',
+              type: 'doc',
+              docId: 'getting-started',
+              position: 'left',
+              label: 'Getting Started'
+            },
+            {
+              type: 'doc',
+              docId: 'tutorial-avatars/tutorial-avatars-extras/unified-blendshapes',
+              position: 'left',
+              label: 'Unified Expressions'
             },
             {
               type: 'search',

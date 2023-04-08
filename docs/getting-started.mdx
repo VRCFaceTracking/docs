@@ -1,0 +1,37 @@
+---
+sidebar_position: 2
+---
+
+import {EditUrl, CustomLink} from '@site/src/components/Utils.tsx'
+
+# Getting Started
+
+Getting set up with face tracking in VRChat doesn't have to be an ordeal.
+Follow this guide on the basic steps you need to setup your hardware and softare and start sending face tracking data to VRChat.
+
+## Setup
+
+1. Download [VRCFaceTracking](./vrcft-software/vrcft.mdx)
+2. Verify that your hardware is in the supported list below, and follow the link to the corresponding setup instructions for your hardware
+
+| Series | Hardware/Headset                                        |
+|--------|---------------------------------------------------------|
+| Vive   | [Vive Pro Eye](./hardware/VIVE/vpe.mdx)                 |
+|        | [Vive Facial Tracker](./hardware/VIVE/face-tracker.mdx) |
+|        | [Vive Focus 3](./intro.mdx)                             |
+| Meta   | [Quest Pro](./hardware/quest-pro.mdx)                   |
+| Apple  | [iPhone](./hardware/iphone-arkit.mdx)                   |
+
+3. Enable OSC In VRChat
+4. Swap into a **VRCFT Compatible Avatar**
+<!-- apparently this part still isn't clear to some people -->
+:::info Avatar Compatibility
+At this time, VRChat does **not** have a native face tracking solution.
+Avatars must have been specifically [set up](#avatar-setup) for face tracking to work with VRCFaceTracking.
+You can learn more about [how the system works](./intro.mdx) if this is confusing.
+:::
+<!-- TODO: add explanation page on how face tracking works in VRChat -->
+
+## Avatar Setup
+
+If you have a working hardware and software setup, or only want to get started with setting up *avatars* for using with VRCFaceTracking, you should follow [Avatar Getting Started](./intro.mdx)
