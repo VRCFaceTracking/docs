@@ -1,15 +1,19 @@
 # Quest Pro
+
 The Meta Quest Pro provides eye gaze tracking, detailed eye expression tracking, and face tracking.
 All eye and face tracking hardware is internal to the device (no additional hardware setup required).
 All eye and face tracking data is accessed via Meta’s Face and Eye OpenXR extensions.
 
-### Why is this setup required?
+## Why is this setup required?
+
 The Quest Pro provides developers with both eye and face tracking data from a single, contained device, making it easy for native Quest developers to incorporate.
 However, having it only accessible through Meta’s Oculus OpenXR extensions means there must be an OpenXR application using the Oculus runtime running somewhere.
 There is currently no way for VRCFT to provide eye and face tracking to the Quest version of VRChat, the following solutions are only for PCVR.
 
 ## Setup
+
 The Quest Pro currently has 2 different face-tracking compatible ways to connect to the PC:
+
 - Oculus Link (or Airlink)
 - ALVR
 
@@ -21,6 +25,7 @@ Oculus Link/Airlink is Meta’s own PCVR streaming solution, and is generally mo
 In both cases the user is expected to have the VR PC and the Quest Pro on the same network, with the PC ideally connected to the network via ethernet cable.
 
 ### Enabling Developer Mode on the Headset
+
 Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-quest/enable-developer-mode
 
 1. [Set up a Meta Oculus developer account](https://developer.oculus.com/sign-up/)
@@ -40,6 +45,7 @@ Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-qu
 ![Quest Settings](img/quest/quest_pro_settings_eye_tracking.jpeg)
 
 ### Oculus Link/Airlink Setup
+
 Thanks to Fox `McCloud#7787` and `Adjerry91#2031` for the original set of instructions.
 
 If you prefer following video tutorials, these following videos by `Ninka_#7958` cover the steps for either Oculus Link method. 
@@ -69,7 +75,8 @@ If you do not see these options, you did not follow the previous steps correctly
    ![Oculus PC app Beta Tab](img/quest/oculus_pc_app_beta.png)
 
 ### Connection Methods
-Now there is a choice. Oculus Link PCVR connection has 2 different solutions for streaming out face tracking data into VRCFT.
+
+Oculus Link PCVR connection has 2 different solutions for streaming out face tracking data into VRCFT.
 This guide will cover both. Though there is currently no functional difference between the two, the ALXR Windows client method does require starting another program.
 
 #### ALXR Windows Client Method
@@ -115,11 +122,9 @@ Setup Complete! See the [Startup Procedure](#startup-procedure-for-oculus-linkai
 2. (If you are using ALXR client method) Launch the ALXR windows client using the previously created shortcut.
 3. Launch VRCFaceTracking. If you are using TofuLemon's VRCFaceTracking, it will start an internal OpenXR client.
 4. Launch SteamVR **from the PC**
-:::tip
-The last two steps are interchangeable in order. 
-:::
 
 ### ALVR/ALXR Setup
+
 1. Install SideQuest (Advanced Installer) on your computer. https://sidequestvr.com/setup-howto
    - The SideQuest application will have a built-in tutorial for the following steps.
 2. **Set your headset to developer mode using the Oculus mobile app**. :ref:`enable developer mode`
@@ -158,12 +163,13 @@ Back in the headset, SteamVR should now be streamed from the PC to the headset.
 12. Create a .txt file named `questProIP` in the same directory as the `VRCFaceTracking.exe` and `questProSensitivity.ini`.
 In the newly created file, enter the local IP address as shown next to "Meta Quest Pro" in the ALVR server application as the only text in the file, and save the file.
 
-
 #### If you are planning on using a USB cable instead of Wi-Fi streaming for the ALXR/ALVR connection
+
 1. Follow the [Official ALVR Community Instructions](https://github.com/alvr-org/ALVR/wiki/Using-ALVR-through-a-USB-connection) for setting up the USB connection.
 2. Change the text in the `questProIP` file to `127.0.0.1`
 
 ### Startup Procedure for ALVR/ALXR
+
 1. Launch the ALVR server application on the PC and the alxr_client application in the Quest Pro headset.
 2. Launch VRCFaceTracking.exe
 
