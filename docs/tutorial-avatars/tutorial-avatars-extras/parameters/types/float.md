@@ -1,7 +1,18 @@
-# Float Parameters
-Float parameters are, for the most part, the **best** parameter type to use: they are the _most flexible_, have _priority*_, get _smoothed over the network_ (if under _priority*_), and the easiest to setup parameter. Float parameters have the ability to be used in Blend Trees, which gives them the ability to blend between multiple animations at a time.
+---
+description: Detailed explanation of Float-typed parameters. 
+---
 
-_*Priority_ is an attribute given to a Float parameter which makes it operate under IK Sync, the fastest network sync available in VRChat. Only float parameters and only up to 8 of them can operate in this mode.
+# Float Parameters
+
+**Float Parameters** (typically **Floating-point** numbers, shortened as **Floats**) 
+are a parameter type available for use in VRCFaceTracking. 
+
+**Floats** are the *native* parameter type of all parameters in **VRCFaceTracking**, 
+**VRChat**, and *other platforms* that can accept VRCFaceTracking tracking data. They 
+represent numbers with a defined amount of decimal points.
+
+**Floats** are the simplest and most direct parameter type to use for 
+a face tracking parameter and the easiest to manage face tracking setups for.
 
 Float parameters are typically driven with a Blend Tree, such as the one pictured below:
 

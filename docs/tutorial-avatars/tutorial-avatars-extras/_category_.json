@@ -1,7 +1,8 @@
 {
-  "label": "Intermediate",
+  "label": "Avatar References",
   "position": 2,
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "description": "Reference documentation for VRCFaceTracking avatar implementation. Includes Shape and Parameter references."
   }
 }

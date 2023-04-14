@@ -1,0 +1,355 @@
+import ContextModal from '@site/src/components/ContextModal.tsx'
+
+import OneExplain from './unified-explanations/super-scripts/_1_explain.mdx'
+import TwoExplain from './unified-explanations/super-scripts/_2_explain.mdx'
+
+import EyeGazeExp from './unified-explanations/eye/_eye_gaze.mdx'
+import EyeClosedExp from './unified-explanations/eye/_eye_closed.mdx'
+import EyeSquintExp from './unified-explanations/eye/_eye_squint.mdx'
+import EyeDilatorsExp from './unified-explanations/eye/_eye_dilators.mdx'
+import EyeWidenExp from './unified-explanations/eye/_eye_widen.mdx'
+
+import BrowDownExp from './unified-explanations/brow/_brow_down.mdx'
+import BrowUpExp from './unified-explanations/brow/_brow_up.mdx'
+
+import NoseSneerExp from './unified-explanations/nose/_nose_sneer.mdx'
+import NoseDilatorsExp from './unified-explanations/nose/_nose_dilators.mdx'
+
+import CheekSquintExp from './unified-explanations/cheek/_cheek_squint.mdx'
+import CheekPuffExp from './unified-explanations/cheek/_cheek_puff.mdx'
+import CheekSuckExp from './unified-explanations/cheek/_cheek_suck.mdx'
+
+import JawOpenExp from './unified-explanations/jaw/_jaw_open.mdx'
+import JawMoveExp from './unified-explanations/jaw/_jaw_movement.mdx'
+import JawLiftExp from './unified-explanations/jaw/_jaw_lifters.mdx'
+
+import LipFunnelExp from './unified-explanations/lip/_lip_funnel.mdx'
+import LipSuckExp from './unified-explanations/lip/_lip_suck.mdx'
+import LipPuckerExp from './unified-explanations/lip/_lip_pucker.mdx'
+
+import MouthUpperUpExp from './unified-explanations/mouth/_mouth_upper_up.mdx'
+import MouthLowerDownExp from './unified-explanations/mouth/_mouth_lower_down.mdx'
+import MouthDeepenExp from './unified-explanations/mouth/_mouth_nasolabial.mdx'
+import MouthMovementExp from './unified-explanations/mouth/_mouth_movement.mdx'
+import LipCornerPullExp from './unified-explanations/mouth/_mouth_corner_puller.mdx'
+import LipCornerSlantExp from './unified-explanations/mouth/_mouth_corner_slant.mdx'
+import MouthFrownExp from './unified-explanations/mouth/_mouth_frown.mdx'
+import MouthStretchExp from './unified-explanations/mouth/_mouth_stretch.mdx'
+import MouthDimpleExp from './unified-explanations/mouth/_mouth_dimple.mdx'
+import MouthRaiserExp from './unified-explanations/mouth/_mouth_raiser.mdx'
+import MouthTightenerExp from './unified-explanations/mouth/_mouth_tightener.mdx'
+import MouthPressExp from './unified-explanations/mouth/_mouth_press.mdx'
+
+import TongueOutExp from './unified-explanations/tongue/_tongue_out.mdx'
+import TongueDirectExp from './unified-explanations/tongue/_tongue_direction.mdx'
+import TongueRollExp from './unified-explanations/tongue/_tongue_roll.mdx'
+import TongueBendersExp from './unified-explanations/tongue/_tongue_benders.mdx'
+import TongueTwistersExp from './unified-explanations/tongue/_tongue_twisters.mdx'
+import TongueShapeExp from './unified-explanations/tongue/_tongue_shape.mdx'
+
+import SoftPalateCloseExp from './unified-explanations/neck/_neck_palate_close.mdx'
+import NeckFlexExp from './unified-explanations/neck/_neck_flex.mdx'
+import NeckSwallowExp from './unified-explanations/neck/_neck_swallow.mdx'
+
+import '@site/src/css/unified-tables.css'
+
+<table>
+    <thead>
+        <tr>
+            <th className="table-ue-name">Name</th>
+            <th className="table-ue-description">Function</th>
+            <th className="table-ue-name">Basis</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>EyesClosed</td>
+            <td>Closes both eye lids.</td>
+            <td>EyeClosedRight<br/>EyeClosedRight</td>
+        </tr>
+        <tr>
+            <td>EyesWiden</td>
+            <td>Closes both eye lids.</td>
+            <td>EyeWidenRight<br/>EyeWidenLeft</td>
+        </tr>
+        <tr>
+            <td>EyesSquint</td>
+            <td>Closes both eye lids.</td>
+            <td>EyeSquintRight<br/>EyeSquintLeft</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>EyeDilation</td>
+            <td>Dilates both pupils.</td>
+            <td>EyeDilationRight<br/>EyeDilationLeft</td>
+        </tr>
+        <tr>
+            <td>EyeConstrict</td>
+            <td>Constricts both pupils.</td>
+            <td>EyeConstrictRight<br/>EyeConstrictLeft</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th className="table-ue-name">Name</th>
+            <th className="table-ue-description">Function</th>
+            <th className="table-ue-name">Basis</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>BrowsDownRight</td>
+            <td>Pulls the right eyebrow down and in.</td>
+            <td>BrowLowererRight<br/>BrowPinchRight</td>
+        </tr>
+        <tr>
+            <td>BrowsDownLeft</td>
+            <td>Pulls the left eyebrow down and in.</td>
+            <td>BrowLowererLeft<br/>BrowPinchLeft</td>
+        </tr>
+        <tr>
+            <td>BrowsDown</td>
+            <td>Pulls the left eyebrow down and in.</td>
+            <td>BrowLowererRight<br/>BrowLowererLeft<br/>BrowPinchRight<br/>BrowPinchLeft</td>
+        </tr>
+        <tr>
+            <td>BrowUpRight</td>
+            <td>Right brow appears worried.</td>
+            <td>BrowInnerUpRight<br/>BrowOuterUpRight</td>
+        </tr>
+        <tr>
+            <td>BrowUpLeft</td>
+            <td>Left brow appears worried.</td>
+            <td>BrowInnerUpLeft<br/>BrowOuterUpLeft</td>
+        </tr>
+        <tr>
+            <td>BrowUp</td>
+            <td>Brows appears worried.</td>
+            <td>BrowInnerUpRight<br/>BrowInnerUpLeft<br/>BrowOuterUpRight<br/>BrowOuterUpLeft</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th className="table-ue-name">Name</th>
+            <th className="table-ue-description">Function</th>
+            <th className="table-ue-name">Basis</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>NoseSneer</td>
+            <td>Entire face sneers.</td>
+            <td>NoseSneerRight<br/>NoseSneerLeft</td>
+        </tr>
+        <tr>
+            <td>NasalDilation</td>
+            <td>Both nose canals dilate.</td>
+            <td>NasalDilationRight<br/>NasalDilationLeft</td>
+        </tr>
+        <tr>
+            <td>NasalConstrict</td>
+            <td>Both nose canals constrict.</td>
+            <td>NasalConstrictRight<br/>NasalConstrictLeft</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>CheekPuff</td>
+            <td>Puffs both cheeks.</td>
+            <td>CheekPuffRight<br/>CheekPuffLeft</td>
+        </tr>
+        <tr>
+            <td>CheekSuck</td>
+            <td>Sucks both cheeks.</td>
+            <td>CheekSuckRight<br/>CheekSuckLeft</td>
+        </tr>
+        <tr>
+            <td>CheekSquint</td>
+            <td>Raises both cheeks.</td>
+            <td>CheekSquintRight<br/>CheekSquintLeft</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>LipSuckUpper</td>
+            <td>Tucks in the upper lips.</td>
+            <td>LipSuckUpperRight<br/>LipSuckUpperLeft</td>
+        </tr>
+        <tr>
+            <td>LipSuckLower</td>
+            <td>Tucks in the lower lips.</td>
+            <td>LipSuckLowerRight<br/>LipSuckLowerLeft</td>
+        </tr>
+        <tr>
+            <td>LipSuck</td>
+            <td>Tucks in the upper and lower lips.</td>
+            <td>LipSuckUpperRight<br/>LipSuckUpperLeft<br/>LipSuckLowerRight<br/>LipSuckLowerLeft</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>LipFunnelUpper</td>
+            <td>Tucks in the upper lips.</td>
+            <td>LipFunnelLowerRight<br/>LipFunnelLowerLeft</td>
+        </tr>
+        <tr>
+            <td>LipFunnelLower</td>
+            <td>Tucks in the lower lips.</td>
+            <td>LipFunnelLowerRight<br/>LipFunnelLowerLeft</td>
+        </tr>
+        <tr>
+            <td>LipFunnel</td>
+            <td>Tucks in the upper and lower lips.</td>
+            <td>LipFunnelUpperRight<br/>LipFunnelUpperLeft<br/>LipFunnelLowerRight<br/>LipFunnelLowerLeft</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>LipPuckerUpper</td>
+            <td>Upper lip part pushes outward.</td>
+            <td>LipFunnelLowerRight<br/>LipFunnelLowerLeft</td>
+        </tr>
+        <tr>
+            <td>LipPuckerLower</td>
+            <td>Lower lip part pushes outward.</td>
+            <td>LipFunnelLowerRight<br/>LipFunnelLowerLeft</td>
+        </tr>
+        <tr>
+            <td>LipPucker</td>
+            <td>Lips push outward.</td>
+            <td>LipPuckerUpperRight<br/>LipPuckerUpperLeft<br/>LipPuckerLowerRight<br/>LipPuckerLowerLeft</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>MouthUpperUp</td>
+            <td>Raises the upper lips.</td>
+            <td>MouthUpperUpRight<br/>MouthUpperUpLeft</td>
+        </tr>
+        <tr>
+            <td>MouthLowerDown</td>
+            <td>Lowers the lower lips.</td>
+            <td>MouthLowerDownRight<br/>MouthLowerDownLeft</td>
+        </tr>
+        <tr>
+            <td>MouthOpen</td>
+            <td>Lips push outward.</td>
+            <td>MouthUpperUpRight<br/>MouthUpperUpLeft<br/>MouthLowerDownRight<br/>MouthLowerDownLeft</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>MouthRight</td>
+            <td>Moves mouth right.</td>
+            <td>MouthUpperRight<br/>MouthLowerRight</td>
+        </tr>
+        <tr>
+            <td>MouthLeft</td>
+            <td>Moves mouth left.</td>
+            <td>MouthUpperLeft<br/>MouthLowerLeft</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>MouthSmileRight</td>
+            <td>Right side mouth expresses a smile.</td>
+            <td>MouthCornerPullRight<br/>MouthCornerSlantRight</td>
+        </tr>
+        <tr>
+            <td>MouthSmileLeft</td>
+            <td>Left side mouth expresses a smile.</td>
+            <td>MouthCornerPullLeft<br/>MouthCornerSlantLeft</td>
+        </tr>
+        <tr>
+            <td>MouthSmile</td>
+            <td>Mouth expresses a smile.</td>
+            <td>MouthCornerPullRight<br/>MouthCornerPullLeft<br/>MouthCornerSlantRight<br/>MouthCornerSlantLeft</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>MouthSadRight</td>
+            <td>Left side mouth expresses sadness.</td>
+            <td>MouthFrownRight<br/>MouthStretchRight</td>
+        </tr>
+        <tr>
+            <td>MouthSadLeft</td>
+            <td>Right side mouth expresses sadness.</td>
+            <td>MouthFrownLeft<br/>MouthStretchLeft</td>
+        </tr>
+        <tr>
+            <td>MouthSad</td>
+            <td>Mouth expresses sadness.</td>
+            <td>MouthFrownRight<br/>MouthFrownLeft<br/>MouthStretchRight<br/>MouthStretchLeft</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>MouthStretch</td>
+            <td>Mouth stretches.</td>
+            <td>MouthStretchRight<br/>MouthStretchLeft</td>
+        </tr>
+        <tr>
+            <td>MouthDimple</td>
+            <td>Lip corner dimples</td>
+            <td>MouthDimpleRight<br/>MouthDimpleLeft</td>
+        </tr>
+        <tr>
+            <td>MouthTightener</td>
+            <td>Mouth tightens.</td>
+            <td>MouthTightenerRight<br/>MouthTightenerLeft</td>
+        </tr>
+        <tr>
+            <td>MouthPress</td>
+            <td>Mouth presses together.</td>
+            <td>MouthPressRight<br/>MouthPressLeft</td>
+        </tr>
+    </tbody>
+</table>

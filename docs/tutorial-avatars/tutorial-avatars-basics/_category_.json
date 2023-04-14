@@ -1,8 +1,8 @@
 {
-  "label": "Basics",
+  "label": "Basic Avatar Setup",
   "position": 1,
   "link": {
     "type": "generated-index",
-    "description": "5 minutes to learn the most important concepts."
+    "description": "A basic overview on setting up VRCFaceTracking-ready avatars without the nitty-gritty."
   }
 }
