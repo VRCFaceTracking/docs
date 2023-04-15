@@ -1,0 +1,47 @@
+# VRCFTPimaxModule (Pimax)
+
+## Summary
+
+The VRCFTPimaxModule contains the runtime used to interface with Pimax eye tracking hardware and software on Windows PCs.
+
+## Set-up
+
+Setup of the Pimax Module is fairly simple, though can be a little confusing depending on your hardware/software configuration. Please read carefully to avoid any issues. 
+
+:::note
+This guide assumes you have PiTool and ASeeVR installed and updated prior to using the VRCFTPimaxModule. 
+If you do not have the [PiTool](https://pimaxcom.myshopify.com/pages/pitool-download) and/or [ASeeVR](https://drive.google.com/file/d/1ELDtOnMa-MkgchmWFf7w5an-iPOFtQL8/view?ref=Nebo&_ga=2.157958394.1121053981.1651257342-354291550.1593067405)
+installed, please install it before continuing.
+:::
+
+### Installation
+
+To use the VRCFTPimaxModule, you will need a compatible headset and the PiTool and ASeeVR installed.
+You can get a copy of the PiTool and ASeeVR from Pimax's website.
+
+:::warning
+The current version of ASeeVR is bugged and must be updated before using it. This can be done by using Guppy's [Pimax Eye Tracking Fix](https://github.com/guppyexpress/Pimax-Eye-Tracking-Fix). Instructions on how to use the fix can be found when you open this link.
+:::
+
+### Hardware
+
+The VRCFTPimaxModule is compatible with the following hardware:
+
+| Headset | Eye Tracking | Facial Tracking |
+| ---------------------------------- | -------- | --------- |
+| Droolon Pi1                         | `✅` Yes | `❌` No  |
+
+## Using The Pimax Module
+
+To use your Pimax's eye tracking with VRChat, you will need to use the [The Pimax VRCFT Module](https://github.com/benaclejames/VRCFTPimaxModule) with the VRCFaceTracking software.
+For more information on modules and how to use them, see [Modules](./modules.mdx).
+
+Assuming there are no connection issues with the hardware, the connection hardware components should be initialized by VRCFT after a few seconds.
+
+### Calibrating Eye Tracking
+
+There is no way to calibrate this module. 
+
+## Uninstalling The VRCFTPimaxModule
+
+To uninstall The VRCFTPimaxModule, navigate to `%\AppData\Roaming\VRCFaceTracking\CustomLibs` and delete the file called VRCFTPimaxModule.dll.
