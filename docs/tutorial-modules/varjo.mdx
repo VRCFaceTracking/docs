@@ -2,7 +2,7 @@
 
 ## Summary
 
-The VRCFTVarjoModule contains the runtime used to interface with Varjo eye tracking hardware and software on Windows PCs.
+The VRCFTVarjoModule contains the runtime used to interface with Varjo eye-tracking hardware and software on Windows PCs.
 
 ## Set-up
 
@@ -33,7 +33,11 @@ The VRCFTVarjoModule is compatible with the following hardware:
 
 ## Using The Varjo Module
 
-To use your Varjo with VRChat, you will need to use the [The Varjo VRCFT Module](https://github.com/m3gagluk/VRCFTVarjoModule) with the VRCFaceTracking software.
+To use your Varjo with VRChat, you will need to use one of two modules with the VRCFaceTracking software:
+
+- [M3ga's](https://github.com/m3gagluk/VRCFTVarjoModule) is considered to be the more "stable" option, but only has binary blinking (eyes are fully open and closed).
+ - [Chickenbread's](https://github.com/Chickenbreadlp/VRCFTVarjoModule) is a experimental fork of M3ga's module. It supports variable eye openness available in newer Varjo SDK versions
+
 For more information on modules and how to use them, see [Modules](./modules.mdx).
 
 :::warning
@@ -63,9 +67,9 @@ Additionally, you can perform a 5-point calibration from the leftmost tab in the
 }}>
     <img src={require("./img/varjo/varjo_unblock_instructions.png").default} alt="varjo unblock instructions" />
 </div>
-Eye tracking calibration is not required to be performed frequently, but should be done after initial The Varjo Base software installation, after a change to the headset (i.e. change the facial interface), or when switching the headset between users.
+Eye tracking calibration is not required to be performed frequently, but should be done after the initial Varjo Base software installation, after a change to the headset (i.e. change the facial interface), or when switching the headset between users.
 
-Start calibration by making sure "Allow eye tracking" is enabled in the System tab, then hitting the "Calibrate eye tracking" button in the app. Follow the in-app instructions to finish calibrating the eye gaze tracking.  
+Start calibration by making sure "Allow eye tracking" is enabled in the System tab, then hit the "Calibrate eye tracking" button in the app. Follow the in-app instructions to finish calibrating the eye gaze tracking.  
 
 ## Uninstalling The VRCFTVarjoModule
 
