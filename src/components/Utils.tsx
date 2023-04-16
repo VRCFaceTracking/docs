@@ -23,3 +23,12 @@ export function CustomLink({children, to, append = ""}) {
   )
 }
 
+export const TextColor = ({children, color}) => (
+  <span
+      style={{
+          color: color,
+      }}>
+  {children}
+</span>
+);
+
