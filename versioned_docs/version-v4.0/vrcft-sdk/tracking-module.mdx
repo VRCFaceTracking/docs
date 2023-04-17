@@ -1,0 +1,165 @@
+---
+description: Detailed overview of creating VRCFaceTracking Tracking Modules. 
+---
+
+import {EditUrl} from '@site/src/components/Utils.tsx'
+
+
+# Tracking Module SDK
+
+***
+
+:::danger v4.0.0 SDK will be depricated soon!
+
+The documentation here references VRCFaceTracking in the `v4.0.0` 
+release state. If you want to see the latest documentation that 
+is reflective of active development, please consider using the 
+['Current' docs](docs/vrcft-sdk/tracking-module.mdx)
+
+:::
+
+### Summary
+
+**VRCFaceTracking** provides an external tracking module 
+SDK that allows developers to send face tracking data to 
+any **VRCFaceTracking** compatible app. Modules will send 
+data to the **UnifiedTrackingData** interface that 
+VRCFaceTracking will use to send tracking data to applications.
+
+***
+
+### Tracking Module Overview {#ue-overview}
+
+* [Project Setup](#project-setup)
+* [Tracking Module Architecture](#tracking-module-architecture)
+* [Building Project](#building-project)
+
+## Project Setup
+
+***
+
+**VRCFaceTracking** uses **.NET Framework**, a relatively 
+easy and intuitive development platform. **VRCFaceTracking** has 
+the ability to load any class library (Managed `.dll` files) built 
+on the **.NET Framework** platform using a built-in module loader.
+
+To get started, create a new Class Library project using the 
+**.NET Framework v4.7.2** SDK and framework. Many IDEs provide a template to 
+quickly get started with this environment.
+
+:::tip
+
+Name the project after the tracking interface being implemented to 
+VRCFaceTracking; a general naming scheme for tracking modules is along 
+the lines of `ExampleExtTrackingInterface`.
+
+:::
+
+Once the project environment is setup, include `VRCFaceTracking` 
+as a dependency (this can either be a project reference by using the 
+VRCFaceTracking project in your own project, or by referencing the 
+`VRCFaceTracking` binary), and inherit `ExtTrackingModule` to your 
+module's main class. This will be where all the main functionality 
+of the module will be implemented.
+
+:::warning Must implement ExtTrackingModule
+
+VRCFaceTracking will at this time only load your external module 
+if the base class inherits ExtTrackingModule, otherwise it will be
+skipped. This is to ensure that developers are implementing a 
+tracking interface extension for devices to use VRCFaceTracking tracking 
+data, or otherwise.
+
+This may be changed in the future to allow different types of modules 
+to be loaded by the module loader (potentially those that can provide 
+an output for VRCFaceTracking tracking data, modify parts of VRCFaceTracking, 
+modify the UI of VRCFaceTracking, and more).
+
+:::
+
+The default architecture platform should be `Any CPU` or `x86` to build 
+for VRCFaceTracking.
+
+Your project environment should be fully setup and ready to accept your 
+tracking interface!
+
+## Tracking Module Architecture
+
+***
+
+:::tip Refer to the VRCFaceTracking API!
+
+The following API's are referenced when 
+writing a module. These are included with `VRCFaceTracking`. 
+
+* [`ExtTrackingModule`](https://github.com/benaclejames/VRCFaceTracking/blob/v4.0.0/VRCFaceTracking/SDK/ExtTrackingModule.cs)
+* [`UnifiedTrackingData`](https://github.com/benaclejames/VRCFaceTracking/blob/v4.0.0/VRCFaceTracking/UnifiedTrackingData.cs)
+* [`ViveSR.anipal.Lip`](https://github.com/benaclejames/VRCFaceTracking/blob/v4.0.0/VRCFaceTracking/TrackingLibs/SRanipal/Lip/SRanipal_LipData_v2.cs#L11)
+* [`ViveSR.anipal.Eye`](https://github.com/benaclejames/VRCFaceTracking/blob/v4.0.0/VRCFaceTracking/TrackingLibs/SRanipal/Lip/SRanipal_EyeData_v2.cs)
+
+[**VRCFaceTracking v4.0.0 source code**](https://github.com/benaclejames/VRCFaceTracking/tree/v4.0.0).
+
+:::
+
+```c title="ExampleExtTrackingInterface.cs"
+public class ExampleExtTrackingModule : ExtTrackingModule
+{
+    // What your interface is able to send as tracking data.
+    public override (bool SupportsEye, bool SupportsLip) Supported => (true, true);
+
+    // This is the first function ran by VRCFaceTracking. Make sure to completely initialize 
+    // your tracking interface or the data to be accepted by VRCFaceTracking here. This will let 
+    // VRCFaceTracking know what data is available to be sent from your tracking interface at initialization.
+    public override (bool eyeSuccess, bool lipSuccess) Initialize(bool eyeAvailable, bool lipAvailable)
+    {
+        var state = (eyeAvailable, lipAvailable);
+
+        //... Initializing module. Modify state tuple as needed (or use bool contexts to determine what should be initialized).
+
+        return state;
+    }
+
+    // Function that should poll data from the tracking interface.
+    public override Action GetUpdateThreadFunc()
+    {
+        return () =>
+        {
+            while (true)
+            {
+                /*
+                Get latest tracking data from your interface and transform to VRCFaceTracking data.
+
+                UnifiedTrackingData.EyeTrackingData.Left.Openness = ExampleTracker.LeftEye.Openness;
+                UnifiedTrackingData.LipTrackingData.LatestShapes[(int)LipShape_v2.JawOpen] = ExampleTracker.Mouth.JawOpen;
+
+                Feel free to function out different parts of your code to keep this function readable.
+                */
+            }
+        };
+    }
+
+    // Called when the module is unloaded or VRCFaceTracking itself tears down.
+    public override void Teardown()
+    {
+        //... Deinitialize tracking interface; dispose any data created with the module.
+    }
+}
+```
+
+## Building Project
+
+Once the tracking module is fully setup, you are able to make a binary that can then 
+be loaded by VRCFaceTracking's module system! With `VRCFaceTracking` as a 
+dependency, you can make a build of you module for use in VRCFaceTracking.
+
+Simply take the compiled binary and place it in `%appdata%\VRCFaceTracking\CustomLibs`, 
+VRCFaceTracking will load external modules after attempting to load the integrated SRanipal 
+Tracking Module.
+
+:::tip Use Build Events!
+
+Setting up build events for your project can make it easy to 
+iterate your project faster. Create a build event to place your 
+compiled binaries into the appropriate destinations!
+
+:::
