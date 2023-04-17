@@ -3,25 +3,34 @@ sidebar_position: 1
 ---
 
 import {EditUrl, CustomLink} from '@site/src/components/Utils.tsx'
+import {PageCard} from '@site/src/components/Cards.tsx'
+import DocCardList from '@theme/DocCardList';
 
-# 👀 Welcome to VRCFT
+# Introduction
+
+## 👀 Welcome to VRCFT Docs
 
 :::danger Still In Development
 
 A complete overhaul to VRCFaceTracking is *coming soon*, bringing big advancements to the parameters, modules, adding tracking data processing, and more.
-Be aware the current version of the docs (v4.0) will not be getting new content. 
+Be aware that the "current" version of the docs (what you see right now) is written for the *upcoming* version.
+Change to the "v4.0" docs version for pages more specific to the old VRCFT.
 
 :::
 
-<!-- TODO: little vrcft blurb here -->
-VRCFaceTracking makes it easy to use your eye and or face tracking hardware of choice in VRChat.
+You have made it to the VRCFaceTracking Docs!
+VRCFaceTracking makes it easy to use your eye and or face tracking hardware of choice in VRChat, without needing to worry about whether an avatar is compatible with their headset.
+Here you will find useful documentation, guides, and tips for setting up and using the VRCFaceTracking software.
 
-By providing a standard of communcation to VRChat, users do not to worry about whether an avatar is compatible match their headset.
+<!--**Ready to start?** Continue to the next section to [Get Started](./getting-started.mdx). -->
 
-VRCFT uses a verstile module system for different face-tracking data sources, and makes adding new hardware support easy.
+<!-- <DocCardList /> -->
 
-Ready to start using face tracking? Continue to the next section to [Get Started](./getting-started.mdx).
+<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+    <PageCard name="🛠 Getting Started" url="./getting-started" description="Follow this short guide to start using face tracking in VRChat"/>
+</div>
 
+---
 ## ❔ Resources
 
 Join the <CustomLink to="discord"/> for the community, discussion, and live support.
