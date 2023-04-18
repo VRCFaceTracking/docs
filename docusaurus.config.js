@@ -56,7 +56,7 @@ const config = {
           lastVersion: 'v4.0',
           versions: {
             current: {
-              label: 'Current'
+              label: 'Next (UE)'
             },
             "v4.0": {
               //path: 'v4.0'
@@ -79,6 +79,11 @@ const config = {
         },
         // Replace with your project's social card
         //image: 'img/docusaurus-social-card.jpg',
+        docs: {
+          sidebar: {
+            hideable: true,
+          }
+        },
         navbar: {
           title: 'VRCFaceTracking',
           logo: {
@@ -87,13 +92,25 @@ const config = {
           },
           items: [
             {
+              type: 'docsVersionDropdown',
+            },
+            // {
+            //   type: 'doc',
+            //   docId: 'intro',
+            //   position: 'left',
+            //   label: 'Intro',
+            // },
+            {
               type: 'doc',
-              docId: 'intro',
+              docId: 'intro/getting-started',
               position: 'left',
-              label: 'Tutorial',
+              label: 'Getting Started'
             },
             {
-              type: 'docsVersionDropdown',
+              type: 'doc',
+              docId: '/category/avatar-setup',
+              position: 'left',
+              label: 'Avatar Setup'
             },
             {
               type: 'search',
@@ -102,14 +119,20 @@ const config = {
             {
               href: 'https://discord.com/invite/vrcft',
               position: 'right',
-              label: 'Discord',
+              className: 'header-discord-link',
+              'aria-label': 'Discord',
             },
             {
               href: 'https://github.com/benaclejames/VRCFaceTracking',
               position: 'right',
               className: 'header-github-link',
               'aria-label': 'GitHub',
-            }
+            },
+            // {
+            //   type: 'html',
+            //   position: 'right',
+            //   value: '<div style="margin:auto auto; display: flex; justify-content: center; height: 24px"><p> | </p></div>'
+            // }
           ],
 
         },
@@ -141,8 +164,8 @@ const config = {
               title: 'Docs',
               items: [
                 {
-                  label: 'Tutorial',
-                  to: '/docs/intro',
+                  label: 'Getting Started',
+                  to: '/docs/intro/getting-started',
                 },
               ],
             },
