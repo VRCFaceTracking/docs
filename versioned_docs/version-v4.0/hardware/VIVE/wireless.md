@@ -48,7 +48,7 @@ Keeping the computer-side PCIe card and antenna (“wireless linkbox”) cool to
 ### 🏿 CPU Intensive
 
 Running SRanipal and Vive Wireless (and VR + VRChat) together is not for weak CPUs. 
-[SRanipal](../../tutorial-modules/sranipal.mdx) does use a reasonable amount of CPU when active. 
+[SRanipal](sranipal.mdx) does use a reasonable amount of CPU when active. 
 Since the encoding for the wireless connection is done by the CPU, any hiccup can result in a wireless freeze / disconnect or simply just wireless USB freeze / disconnect (aka eye/face tracking stops working).
 Weaker or older CPUs (i.e. 8th gen Intel i7, R5-level CPUs 2 generations or older) may have a notably degraded VR and VRChat experience.
 If you were already struggling performance-wise in VRChat without wireless, or without face tracking, you should avoid this combo.

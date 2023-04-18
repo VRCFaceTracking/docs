@@ -28,22 +28,22 @@ These are a few small things that are good to be aware of when using face tracki
 
 ### Changing the OSC IP and Ports
 
-Generally, you shouldn't need to change the default OSC address and ports to use VRCFaceTracking. 
-However, there are situations where you might want to, so in case you do: 
+Generally, you shouldn't need to change the default OSC address and ports to use VRCFaceTracking.
+However, there are situations where you might want to, so in case you do:
 
 Use ``--osc=[output port]:[ip address]:[input port]`` as launch argument.
 
-For example: ``--osc=9000:127.0.0.1:9100`` is the common option when using VRCFaceTracking with [VRChatOSCRouter](../intro.mdx)
+For example: ``--osc=9000:127.0.0.1:9100`` is the common option when using VRCFaceTracking with [VRChatOSCRouter](https://github.com/SutekhVRC/VOR)
 
 For an easy way to handle with command argument, create a shortcut to the VRCFaceTracking program, right-click the newly-created shortcut and open "Properties", and add the line to the shortcut "Target". 
 Make sure to maintain a space between the flags and what was in the box already, and keep the flags outside of the quotation marks of the file path if they exist.
-Run VRCFaceTracking using this shortcut will start the program using the given OSC address and port settings. 
+Run VRCFaceTracking using this shortcut will start the program using the given OSC address and port settings.
 
 ![VRCFT shortcut example](img/vrcft_shortcut_example.png)
 
 ### Unblocking Downloaded Dynamic Link Libraries (.dlls)
 
-When downloading `.dll` files from the Internet, Windows may block them from being able to be used for security reasons. 
+When downloading `.dll` files from the Internet, Windows may block them from being able to be used for security reasons.
 In case this happens, follow these simple steps
 
 1. Right-click on the .dll file, open "Properties"
@@ -65,8 +65,8 @@ There are two ways of resetting the configs:
 1. Using the OSC Radial Menu (In-game)
 
    1. While in VRC, open the Radial Menu.
-   2. Navigate to Options -> OSC 
-   3. Make sure that "Enabled" is set to True (white bar on the right side). Setting this will cause an avatar refresh. 
+   2. Navigate to Options -> OSC
+   3. Make sure that "Enabled" is set to True (white bar on the right side). Setting this will cause an avatar refresh.
 
 2. Deleting the config .json files
 
