@@ -35,20 +35,20 @@ Previous users have noticed that to use the hub the Vive headset's onboard audio
 ### ⚡ Higher Power Draw
 
 The [Vive Facial Tracker](face-tracker.mdx) is a bit of a power hog when in use.
-When used over wireless, the original stock 18W QC3.0 battery may not be able to support it reliably. 
+When used over wireless, the original stock 18W QC3.0 battery may not be able to support it reliably.
 Users have reported more stable experience with upgraded USB power cable (more robust USB-A to A or USB-A to C with an adapter) and higher power output battery, such as the 21W version that now comes stock with the Vive Wireless kits (for Cosmos / Vive Pro 2).
 
 ### 🌡 Higher Temps
 
 The Vive Wireless Adapter is already well known for being a head toaster, but with the increased power draw and bandwidth usage when using the Vive Facial Tracker, it is more important than ever to keep the headset wireless module cool.
-Excess heat is one of the primary reasons for wireless cutouts. 
+Excess heat is one of the primary reasons for wireless cutouts.
 Adding a small fan over the center grill is a necessity if you plan on running the [Facial Tracker](face-tracker.mdx) over wireless.
 Keeping the computer-side PCIe card and antenna (“wireless linkbox”) cool too will help improve wireless performance.
 
 ### 🏿 CPU Intensive
 
-Running SRanipal and Vive Wireless (and VR + VRChat) together is not for weak CPUs. 
-[SRanipal](../../tutorial-modules/sranipal.mdx) does use a reasonable amount of CPU when active. 
+Running SRanipal and Vive Wireless (and VR + VRChat) together is not for weak CPUs.
+[SRanipal](sranipal.mdx) does use a reasonable amount of CPU when active.
 Since the encoding for the wireless connection is done by the CPU, any hiccup can result in a wireless freeze / disconnect or simply just wireless USB freeze / disconnect (aka eye/face tracking stops working).
 Weaker or older CPUs (i.e. 8th gen Intel i7, R5-level CPUs 2 generations or older) may have a notably degraded VR and VRChat experience.
 If you were already struggling performance-wise in VRChat without wireless, or without face tracking, you should avoid this combo.
