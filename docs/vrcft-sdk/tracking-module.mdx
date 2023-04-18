@@ -137,10 +137,15 @@ public class ExampleExtTrackingModule : ExtTrackingModule
         /*
         Get latest tracking data from interface and transform to VRCFaceTracking data.
 
+        Validate if your module should be updating by checking on Status:
+
+        if (Status != ModuleStatus.Active)
+            ... Execute update cycle.
+ 
         UnifiedTracking.Data.Eye.Left.Openness = ExampleTracker.LeftEye.Openness;
         UnifiedTracking.Data.Shapes[(int)UnifiedExpressions.JawOpen] = ExampleTracker.Mouth.JawOpen;
 
-        Feel free to function out different parts of your code to keep this function readable.
+        Feel free to function out different parts of your code to keep this readable.
         */
     }
 
@@ -154,9 +159,8 @@ public class ExampleExtTrackingModule : ExtTrackingModule
 
 ## Building Project
 
-Once the tracking module is fully setup, you are able to make a binary that can then 
-be loaded by VRCFaceTracking's module system! With `VRCFaceTracking.Core` as a 
-dependency, you can make a build of you module for use in VRCFaceTracking.
+Once the tracking module is fully setup and ready to be deployed, compile your binary. 
+This binary can then be loaded by VRCFaceTracking's module system!
 
 Simply take the compiled binary and place it in `%appdata%\VRCFaceTracking\CustomLibs`, 
 VRCFaceTracking will load any external modules in alphabetical order that are included in 
