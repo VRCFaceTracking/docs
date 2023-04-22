@@ -112,13 +112,11 @@ your avatars!
 ***
 
 This sections contains documentation for all currently implemented **Unified Expressions** 
-shapes available for use in **VRCFaceTracking** on avatars.
+shapes available for use in **VRCFaceTracking** on avatars. These are all the shapes contained 
+under the Unified Expressions shapes umbrella:
 
-
-### Unified Expressions Base Shapes {#ue-base-shapes}
-
-The following tables contain all base shapes that are used on avatars and as the basis of **VRCFaceTracking**'s 
-avatar parameters.
+* [Base Shapes](#ue-base-shapes), the base anatomical shapes.
+* [Blended Shapes](#ue-blended-shapes), which are more simplified shapes that blends together many Base Shapes.
 
 :::info These are shape references, not parameters.
 
@@ -134,7 +132,22 @@ import ExampleExpl from './unified-explanations/_example_explain.mdx'
 Information may be sparse, and we are working to incorporate features that 
 allow us to give highly detailed explanations in the future.
 
-To see what that would look like, <ContextModal comp={ExampleExpl}>**hover over this text!**</ContextModal>
+To see what that might look like, <ContextModal comp={ExampleExpl}>**hover over this text!**</ContextModal>
+
+:::
+
+### Base Shapes {#ue-base-shapes}
+
+The following tables contain all base shapes that are used on avatars and as the basis of **VRCFaceTracking**'s 
+avatar parameters.
+
+:::info Decide what shapes are best for your avatar!
+
+Many of the following shapes may be able to be discretionally 
+mixed and matched together. 
+
+Please refer to [Blended Shapes](#ue-blended-shapes) for 
+officially supported simplified shapes for avatars.
 
 :::
 
@@ -142,26 +155,19 @@ import ShapeTable from './_unified-shape-table.mdx'
 
 <ShapeTable/>
 
-### Unified Expressions Blended Shapes {#ue-blended-shapes}
+### Blended Shapes {#ue-blended-shapes}
 
-***
-
-The following shapes are intended to simplify and blend together the 
-Unified Expressions Base Shapes above. Creating shapes for these 
-Blended shapes instead can be used to simplify shape creation, optimise 
-avatars for specific face tracking setups, or allow an avatar to exhibit 
-certain tracking behaviors.
-
-The following shapes also are categorized by what their general 
-expression functionality is based on.
+The following shapes blend together the 
+Unified Expressions Base Shapes above into more simplified shapes. 
+Many of these align with tracking interfaces, other face tracking 
+standards, and generalized expressions.
 
 :::info Unified Expressions is designed to be flexible
 
-Many shapes may be able to be discretionally mixed and matched 
+Many [Base Shapes](#ue-base-shapes) may be able to be discretionally mixed and matched 
 together that are not otherwise listed here. The listed shapes 
 below also have direct tracking transformations available in 
-VRCFaceTracking. Many shapes can make up a Blended shape listed 
-here.
+VRCFaceTracking.
 
 :::
 
