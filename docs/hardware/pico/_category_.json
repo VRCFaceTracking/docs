@@ -1,0 +1,8 @@
+{
+  "label": "Pico",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Documentation about Pico XR hardware."
+  }
+}
