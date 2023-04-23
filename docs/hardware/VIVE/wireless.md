@@ -18,19 +18,20 @@ Currently, there is a known issue with using the Vive Wireless Adapter on the Wi
 ### Cons
 
 * Battery management
-* Potential wireless disconnects / unreliability / degraded VR performance
-* [Quirks of Vive Wireless with FT](#-quirks-of-vive-wireless-with-ft)
+* Wireless disconnects / unreliability
+* Extra CPU load
 
 ## 🤔 Quirks of Vive Wireless with FT
 
-While it does work, there are some things to keep in mind or that you need to work around.
+So while it does work, there are some things to keep in mind or that you need to work around.
 
 ### 🔌 Tricky USB Hubs
 
 In a traditional wired setup, a (quality) USB-C hub could be used to expand the connectivity of the single USB-C 3.0 peripheral port.
-While before the VRCFT community believed it possible, it turns out that at least one certain hub can be used with wireless and the [Vive Facial Tracker](face-tracker.mdx):
+While before, the VRCFT community believed it impossible, it turns out that at least one certain hub can be used with wireless and the [Vive Facial Tracker](face-tracker.mdx):
 https://www.amazon.com/dp/B09NDQGSPR
 Previous users have noticed that to use the hub the Vive headset's onboard audio would have to be disabled.
+**Note that this is not guaranteed to work reliably or at all for you!**
 
 ### ⚡ Higher Power Draw
 

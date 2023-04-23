@@ -1,3 +1,5 @@
+import {PageCard} from '@site/src/components/Cards.tsx'
+
 # Quest Pro
 
 The Meta Quest Pro provides eye gaze tracking, detailed eye expression tracking, and face tracking.
@@ -12,31 +14,25 @@ Document being remade for new module system, some links will not work.
 
 The Quest Pro provides developers with both eye and face tracking data from a single, contained device, making it easy for native Quest developers to incorporate.
 However, having it only accessible through Meta’s Oculus OpenXR extensions means there must be an OpenXR application using the Oculus runtime running somewhere.
-There is currently no way for VRCFT to provide eye and face tracking to the Quest version of VRChat, the following solutions are only for PCVR.
-Note that native Eye Tracking support is now in open beta for the Quest version of VRChat for use with the Quest Pro.
-
-## Modules
-
-There are two different modules for streaming out face tracking data into VRCFT.
-If you are using the ALXR program for streaming PCVR to the headset, you *must* use Korejan's ALXR module.
-Otherwise if using Oculus Link/Airlink, either module should work.
-
-1. [Korejan's ALXR Module](../vrcft-software/modules/)
-2. [TofuLemon's OpenXR Module](../vrcft-software/modules/)
-
-Follow the module installation instructions in the respective module pages, and learn about the avalible PCVR streaming methods by continuing down to [Setup](#setup)!
+There is currently no way for VRCFT to simultaneously extract data from the headset and send eye and face tracking to the Quest version of VRChat, so the following solutions are only for PCVR.
+Note that native Eye Tracking support is now in open beta for the Quest version of VRChat for use with the Quest Pro, which does **not** require the use of VRCFaceTracking to function. 
 
 ## Setup
+
+:::info
+Currently available video tutorials for VRCFaceTracking Quest Pro setup are outdated. 
+:::
 
 The Quest Pro currently has 2 different face-tracking compatible ways to connect to the PC:
 
 - Oculus Link (or Airlink)
-- ALVR
+- ALXR
 
-The user is free to choose whatever method they prefer more. ALVR is an open-source project and thus has many for features and customizability in the PCVR connection as compared to Airlink, but also has more bugs or quirks.
+The user is free to choose whatever method they prefer more. ALXR is an open-source project and thus has many for features and customizability in the PCVR connection as compared to Airlink, but also has more bugs or quirks.
 Oculus Link/Airlink is Meta’s own PCVR streaming solution, and is generally more straight-forward to set up and network stable, but also is limited in customization.
 
-In both cases the user is expected to have the VR PC and the Quest Pro on the same network, with the PC ideally connected to the network via ethernet cable.
+In both cases the user is expected to have the VR PC and the Quest Pro on the same network, with the PC ideally connected to the network via ethernet cable. 
+You can learn more about improving your Quest PCVR streaming experience with the many guides available online. 
 
 ### Enabling Developer Mode on the Headset
 
@@ -60,22 +56,17 @@ Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-qu
 
 ### Oculus Link/Airlink PC Setup
 
-:::info
-The video tutorials from Ninka are for an older version of VRCFaceTracking.
-While many of the headset setup will be the same, note that VRCFaceTracking specific steps will be different.
-:::
-
-1. [**Set your headset to developer mode using the Oculus mobile app**](#enabling-developer-mode-on-the-headset)
+1. [**MAKE SURE YOUR HEADSET IS IN DEVELOPER MODE**](#enabling-developer-mode-on-the-headset)
+2. [Enable Headset Eye and Face Tracking](#enabling-eye-and-face-tracking-on-the-headset)
 :::warning
-Do **not** skip this step. Please follow the instructions for setting the headset to developer mode using the mobile app before proceeding. 
+Do **not** skip these steps. Please follow the instructions for setting the headset to developer mode using the mobile app before proceeding. 
 Even if you think it is in developer mode already, **follow the instructions anyways**.
 :::
-2. [Enable Headset Eye and Face Tracking](#enabling-eye-and-face-tracking-on-the-headset)
 3. Install and start the [Oculus PC application](https://www.oculus.com/download_app/?id=1582076955407037) (if it isn't already).
 4. Follow setup instructions for logging in and adding your Quest Pro to `Devices`.
 5. In the Oculus PC application, click on `Settings` in the left sidebar, then `General` tab. Turn on `Unknown Sources`. Set the `OpenXR Runtime` to Oculus
 :::warning
-**SET THE OPENXR RUNTIME TO OCULUS**. This is the second most forgotten step of Quest Pro setup.
+**SET THE OPENXR RUNTIME TO OCULUS**. This is the *second* most forgotten step of Quest Pro setup.
 :::
 ![Oculus PC App General Tab](img/quest/oculus_pc_app_general.png)
 6. Navigate to the `Beta` tab. Enable `Developer Runtime Features`, `Eye tracking over Oculus Link`, and `Natural Facial Expressions over Oculus Link`.
@@ -85,24 +76,16 @@ If you do not see these options, you did not follow the previous steps correctly
 :::
    ![Oculus PC app Beta Tab](img/quest/oculus_pc_app_beta.png)
 
-### Startup Procedure for Oculus Link/Airlink
-
-Once your desired module has been added to VRCFaceTracking:
-
-1. Launch (Air)Link on the Quest Pro. Make sure you are in the Oculus Home environment before proceding.
-2. Launch VRCFaceTracking.
-3. Launch SteamVR **from the PC**
-
 ### ALVR/ALXR Setup
 
 1. Install SideQuest (Advanced Installer) on your computer. https://sidequestvr.com/setup-howto
    - The SideQuest application will have a built-in tutorial for the following steps.
-2. **Set your headset to developer mode using the Oculus mobile app**. :ref:`enable developer mode`
+2. [**Set your headset to developer mode using the Oculus mobile app**](#enabling-developer-mode-on-the-headset) and..
+3. [Enable Headset Eye and Face Tracking](#enabling-eye-and-face-tracking-on-the-headset)
 :::warning
-Do **not** skip this step. Please follow the instructions for setting the headset to developer mode using the mobile app before proceeding. 
+Do **not** skip these steps. Please follow the instructions for setting the headset to developer mode using the mobile app before proceeding. 
 Even if you think it is in developer mode already, **follow the instructions anyways**. 
 :::
-3. [Enable Headset Eye and Face Tracking](#enabling-eye-and-face-tracking-on-the-headset)
 4. Connect your Quest Pro headset to your computer with a *data-transfer* USB cable.
 Once connected you will be prompted to "Allow USB debugging" and "Allow File Access". Make sure to allow both.
 (You should also check the *Always allow from this computer* box to prevent the message from popping up again later)
@@ -130,10 +113,19 @@ Back in the headset, SteamVR should now be streamed from the PC to the headset.
 1. Follow the [Official ALVR Community Instructions](https://github.com/alvr-org/ALVR/wiki/Using-ALVR-through-a-USB-connection) for setting up the USB connection.
 2. Change the text in the `questProIP` file to `127.0.0.1`
 
-### Startup Procedure for ALVR/ALXR
+## Modules
 
-1. Launch the ALVR server application on the PC and the alxr_client application in the Quest Pro headset.
-2. Launch VRCFaceTracking.exe and make sure to load the ALXR module for the Quest Pro
+There are two different VRCFT modules that can be used for the Quest Pro. 
+If you are using the ALXR program for streaming PCVR to the headset, you *must* use Korejan's ALXR module.
+Otherwise if using Oculus Link/Airlink for PCVR streaming, either module will work.
+
+<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+    <PageCard name="TofuLemon's OpenXR Module" url="../intro" description="Creates a psuedo-headless OpenXR application to pull data from Facebook's Eye/Face OpenXR extensions"/>
+    <PageCard name="Korejan's ALXR Module" url="../intro" description="Creates a psuedo-headless ALXR (OpenXR) instance to pull data from OpenXR extensions"/>
+
+</div>
+
+Follow the module installation instructions in the respective module pages, and learn about the avalible PCVR streaming methods by continuing down to [Setup](#setup)!
 
 ## Tips and Tricks
 
