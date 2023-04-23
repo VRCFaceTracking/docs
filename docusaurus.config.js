@@ -56,12 +56,14 @@ const config = {
           lastVersion: 'v4.0',
           versions: {
             current: {
-              label: 'Next (UE)'
+              label: 'Current (v5.0)',
+              path: '',
             },
-            "v4.0": {
-              //path: 'v4.0'
-            }
-          }
+            'v4.0': {
+              label: 'v4.0',
+              path: 'v4.0',
+            },
+          },
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
