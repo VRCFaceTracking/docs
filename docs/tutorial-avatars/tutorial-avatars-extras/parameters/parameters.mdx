@@ -222,3 +222,29 @@ what is best for your avatar's use case.
 | v2/SmileSadRight | `<0.0 -> 1.0>` Mouth Corner Pull Right <br/> `<0.0 -> 1.0>` Mouth Corner Slant Right <br/> `<0.0 -> -1.0>` Mouth Frown Right <br/> `<0.0 -> -1.0>` Mouth Frown Right  |
 | v2/SmileSadLeft | `<0.0 -> 1.0>` Mouth Corner Pull Left <br/> `<0.0 -> 1.0>` Mouth Corner Slant Left <br/> `<0.0 -> -1.0>` Mouth Frown Left <br/> `<0.0 -> -1.0>` Mouth Stretch Right |
 | v2/SmileSad | `<0.0 -> 1.0>` Mouth Corner Pull <br/> `<0.0 -> 1.0>` Mouth Corner Slant <br/> `<0.0 -> -1.0>` Mouth Frown <br/> `<0.0 -> -1.0>` Mouth Stretch |
+
+### Tracking Active Parameters
+
+:::caution Tracking Active parameters are informational only
+
+These parameters are set by VRCFaceTracking to indicate the status of the 
+relevant tracking module.
+
+These parameters should not be used in an Expressions menu on an avatar.
+
+:::
+
+:::info Consider providing a separate Expressions menu toggle for tracking
+
+While these parameters can be used to enable eye or expression tracking 
+automatically, they are best used in conjunction with a manual toggle to allow 
+for eye or expression tracking to fail gracefully to an untracked (VRC-driven) 
+state if VRCFaceTracking is not running, or not present.
+
+:::
+
+| Name | Function |
+| :--- | :------ |
+| EyeTrackingActive | `<true / false>` Eye Tracking is Active |
+| ExpressionTrackingActive  | `<true / false>` Expression Tracking is Active |
+| LipTrackingActive | `<true / false>` Expression Tracking is Active |
