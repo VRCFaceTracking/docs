@@ -1,35 +1,76 @@
-import LipContext from './_lip_general.mdx'
 import ContextModal from '@site/src/components/ContextModal.tsx'
 
-### Lip Suck
+### Lip Suck (generalized)
 
 ***
 
-> An expression that represents how much the 
+> The general term that represents how much the 
 > mouth is trying to tuck into the mouth.
 
-:::danger Still under construction!
+***
 
-This explanation is still being worked on. 
-Information may change in the future.
+There are two distinct subgroups of Lip Suck shapes:
 
-:::
+* Lip Suck (derived)
+* Lip Suck Corner
+
+Lip Suck (derived) is partially based on the lip muscles ability to tuck into the 
+mouth, and at the extreme can represent other factors of the face such as a vacuum 
+further pulling the lips inwards at extreme values.
+
+Lip Suck Corner is *not* based on the Lip muscle group, but instead only 
+represents an action that visibly modifies the lip corner being tucked laterally 
+from a vacuum occuring in the mouth.
 
 ***
 
+### Lip Suck (derived)
+
+***
+
+### Anatomy
+
+Lip Suck is based on the complex 
+[orbicularis oris](https://en.wikipedia.org/wiki/Orbicularis_oris_muscle)'s 
+action of pushing out and slightly pinching together the lips.
+
 **Lip Suck** is part of 
-the <ContextModal comp={LipContext}><b>Lip</b></ContextModal> 
+the <ContextModal src={require('./_lip_general.mdx').default}><b>Lip</b></ContextModal> 
 shape group. 
 
-**Lip Suck** refers to these different shapes for the left and 
-right face sides respectively:
+### Description
 
-* LipSuckUpper
-* LipSuckLower
-* LipSuckCorner
+Lip Suck is an expression that pushes forward and slightly pinches together the lips. 
 
-**Lip Suck** is a shape that relies on the 
-context of **Jaw Open**, **Jaw Open**, **Mouth Upper Up**, and 
-**Mouth Lower Down**. The shape gets modified for 
-each of these shapes.
+Unified Expressions splits this shape up into four (4) distinct shapes:
 
+* LipSuckUpperRight
+* LipSuckUpperLeft
+* LipSuckLowerRight
+* LipSuckLowerLeft
+
+This allows interfaces and shapes to adopt more intricate shapes of the lips.
+
+***
+
+### Lip Suck Corner
+
+***
+
+### Anatomy
+
+Lip Suck Corner is based on the results of the mouth forming a vacuum tucking the lip corners inwards.
+
+**Lip Suck Corner** is part of 
+the <ContextModal src={require('./_lip_general.mdx').default}><b>Lip</b></ContextModal> 
+shape group. 
+
+### Description
+
+Lip Suck Corner is an expression that tucks the lips inwards slightly and together drastically.
+
+This shape can be seen as a complement of 'Cheek Suck', in that they are both based on the same 
+anatomical basis of the mouth forming a vacuum. *However*, the different is that 'Cheek Suck' *only* 
+applies to the parts of the mouth *outside of the lips*, while Lip Suck Corner is completely mutually 
+exclusive in how it can stay even when the mouth's vacuum ultimately dissipates, but *only* applies to 
+the lips exclusively.

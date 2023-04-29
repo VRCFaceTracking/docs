@@ -3,11 +3,11 @@ import '../css/contextmodal.css';
 import InfoLogo from '@site/static/img/info-icon.svg'
 
 interface ContextModalProps {
-  comp: FC;
+  src: FC;
   children?: React.ReactNode;
 }
 
-const ContextModal: React.FC<ContextModalProps> = ({ comp: Component, children }) => {
+const ContextModal: React.FC<ContextModalProps> = ({ src: Component, children }) => {
   const [showModal, setShowModal] = useState(false);
   let modalTimeout: NodeJS.Timeout;
 

@@ -53,15 +53,17 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
               'https://github.com/VRCFaceTracking/docs/edit/master',
-          lastVersion: 'v4.0',
+          lastVersion: 'current',
           versions: {
             current: {
-              label: 'Next (UE)'
+              label: 'Current (v5.0)',
+              path: '',
             },
-            "v4.0": {
-              //path: 'v4.0'
-            }
-          }
+            'v4.0': {
+              label: 'v4.0.0',
+              path: 'v4.0',
+            },
+          },
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

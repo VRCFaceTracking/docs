@@ -44,8 +44,8 @@ import '@site/src/css/parameters.css'
 
 | Name | Function |
 | :--- | :------- |
-| v2/EyesX | `<0.0 -> 1.0>` Eyes Look Right (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Eyes Look Left (Normalized Cartesian) | img |
-| v2/EyesY | `<0.0 -> 1.0>` Eyes Look Up (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Eyes Look Down (Normalized Cartesian) | img |
+| v2/EyeX | `<0.0 -> 1.0>` Eyes Look Right (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Eyes Look Left (Normalized Cartesian) | img |
+| v2/EyeY | `<0.0 -> 1.0>` Eyes Look Up (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Eyes Look Down (Normalized Cartesian) | img |
 | v2/EyeLeftX | `<0.0 -> 1.0>` Left Eye Look Right (Normalized Cartesian)<br/>`<0.0 -> -1.0>` Left Eye Look Left (Normalized Cartesian) | img |
 | v2/EyeLeftY | `<0.0 -> 1.0>` Left Eye Look Up (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Left Eye Look Down (Normalized Cartesian) | img |
 | v2/EyeRightX | `<0.0 -> 1.0>` Right Eye Look Right (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Right Eye Look Left (Normalized Cartesian) | img |
@@ -53,11 +53,11 @@ import '@site/src/css/parameters.css'
 | | |
 | v2/EyeLidRight | `<0.0 -> 0.8>` Right Eye Openness <br />`<0.8 -> 1.0>` Right Eye Widen  | img |
 | v2/EyeLidLeft | `<0.0 -> 0.8>` Left Eye Openness <br />`<0.8 -> 1.0>` Left Eye Widen | img |
-| v2/EyeLids | `<0.0 -> 0.8>` Left + Right Eye Openness <br />`<0.8 -> 1.0>` Left + Right Eye Widen | img |
+| v2/EyeLid | `<0.0 -> 0.8>` Left + Right Eye Openness <br />`<0.8 -> 1.0>` Left + Right Eye Widen | img |
 | | |
 | v2/EyeSquintRight | `<0.0 -> 1.0>` Eye Squint Right |
 | v2/EyeSquintLeft | `<0.0 -> 1.0>` Eye Squint Left |
-| v2/EyesSquint | `<0.0 -> 1.0>` Eye Squint Right + Eye Squint Left |
+| v2/EyeSquint | `<0.0 -> 1.0>` Eye Squint Right + Eye Squint Left |
 | | |
 | v2/PupilDilation | `<0.0 -> 1.0>` Normalized dilation of the pupils. |
 | v2/PupilDiameterRight  | `<0.0 -> 1.0>` Dilation of the right pupil (in cm). |
@@ -73,7 +73,7 @@ undocumented to help users save performance (such as 100%
 optimal parameter replacements for some parameters). 
 
 Please read through all available parameters and decide 
-what you want to include on your avatar.
+what is best for your avatar's use case.
 
 :::
 
@@ -95,8 +95,8 @@ what you want to include on your avatar.
 |||
 | v2/CheekSquintRight | `<0.0 -> 1.0>` Cheek Squint Right |
 | v2/CheekSquintLeft | `<0.0 -> 1.0>` Cheek Squint Left |
-| v2/CheekRightPuffSuck | `<0.0 -> 1.0>` Cheek Puff Right <br/> `<0.0 -> -1.0>` Cheek Suck Right |
-| v2/CheekLeftPuffSuck | `<0.0 -> 1.0>` Cheek Puff Left <br/> `<0.0 -> -1.0>` Cheek Suck Left |
+| v2/CheekPuffSuckRight | `<0.0 -> 1.0>` Cheek Puff Right <br/> `<0.0 -> -1.0>` Cheek Suck Right |
+| v2/CheekPuffSuckLeft | `<0.0 -> 1.0>` Cheek Puff Left <br/> `<0.0 -> -1.0>` Cheek Suck Left |
 |||
 | v2/JawOpen | `<0.0 -> 1.0>` Jaw Open |
 | v2/MouthClosed | `<0.0 -> 1.0>` Mouth Closed |
@@ -222,3 +222,29 @@ what you want to include on your avatar.
 | v2/SmileSadRight | `<0.0 -> 1.0>` Mouth Corner Pull Right <br/> `<0.0 -> 1.0>` Mouth Corner Slant Right <br/> `<0.0 -> -1.0>` Mouth Frown Right <br/> `<0.0 -> -1.0>` Mouth Frown Right  |
 | v2/SmileSadLeft | `<0.0 -> 1.0>` Mouth Corner Pull Left <br/> `<0.0 -> 1.0>` Mouth Corner Slant Left <br/> `<0.0 -> -1.0>` Mouth Frown Left <br/> `<0.0 -> -1.0>` Mouth Stretch Right |
 | v2/SmileSad | `<0.0 -> 1.0>` Mouth Corner Pull <br/> `<0.0 -> 1.0>` Mouth Corner Slant <br/> `<0.0 -> -1.0>` Mouth Frown <br/> `<0.0 -> -1.0>` Mouth Stretch |
+
+### Tracking Active Parameters
+
+:::caution Tracking Active parameters are informational only
+
+These parameters are set by VRCFaceTracking to indicate the status of the 
+relevant tracking module.
+
+These parameters should not be used in an Expressions menu on an avatar.
+
+:::
+
+:::info Consider providing a separate Expressions menu toggle for tracking
+
+While these parameters can be used to enable eye or expression tracking 
+automatically, they are best used in conjunction with a manual toggle to allow 
+for eye or expression tracking to fail gracefully to an untracked (VRC-driven) 
+state if VRCFaceTracking is not running, or not present.
+
+:::
+
+| Name | Function |
+| :--- | :------ |
+| EyeTrackingActive | `<true / false>` Eye Tracking is Active |
+| ExpressionTrackingActive  | `<true / false>` Expression Tracking is Active |
+| LipTrackingActive | `<true / false>` Expression Tracking is Active |
