@@ -5,24 +5,35 @@ sidebar_position: 1
 # VRCFaceTracking Program
 
 import {EditUrl, CustomLink, TextColor} from '@site/src/components/Utils.tsx'
+import {ImageCard} from '@site/src/components/Cards.tsx'
 
-VRChat has no native face tracking integration, at least for PC,
-which means there must be an intermediary software accessing face tracking data from whatever hardware and sending it to VRC via OSC as avatar parameters.
-VRCFaceTracking fulfills this intermediary role, creating a standard face-tracking parameter set for use with VRChat avatars.
+VRChat has no native face tracking integration,
+which means there must be an intermediary software accessing face tracking data from the hardware source then sending it to VRC via OSC as avatar parameters.
+VRCFaceTracking fulfills this intermediary role, not only reading data and repackaging it as OSC messages for VRChat, but
+morphing the input data into its own unified face tracking standard, thus acting as a Roseta Stone between face tracking hardware and VRChat avatars. 
 VRCFaceTracking works by the concept of "modules", which are add-on files that let the program access eye and face tracking data from different sources.
 
 ## Install VRCFaceTracking
 
-~~Download the latest version of the program from the <CustomLink to="github"/> repo!~~
-
-:::note
-The version of VRCFaceTracking these docs are based on is **not publically released** yet.
-If you want to try out [Unified Expressions](../tutorial-avatars/tutorial-avatars-extras/unified-blendshapes.mdx) and the new module loading system, you can either
-build your own version of the latest VRCFT from the main repo, or **download [Azimid's old UE prelease test build](https://github.com/regzo2/VRCFaceTracking/releases/tag/v5.0.0-pre-2)**.
-Just note that it, and its packaged modules, will not be compatible with the release version.
+:::info
+VRCFaceTracking Unified Expressions Update has been released!
+Comes with brand new UI, installer with auto-updater, and more.
 :::
 
-## VRCFaceTracking "Housekeeping"
+<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+  <ImageCard name="VRCFaceTracking AppInstaller"
+  url="https://github.com/benaclejames/VRCFaceTracking/releases/latest/download/VRCFaceTracking_x64.appinstaller"
+  image={require('@site/docs/vrcft-software/img/vrcft_installer.png').default}
+  description="Get the latest Release lightweight Windows AppInstaller, just run and install!"/>
+</div>
+
+Don't want to use the Windows AppInstaller? Visit the [latest release page](https://github.com/benaclejames/VRCFaceTracking/releases/latest/) for the MSIX, or install via Winget
+
+```cmd
+winget install install BenacleJames.VRCFaceTracking
+```
+
+## Using VRCFaceTracking
 
 These are a few small things that are good to be aware of when using face tracking with VRCFT and VRChat.
 
