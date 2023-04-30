@@ -9,7 +9,7 @@ import {EditUrl} from '@site/src/components/Utils.tsx'
 
 ***
 
-:::danger v4.0.0 SDK will be depricated soon!
+:::danger v4.0.0 SDK is depricated!
 
 The documentation here references VRCFaceTracking in the `v4.0.0` 
 release state. If you want to see the latest documentation that 
@@ -119,21 +119,25 @@ public class ExampleExtTrackingModule : ExtTrackingModule
         return state;
     }
 
-    // Function that should poll data from the tracking interface.
+    // Polls data from the tracking interface.
+    // VRCFaceTracking will run this function in a separate thread;
     public override Action GetUpdateThreadFunc()
     {
         return () =>
         {
             while (true)
             {
-                /*
-                Get latest tracking data from your interface and transform to VRCFaceTracking data.
+                // Get latest tracking data from your interface and transform to VRCFaceTracking data.
 
-                UnifiedTrackingData.EyeTrackingData.Left.Openness = ExampleTracker.LeftEye.Openness;
-                UnifiedTrackingData.LipTrackingData.LatestShapes[(int)LipShape_v2.JawOpen] = ExampleTracker.Mouth.JawOpen;
+                if (Status.EyeState == ModuleState.Active) // Eye Status validation
+                    UnifiedTrackingData.EyeTrackingData.Left.Openness = ExampleTracker.LeftEye.Openness;
 
-                Feel free to function out different parts of your code to keep this readable.
-                */
+                if (Status.LipStatus == ModuleState.Active) // Lip Status validation
+                    UnifiedTrackingData.LipTrackingData.LatestShapes[(int)LipShape_v2.JawOpen] = ExampleTracker.Mouth.JawOpen;
+
+
+                // Add a delay or halt for the next update cycle for performance. eg: 
+                Thread.Sleep(10);
             }
         };
     }
