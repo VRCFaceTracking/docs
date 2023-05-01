@@ -41,42 +41,64 @@ VRCFaceTracking has its functionality spread across a few tabs
 
 <!-- Turns out docusarus still doesn't generate the correct toc tree if headers are imported from subpages-->
 
-<!-- import HomeTab from './vrcft-subpages/_hometab.mdx'
-import SettingsTab from './vrcft-subpages/_settings.mdx' -->
-
-<!-- <Tabs
-  defaultValue="home"
-  values={[
-    {label: 'Home', value: 'home'},
-    {label: 'Output', value: 'output'},
-    {label: 'Module Registry', value: 'module-registry'},
-    {label: 'Settings', value: 'settings'},
-  ]}>
-  <TabItem value="home">
-    <HomeTab/>
-  </TabItem>
-  <TabItem value="output">
-    <HardwareTableAddon/>
-  </TabItem>
-  <TabItem value="module-registry">
-    <HardwareTableDesktop/>
-  </TabItem>
-  <TabItem value="settings">
-    <SettingsTab/>
-  </TabItem>
-</Tabs> -->
-
 ### Home
 
-In the home view, you will find the most important information when using VRCFaceTracking:
+In the home view, you will find the most important "at-a-glance" information when using VRCFaceTracking:
 
-* the currently initialized module(s)
+* The currently initialized module(s)
+   * Tracking toggle
 * OSC Status
+   * Listening and Sending ports
+   * Number of OSC messages incoming *from* VRChat, and number of OSC messages sent *to* VRChat
 * VRChat Avatar Status
+   * Avatar name and ID
+   * Number of loaded VRCFT-compatible parameters
 
 The currently initialized modules section will display the name of the module as well as an image of the related module hardware/software.
 Outside of a valid initialized module, it may also inform the user that there are *no* modules installed, no modules loaded, or that a module is currently initializing.
-The "Toggle Tracking" button on the right controls the receiving of tracking data from the module.
+The "Toggle Tracking" button on the right controls the receiving of tracking data from the module (grey = off, system highlight color = on).
+
+<Tabs
+  defaultValue="initialized"
+  values={[
+    {label: 'Initialized', value: 'initialized'},
+    {label: 'Initializing', value: 'initializing'},
+    {label: 'No Module', value: 'no-module'},
+  ]}>
+  <TabItem value="initialized">
+    <div style={{
+        width: '90%',
+        height: 'auto',
+        margin: 'auto',
+        display: 'block'
+    }}>
+        <img src={require("./img/vrcft_home_initialized.png").default} alt="VRCFT Home view with SRanipal module initialized and avatar active in VRChat" />
+    </div>
+  </TabItem>
+
+  <TabItem value="initializing">
+    <div style={{
+        width: '90%',
+        height: 'auto',
+        margin: 'auto',
+        display: 'block'
+    }}>
+        <img src={require("./img/vrcft_home_initializing.png").default} alt="VRCFT Home view while module is being initialized" />
+    </div>
+  </TabItem>
+
+  <TabItem value="no-module">
+    <div style={{
+        width: '90%',
+        height: 'auto',
+        margin: 'auto',
+        display: 'block'
+    }}>
+        <img src={require("./img/vrcft_home_no_modules.png").default} alt="VRCFT Home view with no modules loaded" />
+    </div>
+  </TabItem>
+</Tabs>
+
 
 ---
 
@@ -90,6 +112,16 @@ This output is invaluable if you are debugging or asking for help with something
 Note that upon a crash, VRCFaceTracking *should* automatically save the output log to a file called `latest.log` in the `...\AppData\Roaming\VRCFaceTracking` directory.
 :::
 
+<div style={{
+    width: '90%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/vrcft_output.png").default} alt="VRCFT Output" />
+</div>
+
+
 ---
 
 ### Module Registry
@@ -97,9 +129,17 @@ Note that upon a crash, VRCFaceTracking *should* automatically save the output l
 In the Module Registry page, you will find a list of avaliable tracking modules to download and install.
 Simply select the module for the headset or hardware you wish to use, and click the Install button.
 The selected module will display the module author information, total downloads, module source link, and more.
-You can even rate the module out of 5 stars ⭐⭐⭐⭐⭐ to help other users get an idea of what you think of the module.
+You can even rate the module out of 5 stars ⭐⭐⭐⭐⭐ to help other users get an idea of what the community thinks of the module!
 
-<!-- INSERT IMAGE HERE -->
+<div style={{
+    width: '90%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/vrcft_module_registry.png").default} alt="VRCFT Module Registry" />
+</div>
+
 
 ---
 
@@ -108,6 +148,16 @@ You can even rate the module out of 5 stars ⭐⭐⭐⭐⭐ to help other users 
 In the settings tab, you can adjust options relating to the overall look and function of the VRCFaceTracking application,
 in addition to accessing the [Risky Functions](#risky-functions).
 You will also find the version number that you are running at the bottom.
+
+<div style={{
+    width: '90%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/vrcft_settings.png").default} alt="VRCFT Settings with Risky Functions dropdown opened" />
+</div>
+
 
 #### Change App Theme
 
@@ -137,7 +187,7 @@ This is a quick way of clearing out your VRChat avatar osc config directory if (
 
 ---
 
-### Resetting VRChat OSC Configs
+## Resetting VRChat OSC Configs
 
 Because of the sheer number of possible face tracking parameter configurations, VRCFaceTracking does not blindly send OSC messages for every possible parameter.
 Until VRChat releases the ["OSC Query" update](https://ask.vrchat.com/t/developer-update-2-september-2022/13470#oscquery-9), which is [currently in closed beta](https://github.com/vrchat-community/osc/issues/143#issuecomment-1304419543),
@@ -181,11 +231,11 @@ There are three ways to reset configs:
 
 - **VRCFaceTracking is crashing when I join a world / change avatars**
   - Cause: VRCFaceTracking failed to parse an invalid avatar OSC config.
-  - Solution: Clear out your VRChat Avatar OSC folder. Follow option 2 in [resetting OSC config](#resetting-vrchat-osc-configs)
+  - Solution: Clear out your VRChat Avatar OSC folder. Follow option 2 or 3 in [resetting OSC config](#resetting-vrchat-osc-configs)
 
 - **My personally uploaded Avatar loads 0 parameters!**
   - Cause: Your avatar either doesn't have face tracking parameters, or is using an old OSC config that didn't have the face tracking parameters.
-  - Solution: Follow option 1 and/or 2 in [resetting OSC config](#resetting-vrchat-osc-configs). If completely clearing the OSC configs still results in loading 0 parameters, the avatar does not use VRCFT-compatible parameters.
+  - Solution: Follow [resetting OSC config](#resetting-vrchat-osc-configs). If completely clearing the OSC configs still results in loading 0 parameters, the avatar does not use VRCFT-compatible parameters.
 
 Don't see your problem here? Make sure to check the page(s) specific to your hardware or module. 
 If you still cannot find an answer to your specific problem, create a help request in the <TextColor color="#5763ee">#setup-help-forum</TextColor> in the <CustomLink to="discord"/>.
