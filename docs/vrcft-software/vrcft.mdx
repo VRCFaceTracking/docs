@@ -5,7 +5,7 @@ sidebar_position: 1
 # VRCFaceTracking Program
 
 import {EditUrl, CustomLink, TextColor} from '@site/src/components/Utils.tsx'
-import {ImageCard} from '@site/src/components/Cards.tsx'
+import {ImageCard, VRCFTInstallerCard} from '@site/src/components/Cards.tsx'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -22,12 +22,7 @@ VRCFaceTracking Unified Expressions Update has been released!
 Comes with brand new UI, installer with auto-updater, and more.
 :::
 
-<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-  <ImageCard name="VRCFaceTracking AppInstaller"
-  url="https://github.com/benaclejames/VRCFaceTracking/releases/latest/download/VRCFaceTracking_x64.appinstaller"
-  image={require('@site/docs/vrcft-software/img/vrcft_installer.png').default}
-  description="Get the latest Release lightweight Windows AppInstaller, just run and install!"/>
-</div>
+<VRCFTInstallerCard/>
 
 Don't want to use the Windows AppInstaller? Visit the [latest release page](https://github.com/benaclejames/VRCFaceTracking/releases/latest/) for the MSIX, or install via Winget
 

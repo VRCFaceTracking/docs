@@ -2,6 +2,8 @@
 sidebar_position: 2
 ---
 
+import {PageCard, VRCFTInstallerCard} from '@site/src/components/Cards.tsx'
+
 # 🛠️ Getting Started
 
 import Tabs from '@theme/Tabs';
@@ -55,17 +57,41 @@ If your headset or hardware isn't listed in the [Supported Hardware List](#suppo
 
 ### 1️ Download and Install VRCFaceTracking
 
-Download the VRCFaceTracking installer from here: [VRCFaceTracking](../vrcft-software/vrcft.mdx).
-Follow the Windows installer through installation.
+Download the AppInstaller for VRCFaceTracking below, or go to the [VRCFaceTracking program page](../vrcft-software/vrcft.mdx) to find alternative methods of installation.
+
+<VRCFTInstallerCard/>
 
 ### 2️ Setup Hardware
 
 Follow the link to the hardware page for your headset or face-tracking hardware in the [supported hardware table](#supported-hardware-list) above.
+Every headset or hardware requires some kind of preparation to be used with VRCFaceTracking, whether that be a Quest Pro to an Android Phone, so **be sure to follow the setup instructions for the headset/hardware!**
 
 #### Installing the VRCFaceTracking Module
 
 Each hardware page should also direct you to the corresponding module(s) to use.
-If the module was not installed in the VRCFaceTracker installation, manually download and [install the custom module](../vrcft-software/modules/).
+You can download the module directly from the VRCFaceTracking application.
+
+<details>
+  <summary>Example Module Installation</summary>
+
+  1. Go to the Module Registry Tab in VRCFaceTracking
+  2. Select the module you want to install (your headset/hardware page will list the available option(s))
+  3. Click the "Install" button
+
+  ---
+
+  This example shows installation of the "QuestProOpenXRTrackingModule" for the Quest Pro headset.
+
+  <div style={{
+    width: '90%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+  }}>
+    <img src={require("../vrcft-software/img/vrcft_module_registry_tutorial.png").default} alt="VRCFT Module Registry Page tutorial" />
+  </div>
+
+</details>
 
 ### 3️ Enable OSC In VRChat
 
@@ -109,4 +135,4 @@ You can learn more about how [face tracking in VRChat](../facetracking101/breakd
 
 ## Avatar Setup
 
-If you have a working hardware and software setup, or only want to get started with setting up *avatars* for using with VRCFaceTracking, you should follow [Avatar Getting Started](../intro/intro.mdx)
+If you have a working hardware and software setup, or only want to get started with setting up *avatars* for using with VRCFaceTracking, you should follow the [Avatar Setup Guide](../category/avatar-setup-guide)

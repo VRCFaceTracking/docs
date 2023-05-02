@@ -49,3 +49,12 @@ export function ImageCard({name, image, url, description}: Props) {
       </div>
     );
 }
+
+export function VRCFTInstallerCard() {
+  return (<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+    <ImageCard name="VRCFaceTracking AppInstaller"
+    url="https://github.com/benaclejames/VRCFaceTracking/releases/latest/download/VRCFaceTracking_x64.appinstaller"
+    image={require('@site/docs/vrcft-software/img/vrcft_installer.png').default}
+    description="Get the latest Release lightweight Windows AppInstaller, just run and install!"/>
+  </div>)
+}
