@@ -91,10 +91,10 @@ tracking interface!
 The following API's are referenced when 
 writing a module. These are included with `VRCFaceTracking.Core`. 
 
-* [`ExtTrackingModule`](https://github.com/benaclejames/VRCFaceTracking/blob/feat/ui/VRCFaceTracking.Core/SDK/ExtTrackingModule.cs)
-* [`ModuleMetadata` (within `ExtTrackingModule`)](https://github.com/benaclejames/VRCFaceTracking/blob/feat/ui/VRCFaceTracking.Core/SDK/ModuleMetadata.cs)
-* [`UnifiedTracking`](https://github.com/benaclejames/VRCFaceTracking/blob/feat/ui/VRCFaceTracking.Core/UnifiedTracking.cs)
-* [`UnifiedExpressions`](https://github.com/benaclejames/VRCFaceTracking/blob/feat/ui/VRCFaceTracking.Core/Params/Expressions/UnifiedExpressions.cs)
+* [`ExtTrackingModule`](https://github.com/benaclejames/VRCFaceTracking/blob/VRCFaceTracking.Core/SDK/ExtTrackingModule.cs)
+* [`ModuleMetadata` (within `ExtTrackingModule`)](https://github.com/benaclejames/VRCFaceTracking/blob/VRCFaceTracking.Core/SDK/ModuleMetadata.cs)
+* [`UnifiedTracking`](https://github.com/benaclejames/VRCFaceTracking/blob/VRCFaceTracking.Core/UnifiedTracking.cs)
+* [`UnifiedExpressions`](https://github.com/benaclejames/VRCFaceTracking/blob/VRCFaceTracking.Core/Params/Expressions/UnifiedExpressions.cs)
 
 [**All of VRCFaceTracking is open source**](https://github.com/benaclejames/VRCFaceTracking) and is already well documented 
 with IDE contextual documentation.
@@ -114,7 +114,7 @@ public class ExampleExtTrackingModule : ExtTrackingModule
     {
         var state = (eyeAvailable, expressionAvailable);
 
-        ModuleInformation.Name = "X";
+        ModuleInformation.Name = "Example Module";
 
         // Example of an embedded image stream being referenced as a stream
         var stream = 
@@ -131,22 +131,21 @@ public class ExampleExtTrackingModule : ExtTrackingModule
         return state;
     }
 
-    // Function that should poll data from the tracking interface.
+    // Polls data from the tracking interface.
+    // VRCFaceTracking will run this function in a separate thread;
     public override void Update()
     {
-        /*
-        Get latest tracking data from interface and transform to VRCFaceTracking data.
+        // Get latest tracking data from interface and transform to VRCFaceTracking data.
 
-        Validate if your module should be updating by checking on Status:
+        if (Status == ModuleState.Active) // Module Status validation
+        {
+            // ... Execute update cycle.
+            UnifiedTracking.Data.Eye.Left.Openness = ExampleTracker.LeftEye.Openness;
+            UnifiedTracking.Data.Shapes[(int)UnifiedExpressions.JawOpen] = ExampleTracker.Mouth.JawOpen;
+        }
 
-        if (Status != ModuleStatus.Active)
-            ... Execute update cycle.
- 
-        UnifiedTracking.Data.Eye.Left.Openness = ExampleTracker.LeftEye.Openness;
-        UnifiedTracking.Data.Shapes[(int)UnifiedExpressions.JawOpen] = ExampleTracker.Mouth.JawOpen;
-
-        Feel free to function out different parts of your code to keep this readable.
-        */
+        // Add a delay or halt for the next update cycle for performance. eg: 
+        Thread.Sleep(10);
     }
 
     // Called when the module is unloaded or VRCFaceTracking itself tears down.
