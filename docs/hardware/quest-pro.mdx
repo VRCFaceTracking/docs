@@ -2,37 +2,40 @@ import {PageCard} from '@site/src/components/Cards.tsx'
 
 # Quest Pro
 
+:::info
+Under Construction
+:::
+
 The Meta Quest Pro provides eye gaze tracking, detailed eye expression tracking, and face tracking.
 All eye and face tracking hardware is internal to the device (no additional hardware setup required).
 All eye and face tracking data is accessed via Meta’s Face and Eye OpenXR extensions.
-
-:::note
-Document being remade for new module system, some links will not work.
-:::
 
 ## Why is this setup required?
 
 The Quest Pro provides developers with both eye and face tracking data from a single, contained device, making it easy for native Quest developers to incorporate.
 However, having it only accessible through Meta’s Oculus OpenXR extensions means there must be an OpenXR application using the Oculus runtime running somewhere.
 There is currently no way for VRCFT to simultaneously extract data from the headset and send eye and face tracking to the Quest version of VRChat, so the following solutions are only for PCVR.
-Note that native Eye Tracking support is now in open beta for the Quest version of VRChat for use with the Quest Pro, which does **not** require the use of VRCFaceTracking to function. 
+Note that native Eye Tracking support is now in open beta for the Quest version of VRChat for use with the Quest Pro, which does **not** require the use of VRCFaceTracking to function.
 
 ## Setup
 
-:::info
-Currently available video tutorials for VRCFaceTracking Quest Pro setup are outdated. 
+:::warning
+Currently available video tutorials for VRCFaceTracking Quest Pro setup are outdated and not meant for VRCFT5.0+!!!
 :::
 
-The Quest Pro currently has 2 different face-tracking compatible ways to connect to the PC:
+The Quest Pro currently has 1 readily available face-tracking compatible PCVR connection methods:
 
 - Oculus Link (or Airlink)
-- ALXR
 
-The user is free to choose whatever method they prefer more. ALXR is an open-source project and thus has many for features and customizability in the PCVR connection as compared to Airlink, but also has more bugs or quirks.
+:::info
+Currently, the ALXR module is not yet available for VRCFT5.0, though Korejan is working very hard on it and is roadblocked by a feature of VRCFaceTracking not being ready yet!
+:::
+
+<!-- The user is free to choose whatever method they prefer more. ALXR is an open-source project and thus has many for features and customizability in the PCVR connection as compared to Airlink, but also has more bugs or quirks.
 Oculus Link/Airlink is Meta’s own PCVR streaming solution, and is generally more straight-forward to set up and network stable, but also is limited in customization.
 
 In both cases the user is expected to have the VR PC and the Quest Pro on the same network, with the PC ideally connected to the network via ethernet cable. 
-You can learn more about improving your Quest PCVR streaming experience with the many guides available online. 
+You can learn more about improving your Quest PCVR streaming experience with the many guides available online.  -->
 
 ### Enabling Developer Mode on the Headset
 
@@ -76,7 +79,7 @@ If you do not see these options, you did not follow the previous steps correctly
 :::
    ![Oculus PC app Beta Tab](img/quest/oculus_pc_app_beta.png)
 
-### ALVR/ALXR Setup
+<!-- ### ALVR/ALXR Setup
 
 1. Install SideQuest (Advanced Installer) on your computer. https://sidequestvr.com/setup-howto
    - The SideQuest application will have a built-in tutorial for the following steps.
@@ -106,24 +109,30 @@ In your Apps Library, you will need to set the category of shown apps to "Unknow
 There should now be a Meta Quest Pro in the "New Clients" list, with a "Trust" button on the right side of its entry.
 Click "Trust" to allow the ALVR server app to make the connection to the ALXR client app on the Quest Pro.
 Back in the headset, SteamVR should now be streamed from the PC to the headset.
-![After Trusting the Quest Pro in ALVR](img/quest/alvr_connection.png)
+![After Trusting the Quest Pro in ALVR](img/quest/alvr_connection.png) 
 
 #### If you are planning on using a USB cable instead of Wi-Fi streaming for the ALXR/ALVR connection
 
 1. Follow the [Official ALVR Community Instructions](https://github.com/alvr-org/ALVR/wiki/Using-ALVR-through-a-USB-connection) for setting up the USB connection.
-2. Change the text in the `questProIP` file to `127.0.0.1`
+2. Change the text in the `questProIP` file to `127.0.0.1` -->
 
 ## Modules
 
-There are two different VRCFT modules that can be used for the Quest Pro. 
+<!-- There are two different VRCFT modules that can be used for the Quest Pro. 
 If you are using the ALXR program for streaming PCVR to the headset, you *must* use Korejan's ALXR module.
-Otherwise if using Oculus Link/Airlink for PCVR streaming, either module will work.
+Otherwise if using Oculus Link/Airlink for PCVR streaming, either module will work. -->
 
-<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+<!-- We'll bring the neat pagecards back once module pages become a thing -->
+
+Install the **"QuestProOpenXRTrackingModule"** from the [VRCFaceTracking Module Registry](../vrcft-software/vrcft.mdx#module-registry).
+
+[QuestProOpenXRTrackingModule source repository](https://github.com/regzo2/VRCFaceTracking-QuestProOpenXR) (Currently maintained by Regzo2 / Azmidi / "Mitchell Moment")
+
+<!-- <div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
     <PageCard name="TofuLemon's OpenXR Module" url="../intro" description="Creates a psuedo-headless OpenXR application to pull data from Facebook's Eye/Face OpenXR extensions"/>
-    <PageCard name="Korejan's ALXR Module" url="../intro" description="Creates a psuedo-headless ALXR (OpenXR) instance to pull data from OpenXR extensions"/>
+</div> -->
 
-</div>
+<!-- <PageCard name="Korejan's ALXR Module" url="../intro" description="Creates a psuedo-headless ALXR (OpenXR) instance to pull data from OpenXR extensions"/> -->
 
 Follow the module installation instructions in the respective module pages, and learn about the avalible PCVR streaming methods by continuing down to [Setup](#setup)!
 
@@ -137,28 +146,27 @@ Download these [Powershell Scripts (Discord Link)](https://discord.com/channels/
 
 To run, right-click the file -> `"Run with Powershell"`
 
-### Using Index Controllers with the Quest Pro with ALVR/ALXR
+<!-- ### Using Index Controllers with the Quest Pro with ALVR/ALXR
 
 The customizability of ALVR allows a few options in this regard. All following mentioned settings can be found in the "Headset" tab of the ALVR settings.
 
 - Option 1: Completely disable the Quest Pro controllers using the checkbox next to "Controllers"
 - Option 2: Set the Controller emulation to "HTC Vive Tracker". This allows real controllers such as the Index Controllers to take precedence in SteamVR, and allow
-  for using the Quest Pro controllers for manual playspace calibration.
-
+  for using the Quest Pro controllers for manual playspace calibration. -->
 
 ## Common Issues (and How to Solve Them)
 
 <!-- TODO: turn these into a table.. -->
 
-- **When using Oculus Link/Airlink, I cannot see SteamVR because it is blocked by ALXR's green screen or Oculus home says it is still running "VRCFaceTracking"**
+- **When using Oculus Link/Airlink, I cannot see SteamVR because it is blocked still running "VRCFaceTracking"**
   - Cause: The nature of the way VRCFaceTracking must pull data from the Oculus OpenXR runtime is inherently hacky, effectively running 2 VR programs at once.
-  - Solution: Try starting SteamVR *after* starting VRCFaceTracking through the desktop Steam app (not through the Oculus Dash in the headset).
+  - Solution: Try switching up the program startup sequence, starting VRCFaceTracking then SteamVR through the desktop Steam app (not through the Oculus Dash in the headset) or vice versa.
                An alternative solution is to use [OculusKiller](https://github.com/LibreQuest/OculusKiller) to avoid dealing with the Oculus Dash entirely.
 
-- **ALXR/ALVR methods: "[ERROR] No connection could be made because the target machine actively refused it"**
+<!-- - **ALXR/ALVR methods: "[ERROR] No connection could be made because the target machine actively refused it"**
   - Cause: The ALXR VRCFT server is not running.
   - Solution: Usually the problem is related to [missing a step](#oculus-linkairlink-setup)
-     and the ALXR log may make it clear as to what step exactly was forgotten.
+     and the ALXR log may make it clear as to what step exactly was forgotten. -->
 
 - **OpenXR VRCFT module method: "[QuestOpenXR] Failed to GetFaceExpressionWeightsFB"**
   - Cause: There is some permission in the setup that was not set correctly.
