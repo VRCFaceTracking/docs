@@ -1,30 +1,36 @@
 # Vive Pro Eye
 
+import {Highlight} from '@site/src/components/Utils.tsx'
+import {PageCard} from '@site/src/components/Cards.tsx'
+import ReactPlayer from 'react-player'
+
 ## Overview
+
 The Vive Pro Eye provides eye gaze tracking as well as detailed eye expression tracking.
 It is a *built-in* eye-tracking device (no additional hardware setup required).
 Eye tracking data is accessed through [Vive's SRanipal interface](sranipal).
 
 ## Setup
-1. Follow the Vive hardware setup instructions that came the headset. Make sure that the headset cable is not damaged, and make sure to plug in the USB connection from the linkbox to a USB 3.0 port (usually *blue* internal connector tab)
-2. Install the SRanipal runtime software. [See the guide](sranipal#software)
+
+1. Follow the Vive hardware setup instructions that came the headset. Make sure that the headset cable is not damaged, and ideally, plug in the USB connection from the linkbox to a USB 3.0 port (usually *blue* internal connector tab)
+2. Install the [SRanipal runtime software](sranipal#software)
 3. Calibrate the eye tracking with the SRanipal Vive Pro Eye Calibration tool in SteamVR
 
-export const Highlight = ({children, color}) => (
-    <span
-        style={{
-            backgroundColor: color,
-            borderRadius: '2px',
-            color: '#fff',
-            padding: '0.2rem',
-        }}>
-    {children}
-  </span>
-);
+## Module
+
+Install the **"SRanipalTrackingModule"** from the [VRCFaceTracking Module Registry](../../vrcft-software/vrcft.mdx#module-registry).
+
+[SRanipalTrackingModule source repository](https://github.com/VRCFaceTracking/SRanipalTrackingModule)
+
+<!-- <div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+    <PageCard name="SRanipal Module" url="../../vrcft-software/modules/sranipal_module" description="Use Vive's SRanipal Runtime to access eye tracking data from the Vive Pro Eye"/>
+</div> -->
 
 ## Common Issues
-- A regular Vive Pro is occasionally mistaken to be a Vive Pro Eye. 
+
+- A regular Vive Pro is occasionally mistaken to be a Vive Pro Eye.
 A Vive Pro Eye will have <Highlight color="#2aa5cd">light blue rings</Highlight> around the front two passthrough cameras and a plastic covered IR LED ring surrounding each lens on the inside
+
 <div style={{
     display: 'flex',
     'justify-content': 'space-between'
@@ -45,8 +51,32 @@ A Vive Pro Eye will have <Highlight color="#2aa5cd">light blue rings</Highlight>
 
 - The headset cable can be damaged with heavy use, especially if it gets tangled around or used with a ceiling pulley system.
 A damaged cable may not show tell-tale “display snow” or even obvious physical indicators, but can affect USB connectivity of the Eye
-but more commonly, the Vive Facial Tracker.
+but more commonly, the Vive Facial Tracker connected to the accessory port of the Eye.
 Replacing the headset cable will often resolve “cutting out” or “fail to initialize” face and eye tracking problems.
 
 ## Mods
-The stock VPE experience kind of sucks, but what if it could be way better?
+
+The following is a list of community made modifications or recommended products for the Vive Pro headset to improve comfort, add features, or fix issues.
+(Ordered by generally perceived difficulty to accomplish)
+
+* [Studioform Creative Apache Comfort Strap](https://www.studioformcreative.com/product-page/htc-vive-pro-1-2-apache-comfort-strap)
+
+* [Vive Pro Bass Clip](https://www.thingiverse.com/thing:2896509)
+
+* [Unlock headstrap rotation mod](https://www.thingiverse.com/thing:4900650)
+
+* Vive Pro Facial Tracker Mount: [Variant 1](https://www.thingiverse.com/thing:5332531) | [Variant 2](https://www.thingiverse.com/thing:5444833)
+
+* [Vive Pro BMR Audio Replacement](https://github.com/kusomaigo/VP_BMR_Arm)
+
+* [GearVR Lens Swap (For Vive Pro Eye)](https://www.reddit.com/r/Vive/comments/mz7cpt/vive_pro_eye_gearvr_mod_and_headset_disassembly/)
+
+* Samsung Odyssey+ Screen Swap
+
+---
+
+Video from ForgottenFox#8555 going over many of these mods, and teardown tutorial for the GearVR lens swap and screen swap:
+
+<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+    <ReactPlayer controls url='https://www.youtube.com/watch?v=0MVTsp736no'/>
+</div>
