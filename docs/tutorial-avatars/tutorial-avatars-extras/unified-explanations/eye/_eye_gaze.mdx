@@ -19,18 +19,18 @@ This can be represented as a combined or converged gaze of the eye.
 Generally each eye can produce a distinct direction gaze and thus 
 each eye shape cardinal direction is modelled in Unified Expressions.
 
-In **Unified Expressions**, **Eye Gaze** comes in 
-two subtypes: `absolute` and `expression`.
+In **Unified Expressions**, there are two components to **Eye Gaze**: `absolute` and `expression`.
+Movement of the eyeball itself would be referred to as `absolute` gaze, whereas the movement 
+of the face "flesh" around the eyes as the eyes look around would be referred to as the gaze `expression`. 
 
 Avatars typically use an armature with the eyes attached 
 to an Eye bone and/or blendshapes to create the overall Eye Gaze.
 
-:::info Absolute vs Expression
+:::info Absolute and Expression
 
-When using an armature bone, the direct nature of bone transformation 
-is an `absolute` Eye Gaze. Using blendshapes is described as an `expression` 
-as several generalized blendshapes are used to modify the Eye 
-Gaze apparent shape even further.
+The shapes for Eye Gaze usually should only include the `expression` component. 
+`Absolute` eye gaze is most typically handled with bone transformation and is *not* part of the blendshape
+in most avatars, though this is by no means a requirement in implementation. 
 
 :::
 

@@ -4,6 +4,9 @@ import '@site/src/css/unified-tables.css'
 <table>
     <thead>
         <tr>
+            <th colspan="4">Blended Eye Expressions</th>
+        </tr>
+        <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
             <th className="table-ue-description">Function</th>
@@ -29,12 +32,12 @@ import '@site/src/css/unified-tables.css'
             <td><ContextModal src={require('./unified-explanations/eye/_eye_squint.mdx').default}>Squints both eye lids.</ContextModal></td>
             <td>EyeSquintRight<br/>EyeSquintLeft</td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_eyedilation.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>EyeDilation</td>
@@ -52,6 +55,9 @@ import '@site/src/css/unified-tables.css'
 
 <table>
     <thead>
+        <tr>
+            <th colspan="4">Blended Brows</th>
+        </tr>
         <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
@@ -102,6 +108,9 @@ import '@site/src/css/unified-tables.css'
 <table>
     <thead>
         <tr>
+            <th colspan="4">Blended Nose</th>
+        </tr>
+        <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
             <th className="table-ue-description">Function</th>
@@ -127,16 +136,13 @@ import '@site/src/css/unified-tables.css'
             <td><ContextModal src={require('./unified-explanations/nose/_nose_dilators.mdx').default}>Both nose canals constrict.</ContextModal></td>
             <td>NasalConstrictRight<br/>NasalConstrictLeft</td>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
     </tbody>
 </table>
 <table>
     <thead>
+        <tr>
+            <th colspan="4">Blended Cheeks</th>
+        </tr>
         <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
@@ -168,6 +174,9 @@ import '@site/src/css/unified-tables.css'
 <table>
     <thead>
         <tr>
+            <th colspan="4">Blended Lips</th>
+        </tr>
+        <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
             <th className="table-ue-description">Function</th>
@@ -193,17 +202,17 @@ import '@site/src/css/unified-tables.css'
             <td><ContextModal src={require('./unified-explanations/lip/_lip_suck.mdx').default}>Tucks in the upper and lower lips.</ContextModal></td>
             <td>LipSuckUpperRight<br/>LipSuckUpperLeft<br/>LipSuckLowerRight<br/>LipSuckLowerLeft</td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_lipfunnelupper.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>LipFunnelUpper</td>
             <td><ContextModal src={require('./unified-explanations/lip/_lip_funnel.mdx').default}>Funnels in the upper lips.</ContextModal></td>
-            <td>LipFunnelLowerRight<br/>LipFunnelLowerLeft</td>
+            <td>LipFunnelUpperRight<br/>LipFunnelUpperLeft</td>
         </tr>
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_lipfunnellower.png").default} style={{width: 192}} alt="Reference Image" /></td>
@@ -217,12 +226,12 @@ import '@site/src/css/unified-tables.css'
             <td><ContextModal src={require('./unified-explanations/lip/_lip_funnel.mdx').default}>Funnels in the upper and lower lips.</ContextModal></td>
             <td>LipFunnelUpperRight<br/>LipFunnelUpperLeft<br/>LipFunnelLowerRight<br/>LipFunnelLowerLeft</td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_lippuckerupper.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>LipPuckerUpper</td>
@@ -245,6 +254,9 @@ import '@site/src/css/unified-tables.css'
 </table>
 <table>
     <thead>
+        <tr>
+            <th colspan="4">Blended Mouth</th>
+        </tr>
         <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
@@ -271,12 +283,12 @@ import '@site/src/css/unified-tables.css'
             <td>Mouth opens, revealing teeth.</td>
             <td>MouthUpperUpRight<br/>MouthUpperUpLeft<br/>MouthLowerDownRight<br/>MouthLowerDownLeft</td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_mouthright.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>MouthRight</td>
@@ -289,12 +301,12 @@ import '@site/src/css/unified-tables.css'
             <td><ContextModal src={require('./unified-explanations/mouth/_mouth_movement.mdx').default}>Moves mouth left.</ContextModal></td>
             <td>MouthUpperLeft<br/>MouthLowerLeft</td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_mouthsmileright.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>MouthSmileRight</td>
@@ -313,12 +325,12 @@ import '@site/src/css/unified-tables.css'
             <td>Mouth expresses a smile.</td>
             <td>MouthCornerPullRight<br/>MouthCornerPullLeft<br/>MouthCornerSlantRight<br/>MouthCornerSlantLeft</td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_mouthsadright.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>MouthSadRight</td>
@@ -337,12 +349,12 @@ import '@site/src/css/unified-tables.css'
             <td>Mouth expresses sadness.</td>
             <td>MouthFrownRight<br/>MouthFrownLeft<br/>MouthStretchRight<br/>MouthStretchLeft</td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_mouthstretch.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>MouthStretch</td>
