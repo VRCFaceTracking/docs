@@ -20,6 +20,9 @@ import '@site/src/css/unified-tables.css'
 <table>
     <thead>
         <tr>
+            <th colspan="3">Eye Gaze</th>
+        </tr>
+        <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
             <th className="table-ue-description">Function</th>
@@ -71,6 +74,9 @@ import '@site/src/css/unified-tables.css'
 
 <table>
     <thead>
+        <tr>
+            <th colspan="3">Eye Expressions</th>
+        </tr>
         <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
@@ -134,6 +140,9 @@ import '@site/src/css/unified-tables.css'
 <table>
     <thead>
         <tr>
+            <th colspan="3">Brows</th>
+        </tr>
+        <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
             <th className="table-ue-description">Function</th>
@@ -160,11 +169,11 @@ import '@site/src/css/unified-tables.css'
             <td>BrowLowererLeft</td>
             <td><ContextModal src={require('./unified-explanations/brow/_brow_down.mdx').default}>Outer Left eyebrow pulls down.</ContextModal></td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_browinnerupright.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>BrowInnerUpRight</td>
@@ -190,6 +199,9 @@ import '@site/src/css/unified-tables.css'
 
 <table>
     <thead>
+        <tr>
+            <th colspan="3">Nose</th>
+        </tr>
         <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
@@ -233,6 +245,9 @@ import '@site/src/css/unified-tables.css'
 <table>
     <thead>
         <tr>
+            <th colspan="3">Cheeks</th>
+        </tr>
+        <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
             <th className="table-ue-description">Function</th>
@@ -275,6 +290,9 @@ import '@site/src/css/unified-tables.css'
 <table>
     <thead>
         <tr>
+            <th colspan="3">Jaw</th>
+        </tr>
+        <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
             <th className="table-ue-description">Function</th>
@@ -286,7 +304,6 @@ import '@site/src/css/unified-tables.css'
             <td>JawOpen</td>
             <td><ContextModal src={require('./unified-explanations/jaw/_jaw_open.mdx').default}>Opens jawbone.</ContextModal></td>
         </tr>
-        
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_mouth_closed_explain.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>MouthClosed</td>
@@ -327,6 +344,9 @@ import '@site/src/css/unified-tables.css'
 
 <table>
     <thead>
+        <tr>
+            <th colspan="3">Lips</th>
+        </tr>
         <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
@@ -384,11 +404,11 @@ import '@site/src/css/unified-tables.css'
             <td>LipFunnelLowerLeft</td>
             <td><ContextModal src={require('./unified-explanations/lip/_lip_funnel.mdx').default}>Lower left lip part pushes into a funnel.</ContextModal></td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_lippuckerupperright.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>LipPuckerUpperRight</td>
@@ -414,6 +434,9 @@ import '@site/src/css/unified-tables.css'
 
 <table>
     <thead>
+        <tr>
+            <th colspan="3">Mouth</th>
+        </tr>
         <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
@@ -441,11 +464,11 @@ import '@site/src/css/unified-tables.css'
             <td>MouthLowerDownLeft</td>
             <td><ContextModal src={require('./unified-explanations/mouth/_mouth_lower_down.mdx').default}>Lower right part of the lip pulls up.</ContextModal></td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_mouthupperdeepenright.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>MouthUpperDeepenRight</td>
@@ -456,11 +479,11 @@ import '@site/src/css/unified-tables.css'
             <td>MouthUpperDeepenLeft</td>
             <td><ContextModal src={require('./unified-explanations/mouth/_mouth_nasolabial.mdx').default}>Upper left lip part pushes in the cheek.</ContextModal></td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_mouthupperright.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>MouthUpperRight</td>
@@ -481,11 +504,11 @@ import '@site/src/css/unified-tables.css'
             <td>MouthLowerLeft</td>
             <td><ContextModal src={require('./unified-explanations/mouth/_mouth_movement.mdx').default}>Moves lower lip left.</ContextModal></td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_mouthcornerpullright.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>MouthCornerPullRight</td>
@@ -506,11 +529,11 @@ import '@site/src/css/unified-tables.css'
             <td>MouthCornerSlantLeft</td>
             <td><ContextModal src={require('./unified-explanations/mouth/_mouth_corner_slant.mdx').default}>Left corner lip slants up.</ContextModal></td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_mouthfrownright.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>MouthFrownRight</td>
@@ -531,11 +554,11 @@ import '@site/src/css/unified-tables.css'
             <td>MouthStretchLeft</td>
             <td><ContextModal src={require('./unified-explanations/mouth/_mouth_stretch.mdx').default}>Left corner lip pulls out and down.</ContextModal></td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_mouthdimpleright.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>MouthDimpleRight</td>
@@ -556,11 +579,11 @@ import '@site/src/css/unified-tables.css'
             <td>MouthRaiserLower</td>
             <td><ContextModal src={require('./unified-explanations/mouth/_mouth_raiser.mdx').default}>Raises and slightly pushes out the lower mouth.</ContextModal></td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_mouthpressright.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>MouthPressRight</td>
@@ -587,6 +610,9 @@ import '@site/src/css/unified-tables.css'
 <table>
     <thead>
         <tr>
+            <th colspan="3">Tongue</th>
+        </tr>
+        <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
             <th className="table-ue-description">Function</th>
@@ -598,11 +624,11 @@ import '@site/src/css/unified-tables.css'
             <td>TongueOut</td>
             <td><ContextModal src={require('./unified-explanations/tongue/_tongue_out.mdx').default}>Tongue visibly sticks out of the mouth.</ContextModal></td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_tongueup.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>TongueUp</td>
@@ -623,11 +649,11 @@ import '@site/src/css/unified-tables.css'
             <td>TongueLeft</td>
             <td><ContextModal src={require('./unified-explanations/tongue/_tongue_direction.mdx').default}>Tongue points left.</ContextModal></td>
         </tr>
-        <tr>
+        {/* <tr>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+        </tr> */}
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_tongueroll.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>TongueRoll</td>
@@ -653,12 +679,12 @@ import '@site/src/css/unified-tables.css'
             <td>TongueFlat<ContextModal src={require('./unified-explanations/super-scripts/_1_explain.mdx').default}><sup>1</sup></ContextModal></td>
             <td><ContextModal src={require('./unified-explanations/tongue/_tongue_shape.mdx').default}>Tongue flattens and thins out.</ContextModal></td>
         </tr>
+        {/* <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr> */}
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-            <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_tonguetwistright.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>TongueTwistRight<ContextModal src={require('./unified-explanations/super-scripts/_1_explain.mdx').default}><sup>1</sup></ContextModal></td>
             <td><ContextModal src={require('./unified-explanations/tongue/_tongue_twisters.mdx').default}>Tongue tip rotates clockwise, with the rest following gradually.</ContextModal></td>
@@ -674,6 +700,9 @@ import '@site/src/css/unified-tables.css'
 <table>
     <thead>
         <tr>
+            <th colspan="3">Neck</th>
+        </tr>
+        <tr>
             <th className="table-ue-ref">Reference</th>
             <th className="table-ue-name">Name</th>
             <th className="table-ue-description">Function</th>
@@ -683,7 +712,7 @@ import '@site/src/css/unified-tables.css'
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_softpalateclose.png").default} style={{width: 192}} alt="Reference Image" /></td>
             <td>SoftPalateClose<ContextModal src={require('./unified-explanations/super-scripts/_1_explain.mdx').default}><sup>1</sup></ContextModal></td>
-            <td><ContextModal src={require('./unified-explanations/neck/_neck_palate_close.mdx').default}>inner mouth throat closes.</ContextModal></td>
+            <td><ContextModal src={require('./unified-explanations/neck/_neck_palate_close.mdx').default}>Inner mouth throat closes.</ContextModal></td>
         </tr>
         <tr>
             <td><img src={require("@site/docs/tutorial-avatars/tutorial-avatars-extras/img/avatar/avatar_ref_throatswallow.png").default} style={{width: 192}} alt="Reference Image" /></td>
