@@ -4,9 +4,9 @@
 
 The Vive Facial Tracker provides lower face tracking for [Vive Pro](./vpe.mdx) and other VR headsets.
 It connects to the computer via a short, built-in USB-C cable.
-Face tracking data is accessed through [Vive's SRanipal interface](../../tutorial-modules/sranipal.mdx).
+Face tracking data is accessed through [Vive's SRanipal interface](sranipal.mdx).
 
-## Why follow this guide?
+## Why is this setup required?
 
 The Vive Facial Tracker is a high bandwidth USB device sensitive to poor USB connectivity, leading to a lot of "gotchas" in hardware setup.
 Also, the SRanipal software is notoriously annoying to deal with.
@@ -18,7 +18,7 @@ Install SRanipal first *before* plugging in the Vive Facial Tracker to make your
 :::
 
 Regardless of what headset, the Vive Facial Tracker requires the computer that it connects to to have SRanipal runtime installed to be able to be used.
-Follow the [SRanipal Setup](../../tutorial-modules/sranipal.mdx#software) instructions to get this necessary software installed and ready.
+Follow the [SRanipal Setup](sranipal.mdx#set-up) instructions to get this necessary software installed and ready.
 
 ## Hardware Setup
 
@@ -84,7 +84,6 @@ This is the **#1 reason** for VRCFaceTracking problems with Index users.
 - Mounting options for the Valve Index
 
   - ['Road to Alcoholism' Index Front Plate Vive Facial Tracker Mount (VRCFT Discord)](https://discord.com/channels/849300336128032789/915075185328152606/987813371992748072)
-  - MORE TODO
   - *Extra note*: The MidnightTech little-stub mount for the Valve Index is *not that good* at being a mount...
 
 :::info
@@ -100,3 +99,9 @@ Get a quality **USB 3.0 or better USB** extension. Since USB-C female extensions
 Using the headset as a VirtualHere USB server is a possible solution that allows for a fully wireless setup.
 VRCFT member `Blackspots#0001` has a nice [reddit post detailing the process](https://www.reddit.com/r/Quest2/comments/xlvbc8/getting_the_vive_face_tracker_to_work_with_the/) for the Quest 2
 This proceed *may* work for other similar headsets (Pico 3, Pico 4, etc.) but have not been tested. 
+
+## Module
+
+Install the **"SRanipalTrackingModule"** from the [VRCFaceTracking Module Registry](../../vrcft-software/vrcft.mdx#module-registry).
+
+[SRanipalTrackingModule source repository](https://github.com/VRCFaceTracking/SRanipalTrackingModule)

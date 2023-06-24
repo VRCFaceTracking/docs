@@ -30,41 +30,30 @@ Learn more about the different [Parameter Types](/docs/category/types) here.
 
 :::
 
-:::caution Tracking parameters are explicitly defined.
+:::caution Keep Things Correlated!
 
-Each tracking parameter references a Unified Expressions shape. 
-For a reference as to what each shape does, please refer to the 
+Each tracking parameter comes from a tracked Unified Expressions shape on your face. 
+For a reference as to what each shape looks like, please refer to the 
 [Unified Expressions Base Shapes](../unified-blendshapes.mdx#ue-base-shapes).
+
+While any shape or animation setup on an avatar can be controlled 
+using any Unified Expressions parameter, correlating the tracked parameter to the 
+corresponding Unified Expressions shape will ensure that your avatar 
+will perform in the best and most consistent way possible.
+
+This means that JawOpen should open the jaw, or a blended shape like 
+MouthOpen should part open the avatar's lips, and so forth.
+
+Any extra expressions outside of the face such as ear movement that could be 
+controlled by specific or combinations of tracked parameters are highly encouraged to 
+be animated in addition to the base Unified Expression shape(s) to give life to 
+your avatars!
 
 :::
 
 import '@site/src/css/parameters.css'
 
-### Eye Tracking Parameters
-
-| Name | Function |
-| :--- | :------- |
-| v2/EyesX | `<0.0 -> 1.0>` Eyes Look Right (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Eyes Look Left (Normalized Cartesian) | img |
-| v2/EyesY | `<0.0 -> 1.0>` Eyes Look Up (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Eyes Look Down (Normalized Cartesian) | img |
-| v2/EyeLeftX | `<0.0 -> 1.0>` Left Eye Look Right (Normalized Cartesian)<br/>`<0.0 -> -1.0>` Left Eye Look Left (Normalized Cartesian) | img |
-| v2/EyeLeftY | `<0.0 -> 1.0>` Left Eye Look Up (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Left Eye Look Down (Normalized Cartesian) | img |
-| v2/EyeRightX | `<0.0 -> 1.0>` Right Eye Look Right (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Right Eye Look Left (Normalized Cartesian) | img |
-| v2/EyeRightY | `<0.0 -> 1.0>` Right Eye Look Up (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Right Eye Look Down (Normalized Cartesian) |
-| | |
-| v2/EyeLidRight | `<0.0 -> 0.8>` Right Eye Openness <br />`<0.8 -> 1.0>` Right Eye Widen  | img |
-| v2/EyeLidLeft | `<0.0 -> 0.8>` Left Eye Openness <br />`<0.8 -> 1.0>` Left Eye Widen | img |
-| v2/EyeLids | `<0.0 -> 0.8>` Left + Right Eye Openness <br />`<0.8 -> 1.0>` Left + Right Eye Widen | img |
-| | |
-| v2/EyeSquintRight | `<0.0 -> 1.0>` Eye Squint Right |
-| v2/EyeSquintLeft | `<0.0 -> 1.0>` Eye Squint Left |
-| v2/EyesSquint | `<0.0 -> 1.0>` Eye Squint Right + Eye Squint Left |
-| | |
-| v2/PupilDilation | `<0.0 -> 1.0>` Normalized dilation of the pupils. |
-| v2/PupilDiameterRight  | `<0.0 -> 1.0>` Dilation of the right pupil (in cm). |
-| v2/PupilDiameterLeft  | `<0.0 -> 1.0>` Dilation of the left pupil (in cm). |
-| v2/PupilDilation | `<0.0 -> 1.0>` Dilation of both pupils (in cm). |
-
-### Expression Tracking Parameters
+## Parameters
 
 :::info Please read through all available parameters
 
@@ -72,10 +61,35 @@ There are many parameters listed here, and some that are
 undocumented to help users save performance (such as 100% 
 optimal parameter replacements for some parameters). 
 
-Please read through all available parameters and decide 
-what you want to include on your avatar.
-
+Please read through the available parameters to help you
+decide what is best for your avatar's use case. 
 :::
+
+### Eye Gaze Parameters
+
+| Name | Function |
+| :--- | :------- |
+| v2/EyeLeftX | `<0.0 -> 1.0>` Left Eye Look Right (Normalized Cartesian)<br/>`<0.0 -> -1.0>` Left Eye Look Left (Normalized Cartesian) |
+| v2/EyeLeftY | `<0.0 -> 1.0>` Left Eye Look Up (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Left Eye Look Down (Normalized Cartesian) |
+| v2/EyeRightX | `<0.0 -> 1.0>` Right Eye Look Right (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Right Eye Look Left (Normalized Cartesian) |
+| v2/EyeRightY | `<0.0 -> 1.0>` Right Eye Look Up (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Right Eye Look Down (Normalized Cartesian) |
+
+### Eye Expression Parameters
+
+| Name | Function |
+| :--- | :------- |
+| v2/EyeLidRight | `<0.0 -> 0.75>` Right Eye Openness <br />`<0.75 -> 1.0>` Right Eye Widen  |
+| v2/EyeLidLeft | `<0.0 -> 0.75>` Left Eye Openness <br />`<0.75 -> 1.0>` Left Eye Widen |
+| v2/EyeLid | `<0.0 -> 0.75>` Left + Right Eye Openness <br />`<0.75 -> 1.0>` Left + Right Eye Widen |
+| v2/EyeSquintRight | `<0.0 -> 1.0>` Eye Squint Right |
+| v2/EyeSquintLeft | `<0.0 -> 1.0>` Eye Squint Left |
+| v2/EyeSquint | `<0.0 -> 1.0>` Eye Squint Right + Eye Squint Left |
+| v2/PupilDilation | `<0.0 -> 1.0>` Normalized dilation of the pupils. |
+| v2/PupilDiameterRight  | `<0.0 -> 1.0>` Dilation of the right pupil (in cm). |
+| v2/PupilDiameterLeft  | `<0.0 -> 1.0>` Dilation of the left pupil (in cm). |
+| v2/PupilDiameter | `<0.0 -> 1.0>` Dilation of both pupils (in cm). |
+
+### Brow Parameters
 
 | Name | Function |
 | :--- | :------ |
@@ -87,90 +101,123 @@ what you want to include on your avatar.
 | v2/BrowInnerUpLeft | `<0.0 -> 1.0>` Brow Inner Up Left |
 | v2/BrowOuterUpRight | `<0.0 -> 1.0>` Brow Outer Up Right |
 | v2/BrowOuterUpLeft | `<0.0 -> 1.0>` Brow Outer Up Left |
-|||
+
+
+### Nose Parameters
+
+| Name | Function |
+| :--- | :------ |
+| v2/NoseSneerRight | `<0.0 -> 1.0>` Nose Sneer Right |
+| v2/NoseSneerLeft | `<0.0 -> 1.0>` Nose Sneer Left |
 | v2/NasalDilationRight | `<0.0 -> 1.0>` Nasal Dilation Right |
 | v2/NasalDilationLeft | `<0.0 -> 1.0>` Nasal Dilation Left |
 | v2/NasalConstrictRight | `<0.0 -> 1.0>` Nasal Constrict Left |
 | v2/NasalConstrictLeft | `<0.0 -> 1.0>` Nasal Constrict Right |
-|||
+
+
+### Cheek Parameters
+
+| Name | Function |
+| :--- | :------ |
 | v2/CheekSquintRight | `<0.0 -> 1.0>` Cheek Squint Right |
 | v2/CheekSquintLeft | `<0.0 -> 1.0>` Cheek Squint Left |
-| v2/CheekRightPuffSuck | `<0.0 -> 1.0>` Cheek Puff Right <br/> `<0.0 -> -1.0>` Cheek Suck Right |
-| v2/CheekLeftPuffSuck | `<0.0 -> 1.0>` Cheek Puff Left <br/> `<0.0 -> -1.0>` Cheek Suck Left |
-|||
+| v2/CheekPuffSuckRight | `<0.0 -> 1.0>` Cheek Puff Right <br/> `<0.0 -> -1.0>` Cheek Suck Right |
+| v2/CheekPuffSuckLeft | `<0.0 -> 1.0>` Cheek Puff Left <br/> `<0.0 -> -1.0>` Cheek Suck Left |
+
+### Jaw Parameters
+
+| Name | Function |
+| :--- | :------ |
 | v2/JawOpen | `<0.0 -> 1.0>` Jaw Open |
 | v2/MouthClosed | `<0.0 -> 1.0>` Mouth Closed |
 | v2/JawX  | `<0.0 -> 1.0>` Jaw Right <br/> `<0.0 -> -1.0>` Jaw Left |
 | v2/JawZ | `<0.0 -> 1.0>` Jaw Forward <br/> `<0.0 -> -1.0>` Jaw Backward |
 | v2/JawClench<sup>1</sup>  | `<0.0 -> 1.0>` Jaw Clench |
 | v2/JawMandibleRaise<sup>1</sup>  | `<0.0 -> 1.0>` Jaw Mandible Raise |
-|||
+
+### Lip Parameters
+
+| Name | Function |
+| :--- | :------ |
 | v2/LipSuckUpperRight | `<0.0 -> 1.0>` Lip Suck Upper Right |
 | v2/LipSuckUpperLeft | `<0.0 -> 1.0>` Lip Suck Upper Left |
-| v2/LipSuckUpperRight | `<0.0 -> 1.0>` Lip Suck Lower Right |
-| v2/LipSuckUpperLeft | `<0.0 -> 1.0>` Lip Suck Lower Left |
-|||
+| v2/LipSuckLowerRight | `<0.0 -> 1.0>` Lip Suck Lower Right |
+| v2/LipSuckLowerLeft | `<0.0 -> 1.0>` Lip Suck Lower Left |
 | v2/LipSuckCornerRight | `<0.0 -> 1.0>` Lip Suck Corner Right |
 | v2/LipSuckCornerLeft | `<0.0 -> 1.0>` Lip Suck Corner Left |
-|||
 | v2/LipFunnelUpperRight | `<0.0 -> 1.0>` Lip Funnel Upper Right |
 | v2/LipFunnelUpperLeft | `<0.0 -> 1.0>` Lip Funnel Upper Left |
-| v2/LipFunnelUpperRight | `<0.0 -> 1.0>` Lip Funnel Lower Right |
-| v2/LipFunnelUpperLeft | `<0.0 -> 1.0>` Lip Funnel Lower Left |
-|||
+| v2/LipFunnelLowerRight | `<0.0 -> 1.0>` Lip Funnel Lower Right |
+| v2/LipFunnelLowerLeft | `<0.0 -> 1.0>` Lip Funnel Lower Left |
 | v2/LipPuckerUpperRight | `<0.0 -> 1.0>` Lip Pucker Upper Right |
 | v2/LipPuckerUpperLeft | `<0.0 -> 1.0>` Lip Pucker Upper Left |
-| v2/LipPuckerUpperRight | `<0.0 -> 1.0>` Lip Pucker Lower Right |
-| v2/LipPuckerUpperLeft | `<0.0 -> 1.0>` Lip Pucker Lower Left |
-|||
+| v2/LipPuckerLowerRight | `<0.0 -> 1.0>` Lip Pucker Lower Right |
+| v2/LipPuckerLowerLeft | `<0.0 -> 1.0>` Lip Pucker Lower Left |
+
+### Mouth Parameters
+
+| Name | Function |
+| :--- | :------ |
 | v2/MouthUpperUpRight | `<0.0 -> 1.0>` Mouth Upper Up Right |
 | v2/MouthUpperUpLeft | `<0.0 -> 1.0>` Mouth Upper Up Left |
 | v2/MouthLowerDownRight | `<0.0 -> 1.0>` Mouth Lower Down Right |
 | v2/MouthLowerDownLeft | `<0.0 -> 1.0>` Mouth Lower Down Left |
 | v2/MouthUpperDeepenRight | `<0.0 -> 1.0>` Mouth Upper Deepen Right |
 | v2/MouthUpperDeepenLeft | `<0.0 -> 1.0>` Mouth Upper Deepen Left |
-| v2/NoseSneerRight | `<0.0 -> 1.0>` Nose Sneer Right |
-| v2/NoseSneerLeft | `<0.0 -> 1.0>` Nose Sneer Left |
-|||
 | v2/MouthUpperX | `<0.0 -> 1.0>` Mouth Upper Right <br/> `<0.0 -> -1.0>` Mouth Upper Left |
 | v2/MouthLowerX | `<0.0 -> 1.0>` Mouth Lower Right <br/> `<0.0 -> -1.0>` Mouth Lower Left |
-|||
 | v2/MouthCornerPullRight | `<0.0 -> 1.0>` Mouth Corner Pull Right |
 | v2/MouthCornerPullLeft | `<0.0 -> 1.0>` Mouth Corner Pull Left |
 | v2/MouthCornerSlantRight | `<0.0 -> 1.0>` Mouth Corner Slant Right |
 | v2/MouthCornerSlantLeft | `<0.0 -> 1.0>` Mouth Corner Slant Left |
 | v2/MouthDimpleRight | `<0.0 -> 1.0>` Mouth Dimple Right |
 | v2/MouthDimpleLeft | `<0.0 -> 1.0>` Mouth Dimple Left |
-|||
 | v2/MouthFrownRight | `<0.0 -> 1.0>` Mouth Frown Right |
 | v2/MouthFrownLeft | `<0.0 -> 1.0>` Mouth Frown Left |
 | v2/MouthStretchRight | `<0.0 -> 1.0>` Mouth Stretch Right |
 | v2/MouthStretchLeft | `<0.0 -> 1.0>` Mouth Stretch Left |
-|||
 | v2/MouthRaiserUpper | `<0.0 -> 1.0>` Mouth Raiser Upper |
-| v2/MouthRaiserLower | `<0.0 -> 1.0>` Mouth Raiser Upper |
+| v2/MouthRaiserLower | `<0.0 -> 1.0>` Mouth Raiser Lower |
 | v2/MouthPressRight | `<0.0 -> 1.0>` Mouth Press Right |
 | v2/MouthPressLeft | `<0.0 -> 1.0>` Mouth Press Left |
 | v2/MouthTightenerRight | `<0.0 -> 1.0>` Mouth Tightener Right |
 | v2/MouthTightenerLeft | `<0.0 -> 1.0>` Mouth Tightener Left |
-|||
+
+### Tongue Parameters
+
+| Name | Function |
+| :--- | :------ |
 | v2/TongueOut | `<0.0 -> 1.0>` Tongue Out |
 | v2/TongueX | `<0.0 -> 1.0>` Tongue Right <br/> `<0.0 -> -1.0>` Tongue Left |
 | v2/TongueY | `<0.0 -> 1.0>` Tongue Up <br/> `<0.0 -> -1.0>` Tongue Down |
-|||
 | v2/TongueRoll | `<0.0 -> 1.0>` Tongue Roll |
 | v2/TongueArchY | `<0.0 -> 1.0>` Tongue Bend Down <br/> `<0.0 -> -1.0>` Tongue Curl Up |
 | v2/TongueShape | `<0.0 -> 1.0>` Tongue Squish <br/> `<0.0 -> -1.0>` Tongue Flat |
 | v2/TongueTwistRight | `<0.0 -> 1.0>` Tongue Twist Right |
 | v2/TongueTwistLeft | `<0.0 -> 1.0>` Tongue Twist Left |
-|||
-| v2/SoftPalateClose | `<0.0 -> 1.0>` Tongue Twist Right |
-| v2/ThroatSwallow | `<0.0 -> 1.0>` Tongue Twist Left |
-|||
+
+### Neck Parameters
+
+| Name | Function |
+| :--- | :------ |
+| v2/SoftPalateClose | `<0.0 -> 1.0>` Soft Palate Close |
+| v2/ThroatSwallow | `<0.0 -> 1.0>` Throat Swallow |
 | v2/NeckFlexRight | `<0.0 -> 1.0>` Neck Flex Right |
 | v2/NeckFlexLeft | `<0.0 -> 1.0>` Neck Flex Left |
 
-### Addtional Simplified Tracking Parameters
+## (more) Simplified Tracking Parameters
+
+The parameters here are in some way simplified by averaging left/right values, upper/lower values,
+or merging more related parameters together into one 'Simplified' parameter. 
+
+### Simplified Eye Parameters
+
+| Name | Function |
+| :--- | :------ |
+| v2/EyeX | `<0.0 -> 1.0>` Eyes Look Right (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Eyes Look Left (Normalized Cartesian) |
+| v2/EyeY | `<0.0 -> 1.0>` Eyes Look Up (Normalized Cartesian) <br/>`<0.0 -> -1.0>` Eyes Look Down (Normalized Cartesian) |
+
+### Simplified Brow Parameters
 
 | Name | Function |
 | :--- | :------ |
@@ -179,46 +226,72 @@ what you want to include on your avatar.
 | v2/BrowOuterUp | `<0.0 -> 1.0>` Brow Outer Up |
 | v2/BrowInnerUp | `<0.0 -> 1.0>` Brow Inner Up |
 | v2/BrowUp | `<0.0 -> 1.0>` Brow Up |
-|||
 | v2/BrowExpressionRight | `<0.0 -> 1.0>` Brow Up Right <br/>`<0.0 -> -1.0>` Brow Down Right |
 | v2/BrowExpressionLeft | `<0.0 -> 1.0>` Brow Up Left <br/>`<0.0 -> -1.0>` Brow Down Left |
 | v2/BrowExpression | `<0.0 -> 1.0>` Brow Up <br/>`<0.0 -> -1.0>` Brow Down |
-|||
+
+### Simplified Mouth Parameters
+
+| Name | Function |
+| :--- | :------ |
+| v2/MouthX | `<0.0 -> 1.0>` Mouth Right <br/>`<0.0 -> -1.0>` Mouth Left |
+| v2/MouthUpperUp | `<0.0 -> 1.0>` Mouth Upper Up |
+| v2/MouthLowerDown | `<0.0 -> 1.0>` Mouth Lower Down |
+| v2/MouthOpen | `<0.0 -> 1.0>` Mouth Upper Up + Mouth Lower Down |
 | v2/MouthSmileRight | `<0.0 -> 1.0>` Mouth Corner Puller + Mouth Corner Slant Right |
 | v2/MouthSmileLeft | `<0.0 -> 1.0>` Mouth Corner Puller + Mouth Corner Slant Left |
 | v2/MouthSadRight | `<0.0 -> 1.0>` Mouth Frown + Mouth Stretch Right |
 | v2/MouthSadLeft | `<0.0 -> 1.0>` Mouth Frown + Mouth Stretch Left |
-|||
-| v2/JawX | `<0.0 -> 1.0>` Jaw Right <br/>`<0.0 -> -1.0>` Jaw Left |
-| v2/JawY | `<0.0 -> 1.0>` Jaw Forward <br/>`<0.0 -> -1.0>` Jaw Backward |
-|||
-| v2/CheekSquint | `<0.0 -> 1.0>` Cheek Squint |
-| v2/CheekPuffSuck | `<0.0 -> 1.0>` Cheek Puff <br/>`<0.0 -> -1.0>` Cheek Suck |
-|||
-| v2/MouthX | `<0.0 -> 1.0>` Mouth Right <br/>`<0.0 -> -1.0>` Mouth Left |
-|||
-| v2/LipSuckUpper | `<0.0 -> 1.0>` Lip Suck Upper |
-| v2/LipSuckLower | `<0.0 -> 1.0>` Lip Suck Lower |
-| v2/LipSuck | `<0.0 -> 1.0>` Lip Suck |
-|||
-| v2/LipFunnelUpper | `<0.0 -> 1.0>` Lip Funnel Upper |
-| v2/LipFunnelLower | `<0.0 -> 1.0>` Lip Funnel Lower |
-| v2/LipFunnel | `<0.0 -> 1.0>` Lip Funnel |
-|||
-| v2/LipPuckerRight | `<0.0 -> 1.0>` Lip Pucker Upper |
-| v2/LipPuckerLeft | `<0.0 -> 1.0>` Lip Pucker Lower |
-| v2/LipPucker | `<0.0 -> 1.0>` Lip Pucker |
-|||
-| v2/MouthUpperUp | `<0.0 -> 1.0>` Mouth Upper Up |
-| v2/MouthLowerDown | `<0.0 -> 1.0>` Mouth Lower Down |
-| v2/MouthOpen | `<0.0 -> 1.0>` Mouth Upper Up + Mouth Lower Down |
-|||
-| v2/NoseSneer | `<0.0 -> 1.0>` Nose Sneer |
-|||
 | v2/SmileFrownRight | `<0.0 -> 1.0>` Mouth Corner Pull Right <br/> `<0.0 -> 1.0>` Mouth Corner Slant Right <br/> `<0.0 -> -1.0>` Mouth Frown Right  |
 | v2/SmileFrownLeft | `<0.0 -> 1.0>` Mouth Corner Pull Left <br/> `<0.0 -> 1.0>` Mouth Corner Slant Left <br/> `<0.0 -> -1.0>` Mouth Frown Left  |
 | v2/SmileFrown | `<0.0 -> 1.0>` Mouth Corner Pull <br/> `<0.0 -> 1.0>` Mouth Corner Slant <br/> `<0.0 -> -1.0>` Mouth Frown |
-|||
-| v2/SmileSadRight | `<0.0 -> 1.0>` Mouth Corner Pull Right <br/> `<0.0 -> 1.0>` Mouth Corner Slant Right <br/> `<0.0 -> -1.0>` Mouth Frown Right <br/> `<0.0 -> -1.0>` Mouth Frown Right  |
-| v2/SmileSadLeft | `<0.0 -> 1.0>` Mouth Corner Pull Left <br/> `<0.0 -> 1.0>` Mouth Corner Slant Left <br/> `<0.0 -> -1.0>` Mouth Frown Left <br/> `<0.0 -> -1.0>` Mouth Stretch Right |
+| v2/SmileSadRight | `<0.0 -> 1.0>` Mouth Corner Pull Right <br/> `<0.0 -> 1.0>` Mouth Corner Slant Right <br/> `<0.0 -> -1.0>` Mouth Frown Right <br/> `<0.0 -> -1.0>` Mouth Stretch Right  |
+| v2/SmileSadLeft | `<0.0 -> 1.0>` Mouth Corner Pull Left <br/> `<0.0 -> 1.0>` Mouth Corner Slant Left <br/> `<0.0 -> -1.0>` Mouth Frown Left <br/> `<0.0 -> -1.0>` Mouth Stretch Left |
 | v2/SmileSad | `<0.0 -> 1.0>` Mouth Corner Pull <br/> `<0.0 -> 1.0>` Mouth Corner Slant <br/> `<0.0 -> -1.0>` Mouth Frown <br/> `<0.0 -> -1.0>` Mouth Stretch |
+
+### Simplified Lip Parameters
+
+| Name | Function |
+| :--- | :------ |
+| v2/LipSuckUpper | `<0.0 -> 1.0>` Lip Suck Upper |
+| v2/LipSuckLower | `<0.0 -> 1.0>` Lip Suck Lower |
+| v2/LipSuck | `<0.0 -> 1.0>` Lip Suck |
+| v2/LipFunnelUpper | `<0.0 -> 1.0>` Lip Funnel Upper |
+| v2/LipFunnelLower | `<0.0 -> 1.0>` Lip Funnel Lower |
+| v2/LipFunnel | `<0.0 -> 1.0>` Lip Funnel |
+| v2/LipPuckerUpper | `<0.0 -> 1.0>` Lip Pucker Upper |
+| v2/LipPuckerLower | `<0.0 -> 1.0>` Lip Pucker Lower |
+| v2/LipPucker | `<0.0 -> 1.0>` Lip Pucker |
+
+### Simplified Nose and Cheek Parameters
+
+| Name | Function |
+| :--- | :------ |
+| v2/NoseSneer | `<0.0 -> 1.0>` Nose Sneer |
+| v2/CheekSquint | `<0.0 -> 1.0>` Cheek Squint |
+| v2/CheekPuffSuck | `<0.0 -> 1.0>` Cheek Puff <br/>`<0.0 -> -1.0>` Cheek Suck |
+
+
+## Tracking Active Parameters
+
+These parameters are set by VRCFaceTracking to indicate the status of the 
+relevant tracking module. 
+They are only sent upon load or when the status of the module changes. 
+
+:::info Consider providing a separate Expressions menu toggle for tracking
+
+While these parameters can be used to enable eye or expression tracking 
+automatically, they are best used in conjunction with a manual toggle to allow 
+for eye or expression tracking to fail gracefully to an untracked (VRC-driven) 
+state if VRCFaceTracking is not running, or not present.
+
+These parameters should not be used in an Expressions menu on an avatar intended as 
+input *to* VRCFaceTracking.
+
+:::
+
+| Name | Function |
+| :--- | :------ |
+| EyeTrackingActive | `<true / false>` Eye Tracking is Active |
+| ExpressionTrackingActive  | `<true / false>` Expression Tracking is Active |
+| LipTrackingActive | `<true / false>` Expression Tracking is Active |

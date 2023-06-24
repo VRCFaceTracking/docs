@@ -1,0 +1,174 @@
+---
+description: Detailed overview of creating VRCFaceTracking Tracking Modules. 
+---
+
+import {EditUrl} from '@site/src/components/Utils.tsx'
+
+# Tracking Module SDK
+
+***
+
+:::danger Still under construction!
+
+This reference document is still actively being worked on. 
+Changes are subject to happen discretionally.
+
+Please consider contributing by <EditUrl>editing this page!</EditUrl>
+
+:::
+
+### Summary
+
+**VRCFaceTracking** provides an external tracking module 
+SDK that allows developers to send face tracking data to 
+any **VRCFaceTracking** compatible app. Modules will send 
+data to the generalized **UnifiedTracking** interface that 
+VRCFaceTracking will use to send tracking data to applications.
+
+***
+
+### Tracking Module Overview {#ue-overview}
+
+* [Project Setup](#project-setup)
+* [Tracking Module Architecture](#tracking-module-architecture)
+* [Building Project](#building-project)
+
+## Project Setup
+
+***
+
+**VRCFaceTracking** uses **.NET 7**, a relatively 
+easy and intuitive development platform. **VRCFaceTracking** has 
+the ability to load any class library (Managed `.dll` files) built 
+on the **.NET** platform using a built-in module loader.
+
+To get started, create a new Class Library project using the 
+**.NET 7** SDK and framework. Many IDEs provide a template to 
+quickly get started with this environment.
+
+:::tip
+
+Name the project after the tracking interface being implemented to 
+VRCFaceTracking; a general naming scheme for tracking modules is along 
+the lines of `ExampleExtTrackingInterface`.
+
+:::
+
+Once the project environment is setup, include `VRCFaceTracking.Core` 
+as a dependency (this can either be a project reference by using the 
+VRCFaceTracking.Core project in your own project, or by referencing the 
+`VRCFaceTracking.Core` binary), and inherit `ExtTrackingModule` to your 
+module's main class. This will be where all the main functionality 
+of the module will be implemented.
+
+:::warning Must implement ExtTrackingModule
+
+VRCFaceTracking will at this time only load your external module 
+if the base class inherits ExtTrackingModule, otherwise it will be
+skipped. This is to ensure that developers are implementing a 
+tracking interface extension for devices to use VRCFaceTracking tracking 
+data, or otherwise.
+
+This may be changed in the future to allow different types of modules 
+to be loaded by the module loader (potentially those that can provide 
+an output for VRCFaceTracking tracking data, modify parts of VRCFaceTracking, 
+modify the UI of VRCFaceTracking, and more).
+
+:::
+
+The default architecture platform should be `Any CPU` or `x64` to build 
+for VRCFaceTracking.
+
+Your project environment should be fully setup and ready to accept your 
+tracking interface!
+
+## Tracking Module Architecture
+
+***
+
+:::tip Refer to the VRCFaceTracking API!
+
+The following API's are referenced when 
+writing a module. These are included with `VRCFaceTracking.Core`. 
+
+* [`ExtTrackingModule`](https://github.com/benaclejames/VRCFaceTracking/blob/VRCFaceTracking.Core/SDK/ExtTrackingModule.cs)
+* [`ModuleMetadata` (within `ExtTrackingModule`)](https://github.com/benaclejames/VRCFaceTracking/blob/VRCFaceTracking.Core/SDK/ModuleMetadata.cs)
+* [`UnifiedTracking`](https://github.com/benaclejames/VRCFaceTracking/blob/VRCFaceTracking.Core/UnifiedTracking.cs)
+* [`UnifiedExpressions`](https://github.com/benaclejames/VRCFaceTracking/blob/VRCFaceTracking.Core/Params/Expressions/UnifiedExpressions.cs)
+
+[**All of VRCFaceTracking is open source**](https://github.com/benaclejames/VRCFaceTracking) and is already well documented 
+with IDE contextual documentation.
+
+:::
+
+```c title="ExampleExtTrackingInterface.cs"
+public class ExampleExtTrackingModule : ExtTrackingModule
+{
+    // What your interface is able to send as tracking data.
+    public override (bool SupportsEye, bool SupportsExpression) Supported => (true, true);
+
+    // This is the first function ran by VRCFaceTracking. Make sure to completely initialize 
+    // your tracking interface or the data to be accepted by VRCFaceTracking here. This will let 
+    // VRCFaceTracking know what data is available to be sent from your tracking interface at initialization.
+    public override (bool eyeSuccess, bool expressionSuccess) Initialize(bool eyeAvailable, bool expressionAvailable)
+    {
+        var state = (eyeAvailable, expressionAvailable);
+
+        ModuleInformation.Name = "Example Module";
+
+        // Example of an embedded image stream being referenced as a stream
+        var stream = 
+            GetType()
+            .Assembly
+            .GetManifestResourceStream("ExampleExtTrackingInterface.Assets.x-logo.png");
+
+        // Setting the stream to be referenced by VRCFaceTracking.
+        ModuleInformation.StaticImages = 
+            stream != null ? new List<Stream> { stream } : ModuleInformation.StaticImages;
+
+        //... Initializing module. Modify state tuple as needed (or use bool contexts to determine what should be initialized).
+
+        return state;
+    }
+
+    // Polls data from the tracking interface.
+    // VRCFaceTracking will run this function in a separate thread;
+    public override void Update()
+    {
+        // Get latest tracking data from interface and transform to VRCFaceTracking data.
+
+        if (Status == ModuleState.Active) // Module Status validation
+        {
+            // ... Execute update cycle.
+            UnifiedTracking.Data.Eye.Left.Openness = ExampleTracker.LeftEye.Openness;
+            UnifiedTracking.Data.Shapes[(int)UnifiedExpressions.JawOpen] = ExampleTracker.Mouth.JawOpen;
+        }
+
+        // Add a delay or halt for the next update cycle for performance. eg: 
+        Thread.Sleep(10);
+    }
+
+    // Called when the module is unloaded or VRCFaceTracking itself tears down.
+    public override void Teardown()
+    {
+        //... Deinitialize tracking interface; dispose any data created with the module.
+    }
+}
+```
+
+## Building Project
+
+Once the tracking module is fully setup and ready to be deployed, compile your binary. 
+This binary can then be loaded by VRCFaceTracking's module system!
+
+Simply take the compiled binary and place it in `%appdata%\VRCFaceTracking\CustomLibs`, 
+VRCFaceTracking will load any external modules in alphabetical order that are included in 
+this folder.
+
+:::tip Use Build Events!
+
+Setting up build events for your project can make it easy to 
+iterate your project faster. Create a build event to place your 
+compiled binaries into the appropriate destinations!
+
+:::
