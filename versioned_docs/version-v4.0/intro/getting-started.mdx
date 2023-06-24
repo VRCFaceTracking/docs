@@ -1,0 +1,103 @@
+---
+sidebar_position: 2
+---
+
+# 🛠️ Getting Started
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import {EditUrl, CustomLink, TextColor} from '@site/src/components/Utils.tsx'
+
+Follow this guide to setup your face-tracking hardware and start sending face tracking data to VRChat.
+
+:::caution
+Make sure your headset or hardware is supported first!
+:::
+
+## Overview
+
+1. Follow the setup instructions for your headset/hardware
+2. Installing VRCFaceTracking
+3. Enable OSC In VRChat
+4. Swap into a **VRCFT Compatible Avatar**
+
+## Supported Hardware List
+
+Click through the tabs to see all the different currently supported hardware!
+
+import HardwareTableVR from '../hardware/hardware_tables/_hardware_table_vr.mdx'
+import HardwareTableAddon from '../hardware/hardware_tables/_hardware_table_addon.mdx'
+import HardwareTableDesktop from '../hardware/hardware_tables/_hardware_table_desktop.mdx'
+
+<Tabs
+  defaultValue="vr-headset"
+  values={[
+    {label: 'VR Headset', value: 'vr-headset'},
+    {label: 'VR Add-on', value: 'addon'},
+    {label: 'Desktop', value: 'desktop'},
+  ]}>
+  <TabItem value="vr-headset">
+    <HardwareTableVR/>
+  </TabItem>
+  <TabItem value="addon">
+    <HardwareTableAddon/>
+  </TabItem>
+  <TabItem value="desktop">
+    <HardwareTableDesktop/>
+  </TabItem>
+</Tabs>
+
+## Detailed Setup guide
+
+### 0️ Check Compatibility
+
+### 1️ Setup Hardware
+
+Follow the link to the hardware page for your headset or face-tracking hardware in the [supported hardware table](#supported-hardware-list) above.
+
+### 2️ Installing VRCFaceTracking
+
+**IF AND ONLY IF YOU ARE *NOT* USING A QUEST PRO**: download the v4.0 UI version of VRCFaceTracking from Github releases: https://github.com/benaclejames/VRCFaceTracking/releases/tag/v4.0.0
+
+Each hardware page should also direct you to the corresponding module(s) to use, if required.
+
+### 3️ Enable OSC In VRChat
+
+To be able to use VRCFT, the OSC feature must be enabled in VRChat.
+VRCFaceTracking will automatically set the game's OSC toggle setting to "Enabled" if it detects that it was not already, but you can (and should) enable it manually to avoid having to restart the game for the automatic switch to take effect.
+
+<details>
+  <summary>Don't know how to enable OSC?</summary>
+  <div>
+    <div>
+      <ol>
+        <li> Open the in-game radial menu </li>
+        <li> Navigate through "Options" ➡️ "OSC" </li>
+        <li> Ensure that the "OSC Enabled" option is toggled on (white box towards the right) </li>
+      </ol>
+    </div>
+    <br/>
+    <img
+      src={require('./img/vrc_osc_menu.png').default}
+      alt="VRChat OSC Menu with OSC Enabled"
+      style={{margin: "auto", display: "flex"}}
+    />
+  </div>
+</details>
+
+### 4️ Test with a Public VRCFT Avatar
+
+Visit some of the worlds listed in the pinned posts in the <TextColor color="#5763ee">#avatar-showoff</TextColor> channel in the <CustomLink to="discord"/> to try out a few face tracking avatars.
+
+<!-- apparently this part still isn't clear to some people -->
+:::info Avatar Compatibility
+At this time, VRChat does **not** have a native face tracking solution.
+Avatars must have been specifically [set up](#avatar-setup) for face tracking to work with VRCFaceTracking.
+:::
+
+
+<!-- ### 5️  -->
+
+## Avatar Setup
+
+If you have a working hardware and software setup, or only want to get started with setting up *avatars* for using with VRCFaceTracking, you should follow [Avatar Getting Started](../intro/intro.mdx)

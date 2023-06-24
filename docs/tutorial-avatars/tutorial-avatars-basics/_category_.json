@@ -1,8 +1,0 @@
-{
-  "label": "Basic Avatar Setup",
-  "position": 1,
-  "link": {
-    "type": "generated-index",
-    "description": "A basic overview on setting up VRCFaceTracking-ready avatars without the nitty-gritty."
-  }
-}

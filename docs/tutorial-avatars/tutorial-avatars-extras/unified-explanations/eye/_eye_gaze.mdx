@@ -5,33 +5,36 @@
 > The general term that refers to
 > where the eye is looking.
 
-:::danger Still under construction!
-
-This explanation is still being worked on. 
-Information may change in the future.
-
-:::
-
 ***
 
-### Generalizations
+### Anatomy
 
-In **Unified Expressions**, **Eye Gaze** comes in 
-two subtypes: `absolute` and `expression`.
+Eye Gaze is based on the generalized [extraocular](https://en.wikipedia.org/wiki/Extraocular_muscles) 
+group of muscles that represents the cardinal directions that the eye is capable of looking in.
+
+### Description
+
+Eye Gaze is a generalized way to represent where the eyeballs are. 
+This can be represented as a combined or converged gaze of the eye. 
+Generally each eye can produce a distinct direction gaze and thus 
+each eye shape cardinal direction is modelled in Unified Expressions.
+
+In **Unified Expressions**, there are two components to **Eye Gaze**: `absolute` and `expression`.
+Movement of the eyeball itself would be referred to as `absolute` gaze, whereas the movement 
+of the face "flesh" around the eyes as the eyes look around would be referred to as the gaze `expression`. 
 
 Avatars typically use an armature with the eyes attached 
 to an Eye bone and/or blendshapes to create the overall Eye Gaze.
 
-:::info Absolute vs Expression
+:::info Absolute and Expression
 
-When using an armature bone, the direct nature of bone transformation 
-is an `absolute` Eye Gaze. Using blendshapes is described as an `expression` 
-as several generalized blendshapes are used to modify the Eye 
-Gaze apparent shape even further.
+The shapes for Eye Gaze usually should only include the `expression` component. 
+`Absolute` eye gaze is most typically handled with bone transformation and is *not* part of the blendshape
+in most avatars, though this is by no means a requirement in implementation. 
 
 :::
 
-### Shape Explanations
+### Direction Shapes
 
 In Unified Expressions, Left and Right Eye Gaze `expressions`
 direction listed in this way: 
@@ -44,4 +47,4 @@ contextualize the left and right eye shapes.
 This makes it very clear how the shapes function, as `Out` refers to the shape 
 moving away from the center of the face, while `In` refers to the shape moving towards 
 the center of the face. `Up` and `Down` are already contextually relative to your face 
-as your face is vertically assymetric.
+as your face is vertically asymetric.
