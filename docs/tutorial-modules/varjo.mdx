@@ -6,7 +6,7 @@ The VRCFTVarjoModule contains the runtime used to interface with Varjo eye-track
 
 ## Set-up
 
-Setup of the Varjo Module is fairly simple, though can be a little confusing depending on your hardware/software configuration. Please read carefully to avoid any issues. 
+Setup of the Varjo Module is fairly simple. Please read carefully to avoid any issues. 
 
 :::note
 This guide assumes you have the Varjo Base installed and updated prior to using the VRCFTVarjoModule. 
@@ -33,27 +33,18 @@ The VRCFTVarjoModule is compatible with the following hardware:
 
 ## Using The Varjo Module
 
-To use your Varjo with VRChat, you will need to use one of two modules with the VRCFaceTracking software:
+To use Varjo eye tracking with VRChat, go to the Module Registry and select the VRCFTVarjoModule. Click the install button at the bottom of the window. Once installed, you will need to restart VRCFaceTracking for the module to be loaded.
 
-- [M3ga's](https://github.com/m3gagluk/VRCFTVarjoModule) is considered to be the more "stable" option, but only has binary blinking (eyes are fully open and closed)
-- [Chickenbread's](https://github.com/Chickenbreadlp/VRCFTVarjoModule) is a experimental fork of M3ga's module. It supports variable eye openness available in newer Varjo SDK versions
-
-For more information on modules and how to use them, see [Modules](./modules.mdx).
-
-:::warning
-You MUST unblock the VRCFTVarjoModule.dll file after downloading it. This can be done by right-clicking the VRCFTVarjoModule.dll file, selecting "Properties", and then selecting the "Unblock" button.
-If you do not see this option, you do not need to worry about this step.
-:::
 <div style={{
     width: '50%',
     height: 'auto',
     margin: 'auto',
     display: 'block'
 }}>
-    <img src={require("./img/varjo/varjo_unblock_instructions.png").default} alt="varjo unblock instructions" />
+    <img src={require("./img/varjo/varjo_install.png").default} alt="varjo install" />
 </div>
 
-Assuming there are no connection issues with the hardware, the connection hardware components should be initialized by VRCFT after a few seconds.
+Assuming there are no connection issues with the hardware, eye tracking should be initialized by VRCFaceTracking after a few seconds.
 
 ### Calibrating Eye Tracking
 
@@ -65,12 +56,15 @@ Additionally, you can perform a 5-point calibration from the leftmost tab in the
     margin: 'auto',
     display: 'block'
 }}>
-    <img src={require("./img/varjo/varjo_unblock_instructions.png").default} alt="varjo unblock instructions" />
+    <img src={require("./img/varjo/varjo_calibrate_instructions.png").default} alt="varjo calibrate instructions" />
 </div>
-Eye tracking calibration is not required to be performed frequently, but should be done after the initial Varjo Base software installation, after a change to the headset (i.e. change the facial interface), or when switching the headset between users.
 
 Start calibration by making sure "Allow eye tracking" is enabled in the System tab, then hit the "Calibrate eye tracking" button in the app. Follow the in-app instructions to finish calibrating the eye gaze tracking.  
 
+:::note
+Eye tracking calibration is not required to be performed frequently, but should be done after the initial Varjo Base software installation, after a change to the headset (i.e. change the facial interface), or when switching the headset between users.
+:::
+
 ## Uninstalling The VRCFTVarjoModule
 
-To uninstall The VRCFTVarjoModule, navigate to `%\AppData\Roaming\VRCFaceTracking\CustomLibs` and delete the file called VRCFTVarjoModule.dll.
+To uninstall The VRCFTVarjoModule, go to the Module Registry, select VRCFTVarjoModule and click the uninstall button at the bottom. Additionally, you can navigate to `%\AppData\VRCFaceTracking\CustomLibs` and delete the file called `VRCFTVarjoModule.dll`.
