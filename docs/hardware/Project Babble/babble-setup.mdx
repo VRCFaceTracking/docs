@@ -1,8 +1,17 @@
-# Project Babble (Face Tracking)
+---
+sidebar_position: 1
+sidebar_label: Project Babble
+---
+
+# Project Babble
 
 ## Summary
 
 [Project Babble](https://github.com/SummerSigh/ProjectBabble) is an open-source software project aiming to bring accessible face-tracking to PCVR headsets.
+
+:::caution
+To clarify, Project Babble provides only lower face tracking, not eye tracking. Now that that's said, read on!
+:::
 
 ## Set-up
 
@@ -10,12 +19,16 @@ Setting up Project Babble is fairly simple. Please read carefully to avoid any i
 
 :::note
 This guide assumes you have Project Babble installed, be it a release or the source code.
-It also assumes you have a compatible camera device. A standard webcamera will work, but you can also use a phone, etc.
+It also assumes you have a compatible camera device. A standard webcam will work, but you can also use a phone, etc.
+:::
+
+:::info
+Fun fact! you can use Project Babble with the HP Reverb G2 Omnicept lower face camera!
 :::
 
 ### Installation
 
-Start by mounting your camera underneath your headset. The camera should be facing you, and should be able to see your face clearly. There is no "right" way to do this, feel free to experiment with different placements. Plug your camera into your headset's USB port, if you have one. If you don't, you can use a USB extension cable to plug it into your PC, or use a wireless camera.
+Start by mounting your camera underneath your headset. The camera should be facing you, and should be able to see your face clearly. There is no "right" way to do this, feel free to experiment with different placements. Plug your camera into your headset's USB port; If you don't have one you can use a USB extension cable or a wireless camera.
 
 Next, install the [latest release](https://github.com/SummerSigh/ProjectBabble/releases/latest) of Project Babble. You may need to define an exception in your antivirus software for this to run optimally. 
 
@@ -27,7 +40,7 @@ Finally, install the VRCFT-Babble module. You can download this from the VRCFace
     margin: 'auto',
     display: 'block'
 }}>
-    <img src={require("./img/babble/babble_install.png").default} alt="babble install" />
+    <img src={require("../img/babble/babble_install.png").default} alt="babble install" />
 </div>
 
 ## Using The VRCFT-Babble Module
@@ -40,7 +53,7 @@ Open the Project Babble application. The application should automatically update
     margin: 'auto',
     display: 'block'
 }}>
-    <img src={require("./img/babble/babble_startup.png").default} alt="babble startup" />
+    <img src={require("../img/babble/babble_startup.png").default} alt="babble startup" />
 </div>
 
 After clicking start, VRFaceTracking should start to listen to incoming face data. It will relay this information into VRChat.
