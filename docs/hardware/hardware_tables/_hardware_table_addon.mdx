@@ -1,3 +1,5 @@
+import Link from '@docusaurus/Link';
+
 <table>
 <thead>
   <tr>
@@ -8,7 +10,16 @@
 <tbody>
   <tr>
     <td>HTC VIVE</td>
-    <td><a href="../hardware/VIVE/face-tracker" target="_blank">Vive Facial Tracker</a></td>
+    <td><Link to="../hardware/VIVE/face-tracker" target="_blank" rel="noopener noreferrer">Vive Facial Tracker</Link></td>
   </tr>
 </tbody>
 </table>
+
+<!-- docusaurus recommends using the Link component instead of plain a href...-->
+
+<!-- example using useBaseUrl to hardcode :p 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+<tr>
+  <td>HTC VIVE</td>
+  <td><Link to={useBaseUrl('docs/hardware/VIVE/face-tracker')} target="_blank" rel="noopener noreferrer">Vive Facial Tracker</Link></td>
+</tr> -->
