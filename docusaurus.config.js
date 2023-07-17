@@ -9,6 +9,7 @@ const config = {
   title: 'VRCFaceTracking',
   tagline: '"Trust me it\'s not even that hard"',
   favicon: 'img/favicon.ico',
+  trailingSlash: false,
   customFields: {
     discord: {
       label: "Discord",
