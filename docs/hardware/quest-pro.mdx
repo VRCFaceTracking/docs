@@ -1,4 +1,8 @@
 import {PageCard} from '@site/src/components/Cards.tsx'
+import {TroubleShootTable} from '@site/src/components/Utils.tsx'
+import ReactPlayer from 'react-player'
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Quest Pro
 
@@ -15,17 +19,25 @@ Note that native Eye Tracking support is now in open beta for the Quest version 
 
 ## Setup
 
+:::info
+While an ALXR module exists, Korejan has not released it yet. This page will only cover the Oculus Link/Airlink method.
+:::
 :::warning
-Currently available video tutorials for VRCFaceTracking Quest Pro setup are outdated and not meant for VRCFT5.0+!!!
+There is currently **no way** to use Virtual Desktop with face tracking. VD simply just doesn't access the face tracking API and it seems pretty low priority on the VD developer's list of priorities.
 :::
 
 The Quest Pro currently has 1 readily available face-tracking compatible PCVR connection methods:
 
 - Oculus Link (or Airlink)
 
-:::info
-Currently, the ALXR module is not yet available for VRCFT5.0, though Korejan is working very hard on it and is roadblocked by a feature of VRCFaceTracking not being ready yet!
-:::
+Follow all the sub-sections: [Enable Developer Mode on the Headset](#enable-developer-mode-on-the-headset), [Enable Eye and Face Tracking on the Headset](#enable-eye-and-face-tracking-on-the-headset), and [Oculus Link/Airlink PC Setup](#oculus-linkairlink-pc-setup) to complete setup.
+
+Prefer a video? Community member Ninka has graciously created another tutorial video for the Quest Pro and VRCFT 5.0+ that goes over the entire setup procedure,
+including the VRCFT module installation.
+
+<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+    <ReactPlayer controls url='https://www.youtube.com/watch?v=Keh__Lw7dEk'/>
+</div>
 
 <!-- The user is free to choose whatever method they prefer more. ALXR is an open-source project and thus has many for features and customizability in the PCVR connection as compared to Airlink, but also has more bugs or quirks.
 Oculus Link/Airlink is Meta’s own PCVR streaming solution, and is generally more straight-forward to set up and network stable, but also is limited in customization.
@@ -33,7 +45,7 @@ Oculus Link/Airlink is Meta’s own PCVR streaming solution, and is generally mo
 In both cases the user is expected to have the VR PC and the Quest Pro on the same network, with the PC ideally connected to the network via ethernet cable. 
 You can learn more about improving your Quest PCVR streaming experience with the many guides available online.  -->
 
-### Enabling Developer Mode on the Headset
+### Enable Developer Mode on the Headset
 
 Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-quest/enable-developer-mode
 
@@ -46,7 +58,7 @@ Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-qu
 
 ![Developer Mode](img/quest/dev-mode.png)
 
-### Enabling Eye and Face Tracking on the Headset
+### Enable Eye and Face Tracking on the Headset
 
 1. Open up the Settings in your Quest Pro headset, and navigate to "Movement Settings"
 2. Select the "Natural Facial Expressions" tab on the left, then Enable Natural Facial Expressions
@@ -56,7 +68,7 @@ Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-qu
 ### Oculus Link/Airlink PC Setup
 
 1. [**MAKE SURE YOUR HEADSET IS IN DEVELOPER MODE**](#enabling-developer-mode-on-the-headset)
-2. [Enable Headset Eye and Face Tracking](#enabling-eye-and-face-tracking-on-the-headset)
+2. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
 :::warning
 Do **not** skip these steps. Please follow the instructions for setting the headset to developer mode using the mobile app before proceeding. 
 Even if you think it is in developer mode already, **follow the instructions anyways**.
@@ -74,6 +86,7 @@ You can try enabling `Passthrough over Oculus Link` but that *may* cause issues.
 If you do not see these options, you did not follow the previous steps correctly.
 :::
    ![Oculus PC app Beta Tab](img/quest/oculus_pc_app_beta.png)
+7. PC and Headset setup complete! Please continue to [Modules](#modules) for which VRCFT module to install to use the Quest Pro with VRCFT.
 
 <!-- ### ALVR/ALXR Setup
 
@@ -120,9 +133,10 @@ Otherwise if using Oculus Link/Airlink for PCVR streaming, either module will wo
 
 <!-- We'll bring the neat pagecards back once module pages become a thing -->
 
-Install the **"QuestProOpenXRTrackingModule"** from the [VRCFaceTracking Module Registry](../vrcft-software/vrcft.mdx#module-registry).
+Install the **"QuestProOpenXRTrackingModule"** from the <Link to={useBaseUrl('docs/vrcft-software/vrcft#module-registry')}  target="_blank" rel="noopener noreferrer">VRCFaceTracking Module Registry</Link>
 
-[QuestProOpenXRTrackingModule source repository](https://github.com/regzo2/VRCFaceTracking-QuestProOpenXR) (Currently maintained by Regzo2 / Azmidi / "Mitchell Moment")
+Interested in the source code? Check out the [QuestProOpenXRTrackingModule source repository](https://github.com/regzo2/VRCFaceTracking-QuestProOpenXR)
+(Currently maintained by Regzo2 / Azmidi / "Mitchell Moment")
 
 <!-- <div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
     <PageCard name="TofuLemon's OpenXR Module" url="../intro" description="Creates a psuedo-headless OpenXR application to pull data from Facebook's Eye/Face OpenXR extensions"/>
@@ -130,17 +144,26 @@ Install the **"QuestProOpenXRTrackingModule"** from the [VRCFaceTracking Module 
 
 <!-- <PageCard name="Korejan's ALXR Module" url="../intro" description="Creates a psuedo-headless ALXR (OpenXR) instance to pull data from OpenXR extensions"/> -->
 
-Follow the module installation instructions in the respective module pages, and learn about the avalible PCVR streaming methods by continuing down to [Setup](#setup)!
+<!-- Follow the module installation instructions in the respective module pages, and learn about the avalible PCVR streaming methods by continuing down to [Setup](#setup)! -->
 
 ## Tips and Tricks
 
-### [Aligning Play Spaces with SteamVR Lighthouse-tracked Devices](https://github.com/bdunderscore/OpenVR-SpaceCalibrator/tree/continuous-cal)
+### Aligning Play Spaces with SteamVR Lighthouse-tracked Devices
+
+To use Vive trackers or other SteamVR Lighthouse tracked devices with the Quest Pro, you'll need to use **OpenVR-SpaceCalibrator**.
+While the [original from pushrax](https://github.com/pushrax/OpenVR-SpaceCalibrator) will work, many "Mixed VR" users have found the continous calibration forks
+to be generally better, such as [bdunderscore's fork](https://github.com/bdunderscore/OpenVR-SpaceCalibrator/tree/continuous-cal), or more recently,
+[ArcticFox8515's fork](https://github.com/ArcticFox8515/OpenVR-SpaceCalibrator) of bdunderscore's fork.
+
+We would recommend using ArcticFox8515's fork for now as it is the most recent and improves upon the original. 
 
 ### Using Index Controllers with the Quest Pro with Link/Airlink
 
 Download these [Powershell Scripts (Discord Link)](https://discord.com/channels/849300336128032789/1033745772979699775/1056009844701806643)
 
 To run, right-click the file -> `"Run with Powershell"`
+
+You may have problems with running Powershell scripts downloaded from the internet (for good reason!). You can learn about [getting around Microsoft's default script security](https://adamtheautomator.com/run-powershell-script/).
 
 <!-- ### Using Index Controllers with the Quest Pro with ALVR/ALXR
 
@@ -150,28 +173,112 @@ The customizability of ALVR allows a few options in this regard. All following m
 - Option 2: Set the Controller emulation to "HTC Vive Tracker". This allows real controllers such as the Index Controllers to take precedence in SteamVR, and allow
   for using the Quest Pro controllers for manual playspace calibration. -->
 
-## Common Issues (and How to Solve Them)
+## Troubleshooting
 
-<!-- TODO: turn these into a table.. -->
+### NO MODULES LOADED
 
-- **When using Oculus Link/Airlink, I cannot see SteamVR because it is blocked still running "VRCFaceTracking"**
-  - Cause: The nature of the way VRCFaceTracking must pull data from the Oculus OpenXR runtime is inherently hacky, effectively running 2 VR programs at once.
-  - Solution: Try switching up the program startup sequence, starting VRCFaceTracking then SteamVR through the desktop Steam app (not through the Oculus Dash in the headset) or vice versa.
-               An alternative solution is to use [OculusKiller](https://github.com/LibreQuest/OculusKiller) to avoid dealing with the Oculus Dash entirely.
+Whenever you see this, the cause is because the currently installed module failed to initialize.
+Switch to the VRCFT Output Log tab and find the relevant error message.
+
+<details>
+  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to GetFaceExpressionWeightsFB</summary>
+  <TroubleShootTable
+  cause="There is some permission in the setup that was not set correctly.">
+
+  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps before the method split.
+
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to get XrSystemID</summary>
+  <TroubleShootTable
+  cause="There is some permission in the setup that was not set correctly.">
+  
+  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps before the method split.
+  Also make sure that your Quest Pro is actively connected via Link/Airlink before starting VRCFT!
+
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create Face Tracker</summary>
+  <TroubleShootTable
+  cause="There is some permission in the setup that was not set correctly.">
+  
+  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps before the method split.
+  Also make sure that your Quest Pro is actively connected via Link/Airlink before starting VRCFT!
+
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create session" and I am NOT using a laptop / eGPU</summary>
+  <TroubleShootTable
+  cause="There is something preventing an OpenXR session from being created for the Quest Pro">
+  
+  Make sure that you have Oculus set as your OpenXR runtime in the Oculus Desktop app settings.
+  Also make sure that your Quest Pro is actively connected via Link/Airlink before starting VRCFT!
+
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create session" and I AM using a laptop / eGPU</summary>
+  <TroubleShootTable
+  cause="There is something preventing an OpenXR session from being created for the Quest Pro, possibly related to Oculus trying to default init on laptop's iGPU">
+  
+  Make sure that you have Oculus set as your OpenXR runtime in the Oculus Desktop app settings.
+  Also make sure that your Quest Pro is actively connected via Link/Airlink before starting VRCFT.
+
+  Try to turn off using integrated GPU through your laptop's BIOS or control center program.
+
+  Alternatively, use Windows Settings to force VRCFaceTracking to "High Performance" / use discrete GPU.
+
+<div style={{
+    width: '90%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/quest/windows_set_custom_graphics_settings.png").default} alt="Set Windows Custom Graphics Settings" />
+</div>
+
+  </TroubleShootTable>
+</details>
+
+### General Problems
+
+<details>
+  <summary>When using Oculus Link/Airlink, I cannot see SteamVR because it is blocked still running "VRCFaceTracking"</summary>
+  <TroubleShootTable
+  cause="The nature of the way VRCFaceTracking must pull data from the Oculus OpenXR runtime is inherently hacky, effectively running 2 VR programs at once.">
+    If you started SteamVR first, you can simply switch back to SteamVR in the Oculus Dash.
+    You can also try switching up the program startup sequence, starting VRCFaceTracking then SteamVR through the desktop Steam app (not through the Oculus Dash in the headset).
+    Yet another solution is to use <Link to="https://github.com/LibreQuest/OculusKiller">OculusKiller</Link> to avoid dealing with the Oculus Dash entirely.
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>"I'm <i>not getting any visible errors anywhere</i> and the Module loads, but VRC only receives 0 values for all parameters (and VRC loaded a non-zero number of parameters from config)"</summary>
+  <TroubleShootTable
+  cause="Meta Moment">
+  Try toggling the eye and face tracking enables in the headset settings, and restarting your headset completely.
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>"Oculus Link/Airlink: My playspace calibration resets if I take off the headset"</summary>
+  <TroubleShootTable
+  cause="When the Quest headset enters sleep mode after detecting you have taken off the headset, it loses it's original reference space to which the SteamVR space was calibrated to.">
+  Download the <Link to="https://developer.oculus.com/documentation/unity/ts-odh/">Meta Quest Developer Hub</Link> and follow the instructions for <i>Connect Headset to MQDH</i> and <i>Disable proximity sensor and guardian</i>.
+  This will prevent the headset from entering sleep, but does mean your headset stays fully active even if you take it off.
+  </TroubleShootTable>
+</details>
+
+Don't see your problem here? Think your problem might be unrelated to the module but something else? Take a look at the general VRCFT troubleshooting page.
 
 <!-- - **ALXR/ALVR methods: "[ERROR] No connection could be made because the target machine actively refused it"**
   - Cause: The ALXR VRCFT server is not running.
   - Solution: Usually the problem is related to [missing a step](#oculus-linkairlink-setup)
      and the ALXR log may make it clear as to what step exactly was forgotten. -->
-
-- **OpenXR VRCFT module method: "[QuestOpenXR] Failed to GetFaceExpressionWeightsFB"**
-  - Cause: There is some permission in the setup that was not set correctly.
-  - Solution: *Carefully* re-run through [the setup](#oculus-linkairlink-setup), paying careful attention to all the steps before the method split.
-
-- **"I 100% made sure I followed all setup correctly, and I'm *not getting any visible errors anywhere*, but VRC only receives 0 values for all parameters (and VRC loaded a non-zero number of parameters from config)"**
-  - Solution: Try toggling the eye and face tracking enables in the headset settings.
-
-- **Oculus Link/Airlink: My playspace calibration resets if I take off the headset.**
-  - Cause: When the Quest headset enters sleep mode after detecting you have taken off the headset, it loses it's original reference space to which the SteamVR space was calibrated to.
-  - Solution: Download the [Meta Quest Developer Hub](https://developer.oculus.com/documentation/unity/ts-odh/) and follow the instructions for *Connect Headset to MQDH* and *Disable proximity sensor and guardian*.
-     This will prevent the headset from entering sleep, but does mean your headset stays fully active even if you take it off.
