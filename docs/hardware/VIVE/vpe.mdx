@@ -1,26 +1,26 @@
-# Vive Pro Eye
-
 import {Highlight} from '@site/src/components/Utils.tsx'
 import {PageCard} from '@site/src/components/Cards.tsx'
 import ReactPlayer from 'react-player'
+
+# Vive Pro Eye
 
 ## Overview
 
 The Vive Pro Eye provides eye gaze tracking as well as detailed eye expression tracking.
 It is a *built-in* eye-tracking device (no additional hardware setup required).
-Eye tracking data is accessed through [Vive's SRanipal interface](sranipal).
+Eye tracking data is accessed through [Vive's SRanipal interface](./sranipal.mdx).
 
 ## Setup
 
 1. Follow the Vive hardware setup instructions that came the headset. Make sure that the headset cable is not damaged, and ideally, plug in the USB connection from the linkbox to a USB 3.0 port (usually *blue* internal connector tab)
-2. Install the [SRanipal runtime software](sranipal#software)
+2. Install the [SRanipal Runtime Software](./sranipal.mdx#set-up)
 3. Calibrate the eye tracking with the SRanipal Vive Pro Eye Calibration tool in SteamVR
 
 ## Module
 
-Install the **"SRanipalTrackingModule"** from the [VRCFaceTracking Module Registry](../../vrcft-software/vrcft.mdx#module-registry).
+Install the **"SRanipalTrackingModule"** from the VRCFaceTracking Module Registry](../../vrcft-software/vrcft.mdx#module-registry).
 
-[SRanipalTrackingModule source repository](https://github.com/VRCFaceTracking/SRanipalTrackingModule)
+Interested in the source code? Check out the [SRanipalTrackingModule source repository](https://github.com/VRCFaceTracking/SRanipalTrackingModule)
 
 <!-- <div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
     <PageCard name="SRanipal Module" url="../../vrcft-software/modules/sranipal_module" description="Use Vive's SRanipal Runtime to access eye tracking data from the Vive Pro Eye"/>
