@@ -156,16 +156,13 @@ In case SRanipal seems to have some issues (especially after having mixed differ
 
 ## Troubleshooting
 
-These troubleshooting options will only cover SRanipal installation / general issues.
-You may find more troubleshooting steps specifically related to your Vive headset/hardware on its documentation respective page.
+You may find more troubleshooting steps specifically related to your Vive headset/hardware on its respective page.
 
 <details>
   <summary>Error 1001!?!</summary>
   <TroubleShootTable
   cause="Vive software being Vive software">
-
-  Follow the workarounds listed at the [instructions for the 1.3.1.1 installer](#installing-via-v1311-installer).
-
+  Follow the workarounds listed at the <Link to="#installing-via-v1311-installer">instructions for the 1.3.1.1 installer</Link>.
   </TroubleShootTable>
 </details>
 
@@ -182,6 +179,25 @@ You may find more troubleshooting steps specifically related to your Vive headse
   </TroubleShootTable>
 </details>
 
+<details>
+  <summary>Cannot right-click the SRanipal tray icon and the eyes and face stay dark/blue</summary>
+  <TroubleShootTable
+  cause="You are using a version of SRanipal that requires a Vive Pro headset connected, and you do not have a Vive Pro headset connected.">
+  Uninstall Vive Console and <Link to="#installing-via-v1311-installer">install an older version of SRanipal</Link>.
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>I have a Vive Facial Tracker connected to my headset but the SRanipal tray icon robot's mouth stays dark!</summary>
+  <TroubleShootTable
+  cause="SRanipal cannot initialize the Vive Facial Tracker for some reason, usually related to a USB connection problem.">
+  Please refer to the <Link to={useBaseUrl('docs/hardware/VIVE/face-tracker')}>Vive Facial Tracker</Link> page on why there might be a connection issue, and
+  verify if it is a connection issue by plugging in the Facial Tracker directly into a USB-C port on your computer.
+
+  Another (rarer) possibility is that your Windows Settings has disabled any app from accessing any <i>Camera</i> device.
+  Make sure that VRCFT can access camera devices!
+  </TroubleShootTable>
+</details>
 
 <!-- :::info
 If you're having performance issues and are using the Vive Pro Eye and/or the Vive Facial Tracker, try downgrading to SRanipal version 1.3.1.1
