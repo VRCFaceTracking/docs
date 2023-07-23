@@ -1,16 +1,58 @@
-# iPhone ARKit 
+# iPhone ARKit
+
+An iPhone with a TrueDepth camera or A12 Bionic Chip can send ARKit Face Tracking (“PerfectSync”) data to VRCFT for use in VRChat.
+Due to the nature of how Apple’s ARKit Face Tracking works, the iPhone cannot track only the bottom of your face while you are wearing a VR headset.
+Thus, this module is mostly intended for use in VRC Desktop, or by avatar creators wanting to test their avatars' face tracking features in Blender or Unity without using a VR headset.
+
+## Setup
+
+You need an IPhone X/XS/XR or newer, 12.9-inch IPad Pro 3rd gen or newer, or 11-inch IPad Pro 1st gen or newer to make use of this module.
+This guide will walk through using the *Live Link Face* iOS app from Unreal and the corresponding VRCFT tracking module.
 
 :::info
-Document still under construction
+Ensure that your Apple device is connected to the same network as your computer!
 :::
 
-An iPhone with a TrueDepth camera or A12 Bionic Chip can send ARKit Face Tracking (“PerfectSync”) data to VRCFT for use in VRChat. 
-Due to the nature of how Apple’s ARKit Face Tracking works, this method of face tracking is intended only for desktop mode, as the iPhone cannot track only the bottom of your face while you are wearing a VR headset.
+1. Install the app "[Live Link Face](https://apps.apple.com/us/app/live-link-face/id1495370836)" by Unreal Engine on your Apple device
+2. Start VRCFaceTracking and check [Module](#module) for how to install the LiveLink module
+3. Go to the Output tab in VRCFT and look for the message printing our your computer's *local IP address*
+   - You may need to check that the IP address is the local IP for the shared network, and not for any other networks your computer may be connected to (e.g. Hamachi)
+4. Open the Live Link Face app on the Apple device, tap the gear in the top left to open settings, then tap the **Live Link** option under *Streaming*, **not** OSC Server under Remote Control!
+5. Add your computer's local IP address obtained in step 3 to the list of *Targets*
 
-## Setup 
+<img
+    src={require('./img/iphone/livelink_setting.png').default}
+    alt="Example Live Link Streaming setting with target PC IP address"
+    style={{width: '40%', margin: "auto", display: "flex"}}
+/>
+
+6. Return to the main screen and tap the **LIVE** button at the top. If it is *green*, the app is streaming data. The module should successfully initialize and stay connected.
+7. VRCFT is now ready to supply face tracking data from the module.
 
 ## Module
 
-:::warning
-Module not yet updated for VRCFT5.0 update.
-:::
+Install the **"Live Link"** from the [VRCFaceTracking Module Registry](../vrcft-software/vrcft.mdx#module-registry).
+
+Interested in the source code? Check out the [LiveLink module source repository](https://github.com/kusomaigo/VRCFaceTracking-LiveLink) (Currently maintained by tkya / kusomaigo)
+
+## Tips
+
+### Reducing Latency by connecting the phone directly to Router/PC
+
+Instead of using a Wifi connection for the data stream from the Apple device to the PC, you can use a direct ethernet connection instead.
+A simple Lightning to Ethernet and Power adapter such as [this one](https://www.amazon.com/IVSHOWCO-Lightning-Ethernet-Certified-Charging/dp/B09HT77D1D)
+will allow the Apple device to be connected to your local network router/switch with ethernet adapter and simultaneously charge.
+You can also use equivalent USB-C adapters for the iPad Pros.
+
+A even more direct connection can be made by directly connecting the Apple device to the PC (assuming it has more than 1 network port) using a ethernet crossover cable or adapter.
+You will want to set a static IP address for the PC for that ethernet adapter. Using the Apple device as a USB-tethered hotspot may also work with a similar static IP network setup.
+
+### Keep the iPhone Cool
+
+When using the ARKit face tracking on the iPhone while simultaneously charging it, the iPhone may get hot and start thottling itself, affecting the quality of the face capture.
+Getting an active cooler for the iPhone (or iPad!) can help prevent this overheating and let you stream face tracking data uninterrupted.
+
+<!-- ### Head Tracking for VTubing in VRChat
+
+VRCFaceTracking does not provide head rotation/position data to VRChat, so the end result in VRCHat desktop mode may seem less "alive" than dedicated VTubing applications.
+One potential "VTubing" use of this module is to use VRChat as simply a 3D environment, and use a tracker for head tracking  -->
