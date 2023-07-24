@@ -23,6 +23,25 @@ export function CustomLink({children, to, append = ""}) {
   )
 }
 
+export function TroubleShootTable({children, cause}) {
+  return (
+    <div>
+      <table>
+      <tbody>
+        <tr>
+          <td><strong>Cause</strong></td>
+          <td style={{textAlign: 'left', width: '100vh'}}>{cause}</td>
+        </tr>
+        <tr>
+          <td><strong>Solution</strong></td>
+          <td style={{textAlign: 'left', width: '100vh'}}>{children}</td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+  )
+}
+
 export const TextColor = ({children, color}) => (
   <span
       style={{
@@ -43,4 +62,3 @@ export const Highlight = ({children, color}) => (
   {children}
 </span>
 );
-
