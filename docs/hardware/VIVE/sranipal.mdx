@@ -42,7 +42,7 @@ There are three methods of installing SRanipal, in order of most to least recomm
 3. Install Vive Console (avaliable on Steam or Vive website)
 
 :::warning
-Version 1.3.2.0 is known to unnecessarily hog computer resources. We generally not recommend using v1.3.2.0.
+Version 1.3.2.0 is known to unnecessarily hog computer resources. We generally don't recommend using v1.3.2.0.
 :::
 
 :::warning
@@ -52,14 +52,14 @@ Versions of SRanipal including and after 1.3.6.10 (any version currently package
 :::warning
 Versions of SRanipal including and after **1.3.6.5** will generate *an unreasonable* amount of spam in it's EyeModule log when eye tracking is initialized.
 Do not leave VRCFaceTracking unnecessarily running in the background for long periods of time as the size of the log file can easily get into the range of
-tens to hundreds **gigabytes** if left unchecked.
+tens to hundreds of **gigabytes** if left unchecked.
 Until this is resolved, we recommend users use older versions of SRanipal if possible.
 :::
 
 The recommended version to use as of now (May 2023):
 
-- If you aren't using a Focus 3 (basically everyone), should use the [v1.3.1.1 installer](#installing-via-v1311-installer)
-- Focus 3 users must use the Vive Console version of SRanipal
+- If you aren't using a Focus 3 (basically everyone), you should use the [v1.3.1.1 installer](#installing-via-v1311-installer)
+- Focus 3 users **must** use the Vive Console version of SRanipal
 
 ### Installing Via v1.3.1.1 Installer
 
@@ -113,6 +113,7 @@ Alternatively, you can
 
 1. Download the [SRanipal v1.3.6.5 .zip (Discord Link)](https://discord.com/channels/849300336128032789/915075185328152606/1017600042837753906)
 2. Unzip the folder and run ``DriverInstaller.msi``
+3. Run the following command in a Windows terminal opened in unzipped SRanipal v1.3.6.5 directory: ``New-Service -Name "SRanipalService" -BinaryPathName "SRanipalService.exe" -StartupType Automatic -Description "SRanipal Service"``
 
 An alternative installation method would be to run the v1.3.1.1 (or v.1.3.2.0) installer, then copy the contents of the v1.3.6.5 version into the older version's installation directory.
 This will keep the service intact while using the newer runtime.
@@ -121,7 +122,11 @@ This will keep the service intact while using the newer runtime.
 
 1. It is recommended to install [Vive Console via Steam](https://store.steampowered.com/app/1635730/VIVE_Console_for_SteamVR/)
 2. After install, run Vive Console once to let it's internal installers run. You never need to run Vive Console again.
-    - Vive Console does take up a lot of space (~1.6Gb), so copying the SRanipal folder (``Steam\steamapps\common\VIVEDriver\App\SRanipal``) out , then uninstalling Vive Console is another avenue. Note that this will require manual registration of the SRanipal service and drivers as the Vive Console uninstall will remove them.
+
+:::note
+Vive Console does take up a lot of space (~1.6Gb), so copying the SRanipal folder (``Steam\steamapps\common\VIVEDriver\App\SRanipal``) out , then uninstalling Vive Console is another avenue. Note that this will require manual registration of the SRanipal service and drivers as the Vive Console uninstall will remove them.
+Refer to the instructions for [installing via v1.3.6.5 .zip](#installing-via-v1365-zip) for how to manually add the SRanipalService.exe service.
+:::
 
 ### Removing LipSyncNotification
 
@@ -162,8 +167,8 @@ Make sure to accept to the user agreement.
 ### Checking Active SRanipal Version
 
 To see what version of SRanipal is currently running, start SRanipal and right click on the little SRanipal robot tray icon, then click "About".
-This should open a small info window containing information like the version of SRanipal, as well as the firmware versions of the detected SRanipal compatible hardware.
-If you can't seem to right-click the SRanipal tray icon, see the relevant detail in [Troubleshooting](#troubleshooting).
+This should open a small info window containing information about the version of SRanipal and the firmware versions of any detected SRanipal-compatible hardware.
+If you can't seem to right-click the SRanipal tray icon, see the relevant point in [Troubleshooting](#troubleshooting).
 
 ### Calibrating Eye Tracking
 
@@ -179,6 +184,21 @@ Start calibration by making sure "Use Eye Tracking" is enabled, then hitting the
 To uninstall SRanipal, uninstall Vive Console (if installed that route) or run the SRanipal installer .exe (v1.3.1.1) and select the "uninstall" option.
 
 In case SRanipal seems to have some issues (especially after having mixed different versions) and the SRanipal installer seems to be unable to uninstall SRanipal, follow [these instructions from Vive Admin C.T.](https://forum.htc.com/topic/5642-sranipal-getting-started-steps/?do=findComment&comment=46845)
+
+1. Open a Windows Terminal (cmd/Powershell/etc.) with Administrator priviledges and run ``sc delete SRanipalService``
+2. Delete the following registry entries using [regedit](https://support.microsoft.com/en-us/windows/how-to-open-registry-editor-in-windows-10-deab38e6-91d6-e0aa-4b7c-8878d9e07b11).
+   You may want to [back up your registry](https://support.microsoft.com/en-gb/topic/how-to-back-up-and-restore-the-registry-in-windows-855140ad-e318-2a13-2829-d428a2ab0692) before performing these edits.
+
+   - ``\HKEY_LOCAL_MACHINE\SOFTWARE\VIVE\SRWorks\``
+   - ``\HKEY_CURRENT_USER\Software\VIVE\SRWorks\``
+   - `` \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SranipalService\``
+
+3. Delete all the installed SRanipal files
+
+   - If installed with standalone installer (1.3.1.1), the installation directory should be at ``C:\Program Files\VIVE\SRanipal``
+   - If you installed Vive Console, the files would be at ``[VIVE Console Installation directory]\App\SRanipal`` if for some reason this still exists. Uninstall Vive Console!
+
+After completing these steps, your system should be 100% free of SRanipal and you can attempt a clean install again.
 
 ## Troubleshooting
 
