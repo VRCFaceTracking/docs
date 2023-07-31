@@ -1,5 +1,5 @@
 import {PageCard} from '@site/src/components/Cards.tsx'
-import {TroubleShootTable} from '@site/src/components/Utils.tsx'
+import {TroubleShootTable, CustomLink, TextColor} from '@site/src/components/Utils.tsx'
 import ReactPlayer from 'react-player'
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -50,7 +50,7 @@ You can learn more about improving your Quest PCVR streaming experience with the
 Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-quest/enable-developer-mode
 
 1. [Set up a Meta Oculus developer account](https://developer.oculus.com/sign-up/)
-    * A developer account is necessary (for now) as the eye and face OpenXR extensions are currently considered "developer features".
+    * A developer account is ***necessary*** (for now) as the eye and face OpenXR extensions are currently considered "developer features".
    It is rather trivial to apply for and there is no check for being a "real organization".
 2. Install the Oculus ("Meta Quest") app on mobile device (if it isn’t already) and login with your (developer) Oculus account. Register your headset in the app.
 3. In the Oculus mobile App, tap Menu at the bottom right, then Devices. Select your Quest Pro, then go to `Settings -> Developer Mode` and set the Developer Mode switch to enabled.
@@ -181,22 +181,29 @@ Whenever you see this, the cause is because the currently installed module faile
 Switch to the VRCFT Output Log tab and find the relevant error message.
 
 <details>
-  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to GetFaceExpressionWeightsFB</summary>
+  <summary>Error in headset: <code>com.oculus.bodyapiservice keeps stopping</code></summary>
   <TroubleShootTable
-  cause="There is some permission in the setup that was not set correctly.">
+  cause="You do not have developer mode enabled on both the PC Oculus program and for the headset from the Oculus phone app.">
 
-  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps before the method split.
+  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps.
+  <br/>
+  Double-check that "Developer Runtime Features" is enabled in the Oculus PC program and that <b>Developer Mode is switched on for the Quest Pro in the Oculus phone app</b>.
+  If you can't find these options, your Oculus/Meta account is not a Meta Quest Developer account, or may need to be re-verified as a Developer account.
+  Log in to or sign up at the <Link to="https://developer.oculus.com/">Meta Quest Developer Center</Link> to verify/resolve developer account status.
 
   </TroubleShootTable>
 </details>
 
 <details>
-  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to get XrSystemID</summary>
+  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to GetFaceExpressionWeightsFB</summary>
   <TroubleShootTable
   cause="There is some permission in the setup that was not set correctly.">
-  
-  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps before the method split.
-  Also make sure that your Quest Pro is actively connected via Link/Airlink before starting VRCFT!
+
+  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps.
+  <br/>
+  Double-check that "Developer Runtime Features" is enabled in the Oculus PC program and that <b>Developer Mode is switched on for the Quest Pro in the Oculus phone app</b>.
+  If you can't find these options, your Oculus/Meta account is not a Meta Quest Developer account, or may need to be re-verified as a Developer account.
+  Log in to or sign up at the <Link to="https://developer.oculus.com/">Meta Quest Developer Center</Link> to verify/resolve developer account status.
 
   </TroubleShootTable>
 </details>
@@ -204,11 +211,28 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
 <details>
   <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create Face Tracker</summary>
   <TroubleShootTable
-  cause="There is some permission in the setup that was not set correctly.">
+  cause="There is some permission in the setup that was not set correctly or Quest Pro headset is not connected.">
   
-  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps before the method split.
+  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps.
+  <br/>
+  Double-check that "Developer Runtime Features" is enabled in the Oculus PC program and that <b>Developer Mode is switched on for the Quest Pro in the Oculus phone app</b>.
+  If you can't find these options, your Oculus/Meta account is not a Meta Quest Developer account, or may need to be re-verified as a Developer account.
+  Log in to or sign up at the <Link to="https://developer.oculus.com/">Meta Quest Developer Center</Link> to verify/resolve developer account status.
+  <br/><br/>
   Also make sure that your Quest Pro is actively connected via Link/Airlink before starting VRCFT!
 
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to get XrSystemID</summary>
+  <TroubleShootTable
+  cause="There is some permission in the setup that was not set correctly or Quest Pro headset is not connected.">
+  
+  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps.
+  Doubly make sure that you have Oculus set as your OpenXR runtime in the Oculus Desktop app settings.
+  <br/><br/>
+  Also make sure that your Quest Pro is actively connected via Link/Airlink before starting VRCFT!
   </TroubleShootTable>
 </details>
 
@@ -217,9 +241,10 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
   <TroubleShootTable
   cause="There is something preventing an OpenXR session from being created for the Quest Pro">
   
-  Make sure that you have Oculus set as your OpenXR runtime in the Oculus Desktop app settings.
+  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps.
+  Doubly make sure that you have Oculus set as your OpenXR runtime in the Oculus Desktop app settings.
+  <br/><br/>
   Also make sure that your Quest Pro is actively connected via Link/Airlink before starting VRCFT!
-
   </TroubleShootTable>
 </details>
 
@@ -276,7 +301,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
   </TroubleShootTable>
 </details>
 
-Don't see your problem here? Think your problem might be unrelated to the module but something else? Take a look at the general VRCFT troubleshooting page.
+Don't see your problem here? Think your problem might be unrelated to the module but something else? Take a look at the [VRCFT software page](../vrcft-software/vrcft.mdx) or search in the <TextColor color="#5763ee">#hardware-software-help</TextColor> forum in the <CustomLink to="discord"/>.
 
 <!-- - **ALXR/ALVR methods: "[ERROR] No connection could be made because the target machine actively refused it"**
   - Cause: The ALXR VRCFT server is not running.
