@@ -67,8 +67,10 @@ The recommended version to use as of now (May 2023):
 2. Run the installer and complete the installation process
 
 :::info
-The installer for v1.3.1.1 has a known failure point during installation: **Error 1001**. It is not entirely clear why it happens.
-All we know is that it is a meaningless, "VIVE Moment" kind of error.
+The installer for v1.3.1.1 has a known failure point during installation: **Error 1001**. It is not entirely clear why it happens
+in **all** of the cases, but most of the time it's because of either another version of
+SRanipal being present on the system, or an uninstall of a previous version
+not finishing properly.
 :::
 
 <div style={{
@@ -80,7 +82,24 @@ All we know is that it is a meaningless, "VIVE Moment" kind of error.
     <img src={require("../img/vive/sranipal/vive_installer_error_1001.png").default} alt="sranipal error 1001" />
 </div>
 
-In case you encounter this error when attempting to install SRanipal v1.3.1.1, you can try working around it:
+In case you encounter this error while attempting to install SRanipal v1.3.1.1,
+try this first:
+
+<details>
+ <summary>Remove existing SRanipal service</summary>
+ <div>
+  <div>
+    <ol>
+      <li>Exit/Finish out of SRanipal installer</li>
+      <li>Open Windows Terminal / Powershell (as admin)</li>
+      <li>run <code>Remove-Service -Name "SRanipalService"</code></li>
+      <li>Retry installing</li>
+    </ol>
+  </div>
+ </div>
+</details>
+
+If this fails as well, proceed with this workaround:
 
 <details>
   <summary>Working around Error 1001</summary>
@@ -98,9 +117,9 @@ In case you encounter this error when attempting to install SRanipal v1.3.1.1, y
   </div>
 </details>
 
-Alternatively, you can
+Finally, failing both of these, you can
 
-1. Attempt [uninstalling sranipal](#uninstalling-sranipal) and seeing if it installs correctly after
+1. Attempt [uninstalling sranipal](#uninstalling-sranipal) and see if it installs correctly after
 2. (Last resort!) Install SRanipal via one of the other options (Vive Console or the v1.3.6.5 zip)
 
 ### Installing Via v1.3.6.5 .zip
