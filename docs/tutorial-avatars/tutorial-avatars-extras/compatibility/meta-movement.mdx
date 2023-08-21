@@ -1,0 +1,111 @@
+---
+sidebar_position: 2
+description: Information about Meta Movement (Quest Pro) face tracking works with Unified Expressions.
+---
+
+import {EditUrl, CustomLink} from '@site/src/components/Utils.tsx'
+import FilterTable from '@site/src/components/FilterTable.tsx';
+
+# Meta Movement (Quest Pro)
+
+***
+
+Meta provides a face tracking standard for Quest Pro in their Movement SDK, 
+with the blendshapes for it often referred to as FACS, Quest Pro Face Tracking, 
+and Movement respectively.
+
+The following table shows how Movement face tracking translates to Unified Expressions.
+
+### Movement Comparison
+
+<FilterTable
+  title={'Standard Comparison Table'}
+  headers={['Unified', 'Unified Blended', 'Movement (Quest Pro)']}
+  omitHeaders={['Unified', 'Movement (Quest Pro)']}
+  disabledHeaders={['Unified Blended']}
+  rows={[
+    ['EyeLookUpRight', '~', 'EYES_LOOK_UP_R'],
+    ['EyeLookDownRight', '~', 'EYES_LOOK_DOWN_R'],
+    ['EyeLookInRight', '~', 'EYES_LOOK_IN_R'],
+    ['EyeLookOutRight', '~', 'EYES_LOOK_OUT_R'],
+    ['EyeLookUpLeft', '~', 'EYES_LOOK_UP_L'],
+    ['EyeLookDownLeft', '~', 'EYES_LOOK_DOWN_L'],
+    ['EyeLookInLeft', '~', 'EYES_LOOK_IN_L'],
+    ['EyeLookOutLeft', '~', 'EYES_LOOK_OUT_L'],
+    ['EyeClosedRight', '~', 'EYES_CLOSED_R'],
+    ['EyeClosedLeft', '~', 'EYES_CLOSED_L'],
+    ['EyeSquintRight', '~', 'EYES_SQUINT_R'],
+    ['EyeSquintLeft', '~', 'EYES_SQUINT_R'],
+    ['EyeWideRight', '~', 'EYES_WIDEN_R'],
+    ['EyeWideLeft', '~', 'EYES_WIDEN_L'],   
+    [<>BrowPinchRight<br/>BrowLowererRight</>, 'BrowDownRight', 'BROW_LOWERER_R'],
+    [<>BrowPinchLeft<br/>BrowLowererLeft</>, 'BrowDownLeft', 'BROW_LOWERER_L'],
+    ['BrowInnerUpRight', '~', 'INNER_BROW_RAISER_R'],
+    ['BrowInnerUpLeft', '~', 'INNER_BROW_RAISER_L'],
+    ['BrowOuterUpRight', '~', 'OUTER_BROW_RAISER_R'],
+    ['BrowOuterUpLeft', '~', 'OUTER_BROW_RAISER_L'],
+    ['NoseSneerRight', '~', 'NOSE_WRINKLER_R'],
+    ['NoseSneerLeft', '~', 'NOSE_WRINKLER_L'],
+    ['CheekSquintRight', '~', 'CHEEK_RAISER_R'],
+    ['CheekSquintLeft', '~', 'CHEEK_RAISER_L'],
+    ['CheekPuffRight', '~', 'CHEEK_PUFF_R'],
+    ['CheekPuffLeft', '~', 'CHEEK_PUFF_L'],
+    ['CheekSuckRight', '~', 'CHEEK_SUCK_R'],
+    ['CheekSuckLeft', '~', 'CHEEK_SUCK_L'],
+    ['JawOpen', '~', 'JAW_DROP'],
+    ['MouthClosed', '~', 'LIPS_TOWARD'],
+    ['JawRight', '~', 'JAW_SIDEWAYS_RIGHT'],
+    ['JawLeft', '~', 'JAW_SIDEWAYS_LEFT'],
+    ['JawForward', '~', 'JAW_THRUST'],
+    ['LipSuckUpperRight', '~', 'LIP_SUCK_RT'],
+    ['LipSuckUpperLeft', '~', 'LIP_SUCK_LT'],
+    ['LipSuckLowerRight', '~', 'LIP_SUCK_RB'],
+    ['LipSuckLowerLeft', '~', 'LIP_SUCK_LB'],
+    ['LipFunnelUpperRight', '~', 'LIP_FUNNELER_RT'],
+    ['LipFunnelUpperLeft', '~', 'LIP_FUNNELER_LT'],
+    ['LipFunnelLowerRight', '~', 'LIP_SUCK_RB'],
+    ['LipFunnelLowerLeft', '~', 'LIP_SUCK_LB'],
+    [<>LipPuckerUpperRight<br/>LipPuckerLowerRight</>, 'N/A', 'LIP_PUCKER_R'],
+    [<>LipPuckerUpperLeft<br/>LipPuckerLowerLeft</>, 'N/A', 'LIP_PUCKER_L'],
+    ['MouthUpperUpRight', '~', 'UPPER_LIP_RAISER_R'],
+    ['MouthUpperUpLeft', '~', 'UPPER_LIP_RAISER_L'],
+    ['MouthLowerDownRight', '~', 'LOWER_LIP_DEPRESSOR_R'],
+    ['MouthLowerDownLeft', '~', 'LOWER_LIP_DEPRESSER_L'],
+    [<>MouthCornerPullerRight<br/>MouthCornerSlantRight</>, 'MouthSmileRight', 'LIP_CORNER_PULLER_R'],
+    [<>MouthCornerPullerLeft<br/>MouthCornerSlantLeft</>, 'MouthSmileLeft', 'LIP_CORNER_PULLER_L'],
+    ['MouthFrownRight', '~', 'LIP_CORNER_DEPRESSOR_R'],
+    ['MouthFrownLeft', '~', 'LIP_CORNER_DEPRESSOR_L'],
+    ['MouthStretchRight', '~', 'LIP_STRETCHER_R'],
+    ['MouthStretchLeft', '~', 'LIP_STRETCHER_L'],
+    ['MouthDimplerRight', '~', 'DIMPLER_R'],
+    ['MouthDimplerLeft', '~', 'DIMPLER_L'],
+    ['MouthRaiserUpper', '~', 'CHIN_RAISER_T'],
+    ['MouthRaiserUpper', '~', 'CHIN_RAISER_T'],
+    ['MouthPressRight', '~', 'LIP_PRESSOR_R'],
+    ['MouthPressLeft', '~', 'LIP_PRESSOR_L'],
+    ['MouthTightenerRight', '~', 'LIP_TIGHTENER_R'],
+    ['MouthTightenerLeft', '~', 'LIP_TIGHTENER_L'],
+  ]}
+/>
+
+:::caution Some shapes are not tracked
+
+Movement does not have a corresponding expression for following Unified expressions:
+
+```
+EyeDilationRight
+EyeDilationLeft
+EyeConstrictRight
+EyeConstrictLeft
+
+TongueOut
+Tongue Directions
+Misc. Tongue Expressions
+```
+
+The absence of these shapes does not affect tracking quality.
+:::
+
+### Standard Documentation
+
+<a href="https://developer.oculus.com/documentation/native/android/move-ref-blendshapes/">Blendshape Visual Reference for Movement</a>

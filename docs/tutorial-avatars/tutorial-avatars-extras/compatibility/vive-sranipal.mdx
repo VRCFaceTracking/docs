@@ -1,0 +1,265 @@
+---
+sidebar_position: 2
+description: Information about VIVE SRanipal face tracking works with Unified Expressions.
+---
+
+import {EditUrl, CustomLink} from '@site/src/components/Utils.tsx'
+import FilterTable from '@site/src/components/FilterTable.tsx';
+
+# VIVE SRanipal
+
+***
+
+VIVE provides a face tracking standard as part of their SRanipal SDK and 
+software. It provides the tracking basis for the Vive Pro Eye, Vive Facial 
+Tracker, and other VIVE products that have face tracking capabilities.
+
+The following table shows how SRanipal face tracking translates to Unified Expressions.
+
+:::info Table Explained
+
+If there are multiple shapes listed in the same row, it means that multiple 
+shapes combine together to create the single shape of a specified standard.
+
+If there is a Unified shape row with a condition (`While X`, `Except X`), it means that the 
+specified shapes of other standards require the `X` shape to behave a certain way in 
+order to properly convey the specified Unified expression. Usually these require specific 
+animation compensation to work in Unified Expressions but are otherwise anatomically 
+consistent within the specific row.
+
+* `While` means a standard requires the Unified shape to be active in some way.
+* `Except` means a standard requires the Unified shape to be inactive in some way.
+* `Includes` means a standard has this specific Unified shape baked into the shape.
+
+In all conditions, the shape can be converted to be Unified Expressions 
+compatible with no loss to tracking or expression behavior. For more concise 
+and readable information for specific tracking standards and how they convert 
+to Unified Expressions, please refer to [Admonitions](#admonitions).
+
+:::
+
+### SRanipal Comparison
+
+<FilterTable
+  title={'Standard Comparison Table'}
+  headers={['Unified', 'Unified Blended', 'SRanipal']}
+  omitHeaders={['Unified', 'SRanipal']}
+  disabledHeaders={['Unified Blended']}
+  rows={[
+    ['EyeLookUpRight', '~', 'Eye_Right_Look_Up'],
+    ['EyeLookDownRight', '~', 'Eye_Right_Look_Down'],
+    ['EyeLookInRight', '~', 'Eye_Right_Left'],
+    ['EyeLookOutRight', '~', 'Eye_Right_Right'],
+    ['EyeLookUpLeft', '~', 'Eye_Left_Look_Up'],
+    ['EyeLookDownLeft', '~', 'Eye_Left_Look_Down'],
+    ['EyeLookInLeft', '~', 'Eye_Left_Right'],
+    ['EyeLookOutLeft', '~', 'Eye_Left_Left'],
+    ['EyeClosedRight', '~', 'Eye_Right_Blink'],
+    ['EyeClosedLeft', '~', 'Eye_Left_Blink'],
+    [<>*BrowDownRight<br/>CheekSquintRight<br/>EyeSquintRight<br/><code>While EyeClosedRight</code></>, '~', 'Eye_Right_squeeze¹'],
+    [<>*BrowDownLeft<br/>CheekSquintLeft<br/>EyeSquintLeft<br/><code>While EyeClosedLeft</code></>, '~', 'Eye_Left_squeeze¹'],
+    ['EyeWideRight', '~', 'Eye_Right_Wide'],
+    ['EyeWideLeft', '~', 'Eye_Left_Wide'],   
+    ['EyeDilationRight', '~', 'Eye_Right_Dilation'],
+    ['EyeDilationLeft', '~', 'Eye_Left_Dilation'],
+    ['EyeConstrictRight', '~', 'Eye_Right_Constrict'],
+    ['EyeConstrictLeft', '~', 'Eye_Left_Constrict'],
+    ['CheekPuffRight', '~', 'Cheek_Puff_Right'],
+    ['CheekPuffLeft', '~', 'Cheek_Puff_Left'],
+    [<>CheekSuckRight<br/>CheekSuckLeft</>, 'CheekSuck', 'Cheek_Suck'],
+    ['JawOpen', '~', 'Jaw_Open'],
+    [<>MouthClosed<br/><code>Includes JawOpen</code></>, '~', 'MouthApeShape¹'],
+    ['JawRight', '~', 'Jaw_Right'],
+    ['JawLeft', '~', 'Jaw_Left'],
+    ['JawForward', '~', 'Jaw_Forward'],
+    [<>LipSuckUpperRight<br/>LipSuckUpperLeft</>, 'LipSuckUpper', 'Mouth_Upper_Inside'],
+    [<>LipSuckLowerRight<br/>LipSuckLowerLeft</>, 'LipSuckLower', 'Mouth_Lower_Inside'],
+    [<>LipFunnelUpperRight<br/>LipFunnelUpperLeft<br/><code>While MouthUpperUp</code></>, 'LipFunnelUpper', 'Mouth_Upper_Overturn¹'],
+    [<>LipFunnelLowerRight<br/>LipFunnelLowerLeft<br/><code>While MouthLowerDown</code></>, 'LipFunnelLower', 'Mouth_Lower_Overturn¹'],
+    [<>LipPuckerUpperRight<br/>LipPuckerUpperLeft<br/>LipPuckerLowerRight<br/>LipPuckerLowerLeft</>, 'LipPucker', 'Mouth_Pout'],
+    ['MouthUpperUpRight', '~', 'Mouth_Upper_Up_Right'],
+    ['MouthUpperUpLeft', '~', 'Mouth_Upper_Up_Left'],
+    ['MouthLowerDownRight', '~', 'Mouth_Lower_Down_Right'],
+    ['MouthLowerDownLeft', '~', 'Mouth_Lower_Down_Left'],
+    [<>MouthCornerPullerRight<br/>MouthCornerSlantRight</>, 'MouthSmileRight', 'Mouth_Smile_Right'],
+    [<>MouthCornerPullerLeft<br/>MouthCornerSlantLeft</>, 'MouthSmileLeft', 'Mouth_Smile_Left'],
+    [<>MouthFrownRight<br/>MouthStretchRight</>, 'MouthSadRight', 'Mouth_Sad_Right'],
+    [<>MouthFrownRight<br/>MouthStretchRight</>, 'MouthSadLeft', 'Mouth_Sad_Left'],
+    ['MouthRaiserLower', 'mouthShrugLower', 'Mouth_Lower_Overlay'],
+    ['TongueOut', 'tongueOut', <>Tongue_LongStep1<br/>Tongue_LongStep2</>],
+    ['TongueUp', '~', 'Tongue_Up'],
+    ['TongueDown', '~', 'Tongue_Down'],
+    ['TongueRight', '~', 'Tongue_Right'],
+    ['TongueLeft', '~', 'Tongue_Left'],
+    ['TongueRoll', '~', 'Tongue_Roll'],
+  ]} 
+/>
+
+* ¹ More detailed reasoning is elaborated in [Admonitions](#admonitions)
+
+### Admonitions {#admonitions}
+
+Some expressions in SRanipal, due to the way the standard is designed,
+may not have direct or intuitive assignments to Unified Expressions. 
+
+This section will give detailed descriptions on how SRanipal controls Unified 
+Expressions. This can be useful for converting SRanipal shapes to Unified 
+Expressions, or making SRanipal shapes compatible in Unified Expressions 
+driven animation setups (in the case of VRCFT avatars).
+
+Acknowledging these differences in your avatar's setup should allow SRanipal 
+shapes to track as intended. Certain animation templates have these admonitions 
+built in, allowing SRanipal shapes to be used directly with Unified Expressions! 
+
+This section provides a technical description of what each shape should do to 
+track as intended with Unifed Expressions.
+
+<FilterTable
+  title={'Standard Comparison Table'}
+  headers={['SRanipal', 'Unified Conversion']}
+  omitHeaders={['Unified Conversion', 'SRanipal']}
+  rows={[
+    [
+      'Eye_Right_squeeze', 
+      <p align='left'>
+        From the SRanipal avatar reference,
+        this SRanipal expression controls these Unified
+        expressions while the eyelids are closed:
+        <br/><br/>
+        EyeSquintRight<br/>
+        CheekSquintRight<br/>
+        BrowPinchRight<br/>
+        BrowLowererRight
+        <br/><br/>
+        To get the intended tracking, these Unified expressions must be all active together 
+        to trigger Eye_Right_squeeze in animation. Alternatively the listed UE expressions can be 
+        made separately to allow for more robust tracking for non-SRanipal tracking.
+      </p>
+    ],
+    [
+      'Eye_Left_squeeze', 
+      <p align='left'>
+        From the SRanipal avatar reference,
+        this SRanipal expression controls these Unified
+        expressions while the eyelids are closed:
+        <br/><br/>
+        EyeSquintLeft<br/>
+        CheekSquintLeft<br/>
+        BrowPinchLeft<br/>
+        BrowLowererLeft
+        <br/><br/>
+        To get the intended tracking, these Unified expressions must be all active together 
+        to trigger Eye_Left_squeeze in animation. Alternatively the listed UE expressions can be 
+        made separately to allow for more robust tracking for non-SRanipal tracking.
+      </p>
+    ],
+    [
+      'Mouth_Ape_Shape', 
+      <p align='left'>
+        This SRanipal expression controls Unified's MouthClosed expression.
+        To get the intended tracking on this SRanipal shape, MouthClosed must negate JawOpen 
+        in the animation proportional to the amount MouthClosed is active.
+        <br/><br/>
+        Alternatively, this blendshape can be turned into MouthClosed by negating JawOpen 
+        in the blendshape itself.
+      </p>
+    ],
+    [
+      'Mouth_Upper_Overturn', 
+      <p align='left'>
+        This SRanipal expression controls Unified's LipFunnelUpperRight and LipFunnelUpperLeft expressions.
+        To get the intended tracking on this SRanipal shape, it should also include Mouth_Upper_Up_Right 
+        and Mouth_Upper_Up_Left when this shape is active.
+        <br/><br/>
+        Alternatively, this shape can be turned into LipFunnelUpper by adding Mouth_Upper_Up_Left and 
+        Mouth_Upper_Up_Right to this shape.
+      </p>
+    ],
+    [
+      'Mouth_Lower_Overturn', 
+      <p align='left'>
+        This SRanipal expression controls Unified's LipFunnelLowerRight and LipFunnelLowerLeft expressions.
+        To get the intended tracking on this SRanipal shape, it should also include Mouth_Lower_Down_Right 
+        and Mouth_Lower_Down_Left when this shape is active.
+        <br/><br/>
+        Alternatively, this shape can be turned into LipFunnelUpper by adding Mouth_Upper_Up_Left and 
+        Mouth_Upper_Up_Right to this shape.
+      </p>
+    ],
+    [
+      'Mouth_Smile_Right', 
+      <p align='left'>
+        This SRanipal expression directly controls Unified's MouthCornerPullerRight and 
+        MouthCornerSlantRight, creating the MouthSmileRight Blended shape. On many avatars and 
+        on the SRanipal reference avatar, the right cheek is squinting when smiling. It is perfectly acceptable 
+        to have MouthSmileRight to have this behavior, especially when using SRanipal-compatible tracking 
+        with this avatar.
+        <br/><br/>
+        Optionally, if there is a desire for more expressive tracking then moving the cheek raising part 
+        of Mouth_Smile_Right to it's own dedicated shape will allow CheekSquintRight to be able to control 
+        it directly, allowing for more expressibility. This will require editing the blendshape directly or 
+        creating new shapes to fulfill the change.
+      </p>
+    ],
+    [
+      'Mouth_Smile_Left', 
+      <p align='left'>
+        This SRanipal expression directly controls Unified's MouthCornerPullerLeft and 
+        MouthCornerSlantLeft, creating the MouthSmileLeft Blended shape. On many avatars and 
+        on the SRanipal reference avatar, the right cheek is squinting when smiling. It is perfectly acceptable 
+        to have MouthSmileLeft to have this behavior, especially when using SRanipal-compatible tracking 
+        with this avatar.
+        <br/><br/>
+        Optionally, if there is a desire for more expressive tracking then moving the cheek raising part 
+        of Mouth_Smile_Left to it's own dedicated shape will allow CheekSquintLeft to be able to control 
+        it directly, allowing for more expressibility. This will require editing the blendshape directly or 
+        creating new shapes to fulfill the change.
+      </p>
+    ],
+    [
+      <>Tongue_LongStep1<br/>Tongue_LongStep2</>, 
+      <p align='left'>
+        These SRanipal expressions control TongueOut linearly.
+        To get the intended tracking on this shape, let Tongue_LongStep1 activate 
+        from 0-0.5, while LongStep2 activates from 0.5-1 in the animation. 
+        These are corrective shapes for TongueOut, allowing for the tongue to 
+        stick out of the mouth.
+      </p>
+    ],
+  ]} 
+/>
+
+:::caution Some shapes are not tracked
+
+SRanipal does not have a corresponding expression for following Unified expressions:
+
+```
+BrowPinchRight
+BrowPinchLeft
+BrowLowererRight
+BrowLowererLeft
+BrowInnerUpRight
+BrowInnerUpLeft
+BrowOuterUpRight
+BrowOuterUpLeft
+
+CheekSquintRight (baked into Mouth_Smile_Right)
+CheekSquintLeft (baked into Mouth_Smile_Left)
+
+MouthRaiserUpper
+MouthPressRight
+MouthPressLeft
+MouthTightenerLeft
+MouthTightenerRight
+
+Some misc. Tongue Expressions
+```
+
+The absence of these shapes does not affect tracking quality.
+:::
+
+### Standard Documentation
+
+<a href="https://developer.vive.com/resources/vive-sense/eye-and-facial-tracking-sdk/documentation/">Vive Developer Resource</a><br/>
+<a href="../../../v4.0/category/intermediate">VRCFT v4.0 Documentation</a>
+
