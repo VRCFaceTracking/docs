@@ -1,0 +1,40 @@
+table {
+    table-layout: auto;
+    width: 100%;
+}
+
+th, td {
+    width: 33.33vh;
+    text-align: center;
+}
+
+button {
+  background: var(--ifm-color-primary-darkest);
+  border: none;
+  cursor: pointer;
+  margin-top: 0rem;
+  margin-bottom: 0.2rem;
+  margin-right: 0.2rem;
+  margin-left: 0rem;
+  padding: 0.5rem;
+  border-collapse: collapse;
+}
+
+button.disable {
+  text-decoration: line-through;
+  color: var(--ifm-color-primary-dark);
+}
+
+.filter-input {
+  background: var(--ifm-color-primary-darkest);
+  padding: 0.5rem;
+  border: none;
+  margin-top: 0rem;
+  margin-bottom: 0.2rem;
+  margin-right: 0.2rem;
+  margin-left: 0rem;
+}
+
+.invalid {
+  color: red;
+}
