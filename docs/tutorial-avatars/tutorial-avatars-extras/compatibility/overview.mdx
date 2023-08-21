@@ -1,0 +1,184 @@
+---
+sidebar_position: 1
+description: Overview of what face tracking standards can express in Unified Expressions.
+---
+
+import {EditUrl, CustomLink} from '@site/src/components/Utils.tsx'
+import FilterTable from '@site/src/components/FilterTable.tsx';
+
+# Tracking Standard Comparison Overview
+
+***
+
+:::note How to read this section
+
+This page goes over specific translations for each standard into 
+Unified Expressions. For more concrete examples of each standard listed, 
+please refer to the appropriate standards' documentation.
+
+Base and Blended shapes from Unified Expressions will be matched directly with 
+other standards' shapes. Some caveats such as unique shapes will be 
+given more detailed explanations on how they can translate to Unified Expressions.
+
+:::
+
+:::info Table Explained
+
+If there are multiple shapes listed in the same row, it means that multiple 
+shapes combine together to create the single shape of a specified standard.
+
+If an expression is given an `~` it means that the shape is either a part of or in 
+other expressions.
+
+If there is a Unified shape row with a condition (`While X`, `Except X`), it means that the 
+specified shapes of other standards require the `X` shape to behave a certain way in 
+order to properly convey the specified Unified expression. Usually these require specific 
+animation compensation to work in Unified Expressions but are otherwise anatomically 
+consistent within the specific row.
+
+* `While` means a standard requires the Unified shape to be active in some way.
+* `Except` means a standard requires the Unified shape to be inactive in some way.
+* `Includes` means a standard has this specific Unified shape baked into the shape.
+
+In all conditions, the shape can be converted to be Unified Expressions 
+compatible with no loss to tracking or expression behavior. For more concise 
+and readable information for specific tracking standards and how they convert 
+to Unified Expressions, please refer to the standard's section in Compatbility. 
+
+This table is presented to provide a generalized overview of how different tracking 
+standards compare to each other.
+
+:::
+
+### Standard Comparisons
+
+<FilterTable
+  title={'Standard Comparison Table'}
+  headers={['Unified', 'ARKit', 'SRanipal', 'Meta Movement (FACS)']}
+  omitHeaders={['Unified']}
+  rows={[
+    ['EyeLookUpRight', 'eyeLookUpRight', 'Eye_Right_Look_Up', 'EYES_LOOK_UP_R'],
+    ['EyeLookDownRight', 'eyeLookDownRight', 'Eye_Right_Look_Down', 'EYES_LOOK_DOWN_R'],
+    ['EyeLookInRight', 'eyeLookInRight', 'Eye_Right_Left', 'EYES_LOOK_IN_R'],
+    ['EyeLookOutRight', 'eyeLookOutRight', 'Eye_Right_Right', 'EYES_LOOK_OUT_R'],
+    ['EyeLookUpLeft', 'eyeLookUpLeft', 'Eye_Left_Look_Up', 'EYES_LOOK_UP_L'],
+    ['EyeLookDownLeft', 'eyeLookDownLeft', 'Eye_Left_Look_Down', 'EYES_LOOK_DOWN_L'],
+    ['EyeLookInLeft', 'eyeLookInLeft', 'Eye_Left_Right', 'EYES_LOOK_IN_L'],
+    ['EyeLookOutLeft', 'eyeLookOutLeft', 'Eye_Left_Left', 'EYES_LOOK_OUT_L'],
+    ['EyeClosedRight', 'eyeBlinkRight', 'Eye_Left_Blink', 'EYES_CLOSED_R'],
+    ['EyeClosedLeft', 'eyeBlinkLeft', 'Eye_Left_Blink', 'EYES_CLOSED_L'],
+    ['EyeSquintRight', 'eyeSquintRight', '~', 'EYES_SQUINT_R'],
+    ['EyeSquintLeft', 'eyeSquintLeft', '~', 'EYES_SQUINT_R'],
+    ['EyeSquintLeft', 'eyeSquintLeft', '~', 'EYES_SQUINT_R'],
+    [<>*BrowDownRight<br/>CheekSquintRight<br/>EyeSquintRight<br/><code>While EyeClosedRight</code></>, '~', 'Eye_Right_squeeze¹', '~'],
+    [<>*BrowDownLeft<br/>CheekSquintLeft<br/>EyeSquintLeft<br/><code>While EyeClosedLeft</code></>, '~', 'Eye_Left_squeeze¹', '~'],
+    ['EyeWideRight', 'eyeWideRight', 'Eye_Right_Wide', 'EYES_WIDEN_R'],
+    ['EyeWideLeft', 'eyeWideLeft', 'Eye_Left_Wide', 'EYES_WIDEN_L'],   
+    ['EyeDilationRight', '❌', 'Eye_Right_Dilation', '❌'],
+    ['EyeDilationLeft', '❌', 'Eye_Left_Dilation', '❌'],
+    ['EyeConstrictRight', '❌', 'Eye_Right_Constrict', '❌'],
+    ['EyeConstrictLeft', '❌', 'Eye_Left_Constrict', '❌'],
+    ['*BrowDownRight', 'browDownRight', '❌', 'BROW_LOWERER_R'],
+    ['*BrowDownLeft', 'browDownLeft', '❌', 'BROW_LOWERER_L'], 
+    ['BrowInnerUpRight', '❌', '❌', 'INNER_BROW_RAISER_R'],
+    ['BrowInnerUpLeft', '❌', '❌', 'INNER_BROW_RAISER_L'],
+    ['*BrowInnerUp', 'browInnerUp', '❌', '~'],
+    ['BrowOuterUpRight', 'browOuterUpRight', '❌', 'OUTER_BROW_RAISER_R'],
+    ['BrowOuterUpLeft', 'browOuterUpLeft', '❌', 'OUTER_BROW_RAISER_L'],
+    ['NoseSneerRight', 'noseSneerRight', '❌', 'NOSE_WRINKLER_R'],
+    ['NoseSneerLeft', 'noseSneerLeft', '❌', 'NOSE_WRINKLER_L'],
+    ['CheekSquintRight', 'cheekSquintRight', '~', 'CHEEK_RAISER_R'],
+    ['CheekSquintLeft', 'cheekSquintLeft', '~', 'CHEEK_RAISER_L'],
+    ['CheekPuffRight', '~', 'Cheek_Puff_Right', 'CHEEK_PUFF_R'],
+    ['CheekPuffLeft', '~', 'Cheek_Puff_Left', 'CHEEK_PUFF_L'],
+    ['*CheekPuff', 'cheekPuff', '~', '~'],
+    ['CheekSuckRight', '❌', '~', 'CHEEK_SUCK_R'],
+    ['CheekSuckLeft', '❌', '~', 'CHEEK_SUCK_L'],
+    ['CheekSuck', '❌', 'Cheek_Suck', '~'],
+    ['JawOpen', 'jawOpen', 'Jaw_Open', 'JAW_DROP'],
+    ['MouthClosed', 'mouthClose', '~', 'LIPS_TOWARD'],
+    [<>MouthClosed<br/><code>Includes JawOpen</code></>, '~', 'MouthApeShape¹', '~'],
+    ['JawRight', 'jawRight', 'Jaw_Right', 'JAW_SIDEWAYS_RIGHT'],
+    ['JawLeft', 'jawLeft', 'Jaw_Left', 'JAW_SIDEWAYS_LEFT'],
+    ['JawForward', 'jawForward', 'Jaw_Forward', 'JAW_THRUST'],
+    ['LipSuckUpperRight', '~', '~', 'LIP_SUCK_RT'],
+    ['LipSuckUpperLeft', '~', '~', 'LIP_SUCK_LT'],
+    ['*LipSuckUpper', 'mouthRollUpper', 'Mouth_Upper_Inside', '~'],
+    ['LipSuckLowerRight', '~', '~', 'LIP_SUCK_RB'],
+    ['LipSuckLowerLeft', '~', '~', 'LIP_SUCK_LB'],
+    ['*LipSuckLower', 'mouthRollLower', 'Mouth_Lower_Inside', '~'],
+    ['LipFunnelUpperRight', '~', '~', 'LIP_FUNNELER_RT'],
+    ['LipFunnelUpperLeft', '~', '~', 'LIP_FUNNELER_LT'],
+    ['*LipFunnelUpper', '~', 'Mouth_Upper_Overturn¹', '~'],
+    ['LipFunnelLowerRight', '~', '~', 'LIP_SUCK_RB'],
+    ['LipFunnelLowerLeft', '~', '~', 'LIP_SUCK_LB'],
+    ['*LipFunnelLower', '~', 'Mouth_Lower_Overturn¹', '~'],
+    ['*LipFunnel', 'mouthFunnel', '~', '~'],
+    [<>LipPuckerUpperRight<br/>LipPuckerLowerRight</>, '~', '~', 'LIP_PUCKER_R'],
+    [<>LipPuckerUpperLeft<br/>LipPuckerLowerLeft</>, '~', '~', 'LIP_PUCKER_L'],
+    ['*LipPucker', 'mouthPucker', 'Mouth_Pout', ''],
+    ['MouthUpperUpRight', 'mouthUpperUpRight', 'Mouth_Upper_Up_Right', 'UPPER_LIP_RAISER_R'],
+    ['MouthUpperUpLeft', 'mouthUpperUpLeft', 'Mouth_Upper_Up_Left', 'UPPER_LIP_RAISER_L'],
+    ['MouthLowerDownRight', 'mouthLowerUpRight', 'Mouth_Lower_Down_Right', 'LOWER_LIP_DEPRESSOR_R'],
+    ['MouthLowerDownLeft', 'mouthLowerUpLeft', 'Mouth_Lower_Down_Left', 'LOWER_LIP_DEPRESSER_L'],
+    ['*MouthSmileRight', 'mouthSmileRight', 'Mouth_Smile_Right', 'LIP_CORNER_PULLER_R'],
+    ['*MouthSmileLeft', 'mouthSmileLeft', 'Mouth_Smile_Left', 'LIP_CORNER_PULLER_L'],
+    ['MouthFrownRight', 'mouthFrownRight', '~', 'LIP_CORNER_DEPRESSOR_R'],
+    ['MouthFrownLeft', 'mouthFrownLeft', '~', 'LIP_CORNER_DEPRESSOR_L'],
+    ['*MouthSadRight', '~', 'Mouth_Sad_Right', '~'],
+    ['*MouthSadLeft', '~', 'Mouth_Sad_Left', '~'],
+    ['MouthStretchRight', 'mouthStretchRight', '~', 'LIP_STRETCHER_R'],
+    ['MouthStretchLeft', 'mouthStretchLeft', '~', 'LIP_STRETCHER_L'],
+    ['MouthDimplerRight', 'mouthDimpleRight', '~', 'DIMPLER_R'],
+    ['MouthDimplerLeft', 'mouthDimpleLeft', '~', 'DIMPLER_L'],
+    ['MouthRaiserUpper', 'mouthShrugUpper', '❌', 'CHIN_RAISER_T'],
+    ['MouthRaiserLower', 'mouthShrugLower', 'Mouth_Lower_Overlay', 'CHIN_RAISER_B'],
+    ['MouthPressRight', 'mouthPressRight¹', '❌', 'LIP_PRESSOR_R'],
+    ['MouthPressLeft', 'mouthPressLeft¹', '❌', 'LIP_PRESSOR_L'],
+    ['MouthTightenerRight', '❌', '❌', 'LIP_TIGHTENER_R'],
+    ['MouthTightenerLeft', '❌', '❌', 'LIP_TIGHTENER_L'],
+    ['TongueOut', 'tongueOut', <>Tongue_LongStep1<br/>Tongue_LongStep2</>, '❌'],
+    ['TongueUp', '❌', 'Tongue_Up', '❌'],
+    ['TongueDown', '❌', 'Tongue_Down', '❌'],
+    ['TongueRight', '❌', 'Tongue_Right', '❌'],
+    ['TongueLeft', '❌', 'Tongue_Left', '❌'],
+    ['TongueRoll', '❌', 'Tongue_Roll', '❌'],
+  ]}
+/>
+
+* ¹ Requires the use of a specialized animation setup to work with VRCFT V2 tracking.
+* \* Blended Shape.
+
+### Standard Documentation
+
+<FilterTable
+  title={'Standard Comparison Table'}
+  headers={['Standard', 'Link']}
+  omitHeaders={['Standard', 'Link']}
+  rows={[
+    [
+      'Unified Expressions',
+      <><a href="../unified-blendshapes">VRCFT Documentation</a></>
+    ],
+    [
+      'ARKit',
+      <>
+        <a href="https://developer.apple.com/documentation/arkit/arfaceanchor/blendshapelocation">Apple Developer Documentation</a><br/>
+        <a href="https://arkit-face-blendshapes.com/">ARKit Shape References (Unofficial)</a>
+      </>
+    ],
+    [
+      'VIVE SRanipal',
+      <>
+        <a href="https://developer.vive.com/resources/vive-sense/eye-and-facial-tracking-sdk/documentation/">VIVE Developer Resource</a><br/>
+        <a href="../../../v4.0/category/intermediate">VRCFT v4.0 Documentation</a>
+      </>
+    ],
+    [
+      'Meta Movement',
+      <>
+        <a href="https://developer.oculus.com/documentation/native/android/move-ref-blendshapes/">Blendshape Visual Reference for Movement</a>
+      </>
+    ],
+  ]}
+/>
