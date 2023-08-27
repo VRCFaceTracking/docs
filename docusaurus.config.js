@@ -76,6 +76,21 @@ const config = {
   themeConfig:
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
+        headTags: [
+          {
+            tagName: 'script',
+            attributes: {
+              type: 'application/ld+json',
+            },
+            innerHTML: JSON.stringify({
+              '@context': 'https://schema.org/',
+              '@type': 'CreativeWork',
+              name: 'VRCFaceTracking Docs',
+              url: 'https://docs.vrcft.io/',
+              logo: 'https://docs.vrcft.io/img/logo.svg',
+            }),
+          },
+        ],
         colorMode: {
             defaultMode: 'dark',
             respectPrefersColorScheme: true,
