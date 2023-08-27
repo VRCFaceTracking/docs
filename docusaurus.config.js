@@ -84,10 +84,9 @@ const config = {
             },
             innerHTML: JSON.stringify({
               '@context': 'https://schema.org/',
-              '@type': 'CreativeWork',
+              '@type': 'WebSite',
               name: 'VRCFaceTracking Docs',
-              url: 'https://docs.vrcft.io/',
-              logo: 'https://docs.vrcft.io/img/logo.svg',
+              url: 'https://docs.vrcft.io/'
             }),
           },
         ],
