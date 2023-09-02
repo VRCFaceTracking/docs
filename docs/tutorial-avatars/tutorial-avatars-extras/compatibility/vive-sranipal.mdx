@@ -10,31 +10,43 @@ import FilterTable from '@site/src/components/FilterTable.tsx';
 
 ***
 
-VIVE provides a face tracking standard as part of their SRanipal SDK and 
-software. It provides the tracking basis for the Vive Pro Eye, Vive Facial 
-Tracker, and other VIVE products that have face tracking capabilities.
 
-The following table shows how SRanipal face tracking translates to Unified Expressions.
+VIVE offers a facial tracking standard through the SRanipal SDK and software. 
+This standard serves as the foundational tracking framework for devices such as 
+the Vive Pro Eye, Vive Facial Tracker, and other VIVE products equipped with 
+facial tracking functionalities.
+
+The following table illustrates the mapping of SRanipal facial tracking to Unified Expressions.
 
 :::info Table Explained
 
-If there are multiple shapes listed in the same row, it means that multiple 
-shapes combine together to create the single shape of a specified standard.
+This table provides a comprehensive understanding of the 
+relationship between various shapes and Unified Expressions:
 
-If there is a Unified shape row with a condition (`While X`, `Except X`), it means that the 
-specified shapes of other standards require the `X` shape to behave a certain way in 
-order to properly convey the specified Unified expression. Usually these require specific 
-animation compensation to work in Unified Expressions but are otherwise anatomically 
-consistent within the specific row.
+When multiple shapes are listed in the same row, they 
+collaboratively contribute to the formation of a specific 
+standard shape.
 
-* `While` means a standard requires the Unified shape to be active in some way.
-* `Except` means a standard requires the Unified shape to be inactive in some way.
-* `Includes` means a standard has this specific Unified shape baked into the shape.
+Some shapes have an extra condition (`While X`, `Negates X`) 
+that indicates that specified cell needs the presence or absence 
+of specific shapes to convey a specific expression accurately in 
+order to correlate it to the other expressions in that row. 
+This often necessitates particular adjustments (animation 
+or blendshape) for compatibility with Unified Expressions, 
+while maintaining anatomical consistency within the given row.
 
-In all conditions, the shape can be converted to be Unified Expressions 
-compatible with no loss to tracking or expression behavior. For more concise 
-and readable information for specific tracking standards and how they convert 
-to Unified Expressions, please refer to [Admonitions](#admonitions).
+* `While` signifies that a standard requires a shape 
+to be active to match the row.
+* `Negates` signifies that a standard requires a shape 
+to be inactive to match the row.
+
+Regardless of the conditions, the shape can be converted into 
+Unified Expressions without compromising tracking quality or 
+expression behavior.
+
+For more concise and readable information for specific tracking 
+standards and how they convert to Unified Expressions, please 
+refer to [Admonitions](#admonitions).
 
 :::
 
@@ -68,7 +80,7 @@ to Unified Expressions, please refer to [Admonitions](#admonitions).
     ['CheekPuffLeft', '~', 'Cheek_Puff_Left'],
     [<>CheekSuckRight<br/>CheekSuckLeft</>, 'CheekSuck', 'Cheek_Suck'],
     ['JawOpen', '~', 'Jaw_Open'],
-    [<>MouthClosed<br/><code>Includes JawOpen</code></>, '~', 'MouthApeShape¹'],
+    ['MouthClosed', '~', <>Mouth_Ape_Shape¹<br/><code>Negates Jaw_Open</code></>],
     ['JawRight', '~', 'Jaw_Right'],
     ['JawLeft', '~', 'Jaw_Left'],
     ['JawForward', '~', 'Jaw_Forward'],
@@ -99,19 +111,19 @@ to Unified Expressions, please refer to [Admonitions](#admonitions).
 
 ### Admonitions {#admonitions}
 
-Some expressions in SRanipal, due to the way the standard is designed,
-may not have direct or intuitive assignments to Unified Expressions. 
+Certain expressions in SRanipal may not have direct or intuitive assignments 
+to Unified Expressions due to the format of the expressions. 
 
-This section will give detailed descriptions on how SRanipal controls Unified 
-Expressions. This can be useful for converting SRanipal shapes to Unified 
-Expressions, or making SRanipal shapes compatible in Unified Expressions 
-driven animation setups (in the case of VRCFT avatars).
+The following section will provide comprehensive explanations on how SRanipal 
+controls Unified Expressions, and subsequently how Unified can be used to track 
+SRanipal shapes. This can be useful for making SRanipal shapes compatible in Unified 
+Expressions driven animation setups (in the case of VRCFT avatars).
 
-Acknowledging these differences in your avatar's setup should allow SRanipal 
+Recognizing these differences in your avatar's setup should allow SRanipal 
 shapes to track as intended. Certain animation templates have these admonitions 
 built in, allowing SRanipal shapes to be used directly with Unified Expressions! 
 
-This section provides a technical description of what each shape should do to 
+This section provides a thorough description of what each shape should do to 
 track as intended with Unifed Expressions.
 
 <FilterTable
@@ -231,7 +243,7 @@ track as intended with Unifed Expressions.
 
 :::caution Some shapes are not tracked
 
-SRanipal does not have a corresponding expression for following Unified expressions:
+SRanipal does not include expressions to track the following Unified Expressions:
 
 ```
 BrowPinchRight
@@ -255,7 +267,7 @@ MouthTightenerRight
 Some misc. Tongue Expressions
 ```
 
-The absence of these shapes does not affect tracking quality.
+However, the absence of these shapes does not affect tracking quality.
 :::
 
 ### Standard Documentation
