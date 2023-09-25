@@ -17,6 +17,11 @@ tracking quality of each interface, and what they can do in
 VRCFaceTracking. For more specific information about the listed 
 interfaces please refer to their dedicated sections.
 
+Various aspects of the interfaces are given a rank from 1-10, indicating 
+their quality or effectiveness. The rankings are given by ranking devices 
+relative to each other based on various criteria such as tracking quality 
+and expressiveness.
+
 :::
 
 <FilterTable
@@ -34,63 +39,68 @@ interfaces please refer to their dedicated sections.
         'Project Babble', 
         'EyeTrackVR', 
         'VIVE Focus 3 (Eye Tracker)', 
-        'VIVE Focus 3 (Facial Tracker)'
+        'VIVE Focus 3 (Facial Tracker)',
+        'HP Reverb G2 Omnicept'
     ]}
     omitHeaders={['Tracking Feature']}
     rows={[
-        ['Category', 'HMD', 'Accessory', 'HMD', 'Standalone HMD', 'Standalone HMD', 'Accessory', 'HMD', 'Software/Mobile', 'Software', 'Software/DIY Hardware', 'Accessory', 'Accessory'],
-        ['General Face Tracking Capability', 'Eye', 'Lower Face', 'Eye', 'Full', 'Full', 'Eye', 'Eye', 'Full', 'Lower Face', 'Eye', 'Eye', 'Lower Face'],
-        ['Gaze', '✔', '~', '✔', '✔', '✔', '✔', '✔', 'Eye Expression', '~', '✔', '✔', '~'],
-        ['Gaze Convergence', '✔', '~', '✔', '❌', '❌', '❌', '❌', 'N/A', '~', '✔', '✔', '~'],
-        ['Eye Openness', 'Granular', '~', 'Granular', 'Granular', 'Granular', '2 Steps', 'Binary', 'Granular', '~', 'Granular', 'Granular', '~'],
-        ['Pupil Dilation', '✔', '~', '✔', '❌', '❌', '❌', '❌', '❌', '~', '❌', '❌', '~'],
+        ['Category', 'HMD', 'Accessory', 'HMD', 'Standalone HMD', 'Standalone HMD', 'Accessory', 'HMD', 'Software/Mobile', 'Software', 'Software/DIY Hardware', 'Accessory', 'Accessory', 'HMD'],
+        ['General Face Tracking Capability', 'Eye', 'Lower Face', 'Eye', 'Full', 'Full', 'Eye', 'Eye', 'Full', 'Lower Face', 'Eye', 'Eye', 'Lower Face', 'Eye'],
+        ['Gaze', '✔', '~', '✔', '✔', '✔', '✔', '✔', 'Eye Expression', '~', '✔', '✔', '~', '✔'],
+        ['Gaze Convergence', '✔', '~', '✔', '❌', '❌', '❌', '❌', 'N/A', '~', '✔', '✔', '~', '✔'],
+        ['Eye Openness', 'Granular', '~', 'Granular', 'Granular', 'Granular', '2 Steps', 'Granular', 'Granular', '~', 'Granular', 'Granular', '~', 'Binary'],
+        ['Pupil Dilation', '✔', '~', '✔', '❌', '❌', '❌', '❌', '❌', '~', '❌', '❌', '~', '✔'],
         [
             'Upper Face Expression Support', 
             <>Eye Widen<br/>Eye Squeeze<br/>Brow(Emulated)</>, 
             '~', 
             <>Widen(Emulated)<br/>Squeeze(Emulated)<br/></>, 
             <>Widen<br/>Squint<br/>Brow</>, 
+            <>Widen<br/>Squint<br/>Brow</>, 
             '❌', 
             '❌', 
             <>Widen<br/>Squint<br/>Brow</>, 
-            '~', 
             '❌', 
-            <>Widen<br/>Squeeze<br/>Brow(Emulated)</>, 
+            '❌', 
+            <>Widen<br/>Squeeze<br/>Brow(Emulated)</>,
+            `~`,
             '~'
         ],
         [
             'Upper Face Expressability',
-            'High', 
+            '5/10', 
             '~', 
             'N/A', 
-            'Extreme',
-            '❌',
+            '9/10',
+            '8/10',
             '❌', 
-            '~', 
-            'Very High', 
-            'Extreme', 
+            '❌', 
+            '9/10', 
+            '❌', 
             '❌',
-            'High',
+            '5/10',
+            '~',
             '~'
         ],
         [
             'Upper Face Tracking Quality',
+            '8/10', 
             '~', 
-            'Very High', 
-            '~', 
-            'High',
-            'Mediocre',
-            '~', 
-            '~', 
-            'Very High', 
-            'Very High', 
+            'N/A', 
+            '7/10',
+            '4/10',
+            '❌', 
+            '❌', 
+            '8/10', 
+            '❌', 
+            '❌',
+            '7/10',
             '~',
-            '~',
-            'High'
+            '~'
         ],
         [
             'Lower Face Expression Support',
-            <>Brow(Emulated)</>, 
+            '~', 
             <>Jaw<br/>Lip<br/>Mouth<br/>Cheek</>, 
             '~', 
             <>Brow<br/>Jaw<br/>Lip<br/>Mouth<br/>Cheek<br/>Nose</>,
@@ -100,39 +110,42 @@ interfaces please refer to their dedicated sections.
             <>Brow<br/>Jaw<br/>Lip<br/>Mouth<br/>Cheek<br/>Nose</>, 
             <>Jaw<br/>Lip<br/>Mouth<br/>Cheek<br/>Nose</>, 
             '~',
-            <>Brow(Emulated)</>,
+            '~',
             <>Jaw<br/>Lip<br/>Mouth<br/>Cheek<br/>Nose</>,
+            '~'
         ],
         [
             'Lower Face Expressability',
             '~', 
-            'High', 
+            '7/10', 
             '~', 
-            'Very High',
-            'High',
+            '8/10',
+            '7/10',
             '~', 
             '~', 
-            'Very High', 
-            'Extreme', 
+            '8/10', 
+            '9/10', 
             '~',
             '~',
-            'High'
+            '7/10',
+            '~'
         ],
         [
             'Face Tracking Quality',
             '~', 
-            'Very High', 
+            '8/10', 
             '~', 
-            'High',
-            'Below Average',
+            '7/10',
+            '4/10',
             '~', 
             '~', 
-            'Very High', 
-            'Very High', 
+            '8/10', 
+            '8/10', 
             '~',
             '~',
-            'High'
+            '7/10',
+            '~'
         ],
-        ['Tongue Expression Support', '~', 'Tongue Out & Directions', '~', '❌', 'Tongue Out', '~', '~', 'Tongue Out', 'All Tongue Expressions', '~', '~', 'Tongue Out & Directions'],
+        ['Tongue Expression Support', '~', 'Tongue Out & Directions', '~', '❌', 'Tongue Out', '~', '~', 'Tongue Out', 'All Tongue Expressions', '~', '~', 'Tongue Out & Directions', '~'],
     ]}
 />
