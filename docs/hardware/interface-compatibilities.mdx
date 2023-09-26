@@ -10,7 +10,7 @@ import FilterTable from '@site/src/components/FilterTable.tsx';
 
 ***
 
-:::note How to read this section
+:::note How to read this page
 
 This page goes over generalized functions, features, and 
 tracking quality of each interface, and what they can do in 
@@ -19,8 +19,15 @@ interfaces please refer to their dedicated sections.
 
 Various aspects of the interfaces are given a rank from 1-10, indicating 
 their quality or effectiveness. The rankings are given by ranking devices 
-relative to each other based on various criteria such as tracking quality 
-and expressiveness.
+relative to each other based on criteria such as expressibility and 
+tracking quality.
+
+**Expressibility**: The range of motions/expressions that can be tracked. The higher 
+the expressibility, the more face details the interface reports tracked values for. 
+
+**Tracking Quality**: How well the interface tracks its reported range of motions. 
+The higher the tracking quality, the better control most users will have over the 
+range of motions/expressions supported by the interface. 
 
 :::
 
@@ -52,7 +59,7 @@ and expressiveness.
         ['Pupil Dilation', '✔', '~', '✔', '❌', '❌', '❌', '❌', '❌', '~', '❌', '❌', '~', '✔'],
         [
             'Upper Face Expression Support', 
-            <>Eye Widen<br/>Eye Squeeze<br/>Brow(Emulated)</>, 
+            <>Widen<br/>Squeeze<br/>Brow(Emulated)</>, 
             '~', 
             <>Widen(Emulated)<br/>Squeeze(Emulated)<br/></>, 
             <>Widen<br/>Squint<br/>Brow</>, 
@@ -67,7 +74,7 @@ and expressiveness.
             '~'
         ],
         [
-            'Upper Face Expressability',
+            'Upper Face Expressibility',
             '5/10', 
             '~', 
             'N/A', 
@@ -115,7 +122,7 @@ and expressiveness.
             '~'
         ],
         [
-            'Lower Face Expressability',
+            'Lower Face Expressibility',
             '~', 
             '7/10', 
             '~', 
