@@ -1,0 +1,106 @@
+---
+sidebar_position: 2
+description: Information about ARKit face tracking works with Unified Expressions.
+---
+
+import {EditUrl, CustomLink} from '@site/src/components/Utils.tsx'
+import FilterTable from '@site/src/components/FilterTable.tsx';
+
+# Apple ARKit 
+
+***
+
+Apple provides a face tracking standard for iOS devices within their ARKit SDK and software, 
+where the associated blendshapes are often referred to as PerfectSync, AR52, and ARKit respectively.
+
+The following table shows how ARKit face tracking translates to Unified Expressions
+
+### ARKit Comparison
+
+<FilterTable
+  title={'Standard Comparison Table'}
+  headers={['Unified', 'ARKit']}
+  omitHeaders={['Unified', 'ARKit']}
+  rows={[
+    ['EyeLookUpRight', 'eyeLookUpRight'],
+    ['EyeLookDownRight', 'eyeLookDownRight'],
+    ['EyeLookInRight', 'eyeLookInRight'],
+    ['EyeLookOutRight', 'eyeLookOutRight'],
+    ['EyeLookUpLeft', 'eyeLookUpLeft'],
+    ['EyeLookDownLeft', 'eyeLookDownLeft'],
+    ['EyeLookInLeft', 'eyeLookInLeft'],
+    ['EyeLookOutLeft', 'eyeLookOutLeft'],
+    ['EyeClosedRight', 'eyeBlinkRight'],
+    ['EyeClosedLeft', 'eyeBlinkLeft'],
+    ['EyeSquintRight', 'eyeSquintRight'],
+    ['EyeSquintLeft', 'eyeSquintLeft'],
+    ['EyeWideRight', 'eyeWideRight'],
+    ['EyeWideLeft', 'eyeWideLeft'],   
+    [<b>BrowDownRight</b>, 'browDownRight'],
+    [<b>BrowDownLeft</b>, 'browDownLeft'], 
+    [<b>BrowInnerUp</b>, 'browInnerUp'],
+    ['BrowOuterUpRight', 'browOuterUpRight'],
+    ['BrowOuterUpLeft', 'browOuterUpLeft'],
+    ['NoseSneerRight', 'noseSneerRight'],
+    ['NoseSneerLeft', 'noseSneerLeft'],
+    ['CheekSquintRight', 'cheekSquintRight'],
+    ['CheekSquintLeft', 'cheekSquintLeft'],
+    [<b>CheekPuff</b>, 'cheekPuff'],
+    ['JawOpen', 'jawOpen'],
+    ['MouthClosed', 'mouthClose'],
+    ['JawRight', 'jawRight'],
+    ['JawLeft', 'jawLeft'],
+    ['JawForward', 'jawForward'],
+    [<b>LipSuckUpper</b>, 'mouthRollUpper'],
+    [<b>LipSuckLower</b>, 'mouthRollLower'],
+    [<b>LipFunnel</b>, 'mouthFunnel'],
+    [<b>LipPucker</b>, 'mouthPucker'],
+    ['MouthUpperUpRight', 'mouthUpperUpRight'],
+    ['MouthUpperUpLeft', 'mouthUpperUpLeft'],
+    ['MouthLowerDownRight', 'mouthLowerUpRight'],
+    ['MouthLowerDownLeft', 'mouthLowerUpLeft'],
+    [<b>MouthSmileRight</b>, 'mouthSmileRight'],
+    [<b>MouthSmileLeft</b>, 'mouthSmileLeft'],
+    ['MouthFrownRight', 'mouthFrownRight'],
+    ['MouthFrownLeft', 'mouthFrownLeft'],
+    ['MouthStretchRight', 'mouthStretchRight'],
+    ['MouthStretchLeft', 'mouthStretchLeft'],
+    ['MouthDimplerRight', 'mouthDimpleRight'],
+    ['MouthDimplerLeft', 'mouthDimpleLeft'],
+    ['MouthRaiserUpper', 'mouthShrugUpper'],
+    ['MouthRaiserLower', 'mouthShrugLower'],
+    ['MouthPressRight', 'mouthPressRight'],
+    ['MouthPressLeft', 'mouthPressLeft'],
+    ['TongueOut', 'tongueOut']
+  ]}
+/>
+
+* <b>Bold</b> Blended Shape.
+
+:::caution Some shapes are not tracked
+
+ARKit does not include expressions to track the following Unified Expressions:
+
+```
+EyeDilationRight
+EyeDilationLeft
+EyeConstrictRight
+EyeConstrictLeft
+
+CheekSuckRight
+CheekSuckLeft
+
+MouthTightenerRight
+MouthTightenerLeft
+
+Tongue Directions
+Misc. Tongue Expressions
+```
+
+However, the absence of these shapes does not affect tracking quality.
+:::
+
+### Standard Documentation
+
+<a href="https://developer.apple.com/documentation/arkit/arfaceanchor/blendshapelocation">Apple Developer Documentation</a><br/>
+<a href="https://arkit-face-blendshapes.com/">ARKit Shape References (Unofficial)</a>
