@@ -10,6 +10,14 @@ The Meta Quest Pro provides eye gaze tracking, detailed eye expression tracking,
 All eye and face tracking hardware is internal to the device (no additional hardware setup required).
 All eye and face tracking data is accessed via Meta’s Face and Eye OpenXR extensions.
 
+:::danger
+The Quest Pro has been shown to be *extremely* susceptable to sweat damage.
+There have been a non-trivial number of users who have experienced the exact same failure mode
+of Eye-tracking not working after sweat ingress.
+If you plan on exercising, dancing, or doing other sweat-inducing activities,
+please take extra precautions against having sweat or other liquids reach the face-facing part of the headset.
+:::
+
 ## Why is this setup required?
 
 The Quest Pro provides developers with both eye and face tracking data from a single, contained device, making it easy for native Quest developers to incorporate.
@@ -19,44 +27,10 @@ Previously, a beta version of the native VRChat Quest client included built in e
 
 ## Setup
 
-:::info
-While an ALXR module exists, Korejan has not released it yet. This page will only cover the Oculus Link/Airlink method.
-:::
-:::warning
-There is currently **no way** to use Virtual Desktop with face tracking. VD simply just doesn't access the face tracking API and it seems pretty low priority on the VD developer's list of priorities.
-:::
-
-The Quest Pro currently has 1 readily available face-tracking compatible PCVR connection methods:
-
-- Oculus Link (or Airlink)
-
-Follow all the sub-sections: [Enable Developer Mode on the Headset](#enable-developer-mode-on-the-headset), [Enable Eye and Face Tracking on the Headset](#enable-eye-and-face-tracking-on-the-headset), and [Oculus Link/Airlink PC Setup](#oculus-linkairlink-pc-setup) to complete setup.
-
-Prefer a video? Community member Ninka has graciously created another tutorial video for the Quest Pro and VRCFT 5.0+ that goes over the entire setup procedure,
-including the VRCFT module installation.
-
-<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-    <ReactPlayer controls url='https://www.youtube.com/watch?v=Keh__Lw7dEk'/>
-</div>
-
-<!-- The user is free to choose whatever method they prefer more. ALXR is an open-source project and thus has many for features and customizability in the PCVR connection as compared to Airlink, but also has more bugs or quirks.
-Oculus Link/Airlink is Meta’s own PCVR streaming solution, and is generally more straight-forward to set up and network stable, but also is limited in customization.
-
-In both cases the user is expected to have the VR PC and the Quest Pro on the same network, with the PC ideally connected to the network via ethernet cable. 
-You can learn more about improving your Quest PCVR streaming experience with the many guides available online.  -->
-
-### Enable Developer Mode on the Headset
-
-Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-quest/enable-developer-mode
-
-1. [Set up a Meta Oculus developer account](https://developer.oculus.com/sign-up/)
-    * A developer account is ***necessary*** (for now) as the eye and face OpenXR extensions are currently considered "developer features".
-   It is rather trivial to apply for and there is no check for being a "real organization".
-2. Install the Oculus ("Meta Quest") app on mobile device (if it isn’t already) and login with your (developer) Oculus account. Register your headset in the app.
-3. In the Oculus mobile App, tap Menu at the bottom right, then Devices. Select your Quest Pro, then go to `Settings -> Developer Mode` and set the Developer Mode switch to enabled.
-    * Reboot the headset after enabling Developer Mode.
-
-![Developer Mode](img/quest/dev-mode.png)
+The basic Quest Pro setup flow:
+1. [Enable Eye and Face Tracking on the Headset](#enable-eye-and-face-tracking-on-the-headset)
+2. Set up desired PCVR connection method
+3. Install corresponding VRCFT module
 
 ### Enable Eye and Face Tracking on the Headset
 
@@ -65,88 +39,172 @@ Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-qu
 3. Select the "Eye Tracking" tab on the left, then Enable Eye Tracking. If you haven’t already, calibrate your eye tracking
 ![Quest Settings](img/quest/quest_pro_settings_eye_tracking.jpeg)
 
-### Oculus Link/Airlink PC Setup
+The Quest Pro currently has **4** readily available face-tracking compatible PCVR connection methods, listed in no particular order:
+
+- [Oculus Link/Airlink](#oculus-linkairlink-setup)
+- [ALXR](#alxr-setup)
+- [ALVR](#alvr-setup) 
+- [Virtual Desktop](#virtual-desktop-setup)
+
+The user is free to choose whatever PCVR method they prefer. 
+ALXR/ALVR are open-source projects and thus has many for features and customizability in the PCVR connection as compared to Airlink, but also may have more bugs, quirks, and generally may be harder to use.
+Oculus Link/Airlink is Meta’s own PCVR streaming solution, and is generally more straight-forward to set up (the PCVR part) and network stable, but also is limited in customization.
+Virtual Desktop is commonly seen as the "best" PCVR streaming solution, but it is not *free*, unlike all the other options.
+
+In any case, the user is expected to have the VR PC and the Quest Pro on the same network, with the PC ideally connected to the network via ethernet cable (for wireless PCVR),
+or Quest Pro connected to the PC with a high-quality USB 3.0+ cable (for "wired" PCVR).
+You can learn more about improving your Quest PCVR streaming experience with the many guides available online.
+
+### Oculus Link/Airlink Setup
+
+Prefer a video? Community member Ninka has graciously created another tutorial video for the Quest Pro and VRCFT 5.0+ that goes over the entire setup procedure,
+including the VRCFT module installation for the Oculus Link/Airlink module "Quest Pro OpenXR".
+
+<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+    <ReactPlayer controls url='https://www.youtube.com/watch?v=Keh__Lw7dEk'/>
+</div>
+
+#### Enable Developer Mode on the Headset
+
+Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-quest/enable-developer-mode
+
+1. [Set up a Meta Oculus developer account](https://developer.oculus.com/sign-up/)
+    * A developer account is ***necessary*** (for now) as the eye and face OpenXR extensions are currently considered "developer features" if to be accessed from the PC Oculus runtime.
+   It is rather trivial to apply for and there is no check for being a "real organization".
+2. Install the Oculus ("Meta Quest") app on mobile device (if it isn’t already) and login with your (developer) Oculus account. Register your headset in the app.
+3. In the Oculus mobile App, tap Menu at the bottom right, then Devices. Select your Quest Pro, then go to `Settings -> Developer Mode` and set the Developer Mode switch to enabled.
+    * Reboot the headset after enabling Developer Mode.
+
+![Developer Mode](img/quest/dev-mode.png)
 
 1. [**MAKE SURE YOUR HEADSET IS IN DEVELOPER MODE**](#enabling-developer-mode-on-the-headset)
 2. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
+
 :::warning
-Do **not** skip these steps. Please follow the instructions for setting the headset to developer mode using the mobile app before proceeding. 
-Even if you think it is in developer mode already, **follow the instructions anyways**.
+Do **not** skip these steps. Please follow the instructions for setting the headset to developer mode using the mobile app before proceeding.
+Even if you think it is in developer mode already, **follow the instructions and do it again anyways**.
 :::
+
 3. Install and start the [Oculus PC application](https://www.oculus.com/download_app/?id=1582076955407037) (if it isn't already).
 4. Follow setup instructions for logging in and adding your Quest Pro to `Devices`.
-5. In the Oculus PC application, click on `Settings` in the left sidebar, then `General` tab. Turn on `Unknown Sources`. Set the `OpenXR Runtime` to Oculus
+5. In the Oculus PC application, click on `Settings` in the left sidebar, then `General` tab. Turn on `Unknown Sources`, and set the `OpenXR Runtime` to Oculus.
+
 :::warning
-**SET THE OPENXR RUNTIME TO OCULUS**. This is the *second* most forgotten step of Quest Pro setup.
+**SET THE OPENXR RUNTIME TO OCULUS**.
 :::
+
 ![Oculus PC App General Tab](img/quest/oculus_pc_app_general.png)
 6. Navigate to the `Beta` tab. Enable `Developer Runtime Features`, `Eye tracking over Oculus Link`, and `Natural Facial Expressions over Oculus Link`.
-You can try enabling `Passthrough over Oculus Link` but that *may* cause issues. 
-:::note
+   - Note that `Passthrough over Oculus Link` option *may* cause issues and unless you are making or using PCVR apps that use Oculus passthrough, you should just leave this disabled.
+
+:::warning
 If you do not see these options, you did not follow the previous steps correctly.
 :::
+
    ![Oculus PC app Beta Tab](img/quest/oculus_pc_app_beta.png)
-7. PC and Headset setup complete! Please continue to [Modules](#modules) for which VRCFT module to install to use the Quest Pro with VRCFT.
+   
+7. Install either the Oculus Quest OpenXR Module or ALXR Local Module from the VRCFaceTracking module registry.
 
-<!-- ### ALVR/ALXR Setup
+### Virtual Desktop Setup
 
-1. Install SideQuest (Advanced Installer) on your computer. https://sidequestvr.com/setup-howto
-   - The SideQuest application will have a built-in tutorial for the following steps.
-2. [**Set your headset to developer mode using the Oculus mobile app**](#enabling-developer-mode-on-the-headset) and..
-3. [Enable Headset Eye and Face Tracking](#enabling-eye-and-face-tracking-on-the-headset)
-:::warning
-Do **not** skip these steps. Please follow the instructions for setting the headset to developer mode using the mobile app before proceeding. 
-Even if you think it is in developer mode already, **follow the instructions anyways**. 
+:::note
+This setup assumes that Virtual Desktop has already been purchased on the **Quest Store** in the headset
+and set up with the Virtual Desktop Streamer PC-side app.
+Please refer to Virtual Desktop's built-in setup instructions to get started with using Virtual Desktop.
 :::
-4. Connect your Quest Pro headset to your computer with a *data-transfer* USB cable.
-Once connected you will be prompted to "Allow USB debugging" and "Allow File Access". Make sure to allow both.
-(You should also check the *Always allow from this computer* box to prevent the message from popping up again later)
-Your headset should now be ready to be used with SideQuest.
-5. Download the [latest ALXR **Quest** Client (`alxr-client-quest.apk`)](https://github.com/korejan/ALXR-experimental/releases/)
-6. Use SideQuest to install `alxr-client-quest.apk` to your Quest Pro. Click the *"Install APK file from folder"* button, then select the downloaded `alxr-client-quest.apk` in the file prompt.
-![How to install APKs in SideQuest](img/quest/hacks_sidequest-install-other-crop2.png)
-7. Download [ALVR Server v18.2.3 (`alvr_server_windows.zip`)](https://github.com/alvr-org/ALVR/releases/tag/v18.2.3)
-   - Optionally, you can try [this custom build of alvr_server v18 from korejan](https://drive.google.com/file/d/1aA1j4H97mSKebjS_puCd4-FUKnxZMBfC/view?usp=share_link) that includes the encoding changes found in alvr v19
-    :::note
-    Newer versions of ALVR server are incompatible with ALXR client, so only use the linked options here (for now!)
-    :::
-8. Unzip ``alvr_server_windows.zip`` somewhere convenient, then launch ``ALVR Launcher.exe``. Follow the initial setup procedure in the launched ALVR Server app.
-9. Once the ALVR Server is up and running, launch the ``alxr_client`` app that you installed earlier on your Quest Pro.
-In your Apps Library, you will need to set the category of shown apps to "Unknown Sources" to see the installed ``alxr_client``.
-![Unknown Sources](img/quest/quest_pro_unknown_sources.png)
-10. With ALXR client running on the headset, go back to the ALVR Server PC application and make sure you're on the "Connections" tab.
-There should now be a Meta Quest Pro in the "New Clients" list, with a "Trust" button on the right side of its entry.
-Click "Trust" to allow the ALVR server app to make the connection to the ALXR client app on the Quest Pro.
-Back in the headset, SteamVR should now be streamed from the PC to the headset.
-![After Trusting the Quest Pro in ALVR](img/quest/alvr_connection.png) 
 
-#### If you are planning on using a USB cable instead of Wi-Fi streaming for the ALXR/ALVR connection
+0. Install the [1.29.0 Beta version of Virtual Desktop](https://github.com/guygodin/VirtualDesktop/releases/tag/v1.29.0). If 1.29.0 has been promoted to live release, or the current live version of Virtual Desktop is greater than 1.29.0, please use the most recent live version of Virtual Desktop.
+1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
+2. In the Virtual Desktop app *on the headset*, go to the "Streaming" tab, and enable the option `Forward face/eye tracking to PC`
+![Virtual Desktop Settings](img/quest/virtual_desktop_settings.png)
+3. Start Virtual Desktop Streamer if you have not already and establish headset connection to the PC.
+4. Install the [Virtual Desktop VRCFT tracking module](#modules)
 
-1. Follow the [Official ALVR Community Instructions](https://github.com/alvr-org/ALVR/wiki/Using-ALVR-through-a-USB-connection) for setting up the USB connection.
+### ALXR Setup
+  
+1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
+2. Download and install the latest ALXR client *and server* from the [ALXR-nightly](https://github.com/korejan/ALXR-nightly/releases) repository.
+If this is your first time using ALXR, follow the [Usage guide](https://github.com/korejan/ALVR/wiki/ALXR-Client#usage) and [Android-specific client install instructions](https://github.com/korejan/ALVR/wiki/ALXR-Client#android-all-flavors---questpicogenericetc)
+
+:::note
+Learn how to [sideload applications to you Quest](#using-sidequest-to-side-load-quest-apps)
+:::
+
+3. Install the **ALXR Remote** module from the VRCFaceTracking module repository.
+4. Open the `ALXRModuleConfig.json` found in the installed module directory.
+   - You may need to navigate to `C:\Users\[username]\AppData\Local\Packages\96ba052f-0948-44d8-86c4-a0212e4ae047_d7rcq4vxghz0r\LocalCache\Roaming\VRCFaceTracking\` to find the module directory and config json.
+   - [Learn more about the configuration options](https://github.com/korejan/VRCFT-ALXR-Modules#module-settings)
+5. In `ALXRModuleConfig.json`, in the "RemoteConfig" section set "ClientIpAddress" to the headset IP, this can be found in the ALVR server dashboard.
+   - If the client is being run on the same host as the server (e.g. alxr windows client), use localhost IP (default, `127.0.0.1`) and set the server to TCP protocol.
+6. Restart VRCFT to reinitialize the ALXR Remote Module with the updated configuration
+
+
+### ALVR Setup
+
+1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
+2. Install the ALVR **Nightly** streamer on the PC and **Nightly** client on the Quest Pro if you have not already.
+Follow the [ALVR Install instructions](https://github.com/alvr-org/ALVR/wiki/Installation-guide#nightly) if this is your first time using ALVR.
+3. Launch ALVR streamer and set `Eye and face tracking` to `VRCFaceTracking`.
+4. Install the **ALVR Module** from the VRCFaceTracking module repository.
+5. Start the client on the Quest Pro and connect.
+
+<!-- #### If you are planning on using a USB cable instead of Wi-Fi streaming for the ALVR connection
+
+1. Follow the [Official ALVR Community Instructions](https://github.com/alvr-org/ALVR/wiki/ALVR-wired-setup-(ALVR-over-USB)) for setting up the USB connection.
 2. Change the text in the `questProIP` file to `127.0.0.1` -->
 
 ## Modules
 
-<!-- There are two different VRCFT modules that can be used for the Quest Pro. 
-If you are using the ALXR program for streaming PCVR to the headset, you *must* use Korejan's ALXR module.
-Otherwise if using Oculus Link/Airlink for PCVR streaming, either module will work. -->
+There are a total of **5** different VRCFT modules that can be used for the Quest Pro.
 
-<!-- We'll bring the neat pagecards back once module pages become a thing -->
-
-Install the **"QuestProOpenXRTrackingModule"** from the <Link to={useBaseUrl('docs/vrcft-software/vrcft#module-registry')}  target="_blank" rel="noopener noreferrer">VRCFaceTracking Module Registry</Link>
+<!-- Install the **"QuestProOpenXRTrackingModule"** from the <Link to={useBaseUrl('docs/vrcft-software/vrcft#module-registry')}  target="_blank" rel="noopener noreferrer">VRCFaceTracking Module Registry</Link>
 
 Interested in the source code? Check out the [QuestProOpenXRTrackingModule source repository](https://github.com/regzo2/VRCFaceTracking-QuestProOpenXR)
-(Currently maintained by Regzo2 / Azmidi / "Mitchell Moment")
+(Currently maintained by Regzo2 / Azmidi / "Mitchell Moment") -->
 
 <!-- <div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-    <PageCard name="TofuLemon's OpenXR Module" url="../intro" description="Creates a psuedo-headless OpenXR application to pull data from Facebook's Eye/Face OpenXR extensions"/>
+    <PageCard name="Quest Pro OpenXR Module" url="../intro" description="Creates a psuedo-headless OpenXR application to pull data from Facebook's Eye/Face OpenXR extensions"/>
+    <PageCard name="ALXR Local Module" url="../intro" description="Creates a psuedo-headless ALXR (OpenXR) instance to pull data from OpenXR extensions"/>
+    <PageCard name="ALXR Remote Module" url="../intro" description="Creates a psuedo-headless ALXR (OpenXR) instance to pull data from OpenXR extensions"/>
+    <PageCard name="ALVR Module" url="../intro" description="Creates a psuedo-headless ALXR (OpenXR) instance to pull data from OpenXR extensions"/>
+    <PageCard name="Virtual Desktop Module" url="../intro" description="Creates a psuedo-headless ALXR (OpenXR) instance to pull data from OpenXR extensions"/>
 </div> -->
 
-<!-- <PageCard name="Korejan's ALXR Module" url="../intro" description="Creates a psuedo-headless ALXR (OpenXR) instance to pull data from OpenXR extensions"/> -->
+If you are using Oculus Link/Airlink, you have the options of:
+1. **Quest Pro OpenXR Module**
+2. **ALXR Local Module**
+   - Learn more about the [ALXR Local/Remote Module configuration options](https://github.com/korejan/VRCFT-ALXR-Modules#module-settings).
+
+If you are using ALXR, you will need to use the **ALXR Remote module**.
+
+If you are using ALVR, you will need to use the **ALVR module**.
+
+If you are using Virtual Desktop, you will need to use the **Virtual Desktop module**.
+
+
 
 <!-- Follow the module installation instructions in the respective module pages, and learn about the avalible PCVR streaming methods by continuing down to [Setup](#setup)! -->
 
 ## Tips and Tricks
+
+### Using Sidequest to Side-load Quest Apps
+
+1. Install SideQuest (Advanced Installer) on your computer. https://sidequestvr.com/setup-howto
+   - The SideQuest application will have a built-in tutorial for the following steps.
+2. Connect your Quest Pro headset to your computer with a *data-transfer* USB cable.
+Once connected you will be prompted to "Allow USB debugging" and "Allow File Access". Make sure to allow both.
+(You should also check the *Always allow from this computer* box to prevent the message from popping up again later)
+3. Use SideQuest to install `alxr-client-quest.apk` to your Quest Pro. Click the *"Install APK file from folder"* button, then select the downloaded `alxr-client-quest.apk` in the file prompt.
+![How to install APKs in SideQuest](img/quest/hacks_sidequest-install-other-crop2.png)
+4. SideQuest should have a green notification bar show up at the bottom saying the operation was successful.
+
+:::note
+You may need to uninstall the previous version of the app you are trying to sideload if it exists and SideQuest fails the current app install.
+:::
+
+5. In your Apps Library, you will need to set the category of shown apps to "Unknown Sources" to see the sideloaded application.
+You will need to tap the Search bar first before you see the category filter dropdown.
+![Unknown Sources](img/quest/quest_pro_unknown_sources.png)
 
 ### Aligning Play Spaces with SteamVR Lighthouse-tracked Devices
 
@@ -275,12 +333,12 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
 ### General Problems
 
 <details>
-  <summary>When using Oculus Link/Airlink, I cannot see SteamVR because it is blocked still running "VRCFaceTracking"</summary>
+  <summary>When using Oculus Link/Airlink, I cannot see SteamVR because Oculus is stuck loading some random app</summary>
   <TroubleShootTable
-  cause="The nature of the way VRCFaceTracking must pull data from the Oculus OpenXR runtime is inherently hacky, effectively running 2 VR programs at once.">
+  cause="The nature of the way VRCFaceTracking must pull data from the Oculus OpenXR runtime from the PC is inherently hacky, effectively running 2 VR programs at once.">
     If you started SteamVR first, you can simply switch back to SteamVR in the Oculus Dash.
     You can also try switching up the program startup sequence, starting VRCFaceTracking then SteamVR through the desktop Steam app (not through the Oculus Dash in the headset).
-    Yet another solution is to use <Link to="https://github.com/LibreQuest/OculusKiller">OculusKiller</Link> to avoid dealing with the Oculus Dash entirely.
+    Yet another solution is to use <Link to="https://github.com/LibreQuest/OculusKiller">OculusKiller</Link> to avoid dealing with the Oculus Dash entirely, though this has its own downsides. 
   </TroubleShootTable>
 </details>
 
