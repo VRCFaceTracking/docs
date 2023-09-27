@@ -189,6 +189,10 @@ Please refer to Virtual Desktop's built-in setup instructions to get started wit
 3. Start Virtual Desktop Streamer if you have not already and establish headset connection to the PC.
 4. Install the **Virtual Desktop VRCFT tracking module**
 
+:::note
+To let the Virtual Desktop VRCFT module properly initialize, make sure to start VRCFT with the Virtual Desktop module installed *after* you start the Virtual Desktop Streamer program on the PC.
+:::
+
 ## Modules
 
 There are a total of **5** different VRCFT modules that can be used for the Quest Pro.
@@ -245,6 +249,7 @@ You may need to uninstall the previous version of the app you are trying to side
 
 5. In your Apps Library, you will need to set the category of shown apps to "Unknown Sources" to see the sideloaded application.
 You will need to tap the Search bar first before you see the category filter dropdown.
+
 <div style={{
   width: '90%',
   height: 'auto',
@@ -271,6 +276,20 @@ To run, right-click the file -> `"Run with Powershell"`
 
 You may have problems with running Powershell scripts downloaded from the internet (for good reason!). You can learn about [getting around Microsoft's default script security](https://adamtheautomator.com/run-powershell-script/).
 
+### Using Index Controllers with the Quest Pro with Virtual Desktop
+
+*Before* launching SteamVR from Virtual Desktop: 
+In the Virtual Desktop "Streaming" tab, untick the "Track controllers" option under "Advanced Options" in the Streaming tab.
+
+<div style={{
+  width: '33%',
+  height: 'auto',
+  margin: 'auto',
+  display: 'block'
+}}>
+    <img src={require("./img/quest/virtual_desktop_track_controllers.png").default} alt="Virtual Desktop track controllers setting circled" />
+</div>
+
 <!-- ### Using Index Controllers with the Quest Pro with ALVR/ALXR
 
 The customizability of ALVR allows a few options in this regard. All following mentioned settings can be found in the "Headset" tab of the ALVR settings.
@@ -291,7 +310,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
   <TroubleShootTable
   cause="You do not have developer mode enabled on both the PC Oculus program and for the headset from the Oculus phone app.">
 
-  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps.
+  <i>Carefully</i> re-run through <Link to="##oculus-linkairlink-setup">the Link/Airlink setup</Link>, paying careful attention to all the steps.
   <br/>
   Double-check that "Developer Runtime Features" is enabled in the Oculus PC program and that <b>Developer Mode is switched on for the Quest Pro in the Oculus phone app</b>.
   If you can't find these options, your Oculus/Meta account is not a Meta Quest Developer account, or may need to be re-verified as a Developer account.
@@ -305,7 +324,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
   <TroubleShootTable
   cause="There is some permission in the setup that was not set correctly.">
 
-  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps.
+  <i>Carefully</i> re-run through <Link to="#oculus-linkairlink-setup">the setup</Link>, paying careful attention to all the steps.
   <br/>
   Double-check that "Developer Runtime Features" is enabled in the Oculus PC program and that <b>Developer Mode is switched on for the Quest Pro in the Oculus phone app</b>.
   If you can't find these options, your Oculus/Meta account is not a Meta Quest Developer account, or may need to be re-verified as a Developer account.
@@ -319,7 +338,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
   <TroubleShootTable
   cause="There is some permission in the setup that was not set correctly or Quest Pro headset is not connected.">
   
-  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps.
+  <i>Carefully</i> re-run through <Link to="#oculus-linkairlink-setup">the setup</Link>, paying careful attention to all the steps.
   <br/>
   Double-check that "Developer Runtime Features" is enabled in the Oculus PC program and that <b>Developer Mode is switched on for the Quest Pro in the Oculus phone app</b>.
   If you can't find these options, your Oculus/Meta account is not a Meta Quest Developer account, or may need to be re-verified as a Developer account.
@@ -335,7 +354,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
   <TroubleShootTable
   cause="There is some permission in the setup that was not set correctly or Quest Pro headset is not connected.">
   
-  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps.
+  <i>Carefully</i> re-run through <Link to="#oculus-linkairlink-setup">the setup</Link>, paying careful attention to all the steps.
   Doubly make sure that you have Oculus set as your OpenXR runtime in the Oculus Desktop app settings.
   <br/><br/>
   Also make sure that your Quest Pro is actively connected via Link/Airlink before starting VRCFT!
@@ -347,7 +366,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
   <TroubleShootTable
   cause="There is something preventing an OpenXR session from being created for the Quest Pro">
   
-  <i>Carefully</i> re-run through <Link to="#setup">the setup</Link>, paying careful attention to all the steps.
+  <i>Carefully</i> re-run through <Link to="#oculus-linkairlink-setup">the setup</Link>, paying careful attention to all the steps.
   Doubly make sure that you have Oculus set as your OpenXR runtime in the Oculus Desktop app settings.
   <br/><br/>
   Also make sure that your Quest Pro is actively connected via Link/Airlink before starting VRCFT!
@@ -381,6 +400,19 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
   </TroubleShootTable>
 </details>
 
+<details>
+  <summary>[Virtual Desktop] Error: [VirtualDesktop] Failed to open MemoryMappedFile. Make sure Virtual Desktop Streamer (v1.29 or later) is running.</summary>
+  <TroubleShootTable
+  cause="VRCFaceTracking was started before Virtual Desktop">
+
+  Close VRCFaceTracking, start Virtual Desktop Streamer, reopen VRCFaceTracking.
+
+  If VRCFaceTracking is started before SteamVR/VRChat is launched from Virtual Desktop, the output log may show a warning that "Tracking is not active".
+  However, after launching SteamVR/VRChat (*from Virtual Desktop*) the Virtual Desktop module should log that "Tracking is now active!".
+
+  </TroubleShootTable>
+</details>
+
 ### General Problems
 
 <details>
@@ -407,6 +439,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
   cause="When the Quest headset enters sleep mode after detecting you have taken off the headset, it loses it's original reference space to which the SteamVR space was calibrated to.">
   Download the <Link to="https://developer.oculus.com/documentation/unity/ts-odh/">Meta Quest Developer Hub</Link> and follow the instructions for <i>Connect Headset to MQDH</i> and <i>Disable proximity sensor and guardian</i>.
   This will prevent the headset from entering sleep, but does mean your headset stays fully active even if you take it off.
+  Alternatively, use another PCVR streaming method that supports Stage Tracking (Virtual Desktop, ALXR, ALVR).
   </TroubleShootTable>
 </details>
 
