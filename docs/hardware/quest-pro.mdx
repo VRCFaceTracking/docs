@@ -68,6 +68,8 @@ With any option, the user is expected to have the VR PC and the Quest Pro on the
 or Quest Pro connected to the PC with a high-quality USB 3.0+ cable (for "wired" PCVR, Virtual Desktop excluded).
 You can learn more about improving your Quest PCVR streaming experience with the many guides available online.
 
+---
+
 ### Oculus Link/Airlink Setup
 
 Prefer a video? Community member Ninka has graciously created another tutorial video for the Quest Pro and VRCFT 5.0+ that goes over the entire setup procedure,
@@ -79,10 +81,14 @@ including the VRCFT module installation for the Oculus Link/Airlink module "Ques
 
 #### Enable Developer Mode on the Headset
 
+:::info
+Developer mode is only required if using Oculus Link/Airlink!
+:::
+
 Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-quest/enable-developer-mode
 
 1. [Set up a Meta Oculus developer account](https://developer.oculus.com/sign-up/)
-    * A developer account is ***necessary*** (for now) as the eye and face OpenXR extensions are currently considered "developer features" if to be accessed from the PC Oculus runtime.
+    * A developer account is ***necessary*** (for now) as the eye and face OpenXR extensions are currently considered "developer features" if to be accessed *from the PC Oculus runtime*.
    It is rather trivial to apply for and there is no check for being a "real organization".
 2. Install the Oculus ("Meta Quest") app on mobile device (if it isn’t already) and login with your (developer) Oculus account. Register your headset in the app.
 3. In the Oculus mobile App, tap Menu at the bottom right, then Devices. Select your Quest Pro, then go to `Settings -> Developer Mode` and set the Developer Mode switch to enabled.
@@ -140,6 +146,10 @@ If you do not see these options, you did not follow the previous steps correctly
    - **Oculus Quest OpenXR Module**
    - **ALXR Local Module** | [Learn more about the ALXR module configuration options](https://github.com/korejan/VRCFT-ALXR-Modules#module-settings)
 
+**STOP**. You've reached the end of the setup instructions for Oculus Link/Airlink. 
+
+---
+
 ### ALXR Setup
 
 :::note
@@ -151,11 +161,15 @@ Using ALXR will require you to [sideload applications to you Quest](#using-sideq
 If this is your first time using ALXR, follow the [Usage guide](https://github.com/korejan/ALVR/wiki/ALXR-Client#usage) and [Android-specific client install instructions](https://github.com/korejan/ALVR/wiki/ALXR-Client#android-all-flavors---questpicogenericetc)
 3. Install the **ALXR Remote** module from the VRCFaceTracking module repository.
 4. Open the `ALXRModuleConfig.json` found in the installed module directory.
-  - You may need to navigate to `C:\Users\[username]\AppData\Local\Packages\96ba052f-0948-44d8-86c4-a0212e4ae047_d7rcq4vxghz0r\LocalCache\Roaming\VRCFaceTracking\` to find the module directory and config json.
-  - [Learn more about the ALXR module configuration options](https://github.com/korejan/VRCFT-ALXR-Modules#module-settings)
+   - You may need to navigate to `C:\Users\[username]\AppData\Local\Packages\96ba052f-0948-44d8-86c4-a0212e4ae047_d7rcq4vxghz0r\LocalCache\Roaming\VRCFaceTracking\` to find the module directory and config json.
+   - [Learn more about the ALXR module configuration options](https://github.com/korejan/VRCFT-ALXR-Modules#module-settings)
 5. In `ALXRModuleConfig.json`, in the "RemoteConfig" section set "ClientIpAddress" to the headset IP, this can be found in the ALVR server dashboard.
-  - If the client is being run on the same host as the server (e.g. alxr windows client), use localhost IP (default, `127.0.0.1`) and set the server to TCP protocol.
+   - If the client is being run on the same host as the server (e.g. alxr windows client), use localhost IP (default, `127.0.0.1`) and set the server to TCP protocol.
 6. Restart VRCFT to reinitialize the ALXR Remote Module with the updated configuration
+
+**STOP**. You've reached the end of the setup instructions for ALXR. 
+
+---
 
 ### ALVR Setup
 
@@ -175,6 +189,10 @@ Follow the [ALVR Install instructions](https://github.com/alvr-org/ALVR/wiki/Ins
 1. Follow the [Official ALVR Community Instructions](https://github.com/alvr-org/ALVR/wiki/ALVR-wired-setup-(ALVR-over-USB)) for setting up the USB connection.
 2. Change the text in the `questProIP` file to `127.0.0.1` -->
 
+**STOP**. You've reached the end of the setup instructions for ALVR. 
+
+--- 
+
 ### Virtual Desktop Setup
 
 :::note
@@ -182,7 +200,29 @@ This following setup assumes that Virtual Desktop has already been purchased fro
 Please refer to Virtual Desktop's built-in setup instructions to get started with using Virtual Desktop.
 :::
 
-0. Install the [1.29.0 Beta version of Virtual Desktop](https://github.com/guygodin/VirtualDesktop/releases/tag/v1.29.0). If 1.29.0 has been promoted to live release, or the current live version of Virtual Desktop is greater than 1.29.0, please use the most recent live version of Virtual Desktop.
+0. Install the [1.29.0 Beta version of Virtual Desktop](https://github.com/guygodin/VirtualDesktop/releases/tag/v1.29.0), Quest App as well as PC Streamer. If 1.29.0 has been promoted to live release, or the current live version of Virtual Desktop is greater than 1.29.0, please use the most recent live version of Virtual Desktop.
+
+<details>
+  <summary>How To Switch to Virtual Desktop Beta</summary>
+
+  There are a few ways to change to Virtual Desktop Beta when a Beta is active. Meta constantly changes how to accomplish this so the fool-proof way is to just sideload the beta APK. 
+
+  1. Install the beta APK manually. Grab the beta `VirtualDesktop.Android.Quest.apk` (without the 1) from the release page linked above and [install it with SideQuest](#using-sidequest-to-side-load-quest-apps). You will need to uninstall the live version of Virtual Desktop from your Quest first. 
+
+  2. Change to the Beta channel on the Virtual Desktop Meta store page (while logged into your Meta Quest account). You will need to then update the Virtual Desktop app in your headset after this change. 
+  <div style={{
+    width: '75%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+  }}>
+    <img src={require("./img/quest/virtual_desktop_beta_desktop.png").default} alt="Changing to Beta on the Meta website" />
+  </div>
+
+  ~~3. Change to the Beta channel in the Meta Quest phone app (while logged into your Meta Quest account). You will need to then update the Virtual Desktop app in your headset after this change.~~ 
+
+</details>
+
 1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
 2. In the Virtual Desktop app *on the headset*, go to the "Streaming" tab, and enable the option `Forward face/eye tracking to PC`
 ![Virtual Desktop Settings](img/quest/virtual_desktop_settings.png)
@@ -192,6 +232,10 @@ Please refer to Virtual Desktop's built-in setup instructions to get started wit
 :::note
 To let the Virtual Desktop VRCFT module properly initialize, make sure to start VRCFT with the Virtual Desktop module installed *after* you start the Virtual Desktop Streamer program on the PC.
 :::
+
+**STOP**. You've reached the end of the setup instructions for Virtual Desktop. 
+
+---
 
 ## Modules
 
@@ -274,12 +318,15 @@ Download these [Powershell Scripts (Discord Link)](https://discord.com/channels/
 
 To run, right-click the file -> `"Run with Powershell"`
 
+These scripts will prevent Oculus Link from adding the Quest controllers to the SteamVR devices, allowing the use of Index controllers or any other controller of your choosing. 
+
 You may have problems with running Powershell scripts downloaded from the internet (for good reason!). You can learn about [getting around Microsoft's default script security](https://adamtheautomator.com/run-powershell-script/).
 
 ### Using Index Controllers with the Quest Pro with Virtual Desktop
 
 *Before* launching SteamVR from Virtual Desktop: 
 In the Virtual Desktop "Streaming" tab, untick the "Track controllers" option under "Advanced Options" in the Streaming tab.
+This will prevent Virtual Desktop from adding the Quest controllers to the SteamVR devices, allowing the use of Index controllers or any other controller of your choosing. 
 
 <div style={{
   width: '33%',
@@ -362,7 +409,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
 </details>
 
 <details>
-  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create session" and I am NOT using a laptop / eGPU</summary>
+  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create session and I am NOT using a laptop / eGPU</summary>
   <TroubleShootTable
   cause="There is something preventing an OpenXR session from being created for the Quest Pro">
   
@@ -374,7 +421,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
 </details>
 
 <details>
-  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create session" and I AM using a laptop / eGPU</summary>
+  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create session and I AM using a laptop / eGPU</summary>
   <TroubleShootTable
   cause="There is something preventing an OpenXR session from being created for the Quest Pro, possibly related to Oculus trying to default init on laptop's iGPU">
   
