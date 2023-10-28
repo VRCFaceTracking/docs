@@ -3,6 +3,7 @@ import {TroubleShootTable, CustomLink, TextColor} from '@site/src/components/Uti
 import ReactPlayer from 'react-player'
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Admonition from '@theme/Admonition';
 
 # Quest Pro
 
@@ -17,7 +18,7 @@ The Quest Pro has been shown to be *extremely* susceptable to sweat damage.
 There have been a non-trivial number of users who have experienced the exact same failure mode
 of Eye-tracking not working after sweat ingress.
 If you plan on exercising, dancing, or doing other sweat-inducing activities,
-please take extra precautions against having sweat or other liquids reach the face-facing part of the headset.
+please take extra precautions against having sweat or other liquids reach the front part of the headset.
 :::
 
 ## Why is this setup required?
@@ -25,6 +26,8 @@ please take extra precautions against having sweat or other liquids reach the fa
 The Quest Pro provides developers with both eye and face tracking data from a single, contained device, making it easy for native Quest developers to incorporate.
 However, having it only accessible through Meta’s Oculus OpenXR extensions means there must be an OpenXR application using the Oculus runtime running somewhere.
 Depending on your chosen PCVR connection method, setup may or may not be trivial.
+
+---
 
 ## Setup
 
@@ -59,9 +62,9 @@ Oculus Link/Airlink is Meta’s own PCVR streaming solution, and is generally mo
 ALXR/ALVR are open-source projects and thus has many for features and customizability in the PCVR connection as compared to Airlink, but also may have more bugs, quirks, and generally may be harder to use.
 Virtual Desktop is commonly seen as the "best" PCVR streaming solution, but it is not *free*, unlike all the other options.
 
-If you need a general recommendation for what to use
+If you need a general recommendation for what to use for PCVR streaming:
 
-- If you don't want to spend money: you should start with **Oculus Link/Airlink** as it is free and the offical PCVR method.
+- If you don't want to spend money: you should start with **Oculus Link/Airlink** as it is free and the official PCVR method.
 - If you don't mind spending money: you should use **Virtual Desktop** for ease of use.
 
 With any option, the user is expected to have the VR PC and the Quest Pro on the same network, with the PC ideally connected to the network via ethernet cable (for wireless PCVR),
@@ -70,6 +73,9 @@ You can learn more about improving your Quest PCVR streaming experience with the
 
 ### Oculus Link/Airlink Setup
 
+<details>
+  <summary>Oculus Link/Airlink Setup</summary>
+
 Prefer a video? Community member Ninka has graciously created another tutorial video for the Quest Pro and VRCFT 5.0+ that goes over the entire setup procedure,
 including the VRCFT module installation for the Oculus Link/Airlink module "Quest Pro OpenXR".
 
@@ -77,35 +83,41 @@ including the VRCFT module installation for the Oculus Link/Airlink module "Ques
     <ReactPlayer controls url='https://www.youtube.com/watch?v=Keh__Lw7dEk'/>
 </div>
 
-#### Enable Developer Mode on the Headset
+<!-- <Admonition type="info">
+  <p>Developer mode is only required if using Oculus Link/Airlink!</p>
+</Admonition> -->
 
-Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-quest/enable-developer-mode
+<!-- #### Enable Developer Mode on the Headset
 
-1. [Set up a Meta Oculus developer account](https://developer.oculus.com/sign-up/)
-    * A developer account is ***necessary*** (for now) as the eye and face OpenXR extensions are currently considered "developer features" if to be accessed from the PC Oculus runtime.
-   It is rather trivial to apply for and there is no check for being a "real organization".
-2. Install the Oculus ("Meta Quest") app on mobile device (if it isn’t already) and login with your (developer) Oculus account. Register your headset in the app.
-3. In the Oculus mobile App, tap Menu at the bottom right, then Devices. Select your Quest Pro, then go to `Settings -> Developer Mode` and set the Developer Mode switch to enabled.
-    * Reboot the headset after enabling Developer Mode.
-
-<div style={{
-    width: '100%',
-    height: 'auto',
-    margin: 'auto',
-    display: 'block'
-}}>
-    <img src={require("./img/quest/dev-mode.png").default} alt="Quest Developer Mode in phone app" />
-</div>
+Instructions originally from https://learn.adafruit.com/sideloading-on-oculus-quest/enable-developer-mode -->
 
 <!-- :::warning
 Do **not** skip these steps. Please follow the instructions for setting the headset to developer mode using the mobile app before proceeding.
 Even if you think it is in developer mode already, **follow the instructions and do it again anyways**.
 ::: -->
 
-1. [**MAKE SURE YOUR HEADSET IS IN DEVELOPER MODE**](#enabling-developer-mode-on-the-headset)
-2. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
+<!-- 1. [**MAKE SURE YOUR HEADSET IS IN DEVELOPER MODE**](#enabling-developer-mode-on-the-headset) -->
+1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
+2. **CREATE DEVELOPER ACCOUNT AND ENABLE DEVELOPER MODE**: 
+
+    1. [Set up a Meta Oculus developer account](https://developer.oculus.com/sign-up/)
+        * A developer account is ***necessary*** (for now) as the eye and face OpenXR extensions are currently considered "developer features" if to be accessed *from the PC Oculus runtime*.
+      It is rather trivial to apply for and there is no check for being a "real organization".
+    2. Install the Oculus ("Meta Quest") app on mobile device (if it isn’t already) and login with your (developer) Oculus account. Register your headset in the app.
+    3. In the Oculus mobile App, tap Menu at the bottom right, then Devices. Select your Quest Pro, then go to `Settings -> Developer Mode` and set the Developer Mode switch to enabled.
+        * Reboot the headset after enabling Developer Mode.
+
+    <div style={{
+        width: '100%',
+        height: 'auto',
+        margin: 'auto',
+        display: 'block'
+    }}>
+        <img src={require("./img/quest/dev-mode.png").default} alt="Quest Developer Mode in phone app" />
+    </div>
+
 3. Install and start the [Oculus PC application](https://www.oculus.com/download_app/?id=1582076955407037) (if it isn't already).
-4. Follow setup instructions for logging in and adding your Quest Pro to `Devices`.
+4. Follow setup instructions for logging in (with the same developer account created/used earlier to enable dev mode on the headset!) and adding your Quest Pro to `Devices`.
 5. In the Oculus PC application, click on `Settings` in the left sidebar, then `General` tab. Turn on `Unknown Sources`, and set the `OpenXR Runtime` to Oculus.
 
 :::warning
@@ -122,7 +134,7 @@ Even if you think it is in developer mode already, **follow the instructions and
 </div>
 
 6. Navigate to the `Beta` tab. Enable `Developer Runtime Features`, `Eye tracking over Oculus Link`, and `Natural Facial Expressions over Oculus Link`.
-   - Note that `Passthrough over Oculus Link` option *may* cause issues and unless you are making or using PCVR apps that use Oculus passthrough, you should just leave this disabled.
+  - Note that `Passthrough over Oculus Link` option *may* cause issues and unless you are making or using PCVR apps that use Oculus passthrough, you should just leave this disabled.
 :::warning
 If you do not see these options, you did not follow the previous steps correctly.
 :::
@@ -136,9 +148,11 @@ If you do not see these options, you did not follow the previous steps correctly
     <img src={require("./img/quest/oculus_pc_app_beta.png").default} alt="Oculus PC app Beta Tab" />
 </div>
 
-7. Install one of the following modules from the VRCFaceTracking module registry:
-   - **Oculus Quest OpenXR Module**
-   - **ALXR Local Module** | [Learn more about the ALXR module configuration options](https://github.com/korejan/VRCFT-ALXR-Modules#module-settings)
+7. Proceed to [Modules](#modules) for compatible modules to use with Link/Airlink. 
+  
+</details>
+
+<!-- **STOP**. You've reached the end of the setup instructions for Oculus Link/Airlink. Proceed to [Modules](#modules). -->
 
 ### ALXR Setup
 
@@ -146,22 +160,33 @@ If you do not see these options, you did not follow the previous steps correctly
 Using ALXR will require you to [sideload applications to you Quest](#using-sidequest-to-side-load-quest-apps)
 :::
 
+
+<details>
+  <summary>ALXR Setup</summary>
+
 1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
 2. Download and install the latest ALXR client *and server* from the [ALXR-nightly](https://github.com/korejan/ALXR-nightly/releases) repository.
 If this is your first time using ALXR, follow the [Usage guide](https://github.com/korejan/ALVR/wiki/ALXR-Client#usage) and [Android-specific client install instructions](https://github.com/korejan/ALVR/wiki/ALXR-Client#android-all-flavors---questpicogenericetc)
 3. Install the **ALXR Remote** module from the VRCFaceTracking module repository.
 4. Open the `ALXRModuleConfig.json` found in the installed module directory.
-  - You may need to navigate to `C:\Users\[username]\AppData\Local\Packages\96ba052f-0948-44d8-86c4-a0212e4ae047_d7rcq4vxghz0r\LocalCache\Roaming\VRCFaceTracking\` to find the module directory and config json.
-  - [Learn more about the ALXR module configuration options](https://github.com/korejan/VRCFT-ALXR-Modules#module-settings)
+   - You may need to navigate to `C:\Users\[username]\AppData\Local\Packages\96ba052f-0948-44d8-86c4-a0212e4ae047_d7rcq4vxghz0r\LocalCache\Roaming\VRCFaceTracking\` to find the module directory and config json.
+   - [Learn more about the ALXR module configuration options](https://github.com/korejan/VRCFT-ALXR-Modules#module-settings)
 5. In `ALXRModuleConfig.json`, in the "RemoteConfig" section set "ClientIpAddress" to the headset IP, this can be found in the ALVR server dashboard.
-  - If the client is being run on the same host as the server (e.g. alxr windows client), use localhost IP (default, `127.0.0.1`) and set the server to TCP protocol.
-6. Restart VRCFT to reinitialize the ALXR Remote Module with the updated configuration
+   - If the client is being run on the same host as the server (e.g. alxr windows client), use localhost IP (default, `127.0.0.1`) and set the server to TCP protocol.
+6. Restart VRCFT to reinitialize the ALXR Remote Module with the updated configuration.
+
+</details>
+
+<!-- **STOP**. You've reached the end of the setup instructions for ALXR. Proceed to [Modules](#modules). -->
 
 ### ALVR Setup
 
 :::note
 Using ALVR will require you to [sideload applications to you Quest](#using-sidequest-to-side-load-quest-apps)
 :::
+
+<details>
+  <summary>ALVR Setup</summary>
 
 1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
 2. Install the ALVR **Nightly** streamer on the PC and **Nightly** client on the Quest Pro if you have not already.
@@ -170,28 +195,66 @@ Follow the [ALVR Install instructions](https://github.com/alvr-org/ALVR/wiki/Ins
 4. Start the client on the Quest Pro and connect.
 5. Install the **ALVR Module** from the VRCFaceTracking module repository.
 
+</details>
+
 <!-- #### If you are planning on using a USB cable instead of Wi-Fi streaming for the ALVR connection
 
 1. Follow the [Official ALVR Community Instructions](https://github.com/alvr-org/ALVR/wiki/ALVR-wired-setup-(ALVR-over-USB)) for setting up the USB connection.
 2. Change the text in the `questProIP` file to `127.0.0.1` -->
 
+<!-- **STOP**. You've reached the end of the setup instructions for ALVR. Proceed to [Modules](#modules). -->
+
 ### Virtual Desktop Setup
 
-:::note
+<details>
+  <summary>Virtual Desktop Setup</summary>
+
 This following setup assumes that Virtual Desktop has already been purchased from the **Quest Store** in the headset and the Virtual Desktop Streamer PC-side app has been installed on the PC.
 Please refer to Virtual Desktop's built-in setup instructions to get started with using Virtual Desktop.
-:::
 
-0. Install the [1.29.0 Beta version of Virtual Desktop](https://github.com/guygodin/VirtualDesktop/releases/tag/v1.29.0). If 1.29.0 has been promoted to live release, or the current live version of Virtual Desktop is greater than 1.29.0, please use the most recent live version of Virtual Desktop.
+0. Make sure that your Virtual Desktop Quest app and PC streamer application are on version **v1.29 or greater**. 
+If they are completely up to date, this requirement should be satisfied. 
 1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
 2. In the Virtual Desktop app *on the headset*, go to the "Streaming" tab, and enable the option `Forward face/eye tracking to PC`
 ![Virtual Desktop Settings](img/quest/virtual_desktop_settings.png)
 3. Start Virtual Desktop Streamer if you have not already and establish headset connection to the PC.
-4. Install the **Virtual Desktop VRCFT tracking module**
+4. Proceed to [Modules](#modules) for compatible modules to use with Virtual Desktop. 
+<!-- 4. Install the **Virtual Desktop VRCFT tracking module** -->
 
 :::note
 To let the Virtual Desktop VRCFT module properly initialize, make sure to start VRCFT with the Virtual Desktop module installed *after* you start the Virtual Desktop Streamer program on the PC.
 :::
+
+<!-- **STOP**. You've reached the end of the setup instructions for Virtual Desktop. Proceed to [Modules](#modules). -->
+
+</details>
+
+
+Switching to Virtual Desktop Beta (when a beta is active) may let you use yet-to-be-released features. 
+In case there is a beta you would like to try, you can switch to the beta following the instructions in the dropdown
+
+<details>
+  <summary>How To Switch to Virtual Desktop Beta</summary>
+
+  There are a few ways to change to Virtual Desktop Beta when a Beta is active. Meta constantly changes how to accomplish this so the fool-proof way is to just sideload the beta APK. 
+
+  1. Change to the Beta channel on the Virtual Desktop Meta store page (while logged into your Meta Quest account). You will need to then update the Virtual Desktop app in your headset after this change. 
+  <div style={{
+    width: '75%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+  }}>
+    <img src={require("./img/quest/virtual_desktop_beta_desktop.png").default} alt="Changing to Beta on the Meta website" />
+  </div>
+
+  2. Change to the Beta channel in the Meta Quest phone app (while logged into your Meta Quest account). You will need to then update the Virtual Desktop app in your headset after this change.
+
+  3. Install the beta APK manually. Grab the beta `VirtualDesktop.Android.Quest.apk` (without the 1) from the Virtual Desktop release page and [install it with SideQuest](#using-sidequest-to-side-load-quest-apps). You will need to uninstall the live version of Virtual Desktop from your Quest first. 
+
+</details>
+
+---
 
 ## Modules
 
@@ -216,12 +279,16 @@ Interested in the source code? Check out the [QuestProOpenXRTrackingModule sourc
 - If you are using ALXR, you will need to use the **[ALXR Remote module](https://github.com/korejan/VRCFT-ALXR-Modules)**.
 - If you are using ALVR, you will need to use the **[ALVR module](https://github.com/alvr-org/VRCFT-ALVR)**.
 - If you are using Virtual Desktop, you will need to use the **[Virtual Desktop module](https://github.com/guygodin/VirtualDesktop.VRCFaceTracking)**.
+    - Virtual Desktop v1.29.3 introduces support for Virtual Desktop's own OpenXR runtime VDXR. 
+    **[ALXR Local module](https://github.com/korejan/VRCFT-ALXR-Modules)** *can be used* for VRCFT instead of the Virtual Desktop module if VDXR is set as the active runtime. 
 
 Links are to Module source repositories, for those interested in contributing and improving the modules.
 All modules are readily available for installation via the VRCFaceTracking built in module registry.
 [Learn how to install modules from the module registry](../intro/getting-started.mdx#installing-the-vrcfacetracking-module).
 
 <!-- Follow the module installation instructions in the respective module pages, and learn about the avalible PCVR streaming methods by continuing down to [Setup](#setup)! -->
+
+---
 
 ## Tips and Tricks
 
@@ -274,12 +341,15 @@ Download these [Powershell Scripts (Discord Link)](https://discord.com/channels/
 
 To run, right-click the file -> `"Run with Powershell"`
 
+These scripts will prevent Oculus Link from adding the Quest controllers to the SteamVR devices, allowing the use of Index controllers or any other controller of your choosing. 
+
 You may have problems with running Powershell scripts downloaded from the internet (for good reason!). You can learn about [getting around Microsoft's default script security](https://adamtheautomator.com/run-powershell-script/).
 
 ### Using Index Controllers with the Quest Pro with Virtual Desktop
 
 *Before* launching SteamVR from Virtual Desktop: 
 In the Virtual Desktop "Streaming" tab, untick the "Track controllers" option under "Advanced Options" in the Streaming tab.
+This will prevent Virtual Desktop from adding the Quest controllers to the SteamVR devices, allowing the use of Index controllers or any other controller of your choosing. 
 
 <div style={{
   width: '33%',
@@ -290,13 +360,15 @@ In the Virtual Desktop "Streaming" tab, untick the "Track controllers" option un
     <img src={require("./img/quest/virtual_desktop_track_controllers.png").default} alt="Virtual Desktop track controllers setting circled" />
 </div>
 
-<!-- ### Using Index Controllers with the Quest Pro with ALVR/ALXR
+### Using Index Controllers with the Quest Pro with ALVR/ALXR
 
 The customizability of ALVR allows a few options in this regard. All following mentioned settings can be found in the "Headset" tab of the ALVR settings.
 
 - Option 1: Completely disable the Quest Pro controllers using the checkbox next to "Controllers"
 - Option 2: Set the Controller emulation to "HTC Vive Tracker". This allows real controllers such as the Index Controllers to take precedence in SteamVR, and allow
-  for using the Quest Pro controllers for manual playspace calibration. -->
+  for using the Quest Pro controllers for manual playspace calibration.
+
+---
 
 ## Troubleshooting
 
@@ -362,7 +434,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
 </details>
 
 <details>
-  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create session" and I am NOT using a laptop / eGPU</summary>
+  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create session and I am NOT using a laptop / eGPU</summary>
   <TroubleShootTable
   cause="There is something preventing an OpenXR session from being created for the Quest Pro">
   
@@ -374,7 +446,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
 </details>
 
 <details>
-  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create session" and I AM using a laptop / eGPU</summary>
+  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create session and I AM using a laptop / eGPU</summary>
   <TroubleShootTable
   cause="There is something preventing an OpenXR session from being created for the Quest Pro, possibly related to Oculus trying to default init on laptop's iGPU">
   
@@ -404,6 +476,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
   <summary>[Virtual Desktop] Error: [VirtualDesktop] Failed to open MemoryMappedFile. Make sure Virtual Desktop Streamer (v1.29 or later) is running.</summary>
   <TroubleShootTable
   cause="VRCFaceTracking was started before Virtual Desktop">
+  First, make sure both the Virtual Desktop app in the Quest and the Virtual Desktop streamer versions are at least v1.29.
 
   Close VRCFaceTracking, start Virtual Desktop Streamer, reopen VRCFaceTracking.
 
@@ -434,7 +507,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
 </details>
 
 <details>
-  <summary>"Oculus Link/Airlink: My playspace calibration resets if I take off the headset"</summary>
+  <summary>Oculus Link/Airlink: My playspace calibration resets if I take off the headset</summary>
   <TroubleShootTable
   cause="When the Quest headset enters sleep mode after detecting you have taken off the headset, it loses it's original reference space to which the SteamVR space was calibrated to.">
   Download the <Link to="https://developer.oculus.com/documentation/unity/ts-odh/">Meta Quest Developer Hub</Link> and follow the instructions for <i>Connect Headset to MQDH</i> and <i>Disable proximity sensor and guardian</i>.
