@@ -254,6 +254,39 @@ In case there is a beta you would like to try, you can switch to the beta follow
 
 </details>
 
+### SteamVR Link
+<details>
+<summary>SteamVR Link Setup</summary>
+  This tutorial assumes you are already connected with your computer, and you can see the SteamVR Dashboard.
+
+  - [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
+  - Open the SteamVR Dashboard and navigate to the VR Settings tab.
+  <div style={{
+    width: '75%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+  }}>
+    <img src={require("./img/quest/SVRL-VRSettings.jpg").default} alt="Navigating to the VR Settings tab" />
+  </div>
+  - Enable Advanced Settings
+  - Select the Steam Link tab and adjust the following settings
+    * Enable OSC
+    * Enable sharing Face and Eye Tracking to other apps via OSC
+    * Change the OSC Output Port to 9015
+  <div style={{
+    width: '75%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+  }}>
+    <img src={require("./img/quest/SVRL-OSC.jpg").default} alt="Adjusting OSC settings for Face Tracking" />
+  </div>
+
+  - Proceed to [Modules](#modules) for compatible modules to use with SteamVR Link. 
+
+</details>
+
 ---
 
 ## Modules
@@ -281,11 +314,14 @@ Interested in the source code? Check out the [QuestProOpenXRTrackingModule sourc
 - If you are using Virtual Desktop, you will need to use the **[Virtual Desktop module](https://github.com/guygodin/VirtualDesktop.VRCFaceTracking)**.
     - Virtual Desktop v1.29.3 introduces support for Virtual Desktop's own OpenXR runtime VDXR. 
     **[ALXR Local module](https://github.com/korejan/VRCFT-ALXR-Modules)** *can be used* for VRCFT instead of the Virtual Desktop module if VDXR is set as the active runtime. 
+- If you are using SteamVR Link, you will need to use the **[LinkFT Module](https://github.com/ykeara/LinkFT)**.
 
 Links are to Module source repositories, for those interested in contributing and improving the modules.
-All modules are readily available for installation via the VRCFaceTracking built in module registry.
+All* modules are readily available for installation via the VRCFaceTracking built in module registry.
 [Learn how to install modules from the module registry](../intro/getting-started.mdx#installing-the-vrcfacetracking-module).
-
+:::note
+*The SteamVR Link module is not currently avaliable in the module registry and must be installed manually through the releases page.
+:::
 <!-- Follow the module installation instructions in the respective module pages, and learn about the avalible PCVR streaming methods by continuing down to [Setup](#setup)! -->
 
 ---
