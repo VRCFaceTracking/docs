@@ -425,7 +425,7 @@ Whenever you see this, the cause is because the currently installed module faile
 Switch to the VRCFT Output Log tab and find the relevant error message.
 
 <details>
-  <summary>Error in headset: <code>com.oculus.bodyapiservice keeps stopping</code></summary>
+  <summary>[Oculus Link/Airlink] Error in headset: <code>com.oculus.bodyapiservice keeps stopping</code></summary>
   <TroubleShootTable
   cause="You do not have developer mode enabled on both the PC Oculus program and for the headset from the Oculus phone app.">
 
@@ -536,7 +536,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
 ### General Problems
 
 <details>
-  <summary>When using Oculus Link/Airlink, I cannot see SteamVR because Oculus is stuck loading some random app</summary>
+  <summary>[Oculus Link/Airlink] I cannot see SteamVR because Oculus is stuck loading some random app</summary>
   <TroubleShootTable
   cause="The nature of the way VRCFaceTracking must pull data from the Oculus OpenXR runtime from the PC is inherently hacky, effectively running 2 VR programs at once.">
     If you started SteamVR first, you can simply switch back to SteamVR in the Oculus Dash.
@@ -546,15 +546,28 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
 </details>
 
 <details>
-  <summary>"I'm <i>not getting any visible errors anywhere</i> and the Module loads, but VRC only receives 0 values for all parameters (and VRC loaded a non-zero number of parameters from config)"</summary>
+  <summary>[SteamLink] VRCFaceTracking crashes when I set the SteamVR OSC output port to 9015!</summary>
   <TroubleShootTable
-  cause="Meta Moment">
-  Try toggling the eye and face tracking enables in the headset settings, and restarting your headset completely.
+  cause="You changed one of VRCFaceTracking's communication ports to 9015">
+  
+  Revert VRCFaceTracking's ports back to the defaults (9000 sending/9001 receiving). 
+  VRCFaceTracking uses these ports to communicate with VRChat and should not be changed. 
+  Communication with the SteamVR OSC data happens in the SteamLink module on port 9015, and this is <b>handled internally by the module</b>, not the VRCFaceTracking base program! 
+
   </TroubleShootTable>
 </details>
 
 <details>
-  <summary>Oculus Link/Airlink: My playspace calibration resets if I take off the headset</summary>
+  <summary>"I'm <i>not getting any visible errors anywhere</i> and the Module loads, but VRC only receives 0 values for all parameters (and VRC loaded a non-zero number of parameters from config)"</summary>
+  <TroubleShootTable
+  cause="Meta Moment">
+  Try toggling the eye and face tracking enables in the headset settings, and restarting your headset completely. 
+  You may also need to re-verify developer account settings if using Oculus Link/Airlink. 
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>My playspace calibration resets if I take off the headset</summary>
   <TroubleShootTable
   cause="When the Quest headset enters sleep mode after detecting you have taken off the headset, it loses it's original reference space to which the SteamVR space was calibrated to.">
   Download the <Link to="https://developer.oculus.com/documentation/unity/ts-odh/">Meta Quest Developer Hub</Link> and follow the instructions for <i>Connect Headset to MQDH</i> and <i>Disable proximity sensor and guardian</i>.
