@@ -44,10 +44,10 @@ The Quest Pro currently has **5** readily available face-tracking compatible PCV
 - [Virtual Desktop](#virtual-desktop-setup)
 - [SteamLink](#steamlink-setup)
 
-Oculus Link/Airlink is Meta’s own PCVR streaming solution, and is generally more straight-forward to set up (the PCVR part) and network stable, but also is limited in customization.
+Oculus Link/Airlink is Meta’s own PCVR streaming solution, and is generally straight-forward to set up (the PCVR part, not the face tracking part) and network stable, but also is limited in customization.
 ALXR/ALVR are open-source projects and thus has many for features and customizability in the PCVR connection as compared to Airlink, but also may have more bugs, quirks, and generally may be harder to use.
 Virtual Desktop is commonly seen as the "best" PCVR streaming solution, but it is not *free*, unlike all the other options.
-SteamLink is Valve's PCVR steaming solution meant specifically for using Quest headsets with SteamVR. 
+SteamLink is Valve's (free) PCVR steaming solution meant specifically for using Quest headsets with SteamVR. 
 
 If you need a recommendation for what to use for PCVR streaming:
 
@@ -79,7 +79,7 @@ You can learn more about improving your Quest PCVR streaming experience with the
 
 :::warning
 Oculus version v60 changed "Developer Mode" for the headset to "Debug Mode", and may have reset the setting to off. 
-If you were using Link/Airlink and now it's not working, make sure that "Debug Mode" in the Meta Quest app is enabled!
+If you were using Link/Airlink before and after an update it is "suddenly" not working, make sure that "Debug Mode" in the Meta Quest app is enabled!
 :::
 
 <details>
@@ -310,6 +310,9 @@ Those VRCFT port settings are for communication with *VRChat*.
 ## Modules
 
 There are a total of **6** different VRCFT modules that can be used for the Quest Pro.
+The links are to Module source repositories, for those interested in contributing and improving the modules.
+All* modules are readily available for installation via the VRCFaceTracking built-in module registry.
+[Learn how to install modules from the module registry](../intro/getting-started.mdx#installing-the-vrcfacetracking-module).
 
 <!-- Install the **"QuestProOpenXRTrackingModule"** from the <Link to={useBaseUrl('docs/vrcft-software/vrcft#module-registry')}  target="_blank" rel="noopener noreferrer">VRCFaceTracking Module Registry</Link>
 
@@ -333,11 +336,7 @@ Interested in the source code? Check out the [QuestProOpenXRTrackingModule sourc
     - Virtual Desktop v1.29.3 introduces support for Virtual Desktop's own OpenXR runtime VDXR. 
     **[ALXR Local module](https://github.com/korejan/VRCFT-ALXR-Modules)** *can be used* for VRCFT instead of the Virtual Desktop module if VDXR is set as the active runtime. 
 - If you are using SteamLink, you will need to use the **[SteamLink VRCFT Module](https://github.com/ykeara/LinkFT)**
-   - You can also optionally (manually build and) install danwillm's ["example" module](https://github.com/danwillm/VRCFT-SteamLink). A [zip with the compiled binary](https://cdn.discordapp.com/attachments/1179867564847943753/1180537883375960155/b146eda9-be48-4016-ab63-680a694064bd.zip?ex=657dc894&is=656b5394&hm=9581609843b0d071f5c9684e14bf126c1b0f26ec3bfc516d583cb163a3132c41&) can be found in the <CustomLink to="discord"/>. 
 
-Links are to Module source repositories, for those interested in contributing and improving the modules.
-All* modules are readily available for installation via the VRCFaceTracking built in module registry.
-[Learn how to install modules from the module registry](../intro/getting-started.mdx#installing-the-vrcfacetracking-module).
 :::note
 *The SteamVR Link module is not currently avaliable in the module registry and must be installed manually after downloading the module .zip from the module's [releases page](https://github.com/ykeara/LinkFT/releases/latest).
 :::
@@ -490,6 +489,19 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
 </details>
 
 <details>
+  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create XrInstance</summary>
+  <TroubleShootTable
+  cause="There is some required setting in the setup that was not set correctly.">
+  
+  <i>Carefully</i> re-run through <Link to="#oculus-linkairlink-setup">the setup</Link>, paying careful attention to all the steps.
+  Doubly make sure that you have Oculus set as your OpenXR runtime in the Oculus Desktop app settings. 
+  <br/><br/>
+  Make sure that your Quest Pro is *actively connected* (streaming content from PC and screens haven't gone to sleep) via Link/Airlink before starting VRCFT!
+  Try starting VRCFT with the headset on, through the Oculus Dash desktop view. 
+  </TroubleShootTable>
+</details>
+
+<details>
   <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create session and I am NOT using a laptop / eGPU</summary>
   <TroubleShootTable
   cause="There is something preventing an OpenXR session from being created for the Quest Pro">
@@ -535,6 +547,8 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
   
   On software versions v60, this error seems to be associated with the "Debug Mode" toggle not being enabled for the headset. 
   Use the Meta Quest phone app to enable Debug Mode for the Quest Pro headset, then reboot the headset. 
+  If the issue persists or the module seems to initialize but doesn't send any data, try logging out then back into your Meta account on both
+  the headset (via phone app) and PC Oculus application. 
   </TroubleShootTable>
 </details>
 
@@ -565,6 +579,17 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
 </details>
 
 <details>
+  <summary>[Oculus Link/Airlink] "I'm <i>not getting any visible errors anywhere</i> and the Module loads, but VRC only receives 0 values for all parameters (and VRC loaded a non-zero number of parameters from config)"</summary>
+  <TroubleShootTable
+  cause="Meta Moment">
+  Try toggling the eye and face tracking enables in the headset settings, and restarting your headset completely. 
+  Logging out then back into the account in the PC Oculus application and headset may also help.
+  You may also need to re-verify developer account settings if using Oculus Link/Airlink, as well as developer account permissions by logging into the <Link to="https://developer.oculus.com/">Meta Quest Developer Center</Link>.
+  </TroubleShootTable>
+</details>
+
+
+<details>
   <summary>[SteamLink] VRCFaceTracking crashes when I set the SteamVR OSC output port to 9015!</summary>
   <TroubleShootTable
   cause="You changed one of VRCFaceTracking's communication ports to 9015">
@@ -573,15 +598,6 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
   VRCFaceTracking uses these ports to communicate with VRChat and should not be changed. 
   Communication with the SteamVR OSC data happens in the SteamLink module on port 9015, and this is <b>handled internally by the module</b>, not the VRCFaceTracking base program! 
 
-  </TroubleShootTable>
-</details>
-
-<details>
-  <summary>"I'm <i>not getting any visible errors anywhere</i> and the Module loads, but VRC only receives 0 values for all parameters (and VRC loaded a non-zero number of parameters from config)"</summary>
-  <TroubleShootTable
-  cause="Meta Moment">
-  Try toggling the eye and face tracking enables in the headset settings, and restarting your headset completely. 
-  You may also need to re-verify developer account settings if using Oculus Link/Airlink, logging out then back into the account in the PC Oculus application and headset may also help.
   </TroubleShootTable>
 </details>
 
