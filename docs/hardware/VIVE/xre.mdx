@@ -1,15 +1,20 @@
-# Vive Focus 3
+# Vive XR Elite
 
 ## Introduction
 
-The Vive Focus 3 is a standalone VR headset powered by the Qualcomm XR2, similar to the Quest 2 and Quest Pro headsets from Meta.
-Although by default having neither eye nor face tracking, the Focus 3 has 2 add-on modules that can be installed to add eye and face tracking capabilities.
+The Vive XR Elite is a standalone VR headset powered by the Qualcomm XR2, similar to its predecessor the Vive Focus 3.
+Although by default having neither eye nor face tracking, the XRE has an add-on module that can be installed to add eye and face tracking capabilities.
 There is currently no way for VRCFT to simultaneously extract data from the headset and send eye and face tracking to the Vive standalone version of VRChat, so the following solutions are only for PCVR.
-The Focus 3 setup for VRCFT is essentially the same as that for the [Vive XR Elite](./xre.mdx). 
+The XR Elite setup for VRCFT is essentially the same as that for the [Vive Focus 3](./focus3.mdx). 
 
 Since September 2023, the Vive PCVR VR streamer programs (Vive Business Streaming and Vive Streamer Hub) have had the ability to control VRCFT avatars in VRChat on their own (by copying the VRCFT program's functions).
-While users can choose to simply forgo using VRCFT, we would recommend *against* using the Vive Streamer built-in outputs and following this guide to use VRCFT instead. 
+While users can choose to simply forgo using VRCFT, we would recommend *against* using the Vive Streamer built-in outputs and follow this guide to use VRCFT instead. 
 We will be unable to provide support to users who experience issues with the VRCFT clone in Vive's streamer software. 
+
+:::warning
+The XR Elite eye and facial tracker currently has some issues with certain expressions, such as EyeWide. 
+Future updates *may* improve the behavior of these bugged? tracked parameters. 
+:::
 
 ## Setup
 
@@ -22,18 +27,10 @@ For most users, the Vive Streamer will be more straightforward to set up.
 
 ### Preliminary Setup
 
-1. Install the eye and/or face tracking modules to the headset. Both modules should come with their own hardware quick-start guides in the box and should generally simply involve a single USB-C port in a nearby location on the headset. 
-<details>
-  <summary>Digital Quick Start Guides</summary>
-  <div>
-    <div>
-      <ol>
-        <li><a href="https://dl.vive.com/QSG/Accessory/VIVE_Focus_3_Eye_Tracker_QSG.pdf" target="_blank">Face Tracker Quick Start Guide</a></li>
-        <li><a href="https://dl.vive.com/QSG/Accessory/VIVE_Focus_3_Eye_Tracker_QSG.pdf" target="_blank">Eye Tracker Quick Start Guide</a></li>
-      </ol>
-    </div>
-  </div>
-</details>
+1. Install the eye and face tracking module to the headset. 
+<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+    <ReactPlayer controls url='https://www.youtube.com/watch?v=BaiuNRrOVQQ'/>
+</div>
 2. Make sure that you agree to the privacy notices for eye and face tracking after installation, follow the instructions for eye tracking calibration, and have the eye and face tracking options enabled in the headset Input settings. 
 3. Install VIVE Console onto your computer. We need this for the latest version (**1.3.6.10+**) of [SRanipal](./sranipal.mdx#installing-via-vive-console) 
 
@@ -42,11 +39,11 @@ For most users, the Vive Streamer will be more straightforward to set up.
 <details>
   <summary>Vive Streamer Setup</summary>
 
-1. Install VIVE Business Streaming or VIVE Streaming Hub onto your computer. They are functionally identical. 
-2. Update the streaming app on the Focus3 by plugging the headset into the computer then clicking the Update button in the VIVE Streaming application for "Headset software version".
+1. Install VIVE Streaming Hub or VIVE Business Streaming onto your computer. They are functionally identical, but the XRE's feature to launch PCVR games such as VRChat from it's library relies on using Vive Streaming Hub. 
+2. Update the streaming app on the XR Elite by plugging the headset into the computer then clicking the Update button in the VIVE Streaming application for "Headset software version".
 
   <div style={{
-    width: '75%',
+    width: '66%',
     height: 'auto',
     margin: 'auto',
     display: 'block'
