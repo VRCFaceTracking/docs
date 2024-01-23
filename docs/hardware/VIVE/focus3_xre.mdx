@@ -10,8 +10,10 @@ and the XRE has a single, combo module that can be installed to add both eye and
 There is currently no way for VRCFT to simultaneously extract data from the headset and send eye and face tracking to the Vive standalone version of VRChat, so the following solutions are only for PCVR.
 
 Since September 2023, the Vive PCVR VR streamer programs (Vive Business Streaming and Vive Streamer Hub) have had the ability to control VRCFT avatars in VRChat on their own (by copying the VRCFT program's functions).
-While users can choose to simply forgo using VRCFT, we would recommend *against* using the Vive Streamer built-in outputs and following this guide to use VRCFT instead. 
+While users can choose to forgo using VRCFT, we would recommend using VRCFT over the Vive Streamer's built-in OSC function.
+As of now, Vive's implementation of VRCFT's functionality is buggy and slow, with some VRCFT avatars completely not working. 
 We will be unable to provide support to users who experience issues with the VRCFT clone in Vive's streamer software. 
+Note that both VRCFT and the Vive Streamer OSC output cannot be used at the same time. 
 
 ## Setup
 
@@ -20,7 +22,8 @@ There are two PCVR Streaming methods that supports the eye and face tracking fea
 1. Vive Streamer
 2. ALXR
 
-For most users, the Vive Streamer will be more straightforward to set up and use.  
+The **Vive Streamer** will be more straightforward to set up and use and is recommended for most users. 
+ALXR on Vive standalone headsets may have VR streaming issues currently (January 2024). 
 
 ### Preliminary Setup
 
@@ -82,12 +85,12 @@ Lower face expressions will still mostly work with older versions of SRanipal.
     height: 'auto',
     margin: 'auto',
     display: 'block'
-  }}>
+  }}> 
     <img src={require("../img/vive/rr/streamer_settings.png").default} alt="Vive Streamer software settings" />
 </div>
 
 :::warning
-If you do not disable the Streamer's output, it can interfer with VRCFT's ability to bind to the port to get messages from VRC, or it will double-send messages to VRC causing a "stuttering" effect. 
+If you do not disable the Streamer's output, it can interfere with VRCFT's ability to bind to the port to get messages from VRC, or it will double-send messages to VRC causing a "stuttering" effect. 
 :::
 
 4. Proceed to [Modules](#modules) for the module to use with Vive Streamer. 
@@ -95,6 +98,10 @@ If you do not disable the Streamer's output, it can interfer with VRCFT's abilit
 </details>
 
 ### ALXR Setup
+
+:::warning
+ALXR on Vive standalone headsets may have VR streaming issues currently (January 2024).      
+:::
 
 <details>
   <summary>ALXR Setup</summary>
