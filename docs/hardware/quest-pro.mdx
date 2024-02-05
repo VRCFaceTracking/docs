@@ -77,6 +77,10 @@ You can learn more about improving your Quest PCVR streaming experience with the
 
 ### Oculus Link/Airlink Setup
 
+:::info
+Oculus Software version v62 should finally **remove the Meta Developer** requirement to get eye and face tracking data over ~~Oculus~~ Meta Quest Link. 
+:::
+
 :::warning
 Oculus version v60 changed "Developer Mode" for the headset to "Debug Mode", and may have reset the setting to off. 
 If you were using Link/Airlink before and after an update it is "suddenly" not working, make sure that "Debug Mode" in the Meta Quest app is enabled!
@@ -221,7 +225,7 @@ This following setup assumes that Virtual Desktop has already been purchased fro
 Please refer to Virtual Desktop's built-in setup instructions to get started with using Virtual Desktop.
 
 1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
-2. In the Virtual Desktop app *on the headset*, go to the "Streaming" tab, and enable the option `Forward face/eye tracking to PC`
+2. In the Virtual Desktop app *on the headset*, go to the "Streaming" tab, and enable the option `Forward tracking data to PC`. Make sure to click **Yes** to the popup. 
 ![Virtual Desktop Settings](img/quest/virtual_desktop_settings.png)
 3. Start Virtual Desktop Streamer if you have not already and establish headset connection to the PC.
 4. Proceed to [Modules](#modules) for compatible modules to use with Virtual Desktop. 
@@ -333,13 +337,9 @@ Interested in the source code? Check out the [QuestProOpenXRTrackingModule sourc
 - If you are using ALXR, you will need to use the **[ALXR Remote module](https://github.com/korejan/VRCFT-ALXR-Modules)**.
 - If you are using ALVR, you will need to use the **[ALVR module](https://github.com/alvr-org/VRCFT-ALVR)**.
 - If you are using Virtual Desktop, you will need to use the **[Virtual Desktop module](https://github.com/guygodin/VirtualDesktop.VRCFaceTracking)**.
-    - Virtual Desktop v1.29.3 introduces support for Virtual Desktop's own OpenXR runtime VDXR. 
     **[ALXR Local module](https://github.com/korejan/VRCFT-ALXR-Modules)** *can be used* for VRCFT instead of the Virtual Desktop module if VDXR is set as the active runtime. 
 - If you are using SteamLink, you will need to use the **[SteamLink VRCFT Module](https://github.com/ykeara/LinkFT)**
 
-:::note
-*The SteamVR Link module is not currently avaliable in the module registry and must be installed manually after downloading the module .zip from the module's [releases page](https://github.com/ykeara/LinkFT/releases/latest).
-:::
 <!-- Follow the module installation instructions in the respective module pages, and learn about the avalible PCVR streaming methods by continuing down to [Setup](#setup)! -->
 
 ---
@@ -406,7 +406,7 @@ In the Virtual Desktop "Streaming" tab, untick the "Track controllers" option un
 This will prevent Virtual Desktop from adding the Quest controllers to the SteamVR devices, allowing the use of Index controllers or any other controller of your choosing. 
 
 <div style={{
-  width: '33%',
+  width: '66%',
   height: 'auto',
   margin: 'auto',
   display: 'block'
