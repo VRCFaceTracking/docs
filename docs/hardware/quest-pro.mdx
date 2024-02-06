@@ -77,6 +77,12 @@ You can learn more about improving your Quest PCVR streaming experience with the
 
 ### Oculus Link/Airlink Setup
 
+:::info
+Oculus Software version v62 will finally **remove the Meta Developer** requirement to get eye and face tracking data over ~~Oculus~~ Meta Quest Link. 
+Once rolled out (Week of Feb. 7, 2024), there will no longer be a need to sign up for a developer account and check all the developer settings to use
+eye and face tracking over Meta Quest Link. 
+:::
+
 :::warning
 Oculus version v60 changed "Developer Mode" for the headset to "Debug Mode", and may have reset the setting to off. 
 If you were using Link/Airlink before and after an update it is "suddenly" not working, make sure that "Debug Mode" in the Meta Quest app is enabled!
@@ -221,7 +227,7 @@ This following setup assumes that Virtual Desktop has already been purchased fro
 Please refer to Virtual Desktop's built-in setup instructions to get started with using Virtual Desktop.
 
 1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
-2. In the Virtual Desktop app *on the headset*, go to the "Streaming" tab, and enable the option `Forward face/eye tracking to PC`
+2. In the Virtual Desktop app *on the headset*, go to the "Streaming" tab, and enable the option `Forward tracking data to PC`. Make sure to click **Yes** to the popup. 
 ![Virtual Desktop Settings](img/quest/virtual_desktop_settings.png)
 3. Start Virtual Desktop Streamer if you have not already and establish headset connection to the PC.
 4. Proceed to [Modules](#modules) for compatible modules to use with Virtual Desktop. 
@@ -268,12 +274,13 @@ In case there is a beta you would like to try, you can switch to the beta follow
 :::danger
 Do **NOT** change the OSC port settings in VRCFaceTracking for SteamLink!
 Changing either of them to 9015 **WILL CAUSE PROBLEMS AND NOTHING WILL WORK**. 
-Those VRCFT port settings are for communication with *VRChat*.
+Those VRCFT port settings are for communication with *VRChat*, **not** SteamLink.
 ::: 
 
 0. Follow Valve's official [Setup instructions for SteamLink](https://help.steampowered.com/en/faqs/view/0E2C-406B-9135-38A4) 
 1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
 2. Once connected to SteamVR, open the SteamVR menu, open VR Settings, and enable "Advanced Settings" by moving the toggle to "Show" in the bottom left.
+   You can also access this exact same settings menu from the desktop SteamVR devices window. 
   <div style={{
     width: '75%',
     height: 'auto',
@@ -286,7 +293,7 @@ Those VRCFT port settings are for communication with *VRChat*.
    - Enable OSC
    - Share eye tracking data to other apps on this PC via OSC
    - Share face tracking data to other apps on this PC via OSC
-4. Set the OSC output port to ```9015 (CUSTOM: VRCFT, ETC.)```
+4. Set the OSC output port in SteamLink settings to ```9015 (ALT)```. **Do NOT adjust port settings in VRCFaceTracking itself**. 
   <div style={{
     width: '75%',
     height: 'auto',
@@ -300,7 +307,7 @@ Those VRCFT port settings are for communication with *VRChat*.
 :::danger
 Do **NOT** change the OSC port settings in VRCFaceTracking for SteamLink!
 Changing either of them to 9015 **WILL CAUSE PROBLEMS AND NOTHING WILL WORK**. 
-Those VRCFT port settings are for communication with *VRChat*. 
+Those VRCFT port settings are for communication with *VRChat*, **not** SteamLink. 
 :::
 
 </details>
@@ -333,13 +340,9 @@ Interested in the source code? Check out the [QuestProOpenXRTrackingModule sourc
 - If you are using ALXR, you will need to use the **[ALXR Remote module](https://github.com/korejan/VRCFT-ALXR-Modules)**.
 - If you are using ALVR, you will need to use the **[ALVR module](https://github.com/alvr-org/VRCFT-ALVR)**.
 - If you are using Virtual Desktop, you will need to use the **[Virtual Desktop module](https://github.com/guygodin/VirtualDesktop.VRCFaceTracking)**.
-    - Virtual Desktop v1.29.3 introduces support for Virtual Desktop's own OpenXR runtime VDXR. 
     **[ALXR Local module](https://github.com/korejan/VRCFT-ALXR-Modules)** *can be used* for VRCFT instead of the Virtual Desktop module if VDXR is set as the active runtime. 
 - If you are using SteamLink, you will need to use the **[SteamLink VRCFT Module](https://github.com/ykeara/LinkFT)**
 
-:::note
-*The SteamVR Link module is not currently avaliable in the module registry and must be installed manually after downloading the module .zip from the module's [releases page](https://github.com/ykeara/LinkFT/releases/latest).
-:::
 <!-- Follow the module installation instructions in the respective module pages, and learn about the avalible PCVR streaming methods by continuing down to [Setup](#setup)! -->
 
 ---
@@ -384,8 +387,9 @@ You will need to tap the Search bar first before you see the category filter dro
 
 To use Vive trackers or other SteamVR Lighthouse tracked devices with the Quest Pro, you'll need to use **OpenVR-SpaceCalibrator**.
 While the [original from pushrax](https://github.com/pushrax/OpenVR-SpaceCalibrator) will work, many "Mixed VR" users have found the continous calibration forks
-to be generally better, such as [bdunderscore's fork](https://github.com/bdunderscore/OpenVR-SpaceCalibrator/tree/continuous-cal), or more recently,
-[ArcticFox8515's fork](https://github.com/ArcticFox8515/OpenVR-SpaceCalibrator) of bdunderscore's fork.
+to be better, such as [bdunderscore's fork](https://github.com/bdunderscore/OpenVR-SpaceCalibrator/tree/continuous-cal), or
+[ArcticFox8515's fork](https://github.com/ArcticFox8515/OpenVR-SpaceCalibrator) of bdunderscore's fork, or most recently **[Hekky's fork](https://github.com/hyblocker/OpenVR-SpaceCalibrator)**,
+which comes with important performance fixes for continuous calibration.
 
 We would recommend using ArcticFox8515's fork for now as it is the most recent and improves upon the original. 
 
@@ -406,7 +410,7 @@ In the Virtual Desktop "Streaming" tab, untick the "Track controllers" option un
 This will prevent Virtual Desktop from adding the Quest controllers to the SteamVR devices, allowing the use of Index controllers or any other controller of your choosing. 
 
 <div style={{
-  width: '33%',
+  width: '66%',
   height: 'auto',
   margin: 'auto',
   display: 'block'
