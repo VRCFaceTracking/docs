@@ -274,12 +274,13 @@ In case there is a beta you would like to try, you can switch to the beta follow
 :::danger
 Do **NOT** change the OSC port settings in VRCFaceTracking for SteamLink!
 Changing either of them to 9015 **WILL CAUSE PROBLEMS AND NOTHING WILL WORK**. 
-Those VRCFT port settings are for communication with *VRChat*.
+Those VRCFT port settings are for communication with *VRChat*, **not** SteamLink.
 ::: 
 
 0. Follow Valve's official [Setup instructions for SteamLink](https://help.steampowered.com/en/faqs/view/0E2C-406B-9135-38A4) 
 1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
 2. Once connected to SteamVR, open the SteamVR menu, open VR Settings, and enable "Advanced Settings" by moving the toggle to "Show" in the bottom left.
+   You can also access this exact same settings menu from the desktop SteamVR devices window. 
   <div style={{
     width: '75%',
     height: 'auto',
@@ -292,7 +293,7 @@ Those VRCFT port settings are for communication with *VRChat*.
    - Enable OSC
    - Share eye tracking data to other apps on this PC via OSC
    - Share face tracking data to other apps on this PC via OSC
-4. Set the OSC output port to ```9015 (CUSTOM: VRCFT, ETC.)```
+4. Set the OSC output port in SteamLink settings to ```9015 (ALT)```. **Do NOT adjust port settings in VRCFaceTracking itself**. 
   <div style={{
     width: '75%',
     height: 'auto',
@@ -306,7 +307,7 @@ Those VRCFT port settings are for communication with *VRChat*.
 :::danger
 Do **NOT** change the OSC port settings in VRCFaceTracking for SteamLink!
 Changing either of them to 9015 **WILL CAUSE PROBLEMS AND NOTHING WILL WORK**. 
-Those VRCFT port settings are for communication with *VRChat*. 
+Those VRCFT port settings are for communication with *VRChat*, **not** SteamLink. 
 :::
 
 </details>
