@@ -12,23 +12,25 @@ The Pro and Enterprise editions only differ in the available system software and
 Both the Pro and Enterprise can use the updated PC streaming app "Pico Streaming Assistant" to stream eye and face tracking data from the headset. 
 :::
 
-1. Make sure your headset is on latest firmware version.
-2. Enable both Eye Tracking and Lip Tracking on Pico Settings, those can be found under LAB tab.
+1. Make sure your headset is on the latest firmware version.
+2. Enable both Eye Tracking and Lip Tracking on Pico Settings, those can be found under the **LAB** tab.
 3. Install [Streaming Assistant](https://www.picoxr.com/global/software/pico-link) on your computer.
 
 ##  Pico Connect (BETA) Setup
 
 :::info
-Pico Connect is currently not public available and requires access to the Beta files, only follow those steps if you do have access to Pico Connect.
+Pico Connect is currently not publicly available and requires access to the Beta files, only follow the following steps if you do have access to Pico Connect.
 :::
 
 1. Make sure your headset is using at least using v5.9.0 firmware. 
 2. Enable both Eye Tracking and Lip Tracking on Pico Settings, those can be found under LAB tab.
-3. After installing Pico Connect on your computer you should update a hidden configuration to change it's facetracking to legacy protocol, find the file at `C:\Users\{YourUsername}\AppData\Roaming\PICO Connect\setting.json` and change `faceTrackingTransferProtocol` to `2`. This is a temporary fix, currently the module does not support the newer protocol.
+3. After installing Pico Connect on your computer you should update a hidden configuration to change it's facetracking to legacy protocol, 
+find the file at `C:\Users\{YourUsername}\AppData\Roaming\PICO Connect\setting.json` and change `faceTrackingTransferProtocol` to `2`. 
+This is a temporary fix, currently the module does not support the newer protocol.
 
 ## Module
 
-Install the "Pico4SAFTExtTrackingModule" from the [VRCFaceTracking Module Registry](../vrcft-software/vrcft.mdx#module-registry).
+Install the **"Pico4SAFTExtTrackingModule"** from the [VRCFaceTracking Module Registry](../vrcft-software/vrcft.mdx#module-registry).
 
 [Pico4SAFTExtTrackingModule source repository](https://github.com/regzo2/PicoStreamingAssistantFTUDP/tree/vrcfacetracking-module)
 
@@ -39,5 +41,5 @@ Install the "Pico4SAFTExtTrackingModule" from the [VRCFaceTracking Module Regist
 
 :::warning
 The Pico 4 Pro/Enterprise module will currently (erroneously) always initialize, and will fail to shutdown its own update thread when tearing down modules (closing VRCFaceTracking).
-You may need to shut down VRCFaceTracking manually. 
+You may need to shut down VRCFaceTracking forcefully. 
 :::
