@@ -77,19 +77,12 @@ You can learn more about improving your Quest PCVR streaming experience with the
 
 ### Oculus Link/Airlink Setup
 
-:::info
-Oculus Software version v62 will finally **remove the Meta Developer** requirement to get eye and face tracking data over ~~Oculus~~ Meta Quest Link. 
-Once rolled out (Week of Feb. 7, 2024), there will no longer be a need to sign up for a developer account and check all the developer settings to use
-eye and face tracking over Meta Quest Link. 
-:::
-
-:::warning
-Oculus version v60 changed "Developer Mode" for the headset to "Debug Mode", and may have reset the setting to off. 
-If you were using Link/Airlink before and after an update it is "suddenly" not working, make sure that "Debug Mode" in the Meta Quest app is enabled!
-:::
-
 <details>
   <summary>Oculus Link/Airlink Setup</summary>
+
+<Admonition type="danger">
+  <p>Meta had broken their OpenXR runtime in the v67 and v68 updates, which causes module/VRCFT crashing (v68) or failure to create instance errors (v67). If you are experiencing these issues, try <a href="https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-rift-s/public-test-channel/">switching your Meta Quest Link PC software to the Public Test Channel</a> (68.0.0.474.361 or above) or updating to the latest version (v69 and above) if available.</p>
+</Admonition>
 
 Prefer a video? Community member Ninka has graciously created another tutorial video for the Quest Pro and VRCFT 5.0+ that goes over the entire setup procedure,
 including the VRCFT module installation for the Oculus Link/Airlink module "Quest Pro OpenXR".
@@ -106,13 +99,13 @@ including the VRCFT module installation for the Oculus Link/Airlink module "Ques
 1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
 2. **CREATE DEVELOPER ACCOUNT AND ENABLE DEVELOPER MODE**: 
 
-    1. [Set up a Meta Oculus developer account](https://developer.oculus.com/sign-up/)
-        * A developer account is ***necessary*** (for now) as the eye and face OpenXR extensions are currently considered "developer features" if to be accessed *from the PC Oculus runtime*.
+    1. [Set up a Meta Quest developer account](https://developer.oculus.com/sign-up/)
+        * A developer account is still ***necessary*** as the eye and face over Link toggles are currently still in the developer settings of the Meta Quest Link PC application.
       It is rather trivial to apply for and there is no check for being a "real organization".
-    2. Install the Oculus ("Meta Quest") app on mobile device (if it isn’t already) and login with your (developer) Oculus account. Register your headset in the app.
-    3. In the Oculus mobile App, tap Menu at the bottom right, then Devices. Select your Quest Pro, then go to `Settings -> Developer Mode` and set the **Debug** Mode switch to enabled.
-        * Reboot the headset after enabling Debug Mode.
-        * This setting was formerly called "Developer Mode" in software versions before v60. 
+    2. Install the Meta Horizon (formerly "Oculus" and "Meta Quest") app on mobile device (if it isn’t already) and login with your (developer) Meta Quest account. Register your headset in the app.
+    3. In the Meta Horizon mobile App, tap Menu at the bottom right, then Devices. Select your Quest Pro, then go to `Settings -> Developer Mode` and set the **Developer** Mode switch to enabled.
+        * Reboot the headset after enabling Developer Mode.
+        * This setting was formerly called "Developer Mode" in software versions before v60, became "Debug Mode" for a few cycles, and is now back again as "Developer Mode"
 
     <div style={{
         width: '100%',
@@ -125,10 +118,10 @@ including the VRCFT module installation for the Oculus Link/Airlink module "Ques
 
 3. Install and start the [Oculus PC application](https://www.oculus.com/download_app/?id=1582076955407037) (if it isn't already).
 4. Follow setup instructions for logging in (with the same developer account created/used earlier to enable dev mode on the headset!) and adding your Quest Pro to `Devices`.
-5. In the Oculus PC application, click on `Settings` in the left sidebar, then `General` tab. Turn on `Unknown Sources`, and set the `OpenXR Runtime` to Oculus.
+5. In the Meta Quest PC application, click on `Settings` in the left sidebar, then `General` tab. Turn on `Unknown Sources`, and set the `OpenXR Runtime` to `Meta Quest Link`.
 
 :::warning
-**SET THE OPENXR RUNTIME TO OCULUS**. Do not forget to do this step!
+**SET THE OPENXR RUNTIME TO Meta Quest Link**. Do not forget to do this step!
 :::
 
 <div style={{
@@ -140,12 +133,12 @@ including the VRCFT module installation for the Oculus Link/Airlink module "Ques
     <img src={require("./img/quest/oculus_pc_app_general.png").default} alt="Oculus PC App General Tab" />
 </div>
 
-6. Navigate to the `Beta` tab. Enable `Developer Runtime Features`, `Eye tracking over Oculus Link`, and `Natural Facial Expressions over Oculus Link`.
-  - Note that `Passthrough over Oculus Link` option *may* cause issues and unless you are making or using PCVR apps that use Oculus passthrough, you should just leave this disabled.
-  - Enable Public Test Channel only if you know you want to use some feature/fix the latest Public Test Channel (*beta*) software. Otherwise, it is better to stay off the PTC. 
+6. Navigate to the `Beta` tab. Enable `Developer Runtime Features`, `Eye tracking over Meta Quest Link`, and `Natural Facial Expressions over Meta Quest Link`.
+  - Note that `Passthrough over Meta Quest Link` option *may* cause issues and unless you are making or using PCVR apps that use Quest headset passthrough, you should just leave this disabled.
+  - Enable Public Test Channel only if you know you want to use some feature/fix in the latest Public Test Channel (*beta*) software. Generally, it is better to stay off the PTC. 
 
 :::warning
-If you do not see these options, you did not follow the previous steps correctly.
+If you do not see these options, you are not logged into a Meta Quest developer account or may need to refresh your login. 
 :::
 
 <div style={{
@@ -215,13 +208,13 @@ Follow the [ALVR Install instructions](https://github.com/alvr-org/ALVR/wiki/Ins
 
 ### Virtual Desktop Setup
 
+<details>
+  <summary>Virtual Desktop Setup</summary>
+
 :::info
 Make sure that your Virtual Desktop Quest app and PC streamer application are on version **v1.29 or greater**. 
 If they are completely up to date, this requirement should be satisfied. 
 :::
-
-<details>
-  <summary>Virtual Desktop Setup</summary>
 
 This following setup assumes that Virtual Desktop has already been purchased from the **Quest Store** in the headset and the Virtual Desktop Streamer PC-side app has been installed on the PC.
 Please refer to Virtual Desktop's built-in setup instructions to get started with using Virtual Desktop.
@@ -573,12 +566,27 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
 ### General Problems
 
 <details>
+  <summary>[Oculus Link/Airlink] VRCFT crashes or I get a "Failure to create instance" error</summary>
+  <TroubleShootTable
+  cause="Meta had broken their OpenXR runtime in the v67 and v68 updates, which causes module->VRCFT crashing (v68) or failure to create instance errors (v67).">
+    Meta engineers are aware of the issue and have pushed a hotfix to the PTC. Try <a href="https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-rift-s/public-test-channel/">switching your Meta Quest Link PC software to the Public Test Channel</a> (68.0.0.474.361 or above) or updating to the latest version (v69 and above) if higher software versions have been released.</TroubleShootTable>
+</details>
+
+<details>
   <summary>[Oculus Link/Airlink] I cannot see SteamVR because Oculus is stuck loading some random app</summary>
   <TroubleShootTable
   cause="The nature of the way VRCFaceTracking must pull data from the Oculus OpenXR runtime from the PC is inherently hacky, effectively running 2 VR programs at once.">
     If you started SteamVR first, you can simply switch back to SteamVR in the Oculus Dash.
     You can also try switching up the program startup sequence, starting VRCFaceTracking then SteamVR through the desktop Steam app (not through the Oculus Dash in the headset).
     Yet another solution is to use <Link to="https://github.com/LibreQuest/OculusKiller">OculusKiller</Link> to avoid dealing with the Oculus Dash entirely, though this has its own downsides. 
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>[Oculus Link/Airlink] Starting VRCFT forces me out of VRChat and starts a program in SteamVR that never opens</summary>
+  <TroubleShootTable
+  cause="You have SteamVR set as the OpenXR runtime, which will cause the headless VRCFT module program to open in SteamVR instead of in the Meta Quest Link environment.">
+    Set your OpenXR runtime to Meta Quest Link in the Meta Quest Link software. 
   </TroubleShootTable>
 </details>
 
