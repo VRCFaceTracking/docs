@@ -7,11 +7,13 @@ import ReactPlayer from 'react-player'
 The Vive Focus 3 and XR Elite are standalone VR headsets powered by the Qualcomm XR2, similar to the Quest 2 and Quest Pro headsets from Meta.
 Although by default having neither eye nor face tracking, the Focus 3 has 2 add-on modules that can be installed to add eye and face tracking capabilities,
 and the XRE has a single, combo module that can be installed to add both eye and face tracking capabilities.
-There is currently no way for VRCFT to simultaneously extract data from the headset and send eye and face tracking to the Vive standalone version of VRChat, so the following solutions are only for PCVR.
+The follow instructions are specifically for PCVR and VRCFT. 
+While the XRE can send a (extremely) limited set of face tracking parameters to the Vive standalone version of VRChat, this function is unrelated to VRCFaceTracking and questions/issues regarding this headset feature should be directed to Vive Support. 
 
 Since September 2023, the Vive PCVR VR streamer programs (Vive Business Streaming and Vive Streamer Hub) have had the ability to control VRCFT avatars in VRChat on their own (by copying the VRCFT program's functions).
 While users can choose to forgo using VRCFT, we would recommend using VRCFT over the Vive Streamer's built-in OSC function.
-As of now, Vive's implementation of VRCFT's functionality is buggy and slow, with some VRCFT avatars completely not working. 
+Even now, Vive's implementation of VRCFT's functionality is buggy, slow, and handles some parameters (notably MouthClosed) completely incorrectly. 
+
 We will be unable to provide support to users who experience issues with the VRCFT clone in Vive's streamer software. 
 Note that both VRCFT and the Vive Streamer OSC output cannot be used at the same time. 
 
@@ -23,7 +25,7 @@ There are two PCVR Streaming methods that supports the eye and face tracking fea
 2. ALXR
 
 The **Vive Streamer** will be more straightforward to set up and use and is recommended for most users. 
-ALXR on Vive standalone headsets may have VR streaming issues currently (January 2024). 
+ALXR on Vive standalone headsets will require some user tweaking and the ALXR remote module doesn't handle eye-openness and gaze correctly yet (August 2024). 
 
 ### Preliminary Setup
 
@@ -49,20 +51,33 @@ ALXR on Vive standalone headsets may have VR streaming issues currently (January
 </details>
 
 2. Make sure that you agree to the privacy notices for eye and face tracking after installation, follow the instructions for eye tracking calibration, and have the eye and face tracking options enabled in the headset Input settings. 
-3. Install VIVE Console onto your computer. We need this for the latest version (**1.3.6.8+**) of [SRanipal](./sranipal.mdx#installing-via-vive-console) 
+
+<!-- 3. Install VIVE Console onto your computer. We need this for the latest version (**1.3.6.8+**) of [SRanipal](./sranipal.mdx#installing-via-vive-console) 
 
 :::info
 For eye expressions (blinking) to work correctly in SRanipal over Vive Streamer streaming, [you **must** use SRanipal version greater than 1.3.6.8](https://forum.htc.com/topic/14087-vbs-pc-vr-how-to-use-facial-tracking-on-focus3/). 
 Lower face expressions will still mostly work with older versions of SRanipal. 
-:::
+::: -->
 
 ### Vive Streamer Setup
 
 <details>
   <summary>Vive Streamer Setup</summary>
 
-1. Install VIVE Business Streaming or VIVE Streaming Hub onto your computer. They are functionally identical. Traditionally one would use VBS for the Focus 3 and the Streaming Hub for the XR Elite. 
-2. Update the streaming app on the Focus 3 or XR Elite by plugging the headset into the computer then clicking the Update button in the VIVE Streaming application for "Headset software version".
+:::info
+As of August 2, 2024, you should opt into the BETA version of the Vive Streaming Hub. The live version at the time of writing has various issues related to eye/face tracking. 
+<div style={{
+    width: '80%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+<img src={require("../img/vive/rr/streamer_beta.png").default} alt="Vive Streamer Beta option" />
+</div>
+:::
+
+1. Install VIVE Business Streaming or VIVE Streaming Hub onto your computer. They are functionally identical. The typical cases are VBS for the Focus 3 and the Streaming Hub for the XR Elite. 
+2. Update the streaming app to the latest version on the Focus 3 or XR Elite by plugging the headset into the computer then clicking the Update button in the VIVE Streaming application for "Headset software version".
    - Focus 3: you will need to unplug the eye tracking module
    - XR Elite: you can use the USB-C port on the top of the battery or the dangling USB-C port if using the XRE without the battery
 
@@ -75,7 +90,7 @@ Lower face expressions will still mostly work with older versions of SRanipal.
     <img src={require("../img/vive/rr/streamer_update.png").default} alt="Headset software version Update button" />
   </div>
 
-3. Disable the OSC output from the Vive Streamer. The OSC settings may be accesible from the Streamer application itself in a future update and should be disabled there if the settings exist. 
+<!-- 3. Disable the OSC output from the Vive Streamer. The OSC settings may be accesible from the Streamer application itself in a future update and should be disabled there if the settings exist. 
    - Navigate to `C:\ProgramData\HTC\ViveSoftware\ViveRR\RRServer` and open up the `serverSetting.setting` file in your favorite text editor.
    - Scroll to the bottom of the file and set the `VOF` key to "**false**".
    - Alternatively/additionally, you can set the "Send to VRC" port (VRCSP) and the "Receive from VRC" port (VRCRP) to values *other* than the defaults of 9000 and 9001. 
@@ -87,20 +102,42 @@ Lower face expressions will still mostly work with older versions of SRanipal.
     display: 'block'
   }}> 
     <img src={require("../img/vive/rr/streamer_settings.png").default} alt="Vive Streamer software settings" />
-</div>
+</div> -->
 
-:::warning
-If you do not disable the Streamer's output, it can interfere with VRCFT's ability to bind to the port to get messages from VRC, or it will double-send messages to VRC causing a "stuttering" effect. 
-:::
-
-4. Proceed to [Modules](#modules) for the module to use with Vive Streamer. 
+4. Download and install the **[Vive Streaming Face Tracking Module](https://github.com/ViveSoftware/ViveStreamingFaceTrackingModule)** from Vive. 
+   - Use the "Install Module from Zip" button in the VRCFT Module Registry page. 
 
 </details>
+
+
+<details>
+  <summary>Vive Streamer with SRanipal Module</summary>
+
+  SRanipal was the original ET/FT method that was available for the Focus 3 headset. 
+  It offers no tangible benefit over the Vive Streaming Face Tracking module, and involves more setup and software. 
+  However, it is still better than the built-in output from the Vive Hub software itself...
+
+  0. Follow the ["Vive Streamer Setup" instructions](#vive-streamer-setup) up until installing the Vive Streaming Face Tracking Module.
+  1. Install VIVE Console onto your computer. We need this for the latest version (**1.3.6.8+**) of [SRanipal](./sranipal.mdx#installing-via-vive-console). 
+     - The easiest way is to search for "VIVE Console" in Steam store, and install it through Steam. 
+     - Run Vive Console once to let it complete whatever it needs to install
+  2. Disable the OSC output from the Vive Streamer
+   - Navigate to `C:\ProgramData\HTC\ViveSoftware\ViveRR\RRServer` and open up the `serverSetting.setting` file in your favorite text editor.
+   - Scroll to the bottom of the file and set the `VOF` key to "**false**".
+  3. Install the **SRanipalTrackingModule** module from the VRCFaceTracking module repository.
+     - This should open a UAC prompt asking for permission to start the SRanipal runtime (sr_runtime).
+
+  :::warning
+  If you do not disable the Streamer's output, it can interfere with VRCFT's ability to bind to the port to get messages from VRC, or it will double-send messages to VRC causing a "stuttering" effect. 
+  :::
+
+</details>
+
 
 ### ALXR Setup
 
 :::warning
-ALXR on Vive standalone headsets may have VR streaming issues currently (January 2024).      
+The ALXR remote module doesn't handle eye-openness and gaze correctly for the XR Elite or Focus 3.
 :::
 
 <details>
@@ -114,17 +151,32 @@ If this is your first time using ALXR, follow the [Usage guide](https://github.c
    - [Learn more about the ALXR module configuration options](https://github.com/korejan/VRCFT-ALXR-Modules#module-settings)
 4. In `ALXRModuleConfig.json`, in the "RemoteConfig" section set "ClientIpAddress" to the headset IP, this can be found in the ALVR server dashboard.
    - You will need to restart VRCFT to reinitialize the ALXR Remote Module with the updated configuration.
-5. Proceed to [Modules](#modules) for the module to use with ALXR. 
 
 </details>
 
 ## Modules
 
-There are 2 modules that can be used with the Vive Focus 3 or XR Elite, one for each possible PCVR streaming method. 
-Both modules are readily available for installation via the VRCFaceTracking built-in module registry.
-[Learn how to install modules from the module registry](../../intro/getting-started.mdx#installing-the-vrcfacetracking-module).
+There are 3 modules that can be used with the Vive Focus 3 or XR Elite, 2 for Vive Streaming and 1 for ALXR. 
 
-- If you are using a Vive Streamer (Vive Business Streaming / Vive Streamer Hub), you should install the **SRanipalTrackingModule**. 
+- If you are using a Vive Streamer (Vive Business Streaming / Vive Streamer Hub), you can use the **Vive Streaming Face Tracking Module** or the **SRanipalTrackingModule**.
 - If you are using ALXR, you should install the **ALXR Remote Module**. 
 
+The SRanipal and ALXR Remote modules are readily available to be installed from the VRCFT module registry.
+[Learn how to install modules from the module registry](../../intro/getting-started.mdx#installing-the-vrcfacetracking-module).
+
 Interested in the source code? Check out the [SRanipalTrackingModule source repository](https://github.com/VRCFaceTracking/SRanipalTrackingModule) and the [ALXR Remote module](https://github.com/korejan/VRCFT-ALXR-Modules) repos. 
+The Vive Streaming module is closed source. 
+
+
+## Troubleshooting
+
+<details>
+  <summary>My avatar's lower lip is up too high/clipping when I have a neutral expression</summary>
+  <TroubleShootTable
+  cause="You're using the Vive Streamer's built in output">
+
+  Follow the instructions on this page to use VRCFT instead. 
+  The mouth clipping issue is only caused by the Vive Streamer Hub, so if you see it, either you did not setup VRCFT and your chosen module correctly, or you did not set up VRCFT at all. 
+
+  </TroubleShootTable>
+</details>
