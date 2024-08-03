@@ -47,16 +47,17 @@ range of motions/expressions supported by the interface.
         'EyeTrackVR', 
         'VIVE Focus 3 (Eye Tracker)', 
         'VIVE Focus 3 (Facial Tracker)',
-        'HP Reverb G2 Omnicept'
+        'HP Reverb G2 Omnicept',
+        'VIVE XR Elite (Full Facial Tracker)'
     ]}
     omitHeaders={['Tracking Feature']}
     rows={[
-        ['Category', 'HMD', 'Accessory', 'HMD', 'Standalone HMD', 'Standalone HMD', 'Accessory', 'HMD', 'Software/Mobile', 'Software', 'Software/DIY Hardware', 'Accessory', 'Accessory', 'HMD'],
-        ['General Face Tracking Capability', 'Eye', 'Lower Face', 'Eye', 'Full', 'Full', 'Eye', 'Eye', 'Full', 'Lower Face', 'Eye', 'Eye', 'Lower Face', 'Eye'],
-        ['Gaze', '✔', '~', '✔', '✔', '✔', '✔', '✔', 'Eye Expression', '~', '✔', '✔', '~', '✔'],
-        ['Gaze Convergence', '✔', '~', '✔', '❌', '❌', '❌', '❌', 'N/A', '~', '✔', '✔', '~', '✔'],
-        ['Eye Openness', 'Granular', '~', 'Granular', 'Granular', 'Granular', '2 Steps', 'Granular', 'Granular', '~', 'Granular', 'Granular', '~', 'Binary'],
-        ['Pupil Dilation', '✔', '~', '✔', '❌', '❌', '❌', '❌', '❌', '~', '❌', '❌', '~', '✔'],
+        ['Category', 'HMD', 'Accessory', 'HMD', 'Standalone HMD', 'Standalone HMD', 'Accessory', 'HMD', 'Software/Mobile', 'Software', 'Software/DIY Hardware', 'Accessory', 'Accessory', 'HMD', 'Accessory'],
+        ['General Face Tracking Capability', 'Eye', 'Lower Face', 'Eye', 'Full', 'Full', 'Eye', 'Eye', 'Full', 'Lower Face', 'Eye', 'Eye', 'Lower Face', 'Eye', 'Full'],
+        ['Gaze', '✔', '~', '✔', '✔', '✔', '✔', '✔', 'Eye Expression', '~', '✔', '✔', '~', '✔', '✔'],
+        ['Gaze Convergence', '✔', '~', '✔', '❌', '❌', '❌', '❌', 'N/A', '~', '✔', '✔', '~', '✔', '✔'],
+        ['Eye Openness', 'Granular', '~', 'Granular', 'Granular', 'Granular', '2 Steps', 'Granular', 'Granular', '~', 'Granular', 'Granular', '~', 'Binary', 'Granular'],
+        ['Pupil Dilation', '✔', '~', '✔', '❌', '❌', '❌', '❌', '❌', '~', '❌', '❌', '~', '✔', '❌'],
         [
             'Upper Face Expression Support', 
             <>Widen<br/>Squeeze<br/>Brow(Emulated)</>, 
@@ -69,13 +70,14 @@ range of motions/expressions supported by the interface.
             <>Widen<br/>Squint<br/>Brow</>, 
             '❌', 
             '❌', 
-            <>Widen<br/>Squeeze<br/>Brow(Emulated)</>,
-            `~`,
-            '~'
+            <>Widen(broken)<br/>Squeeze(broken)</>,
+            '~',
+            '~',
+            <>Widen(broken)<br/>Squeeze(broken)</>
         ],
         [
             'Upper Face Expressibility',
-            '5/10', 
+            '6/10', 
             '~', 
             'N/A', 
             '9/10',
@@ -85,9 +87,10 @@ range of motions/expressions supported by the interface.
             '9/10', 
             '❌', 
             '❌',
-            '5/10',
+            '3/10',
             '~',
-            '~'
+            '~',
+            '3/10'
         ],
         [
             'Upper Face Tracking Quality',
@@ -101,9 +104,10 @@ range of motions/expressions supported by the interface.
             '8/10', 
             '❌', 
             '❌',
-            '7/10',
+            '4/10',
             '~',
-            '~'
+            '~',
+            '4/10'
         ],
         [
             'Lower Face Expression Support',
@@ -118,8 +122,9 @@ range of motions/expressions supported by the interface.
             <>Jaw<br/>Lip<br/>Mouth<br/>Cheek<br/>Nose</>, 
             '~',
             '~',
-            <>Jaw<br/>Lip<br/>Mouth<br/>Cheek<br/>Nose</>,
-            '~'
+            <>Jaw<br/>Lip<br/>Mouth<br/>Cheek</>,
+            '~',
+            <>Jaw<br/>Lip<br/>Mouth<br/>Cheek</>, 
         ],
         [
             'Lower Face Expressibility',
@@ -135,7 +140,8 @@ range of motions/expressions supported by the interface.
             '~',
             '~',
             '7/10',
-            '~'
+            '~',
+            '7/10'
         ],
         [
             'Face Tracking Quality',
@@ -151,8 +157,9 @@ range of motions/expressions supported by the interface.
             '~',
             '~',
             '7/10',
-            '~'
+            '~',
+            '7/10'
         ],
-        ['Tongue Expression Support', '~', 'Tongue Out & Directions', '~', 'Tongue Out', 'Tongue Out', '~', '~', 'Tongue Out', 'All Tongue Expressions', '~', '~', 'Tongue Out & Directions', '~'],
+        ['Tongue Expression Support', '~', 'Tongue Out & Directions', '~', 'Tongue Out', 'Tongue Out', '~', '~', 'Tongue Out', 'All Tongue Expressions', '~', '~', 'Tongue Out & Directions', '~', 'Tongue Out & Directions'],
     ]}
 />
