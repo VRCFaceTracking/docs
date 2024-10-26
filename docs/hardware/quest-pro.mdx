@@ -14,11 +14,12 @@ There is currently no way for VRCFT to simultaneously extract data from the head
 Previously, a beta version of the native VRChat Quest client included built in eye tracking support without the need for VRCFaceTracking. This version is discontinued and is no longer available.
 
 :::danger
-The Quest Pro has been shown to be *extremely* susceptable to sweat damage.
-There have been a practically significant number of users who have experienced the exact same failure mode
-of Eye-tracking not working after sweat ingress.
-If you plan on exercising, dancing, or doing other sweat-inducing activities,
-please take extra precautions against having sweat or other liquids reach the front part of the headset.
+The Quest Pro is largely susceptible to moisture damage. 
+There have been a large number of users who have experienced the exact same failure mode
+where eye and face tracking are nonfunctional when attempting using eye and face tracking simultaneously. 
+The issue seems to be caused by moisture which has condensed inside the headset eventually corroding 
+face tracking IR illuminators. 
+[More on the issue and potential prevention and repair methods.]()
 :::
 
 ## Why is this setup required?
@@ -80,10 +81,6 @@ You can learn more about improving your Quest PCVR streaming experience with the
 <details>
   <summary>Oculus Link/Airlink Setup</summary>
 
-<Admonition type="danger">
-  <p>Meta had broken their OpenXR runtime in the v67 and v68 updates, which causes module/VRCFT crashing (v68) or failure to create instance errors (v67). If you are experiencing these issues, try <a href="https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-rift-s/public-test-channel/">switching your Meta Quest Link PC software to the Public Test Channel</a> (68.0.0.474.361 or above) or updating to the latest version (v69 and above) if available.</p>
-</Admonition>
-
 Prefer a video? Community member Ninka has graciously created another tutorial video for the Quest Pro and VRCFT 5.0+ that goes over the entire setup procedure,
 including the VRCFT module installation for the Oculus Link/Airlink module "Quest Pro OpenXR".
 
@@ -100,7 +97,7 @@ including the VRCFT module installation for the Oculus Link/Airlink module "Ques
 2. **CREATE DEVELOPER ACCOUNT AND ENABLE DEVELOPER MODE**: 
 
     1. [Set up a Meta Quest developer account](https://developer.oculus.com/sign-up/)
-        * A developer account is still ***necessary*** as the eye and face over Link toggles are currently still in the developer settings of the Meta Quest Link PC application.
+        * A developer account is still ***necessary*** as the eye and face over Meta Quest Link toggles are currently still in the developer settings of the Meta Quest Link PC application.
       It is rather trivial to apply for and there is no check for being a "real organization".
     2. Install the Meta Horizon (formerly "Oculus" and "Meta Quest") app on mobile device (if it isn’t already) and login with your (developer) Meta Quest account. Register your headset in the app.
     3. In the Meta Horizon mobile App, tap Menu at the bottom right, then Devices. Select your Quest Pro, then go to `Settings -> Developer Mode` and set the **Developer** Mode switch to enabled.
@@ -116,7 +113,7 @@ including the VRCFT module installation for the Oculus Link/Airlink module "Ques
         <img src={require("./img/quest/dev-mode.png").default} alt="Quest Developer Mode in phone app" />
     </div>
 
-3. Install and start the [Oculus PC application](https://www.oculus.com/download_app/?id=1582076955407037) (if it isn't already).
+3. Install and start the [Meta Quest Link PC application](https://www.oculus.com/download_app/?id=1582076955407037) (if it isn't already).
 4. Follow setup instructions for logging in (with the same developer account created/used earlier to enable dev mode on the headset!) and adding your Quest Pro to `Devices`.
 5. In the Meta Quest PC application, click on `Settings` in the left sidebar, then `General` tab. Turn on `Unknown Sources`, and set the `OpenXR Runtime` to `Meta Quest Link`.
 
@@ -135,10 +132,10 @@ including the VRCFT module installation for the Oculus Link/Airlink module "Ques
 
 6. Navigate to the `Beta` tab. Enable `Developer Runtime Features`, `Eye tracking over Meta Quest Link`, and `Natural Facial Expressions over Meta Quest Link`.
   - Note that `Passthrough over Meta Quest Link` option *may* cause issues and unless you are making or using PCVR apps that use Quest headset passthrough, you should just leave this disabled.
-  - Enable Public Test Channel only if you know you want to use some feature/fix in the latest Public Test Channel (*beta*) software. Generally, it is better to stay off the PTC. 
+  - Enable Public Test Channel only if you know you want to use some feature/fix in the latest Public Test Channel (*beta*) software. Generally, it is better to **stay off the PTC**. 
 
 :::warning
-If you do not see these options, you are not logged into a Meta Quest developer account or may need to refresh your login. 
+If you do not see these options, you are not logged into a Meta Quest developer account or you may need to refresh your login. 
 :::
 
 <div style={{
@@ -300,6 +297,7 @@ Interested in the source code? Check out the [QuestProOpenXRTrackingModule sourc
 
 - If you are using Oculus Link/Airlink, you have the options of:
     1. **[Quest Pro OpenXR module](https://github.com/regzo2/VRCFaceTracking-QuestProOpenXR)**
+       - You must use VRCFT version 5.2.3.0 with this module. 
     2. **[ALXR Local module](https://github.com/korejan/VRCFT-ALXR-Modules)**
 - If you are using ALXR, you will need to use the **[ALXR Remote module](https://github.com/korejan/VRCFT-ALXR-Modules)**.
 - If you are using ALVR, you will need to use the **[ALVR module](https://github.com/alvr-org/VRCFT-ALVR)**.
