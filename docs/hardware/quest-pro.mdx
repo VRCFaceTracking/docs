@@ -9,23 +9,23 @@ import Admonition from '@theme/Admonition';
 
 The Meta Quest Pro provides eye gaze tracking, detailed eye expression tracking, and face tracking.
 All eye and face tracking hardware is internal to the device (no additional hardware setup required).
-All eye and face tracking data is accessed via Meta’s Face and Eye OpenXR extensions.
+All eye and face tracking data is accessed via Meta's Face and Eye OpenXR extensions.
 There is currently no way for VRCFT to simultaneously extract data from the headset and send eye and face tracking to the Quest version of VRChat, so the following solutions are only for PCVR.
 Previously, a beta version of the native VRChat Quest client included built in eye tracking support without the need for VRCFaceTracking. This version is discontinued and is no longer available.
 
 :::danger
 The Quest Pro is largely susceptible to moisture damage. 
 There have been a large number of users who have experienced the exact same failure mode
-where eye and face tracking are nonfunctional when attempting using eye and face tracking simultaneously. 
-The issue seems to be caused by moisture which has condensed inside the headset eventually corroding 
-face tracking IR illuminators, resulting in "green crud" that prevents the illuminators from working correctly. 
-[More on the issue and potential prevention and repair methods.]()
+where eye and face tracking are nonfunctional only when attempting using eye and face tracking simultaneously. 
+The issue seems to be caused by moisture which has condensed inside the headset, eventually corroding the
+face tracking IR illuminators. 
+[More on the issue and potential prevention and repair methods.](#quest-pro)
 :::
 
 ## Why is this setup required?
 
 The Quest Pro provides developers with both eye and face tracking data from a single, contained device, making it easy for native Quest developers to incorporate.
-However, having it only accessible through Meta’s Oculus OpenXR extensions means there must be an OpenXR application using the Oculus runtime running somewhere.
+However, having it only accessible through Meta's Oculus OpenXR extensions means there must be an OpenXR application using the Oculus runtime running somewhere.
 Difficulty of the setup process depends on the desired PCVR connection method. 
 
 ---
@@ -34,7 +34,7 @@ Difficulty of the setup process depends on the desired PCVR connection method.
 
 The basic Quest Pro setup flow:
 1. [Enable Eye and Face Tracking on the Headset](#enable-eye-and-face-tracking-on-the-headset)
-2. Set up desired PCVR connection method
+2. Complete set-up for desired PCVR connection method
 3. Install corresponding VRCFT module
 
 The Quest Pro currently has **5** readily available face-tracking compatible PCVR connection methods, listed in no particular order:
@@ -45,7 +45,7 @@ The Quest Pro currently has **5** readily available face-tracking compatible PCV
 - [Virtual Desktop](#virtual-desktop-setup)
 - [SteamLink](#steamlink-setup)
 
-Oculus Link/Airlink is Meta’s own PCVR streaming solution, and is generally straight-forward to set up (the PCVR part, not the face tracking part) and network stable, but also is limited in customization.
+Oculus Link/Airlink is Meta's own PCVR streaming solution, and is generally straight-forward to set up (the PCVR part, not the face tracking part) and network stable, but also is limited in customization.
 ALXR/ALVR are open-source projects and thus has many for features and customizability in the PCVR connection as compared to Airlink, but also may have more bugs, quirks, and generally may be harder to use.
 Virtual Desktop is commonly seen as the "best" PCVR streaming solution, but it is not *free*, unlike all the other options.
 SteamLink is Valve's (free) PCVR steaming solution meant specifically for using Quest headsets with SteamVR. 
@@ -65,7 +65,7 @@ You can learn more about improving your Quest PCVR streaming experience with the
 
 1. Open up the Settings in your Quest Pro headset, and navigate to "Movement Settings"
 2. Select the "Natural Facial Expressions" tab on the left, then Enable Natural Facial Expressions
-3. Select the "Eye Tracking" tab on the left, then Enable Eye Tracking. If you haven’t already, calibrate your eye tracking
+3. Select the "Eye Tracking" tab on the left, then Enable Eye Tracking. If you haven't already, calibrate your eye tracking
 <div style={{
     width: '60%',
     height: 'auto',
@@ -99,7 +99,7 @@ including the VRCFT module installation for the Meta Quest (formerly "Oculus") L
     1. [Set up a Meta Quest developer account](https://developer.oculus.com/sign-up/)
         * A developer account is still ***necessary*** as the eye and face over Meta Quest Link toggles are currently still in the developer settings of the Meta Quest Link PC application.
       It is rather trivial to apply for and there is no check for being a "real organization".
-    2. Install the Meta Horizon (formerly "Oculus" and "Meta Quest") app on mobile device (if it isn’t already) and login with your (developer) Meta Quest account. Register your headset in the app.
+    2. Install the Meta Horizon (formerly "Oculus" and "Meta Quest") app on mobile device (if it isn't already) and login with your (developer) Meta Quest account. Register your headset in the app.
     3. In the Meta Horizon mobile App, tap Menu at the bottom right, then Devices. Select your Quest Pro, then go to `Settings -> Developer Mode` and set the **Developer** Mode switch to enabled.
         * Reboot the headset after enabling Developer Mode.
         * This setting was formerly called "Developer Mode" in software versions before v60, became "Debug Mode" for a few cycles, and is now back again as "Developer Mode"
@@ -156,7 +156,7 @@ If you do not see these options, you are not logged into a Meta Quest developer 
 ### ALXR Setup
 
 :::note
-Using ALXR will require you to [sideload applications to you Quest](#using-sidequest-to-side-load-quest-apps)
+Using ALXR will require you to [sideload applications to you Quest](#tips-and-tricks)
 :::
 
 
@@ -311,9 +311,12 @@ Interested in the source code? Check out the [QuestProOpenXRTrackingModule sourc
 
 ## Tips and Tricks
 
-### Using Sidequest to Side-load Quest Apps
+The following section contains various potentially useful but *completely optional* instructions. 
 
-1. Install SideQuest (Advanced Installer) on your computer. https://sidequestvr.com/setup-howto
+<details>
+  <summary>Using Sidequest to Side-load Quest Apps</summary>
+
+1. [Install SideQuest (Advanced Installer)](https://sidequestvr.com/setup-howto) on your computer
    - The SideQuest application will have a built-in tutorial for the following steps.
 2. Connect your Quest Pro headset to your computer with a *data-transfer* USB cable.
 Once connected you will be prompted to "Allow USB debugging" and "Allow File Access". Make sure to allow both.
@@ -345,16 +348,22 @@ You will need to tap the Search bar first before you see the category filter dro
     <img src={require("./img/quest/quest_pro_unknown_sources.png").default} alt="Quest Library Unknown Sources" />
 </div>
 
-### Aligning Play Spaces with SteamVR Lighthouse-tracked Devices
+</details>
+
+<details>
+  <summary>Aligning Play Spaces with SteamVR Lighthouse-tracked Devices</summary>
 
 To use Vive trackers or other SteamVR Lighthouse tracked devices with the Quest Pro, you'll need to use **OpenVR-SpaceCalibrator**.
 While the [original from pushrax](https://github.com/pushrax/OpenVR-SpaceCalibrator) will work, many "Mixed VR" users have found the continous calibration forks
 to be better:
  - [bdunderscore's OVRSC fork](https://github.com/bdunderscore/OpenVR-SpaceCalibrator/tree/continuous-cal)
  - [ArcticFox8515's OVRSC fork](https://github.com/ArcticFox8515/OpenVR-SpaceCalibrator) of bdunderscore's fork
- - Recommended option: **[Hekky's OVRSC fork](https://github.com/hyblocker/OpenVR-SpaceCalibrator)**, which comes with important performance fixes for continuous calibration 
+ - **Recommended option: [Hekky's OVRSC fork](https://github.com/hyblocker/OpenVR-SpaceCalibrator)**, which comes with important performance fixes for continuous calibration 
 
-### Using Index Controllers with the Quest Pro with Link/Airlink
+</details>
+
+<details>
+  <summary>Using Index Controllers with the Quest Pro with Link/Airlink</summary>
 
 Download these [Powershell Scripts (VRCFT Discord Link)](https://discord.com/channels/849300336128032789/1033745772979699775/1056009844701806643)
 
@@ -364,7 +373,10 @@ These scripts will prevent Meta Quest Link from adding the Quest controllers to 
 
 You may have problems with running Powershell scripts downloaded from the internet (for good reason!). You can learn about [getting around Microsoft's default script security](https://adamtheautomator.com/run-powershell-script/).
 
-### Using Index Controllers with the Quest Pro with Virtual Desktop
+</details>
+
+<details>
+  <summary>Using Index Controllers with the Quest Pro with Virtual Desktop</summary>
 
 *Before* launching SteamVR from Virtual Desktop: 
 In the Virtual Desktop "Streaming" tab, untick the "Track controllers" option under "Advanced Options" in the Streaming tab.
@@ -379,13 +391,18 @@ This will prevent Virtual Desktop from adding the Quest controllers to the Steam
     <img src={require("./img/quest/virtual_desktop_track_controllers.png").default} alt="Virtual Desktop track controllers setting circled" />
 </div>
 
-### Using Index Controllers with the Quest Pro with ALVR/ALXR
+</details>
+
+<details>
+  <summary>Using Index Controllers with the Quest Pro with ALVR/ALXR</summary>
 
 The customizability of ALVR allows a few options in this regard. All following mentioned settings can be found in the "Headset" tab of the ALVR server settings.
 
 - Option 1: Completely disable the Quest Pro controllers using the checkbox next to "Controllers"
 - Option 2: Set the Controller emulation to "HTC Vive Tracker". This allows real controllers such as the Index Controllers to take precedence in SteamVR, and allow
   for using the Quest Pro controllers for manual playspace calibration.
+
+</details>
 
 ---
 
