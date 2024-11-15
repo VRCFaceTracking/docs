@@ -1,0 +1,118 @@
+---
+sidebar_class_name: hidden
+description: Information about the infamous Quest Pro FT dying phenomena
+---
+
+import {PageCard} from '@site/src/components/Cards.tsx'
+import {TroubleShootTable, CustomLink, TextColor} from '@site/src/components/Utils.tsx'
+import ReactPlayer from 'react-player'
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Admonition from '@theme/Admonition';
+
+# The Quest Pro's Dying Face Tracking Problem
+
+The Quest Pro has a well-known failure point for its face tracking system, with numerous users who have encountered the exact same symptoms.
+How the story typically goes:
+
+1. The eye and face tracking was working fine until it wasn't
+2. The eye tracking calibration on the headset works
+3. The eye and face tracking are nonfunctional *only* when attempting using eye and face tracking simultaneously. 
+
+The problem is moisture getting in the headset. 
+Sweat and other moisture will find their way into the headset if you use the headset like a VRC user would. 
+This is especially true if you do things like Just Dance, VR workouts, or long sessions of Beat Saber with the headset. 
+The problem may be exacerbated if you live in a humid and warm environment. 
+
+An example of what your Quest Pro's front plate might look like on the inside after a fair bit of use:
+
+<div style={{
+    width: '75%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/quest/quest_pro_front_plate_sweaty.jpg").default} alt="teh_venom's Quest Pro front plate moisture example" />
+</div>
+
+<!-- Through headset teardowns from members of the face tracking community, we have found that the cause of this problem is an oversight in the headset design.  -->
+
+## Issue Analysis
+The fundamental problem that develops is *corrosion* on the face tracking illuminator boards on the bottom of the headset. 
+The Quest Pro has 4 boards with little IR LEDs on them that turn on when you use face tracking. 
+The outer pair of these boards are completely exposed (not encased into the plastic frame with adhesive like the inner pair), and unfortunately placed right 
+next to the intake vent that runs along the edge of the headset. 
+Moisture, whether it be sweat from the lens side of the headset finding its way between the rubber flap and lens modules down to the bottom of the headset, or moisture from the user's breath / other 
+sourcefinding its way into the headset through the intake vent, will end up condensing on the exposed solder points of the face tracking illuminator board. 
+
+<div style={{
+    width: '75%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/quest/quest_pro_bottom_labeled.png").default} alt="Quest Pro FT LEDs and potential moisture ingress areas" />
+</div>
+
+This eventually causes a green corrosion to appear on the outer LED boards, as well as other exposed metal bits in the area, such as the body of the face tracking camera.
+Eventually this corrosion ("green crud") causes one or some of the LEDs to fail. 
+
+<div style={{
+    width: '75%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/quest/quest_pro_crud.jpg").default} alt="The Quest Pro 'Green Crud' from corrosion" />
+</div>
+
+<div style={{
+    width: '75%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/quest/quest_pro_crud_1.jpg").default} alt="The Quest Pro 'Green Crud' from corrosion" />
+</div>
+
+The LEDs for face tracking ***and eye tracking*** are driven by a single, *shared* driver IC ([TLC59401](https://www.ti.com/product/TLC59401#tech-docs)). 
+What this means is, if the user *only has eye tracking enabled*, which means the face tracking LEDs on the bottom of the headset are *not being driven*, everything will seem fine.
+However, when something attempts to use the face tracking, the IC detects that something is wrong (due to the corroded face tracking LED board) and effectively gets shut down, 
+taking all the illuminators with it, eye and face. 
+With no (or very dim) lights, the cameras for tracking your eyes and face can't see anything clearly, and tracking looks dead. 
+
+## Detection 
+
+If your Quest Pro's face tracking seems to have stopped working, you can easily verify whether or not the cause is this problem
+
+1. Make sure that you can still complete eye tracking calibration
+2. Install the [Aura](https://www.meta.com/experiences/aura/5367350470041414/) application from the Meta Quest store 
+3. Run Aura and test eye and face tracking with the alien flower girl head. It might take a little bit of time to start at first
+   - If the alien girl's eyes and face are unresponsive, you most likely have corroded face tracking LEDs
+   - If the alien girl's eyes and face are completely responsive and expressive, you probably have a VRCFT-setup related issue, and not damaged hardware
+4. You could also use a smartphone's camera to observe the eye and face tracking LEDs (they will show up as purple-ish dots). Run Aura as above, and take off the headset. 
+   If you notice that one or more of the LEDs on the bottom are missing (there should be 3 LEDs per outer board), then you definitely have the problem. 
+
+Example Quest Pro (cropped image from [evg-zhabotinsky](https://www.reddit.com/r/QuestPro/comments/12tfqzr/busted_face_tracking_kills_otherwise_working_eye/)) with dead LEDs on one side: 
+
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/quest/quest_pro_dead_leds_example.png").default} alt="Dead face tracking LED example from evg-zhabotinsky" />
+</div>
+
+## Repair 
+
+For now, refer to this [VRCFT Discord post](https://discord.com/channels/849300336128032789/1294044503832789042)
+
+## Prevention 
+
+For now, refer to this [VRCFT Discord post](https://discord.com/channels/849300336128032789/1294044503832789042)
+
+---
+
+Big thanks to community members tikkaqrow, cucumberworks, [evg-zhabotinsky](https://www.reddit.com/r/QuestPro/comments/12tfqzr/busted_face_tracking_kills_otherwise_working_eye/) on Reddit, and teh_venom
+for their knowledge contributions to this niche issue (and pictures).
