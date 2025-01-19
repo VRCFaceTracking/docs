@@ -1,8 +1,8 @@
 # Pimax Crystal
 
 :::note
-This guide assumes you have [PimaxPlay](https://pimax.com/download-pcvr-crystal/) installed alongside SteamVR.
-If you do not have [PimaxPlay](https://pimax.com/download-pcvr-crystal/)
+This guide assumes you have [PimaxPlay](https://pimax.com/pages/downloads-manuals) installed alongside SteamVR.
+If you do not have [PimaxPlay](https://pimax.com/pages/downloads-manuals)
 installed, please install it before continuing.
 :::
 
@@ -20,39 +20,56 @@ Unlike other Pimax HMD's, the Pimax Crystal requires a different setup. This gui
 </div>
 
 ### Requirements
-- [PimaxPlay](https://pimax.com/download-pcvr-crystal/)
-- [EyeTrackVR **Beta**](https://github.com/EyeTrackVR/EyeTrackVR/releases)
-- [VRCFT-Tobii-Advanced Module](https://github.com/ghostiam/VRCFT-Tobii-Advanced/releases)
+- [PimaxPlay](https://pimax.com/pages/downloads-manuals)
 - [BrokenEye](https://github.com/ghostiam/BrokenEye/releases)
+- [SRanipal_**1.3.6.5**.zip](https://discord.com/channels/849300336128032789/915075185328152606/1017600042837753906)
+- [VRCFT-Tobii-Advanced Module](https://github.com/ghostiam/PimaxCrystalAdvanced/releases/latest)
 
-:::warning
-You ***MUST*** download the **Beta** version of EyeTrackVR! At the time of writing this, the stable version(s) does not have eye openness.
-:::
 
 ## Set-up
 
 ### Installation
 Create a folder on your desktop to store all of the files you will be downloading. This will make it easier to find them later.
 
-#### 1) Install and configure [PimaxPlay](https://pimax.com/download-pcvr-crystal/)
+### 1) Install and configure [PimaxPlay](https://pimax.com/pages/downloads-manuals)
 First, open PimaxPlay and go to the settings tab. Ensure that the eye tracking option is enabled in the device settings, and perform an eye-tracking calibration.
 
-#### 2) Install and configure [EyeTrackVR Beta](https://github.com/EyeTrackVR/EyeTrackVR/releases)
-Download the latest beta launcher and install it. Run the application to ensure it is working. If it is, close it and continue to the next step.
+### 2) Install [BrokenEye](https://github.com/ghostiam/BrokenEye/releases)
+Download the latest release and extract BrokenEye.exe into the folder you created.
 
-#### 3) Install and configure the [VRCFT-Tobii-Advanced Module](https://github.com/ghostiam/VRCFT-Tobii-Advanced/releases)
+### 3) Download [SRanipal_1.3.6.5.zip (Discord Link)](https://discord.com/channels/849300336128032789/915075185328152606/1017600042837753906)
+
+:::note
+While SRanipal v1.3.1.1 does work with BrokenEye, we strongly recommend using v1.3.6.5 as it has been shown to have more consistent and reliable eyelid tracking over v1.3.1.1 when used with the Crystal.
+:::
+
+Download SRanipal_1.3.6.5.zip from the VRCFaceTracking Discord Server in #file-share and extract the contents into the same folder as BrokenEye.exe. You do **NOT** need to run SRanipal. 
+
+:::warning
+Ensure that the contents are **NOT** in a sub-folder and are in the same directory as BrokenEye.exe
+:::
+
+:::note
+Only the following files are necessary.
+- ``EyePredictionModule.dll ``
+- ``EyePredictionTVM.dll ``
+- ``OpenCL.dll ``
+- ``opencv_world310.dll ``
+- ``tvm_runtime.dll ``
+- ``model\EyePrediction\00-0000.params_opencl.dll ``
+- ``model\EyePrediction\00-0000.params_opencl.json ``
+- ``model\EyePrediction\00-0000.params_opencl.params ``
+
+Unnecessary files can be safely deleted.
+:::
+
+### 4) Install the [VRCFT-Tobii-Advanced Module](https://github.com/ghostiam/PimaxCrystalAdvanced/releases/latest)
 Launch VRCFaceTracking, and from the Modules tab, click the "Install from package" button at the top, and select the VRCFT-Tobii-Advanced Module. Upon relaunch of the application, you should see a new module called "Tobii Advanced" being loaded.
 
-#### 4) Install and configure [BrokenEye](https://github.com/ghostiam/BrokenEye/releases)
-Download the latest release and place it in your folder. Run this and follow the [instructions there](https://github.com/ghostiam/BrokenEye/blob/main/README.md).
+### 5) All together now!
+Now that you have all of the required software installed, it's time to put it all together. First, launch PimaxPlay and SteamVR. Once SteamVR is running, launch BrokenEye.exe. If the eye tracker is not automatically connected, click "**Connect to device**" Then, launch VRCFaceTracking. Done!
 
-#### 5) All together now!
-Now that you have all of the required software installed, it's time to put it all together. First, launch PimaxPlay and SteamVR. Once SteamVR is running, launch BrokenEye followed by EyeTrackVR (Beta!). Then, launch VRCFaceTracking. If you see your eye preview in BrokenEye and  EyeTrackVR (Beta!), you're finished!
-
-:::info
-Some users have observed EyeTrackVR using a lot of their CPU. On newer Intel CPUs, this can be mitigated by disabling e-Cores in the BIOS. If you are unsure how to do this, please consult your motherboard's manual, or consult the internet.
-:::
 
 ## Uninstalling The VRCFT-Tobii-Advanced Module
 
-To uninstall The VRCFT-Tobii-Advanced Module, go to the Module Registry, select the VRCFT-Tobii-Advanced Module and at the bottom click the uninstall button.
+To uninstall The VRCFT-Tobii-Advanced Module, go to the Module Registry, select the VRCFT-Tobii-Advanced Module and click the uninstall button at the bottom.
