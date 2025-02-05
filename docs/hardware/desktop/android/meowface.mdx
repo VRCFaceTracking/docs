@@ -1,0 +1,24 @@
+# Android MeowFace
+
+An Android phone (or realistically any Android-running device with a camera) can generate ARKit-*like* face tracking data for VRCFT using the MeowFace app by Suvidriel.
+Due to the nature of how the app works, this method of face tracking is intended only for desktop mode, as the app cannot track only the bottom of your face while you are wearing a VR headset.
+
+## Setup
+
+1. Download the [Meowface](https://play.google.com/store/apps/details?id=com.suvidriel.meowface&hl=en_US&gl=US&pli=1) app onto your Android phone.
+
+:::tip
+Like in any other "VTubing" situation, you will probably want to get a sturdy phone stand (or even head mount!) to hold your phone when using this app for face tracking. 
+:::
+
+## Module
+
+Install the **"MeowFaceTrackingModule"** from the [VRCFaceTracking Module Registry](@site/docs/vrcft-software/vrcft.mdx#module-registry).
+
+[MeowFaceTrackingModule source repository](https://github.com/regzo2/VRCFaceTracking-MeowFace)
+
+### Startup Instructions
+
+1. Get your PC's (the computer on which VRCFaceTracking is running) [local IP address](https://www.whatismybrowser.com/detect/what-is-my-local-ip-address)
+2. Run the installed Meowface app, then tap the upper left corner where it says `Waiting for connection or Click to enter PC ip.` Enter the PC IP Address you found in the previous step.
+3. Start VRCFaceTracking with the MeowFace module initialized. 

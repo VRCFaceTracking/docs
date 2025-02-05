@@ -1,0 +1,69 @@
+# Varjo
+
+## Summary
+
+Varjo provides eye gaze and expression tracking. All eye tracking hardware is internal to the device, no additional hardware setup is required.
+## Set-up
+
+Setup of the Varjo Module is fairly simple. Please read carefully to avoid any issues. 
+
+:::note
+This guide assumes you have the Varjo Base installed and updated prior to using the VRCFTVarjoModule. 
+If you do not have the [The Varjo Base](https://account.varjo.com/downloads#varjo_base)
+installed, please install it before continuing.
+:::
+
+### Installation
+
+To use the VRCFTVarjoModule, you will need a compatible headset and the Varjo Base installed.
+You can get a copy of the Varjo Base from Varjo's website, you will need an account to download it. 
+
+### Hardware
+
+The VRCFTVarjoModule is compatible with the following hardware:
+
+| Headset | Eye Tracking | Facial Tracking |
+| ---------------------------------- | -------- | --------- |
+| Varjo Aero                         | `✅` Yes | `❌` No  |
+| Varjo XR-3*                        | `✅` Yes | `❌` No  |
+| Varjo VR-3*						 | `✅` Yes | `❌` No  |
+
+*Untested
+
+## Using The Varjo Module
+
+To use Varjo eye tracking with VRChat, go to the Module Registry and select the VRCFTVarjoModule. Click the install button at the bottom of the window. Once installed, you will need to restart VRCFaceTracking for the module to be loaded.
+
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/varjo_install.png").default} alt="varjo install" />
+</div>
+
+Assuming there are no connection issues with the hardware, eye tracking should be initialized by VRCFaceTracking after a few seconds.
+
+### Calibrating Eye Tracking
+
+Eye tracking is calibrated automatically when you put on the headset, as a quick 1-point calibration.
+Additionally, you can perform a 5-point calibration from the leftmost tab in the Varjo Base.
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/varjo_calibrate_instructions.png").default} alt="varjo calibrate instructions" />
+</div>
+
+Start calibration by making sure "Allow eye tracking" is enabled in the System tab, then hit the "Calibrate eye tracking" button in the app. Follow the in-app instructions to finish calibrating the eye gaze tracking.  
+
+:::note
+Eye tracking calibration is not required to be performed frequently, but should be done after the initial Varjo Base software installation, after a change to the headset (i.e. change the facial interface), or when switching the headset between users.
+:::
+
+## Uninstalling The VRCFTVarjoModule
+
+To uninstall The VRCFTVarjoModule, go to the Module Registry, select VRCFTVarjoModule and click the uninstall button at the bottom.

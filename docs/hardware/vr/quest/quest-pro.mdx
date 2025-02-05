@@ -67,7 +67,7 @@ You can learn more about improving your Quest PCVR streaming experience with the
     margin: 'auto',
     display: 'block'
 }}>
-    <img src={require("./img/quest/quest_pro_settings_eye_tracking.png").default} alt="Quest Pro Eye Tracking settings" />
+    <img src={require("./img/quest_pro_settings_eye_tracking.png").default} alt="Quest Pro Eye Tracking settings" />
 </div>
 
 
@@ -105,7 +105,7 @@ including the VRCFT module installation for the Meta Quest (formerly "Oculus") L
         margin: 'auto',
         display: 'block'
     }}>
-        <img src={require("./img/quest/dev-mode.png").default} alt="Quest Developer Mode in phone app" />
+        <img src={require("./img/dev-mode.png").default} alt="Quest Developer Mode in phone app" />
     </div>
 
 3. Install and start the [Meta Quest Link PC application](https://www.oculus.com/download_app/?id=1582076955407037) (if it isn't already).
@@ -122,7 +122,7 @@ including the VRCFT module installation for the Meta Quest (formerly "Oculus") L
   margin: 'auto',
   display: 'block'
 }}>
-    <img src={require("./img/quest/oculus_pc_app_general.png").default} alt="Meta Quest PC App General Tab" />
+    <img src={require("./img/oculus_pc_app_general.png").default} alt="Meta Quest PC App General Tab" />
 </div>
 
 6. Navigate to the `Beta` tab. Enable `Developer Runtime Features`, `Eye tracking over Meta Quest Link`, and `Natural Facial Expressions over Meta Quest Link`.
@@ -139,7 +139,7 @@ If you do not see these options, you are not logged into a Meta Quest developer 
   margin: 'auto',
   display: 'block'
 }}>
-    <img src={require("./img/quest/oculus_pc_app_beta.png").default} alt="Meta Quest PC app Beta Tab" />
+    <img src={require("./img/oculus_pc_app_beta.png").default} alt="Meta Quest PC app Beta Tab" />
 </div>
 
 7. Proceed to [Modules](#modules) for compatible modules to use with Link/Airlink. 
@@ -204,7 +204,14 @@ Please refer to Virtual Desktop's built-in setup instructions to get started wit
 
 1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
 2. In the Virtual Desktop app *on the headset*, go to the "Streaming" tab, and enable the option `Forward tracking data to PC`. Make sure to click **Yes** to the popup. 
-![Virtual Desktop Settings](img/quest/virtual_desktop_settings.png)
+  <!-- <div style={{
+    width: '75%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+  }}>
+    <img src={require("./img/virtual_desktop_settings.png").default} alt="Virtual Desktop Settings" />
+  </div>  -->
 3. Start Virtual Desktop Streamer if you have not already and establish headset connection to the PC.
 4. Proceed to [Modules](#modules) for compatible modules to use with Virtual Desktop. 
 <!-- 4. Install the **Virtual Desktop VRCFT tracking module** -->
@@ -238,7 +245,7 @@ Those VRCFT port settings are for communication with *VRChat*, **not** SteamLink
     margin: 'auto',
     display: 'block'
   }}>
-    <img src={require("./img/quest/SVRL-VRSettings.jpg").default} alt="Navigating to the VR Settings tab" />
+    <img src={require("./img/SVRL-VRSettings.jpg").default} alt="Navigating to the VR Settings tab" />
   </div>  -->
 3. Navigate to the Setting tab "Steam Link", and enable the following options:
    - Enable OSC
@@ -251,7 +258,7 @@ Those VRCFT port settings are for communication with *VRChat*, **not** SteamLink
     margin: 'auto',
     display: 'block'
   }}>
-    <img src={require("./img/quest/steamlinksettings.png").default} alt="Required SteamLink settings for Face Tracking" />
+    <img src={require("./img/steamlinksettings.png").default} alt="Required SteamLink settings for Face Tracking" />
   </div>
 5. Proceed to [Modules](#modules) for the module to use with SteamLink.  
 
@@ -270,7 +277,7 @@ Those VRCFT port settings are for communication with *VRChat*, **not** SteamLink
 There are a total of **6** different VRCFT modules that can be used for the Quest Pro.
 The links are to Module source repositories, for those interested in contributing and improving the modules.
 All* modules are readily available for installation via the VRCFaceTracking built-in module registry.
-[Learn how to install modules from the module registry](../intro/getting-started.mdx#installing-the-vrcfacetracking-module).
+[Learn how to install modules from the module registry](@site/docs/intro/getting-started.mdx#installing-the-vrcfacetracking-module).
 
 <!-- Install the **"QuestProOpenXRTrackingModule"** from the <Link to={useBaseUrl('docs/vrcft-software/vrcft#module-registry')}  target="_blank" rel="noopener noreferrer">VRCFaceTracking Module Registry</Link>
 
@@ -318,7 +325,7 @@ Once connected you will be prompted to "Allow USB debugging" and "Allow File Acc
   margin: 'auto',
   display: 'block'
 }}>
-    <img src={require("./img/quest/hacks_sidequest-install-other-crop2.png").default} alt="How to install APKs in SideQuest" />
+    <img src={require("./img/hacks_sidequest-install-other-crop2.png").default} alt="How to install APKs in SideQuest" />
 </div>
 4. SideQuest should have a green notification bar show up at the bottom saying the operation was successful.
 
@@ -335,7 +342,7 @@ You will need to tap the Search bar first before you see the category filter dro
   margin: 'auto',
   display: 'block'
 }}>
-    <img src={require("./img/quest/quest_pro_unknown_sources.png").default} alt="Quest Library Unknown Sources" />
+    <img src={require("./img/quest_pro_unknown_sources.png").default} alt="Quest Library Unknown Sources" />
 </div>
 
 </details>
@@ -378,7 +385,7 @@ This will prevent Virtual Desktop from adding the Quest controllers to the Steam
   margin: 'auto',
   display: 'block'
 }}>
-    <img src={require("./img/quest/virtual_desktop_track_controllers.png").default} alt="Virtual Desktop track controllers setting circled" />
+    <img src={require("./img/virtual_desktop_track_controllers.png").default} alt="Virtual Desktop track controllers setting circled" />
 </div>
 
 </details>
@@ -506,8 +513,8 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
     margin: 'auto',
     display: 'block'
 }}>
-    <img src={require("./img/quest/windows_set_custom_graphics_settings.png").default} alt="Set Windows Custom Graphics Settings" />
-    <img src={require("./img/quest/windows11_set_custom_graphics_settings.png").default} alt="Set Windows Custom Graphics Settings Windows 11" />
+    <img src={require("./img/windows_set_custom_graphics_settings.png").default} alt="Set Windows Custom Graphics Settings" />
+    <img src={require("./img/windows11_set_custom_graphics_settings.png").default} alt="Set Windows Custom Graphics Settings Windows 11" />
 </div>
 
   </TroubleShootTable>
@@ -599,7 +606,7 @@ Switch to the VRCFT Output Log tab and find the relevant error message.
   </TroubleShootTable>
 </details>
 
-Don't see your problem here? Think your problem might be unrelated to the module but something else? Take a look at the [VRCFT software page](../vrcft-software/vrcft.mdx) or search in the <TextColor color="#5763ee">#hardware-software-help</TextColor> forum in the <CustomLink to="discord"/>.
+Don't see your problem here? Think your problem might be unrelated to the module but something else? Take a look at the [VRCFT software page](@site/docs/vrcft-software/vrcft.mdx) or search in the <TextColor color="#5763ee">#hardware-software-help</TextColor> forum in the <CustomLink to="discord"/>.
 
 <!-- - **ALXR/ALVR methods: "[ERROR] No connection could be made because the target machine actively refused it"**
   - Cause: The ALXR VRCFT server is not running.

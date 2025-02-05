@@ -1,0 +1,207 @@
+import ReactPlayer from 'react-player'
+import {TroubleShootTable, CustomLink, TextColor, EditUrl} from '@site/src/components/Utils.tsx'
+
+# Vive Focus 3 / Vive XR Elite
+
+## Introduction
+
+The Vive Focus 3 and XR Elite are standalone VR headsets powered by the Qualcomm XR2, similar to the Quest 2 and Quest Pro headsets from Meta.
+Although by default having neither eye nor face tracking, the Focus 3 has 2 add-on modules that can be installed to add eye and face tracking capabilities,
+and the XRE has a single combo module that can be installed to add both eye and face tracking capabilities.
+While the XRE can send a (extremely) limited set of face tracking parameters to the Vive standalone version of VRChat, this function is unrelated to VRCFaceTracking and questions/issues regarding this headset feature should be directed to Vive Support. 
+The follow instructions are specifically for **PCVR and VRCFT**. 
+
+Since September 2023, the Vive PCVR VR streamer programs (Vive Business Streaming and Vive Streamer Hub) have had the ability to control VRCFT avatars in VRChat on their own (by copying the VRCFT program's functions).
+While users can choose to forgo using VRCFT, we would recommend using VRCFT over the Vive Streamer's built-in OSC function.
+Even now, Vive's implementation of VRCFT's functionality is buggy, slow, and handles some parameters (notably MouthClosed) completely incorrectly. 
+
+The VRCFT server will be unable to provide support to users who experience issues with the VRCFT clone in Vive's streamer software. 
+
+## Setup
+
+There are two PCVR Streaming methods that supports the eye and face tracking features:
+
+1. Vive Streamer
+2. ALXR
+
+The **Vive Streamer** will be more straightforward to set up and use and is recommended for most users. 
+ALXR on Vive standalone headsets will require some user tweaking and the ALXR remote module doesn't handle eye-openness and gaze correctly yet (August 2024). 
+
+### Preliminary Setup
+
+1. Install the eye and/or face tracking modules to the headset. Both modules should come with their own hardware quick-start guides in the box and should generally simply involve connecting the module to a single USB-C port on the headset.
+
+<details>
+  <summary>Digital Quick Start Guides For Focus 3 Modules</summary>
+  <div>
+    <div>
+      <ol>
+        <li><a href="https://dl.vive.com/QSG/Accessory/VIVE_Focus_3_Eye_Tracker_QSG.pdf" target="_blank">Face Tracker Quick Start Guide</a></li>
+        <li><a href="https://dl.vive.com/QSG/Accessory/VIVE_Focus_3_Eye_Tracker_QSG.pdf" target="_blank">Eye Tracker Quick Start Guide</a></li>
+      </ol>
+    </div>
+  </div>
+</details>
+
+<details>
+  <summary>Video Quick Start Guide for the XR Elite Full Facial Tracker</summary>
+    <div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+        <ReactPlayer controls url='https://www.youtube.com/watch?v=BaiuNRrOVQQ'/>
+    </div>
+</details>
+
+2. Make sure that you agree to the privacy notices for eye and face tracking after installation, follow the instructions for eye tracking calibration, and have the eye and face tracking options enabled in the headset Input settings. 
+   - If you do not see eye/face tracking Input options in your headset settings, try re-seating the connector(s). 
+
+<!-- 3. Install VIVE Console onto your computer. We need this for the latest version (**1.3.6.8+**) of [SRanipal](./sranipal.mdx#installing-via-vive-console) 
+
+:::info
+For eye expressions (blinking) to work correctly in SRanipal over Vive Streamer streaming, [you **must** use SRanipal version greater than 1.3.6.8](https://forum.htc.com/topic/14087-vbs-pc-vr-how-to-use-facial-tracking-on-focus3/). 
+Lower face expressions will still mostly work with older versions of SRanipal. 
+::: -->
+
+### Vive Streamer Setup
+
+<details>
+  <summary>Vive Streamer Setup</summary>
+
+:::info
+As of August 2, 2024, you should opt into the BETA version of the Vive Streaming Hub. The live version at the time of writing has various issues related to eye/face tracking. Make sure to check for updates and update both Vive Hub and the Vive Streamer app on the headset to the beta versions after enabling the Beta toggle.
+
+<div style={{
+    width: '80%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+<img src={require("./img/rr/streamer_beta.png").default} alt="Vive Streamer Beta option" />
+</div>
+:::
+
+1. Install VIVE Business Streaming or VIVE (Streaming) Hub onto your computer. They are functionally identical, but the typical cases are VBS for the Focus 3 and Vive Hub for the XR Elite. You can use them interchangably. 
+2. Update the streaming app to the latest version on the Focus 3 or XR Elite by plugging the headset into the computer then clicking the Update button in the VIVE Streaming application for "Headset software version" (Settings ➜ About ➜ Vive Streaming).
+   - Focus 3: you will need to unplug the eye tracking module to use the USB-C port on the side of the headset
+   - XR Elite: you can use the USB-C port on the top of the battery cradle or the dangling USB-C port if using the XRE without the battery
+
+  <div style={{
+    width: '75%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+  }}>
+    <img src={require("./img/rr/streamer_update.png").default} alt="Headset software version Update button" />
+  </div>
+
+<!-- 3. Disable the OSC output from the Vive Streamer. The OSC settings may be accesible from the Streamer application itself in a future update and should be disabled there if the settings exist. 
+   - Navigate to `C:\ProgramData\HTC\ViveSoftware\ViveRR\RRServer` and open up the `serverSetting.setting` file in your favorite text editor.
+   - Scroll to the bottom of the file and set the `VOF` key to "**false**".
+   - Alternatively/additionally, you can set the "Send to VRC" port (VRCSP) and the "Receive from VRC" port (VRCRP) to values *other* than the defaults of 9000 and 9001. 
+
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+  }}> 
+    <img src={require("./img/rr/streamer_settings.png").default} alt="Vive Streamer software settings" />
+</div> -->
+
+3. Make sure that the "Eye and facial tracking data" toggle under "Stream avatar data to VRChat via OSC" is **enabled** in the Vive Hub or VBS application (Settings ➜ Vive Streaming ➜ Input). 
+
+<div style={{
+    width: '75%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+  }}> 
+    <img src={require("./img/rr/streamer_osc_toggle.png").default} alt="Vive Streaming Eye and Face tracking toggle" />
+</div>
+
+4. Download and install the **[Vive Streaming Face Tracking Module](https://github.com/ViveSoftware/ViveStreamingFaceTrackingModule)** from Vive. 
+   - Download the latest module .zip from the Releases section found at the right side of the Github page
+   - Use the "Install Module from Zip" button in the VRCFT Module Registry page
+
+</details>
+
+
+<details>
+  <summary>Vive Streamer with SRanipal Module Setup</summary>
+
+  SRanipal was the original ET/FT method that was available for the Focus 3 headset, and still works for both the Focus 3 and XR Elite.
+  It offers no obvious improvement over the Vive Streaming Face Tracking module, involves more setup and software, and like all Vive implementations, has its own quirks. 
+  However, it is still better than the built-in output from the Vive Hub software itself...
+
+  0. Follow the ["Vive Streamer Setup" instructions](#vive-streamer-setup) up until installing the Vive Streaming Face Tracking Module.
+  1. Install VIVE Console onto your computer. We need this for the latest version (**1.3.6.8+**) of [SRanipal](./sranipal.mdx#installing-via-vive-console). 
+     - The easiest way is to search for "VIVE Console" in Steam store, and install it through Steam. 
+     - Run Vive Console once to let it complete whatever it needs to install
+     - You can *completely ignore* Vive Console afterwards, you only need the install for SRanipal, not Vive Console itself
+  2. **Disable** the OSC output from the Vive Streamer by unchecking "Eye and facial tracking data" under "Stream avatar data to VRChat via OSC" in the Input tab of the VIVE Streaming Settings of the Vive Hub application. 
+     - Alternatively, you can do this manually by opening `C:\ProgramData\HTC\ViveSoftware\ViveRR\RRServer\serverSetting.setting` and setting the `VOF` key to "**false**".
+
+<div style={{
+    width: '75%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+  }}> 
+    <img src={require("./img/rr/streamer_osc_toggle.png").default} alt="Vive Streaming Eye and Face tracking toggle" />
+</div>
+
+  3. Install the **SRanipalTrackingModule** module from the VRCFaceTracking module repository. This should open a UAC prompt asking for permission to start the SRanipal runtime (sr_runtime). Make sure to allow it to run. 
+
+  :::warning
+  If you do not disable the Streamer's output, it can double-send messages to VRC in tandemn with VRCFT, causing a "stuttering" effect. 
+  :::
+
+</details>
+
+
+### ALXR Setup
+
+:::warning
+The ALXR remote module currently doesn't handle eye-openness and gaze correctly for the XR Elite or Focus 3.
+:::
+
+<details>
+  <summary>ALXR Setup</summary>
+
+1. Download and install the latest ALXR client *and server* from the [ALXR-nightly](https://github.com/korejan/ALXR-nightly/releases) repository.
+If this is your first time using ALXR, follow the [Usage guide](https://github.com/korejan/ALVR/wiki/ALXR-Client#usage) and [Android-specific client install instructions](https://github.com/korejan/ALVR/wiki/ALXR-Client#android-all-flavors---questpicogenericetc) 
+2. Install the **ALXR Remote** module from the VRCFaceTracking module repository.
+3. Open the `ALXRModuleConfig.json` found in the installed module directory.
+   - You may need to navigate to `C:\Users\[username]\AppData\Local\Packages\96ba052f-0948-44d8-86c4-a0212e4ae047_d7rcq4vxghz0r\LocalCache\Roaming\VRCFaceTracking\` to find the module directory and config json.
+   - [Learn more about the ALXR module configuration options](https://github.com/korejan/VRCFT-ALXR-Modules#module-settings)
+4. In `ALXRModuleConfig.json`, in the "RemoteConfig" section set "ClientIpAddress" to the headset IP. This can be found in the ALVR server dashboard.
+   - You will need to restart VRCFT to reinitialize the ALXR Remote Module with the updated configuration.
+
+</details>
+
+## Modules
+
+There are 3 modules that can be used with the Vive Focus 3 or XR Elite, 2 for Vive Streaming and 1 for ALXR. 
+
+- If you are using a Vive Streamer (Vive Business Streaming / Vive Hub), you can use the **Vive Streaming Face Tracking Module** or the **SRanipalTrackingModule**.
+- If you are using ALXR, you should install the **ALXR Remote Module**. 
+
+Make sure to follow the setup instructions above for which module to use. 
+The SRanipal and ALXR Remote modules are readily available to be installed from the VRCFT module registry.
+[Learn how to install modules from the module registry](@site/docs/intro/getting-started.mdx#installing-the-vrcfacetracking-module).
+The [Vive Streaming Face Tracking Module](https://github.com/ViveSoftware/ViveStreamingFaceTrackingModule) is not part of the VRCFT module registry and must be installed manually. 
+
+Interested in the source code? Check out the [SRanipalTrackingModule source repository](https://github.com/VRCFaceTracking/SRanipalTrackingModule) and the [ALXR Remote module](https://github.com/korejan/VRCFT-ALXR-Modules) repos. 
+The Vive Streaming module is closed source and thus does not have a publicly accessible source code. 
+
+
+## Troubleshooting
+
+<details>
+  <summary>My avatar's lower lip is up too high/clipping even when I have a neutral facial expression IRL</summary>
+  <TroubleShootTable
+  cause="You're using the Vive Streamer's built in output">
+
+  Follow the instructions on this page to use VRCFT instead. 
+  The mouth clipping issue is only caused by the Vive Streamer Hub's direct output to VRChat, so if you see it, either you did not setup VRCFT and your chosen module <i>correctly</i>, or you did not set up VRCFT at all. 
+
+  </TroubleShootTable>
+</details>

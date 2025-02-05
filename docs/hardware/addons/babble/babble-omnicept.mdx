@@ -1,0 +1,144 @@
+---
+sidebar_position: 2
+sidebar_label: Project Babble - HP Reverb G2 Omnicept Setup Guide
+---
+
+# Project Babble - HP Reverb G2 Omnicept Setup Guide
+
+## Summary
+
+The [HP Reverb G2 Omnicept Edition](https://www.hp.com/us-en/vr/reverb-g2-vr-headset-omnicept-edition.html) is a VR headset with eye tracking and a lower face camera. While there is a module that allows you to use the headset's eye tracking with VRCFaceTracking, the face camera by itself does not do anything.
+
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/hp_face_cams_RTV.jpg").default} alt="HP Reverb G2 Omnicept eye and face cameras, circled in red" />
+</div>
+
+***But!*** With Project Babble this camera can be used to track your facial expressions! This guide will show you how to use the lower face camera with VRCFaceTracking.
+
+## Setup
+
+You will need the following software installed to use the lower face camera with VRCFaceTracking:
+- The [VRCFaceTracking Babble Module](https://discord.com/channels/974302302179557416/974302302179557419/1165448245502279680)
+- [OBS **v27.2.4**](https://github.com/obsproject/obs-studio/releases/tag/27.2.4)
+- [OBS VirtualCam **v2.0.5**](https://obsproject.com/forum/resources/obs-virtualcam.949/)
+- [Project Babble](https://github.com/SummerSigh/ProjectBabble/releases/latest)
+- The [Glia Runtime/SDK](https://developers.hp.com/omnicept/downloads)
+- The [Glia Lip Viewer](https://cdn.discordapp.com/attachments/915075185328152606/1122604181728006244/GliaLipViewer.zip)
+
+:::caution
+Make sure you use the exact version of OBS and the plugin listed!
+:::
+
+### Installation
+
+#### Step 1: Glia Lip Viewer Setup
+
+Firstly, extract the contents of the `GliaLipViewer.zip` file to a folder of your choice. You can delete the zip file after this is done.
+
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/babble_unzipped.png").default} alt="The Glia Lip Viewer, extracted to a folder" />
+</div>
+
+Next, run `Glia.exe` inside of this new folder. If your HP Reverb G2 Omnicept Edition is plugged in, you should see a small window with a live feed from the lower face camera, tinted red. Otherwise, you'll see a solid red box. If this is the case make sure your headset is plugged in and that you have the Glia Runtime installed.
+
+:::note
+You may get a warning from the Glia Runtime about an application requesting access to the lower face camera. If you do, make sure to click "Allow".
+:::
+
+#### Step 2: OBS Setup
+
+Install OBS v27.2.4 as well as the OBS Virtual Camera Plugin. If you have a newer version, you should not have to uninstall it. Open OBS and add a new "Window Capture".
+
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/obs_window_creation.png").default} alt="Creating the OBS Window Capture" />
+</div>
+
+Select the Glia window from the list of windows...
+
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/obs_glia_capture.png").default} alt="Selecting the GliaLipViewer window" />
+</div>
+
+**Disable** cursor capture. Now resize OBS to fit the size of the window. This can be done by right clicking on the "Window Capture" source and selecting ""Resize output (source size)".
+
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/obs_window_resize.png").default} alt="Resizing the OBS Window" />
+</div>
+
+:::note
+You may need to change the capture method from "Default" to "Windows XXXX".
+:::
+
+Finally, under OBS's **Tools** in the top menu bar select the **VirtualCam** option and click start. Project Babble should detect this as an input device if 1 is entered as input to it!
+
+:::caution
+In its present state, you will need to launch the `GliaLipViewer` and OBS's virtual camera every time you want to use this with Project Babble/VRCFaceTracking.
+:::
+
+#### (Optional) Step 3: Fine tuning
+
+:::note
+This section is intended to fine tune and calibrate project babble, but isn't a necessary step to get it to function
+:::
+
+Open the filters tab for the window capture you created...
+
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/obs_window_filter.png").default} alt="OBS Window Capture filter" />
+</div>
+
+Add a "Color Correction" filter.
+
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/obs_filter_color_correction.png").default} alt="OBS Window Color Correction" />
+</div>
+
+Increase the brightness of the video by adjusting "Gamma", you want to make this about ~3 times as bright as it is by default. You can also adjust the contrast and saturation to your liking.
+
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/obs_filter_gamma.png").default} alt="OBS Window Color Correction Gamma" />
+</div>
+
+You should now be able to see your lower facial expressions reflected in VRCFaceTracking! Have fun!
+
+*HP Reverb G2 Omnicept Face Camera pictures from [Road to VR](https://www.roadtovr.com/hp-reverb-g2-eye-tracking-face-tracking-omnicept/), by [Aggiornamenti Lumia](https://twitter.com/alumia_italia/)*

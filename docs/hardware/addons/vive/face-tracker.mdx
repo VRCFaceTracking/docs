@@ -1,0 +1,111 @@
+# Vive Facial Tracker
+
+## Introduction
+
+The Vive Facial Tracker provides lower face tracking for [Vive Pro](@site/docs/hardware/vr/vive/vpe.mdx) and other VR headsets.
+It connects to the computer via a short, built-in USB-C cable.
+Face tracking data is accessed through [Vive's SRanipal interface](@site/docs/hardware/vr/vive/sranipal.mdx).
+
+:::danger
+The Vive Facial Tracker has officially been discontinued by Vive. 
+While it can still be used with VRCFT, expect no support for this product from Vive themselves. 
+:::
+
+## Why is this setup required?
+
+The Vive Facial Tracker is a high bandwidth USB device sensitive to poor USB connectivity, leading to a lot of "gotchas" in hardware setup.
+Also, the SRanipal software is notoriously annoying to deal with.
+
+## Software Setup
+
+:::tip
+Install SRanipal first *before* plugging in the Vive Facial Tracker to make your life a bit easier.
+:::
+
+Regardless of what headset, the Vive Facial Tracker requires the computer that it connects to to have SRanipal runtime installed to be able to be used.
+Follow the [SRanipal Setup](@site/docs/hardware/vr/vive/sranipal.mdx#set-up) instructions to get this necessary software installed and ready.
+
+## Hardware Setup
+
+Setup for the Vive Facial Tracker will be split across different types of headset "categories".
+
+- Vive Pro Series
+- Valve Index / Other Wired VR headsets
+- Quest / other Standalone with PC Streaming
+
+There are some special notes for certain headsets and setup methods in the last section.
+
+Once SRanipal is installed and the facial tracker connected to the computer and powered on, SRanipal might be unresponsive for a while the Facial Tracker updates its firmware.
+During this time you will see the Vive Facial Tracker show up as "HTC Boot" in Windows Device Manager.
+:::danger
+Do **NOT** unplug the face tracker while it is in this state.
+:::
+When it finishes, there should be a little pop-up notification (possibly hidden under other windows) saying that the lip tracker firmware was successfully updated, and now
+you should be able to see a "HTC Multimedia Camera" device instead in Device Manager.
+
+:::info
+A shoddy USB connection for the Facial Tracker can lead to it getting stuck trying to update its firmware, never initializing.
+If possible, the plug the facial tracker **directly into a USB-C port on your computer** to allow it to update (if it needs to).
+:::
+
+### Vive Pro Series
+
+This is by far the easiest headset(s) to set up the Vive Facial Tracker for, as it was made for these headsets.
+Follow the [official Vive Facial Tracker installation instructions](https://www.vive.com/us/support/facial-tracker/category_howto/tracker.html)
+
+<details>
+    <summary>Vive Pro Mounting Alternatives</summary>
+    <div>The adhesive that comes with the Vive Facial Tracker isn’t the best, and can easily fail with a knock to the headset. Here are some alternative mounting solutions</div>
+    <br/>
+    <div>
+        <li><a href={"https://www.thingiverse.com/thing:5405617"}>3D printed alternative Mount</a></li>
+        <li>Use 3M VHB Tape as adhesive replacement</li>
+        <li>Wrap rubber bands around the facial tracker mounting legs and whole headset (ask Azmidi...)</li>
+        <li>Wrap a wire around everything??? (ask PLPlolol in the <a href={"https://discord.gg/vrcft"}>VRCFT Discord</a>...)</li>
+    </div>
+</details>
+
+### Valve Index / Wired VR Headsets
+
+The position of the Vive Facial Tracker relative to your lower face is *very important*.
+More often than not bad tracking is the result of a bad position/angle of the facial tracker.
+Getting a good 3D printed mount is essential for avoiding tracking issues on non-Vive Pro headsets.
+Ask around in the #3d-printing channel in the [VRCFT Discord](https://discord.gg/vrcft) if you need help.
+
+#### Valve Index
+
+This section assume you are intending to use a USB-C female to USB-A Male USB adapter in the Index "frunk" USB 3.0 port.
+
+- Get a **USB 3.0 or higher** USB-C female to USB-A Male USB adapter, such as https://smile.amazon.com/gp/product/B083XXLW77
+
+:::caution
+This is the **#1 reason** for VRCFaceTracking problems with Index users.
+**DO NOT BUY THE SHORT STUBBY USB-2.0 ADAPTERS**. A proper USB 3.0+ adapter will be "long"!
+:::
+
+- Remove the front plate covering the frunk area of the Index.
+
+- Connect the Facial Tracker to the adapter, and the adapter into the frunk USB port directly. Using a USB hub in the frunk *can* cause issues.
+- Mounting options for the Valve Index
+
+  - ['Road to Alcoholism' Index Front Plate Vive Facial Tracker Mount (VRCFT Discord)](https://discord.com/channels/849300336128032789/915075185328152606/987813371992748072)
+
+:::info
+The Index frunk area can get quite warm, and the USB adapters can get **very hot**, making the headset heat worse. If possible, try to keep the front of the headset actively cooled, and/or add a heatsink to the USB adapter.
+:::
+
+#### Other Wired VR Headsets
+
+Get a quality **USB 3.0 or better USB** extension. Since USB-C female extensions are rare, if you are getting a USB-C female to USB-A Male USB adapter, follow the :ref:`Valve Index` adapter instructions.
+
+### Quest / other Standalone with PC Streaming
+
+Using the headset as a VirtualHere USB server is a possible solution that allows for a fully wireless setup.
+VRCFT member `Blackspots#0001` has a nice [reddit post detailing the process](https://www.reddit.com/r/Quest2/comments/xlvbc8/getting_the_vive_face_tracker_to_work_with_the/) for the Quest 2
+This proceed *may* work for other similar headsets (Pico 3, Pico 4, etc.) but have not been tested. 
+
+## Module
+
+Install the **"SRanipalTrackingModule"** from the [VRCFaceTracking Module Registry](@site/docs/vrcft-software/vrcft.mdx#module-registry).
+
+[SRanipalTrackingModule source repository](https://github.com/VRCFaceTracking/SRanipalTrackingModule)
