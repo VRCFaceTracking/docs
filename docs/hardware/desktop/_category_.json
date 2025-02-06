@@ -3,6 +3,7 @@
   "position": 3,
   "link": {
     "type": "generated-index",
-    "description": "Documentation for compatible hardware"
+    "slug": "hardware/desktop",
+    "description": "Options for using VRCFT with desktop VRC"
   }
 }

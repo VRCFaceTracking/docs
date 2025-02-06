@@ -1,8 +1,9 @@
 {
-  "label": "VR Add-on Devices",
+  "label": "VR Headset Add-ons",
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "Documentation for compatible hardware"
+    "slug": "hardware/addons/",
+    "description": "Devices that attach VR headsets and add eye and/or face tracking. Devices in this section are either headset agnostic or can be adapted to work with other headsets"
   }
 }

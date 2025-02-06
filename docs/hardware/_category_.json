@@ -3,6 +3,7 @@
   "position": 4,
   "link": {
     "type": "generated-index",
+    "slug": "hardware/",
     "description": "Documentation for compatible hardware"
   }
 }
