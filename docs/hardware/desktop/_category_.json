@@ -2,8 +2,7 @@
   "label": "Desktop",
   "position": 3,
   "link": {
-    "type": "generated-index",
-    "slug": "hardware/desktop",
-    "description": "Options for using VRCFT with desktop VRC"
+    "type": "doc",
+    "id": "desktop"
   }
 }

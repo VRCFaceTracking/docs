@@ -1,8 +1,7 @@
 {
   "label": "Project Babble",
   "link": {
-    "type": "generated-index",
-    "slug": "hardware/addons/babble",
-    "description": "Open-source (lower) face trackers for VR"
+    "type": "doc",
+    "id": "babble"
   }
 }

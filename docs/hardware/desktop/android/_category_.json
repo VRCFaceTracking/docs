@@ -1,8 +1,8 @@
 {
-  "label": "Android (Phone)",
+  "label": "Android Device",
   "position": 3,
   "link": {
     "type": "doc",
-    "id": "meowface"
+    "id": "android"
   }
 }
