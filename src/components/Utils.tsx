@@ -62,3 +62,14 @@ export const Highlight = ({children, color}) => (
   {children}
 </span>
 );
+
+export function ShuffledList({items}) {
+  const shuffledItems = items.sort(() => Math.random() - 0.5);
+  return (
+    <ul>
+      {shuffledItems.map((item, index) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  );
+}
