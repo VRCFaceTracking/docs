@@ -1,9 +1,8 @@
 {
-  "label": "VR Headset",
+  "label": "VR Headsets",
   "position": 1,
   "link": {
-    "type": "generated-index",
-    "slug": "hardware/vr",
-    "description": "VR/XR headsets that have eye and/or face tracking and can be used with VRCFT"
+    "type": "doc",
+    "id": "vr"
   }
 }

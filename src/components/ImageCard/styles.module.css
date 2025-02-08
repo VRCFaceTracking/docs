@@ -8,6 +8,7 @@
   transition: all var(--ifm-transition-fast) ease;
   transition-property: border, box-shadow;
   display: flex;
+  height: 100%;
 }
 
 .cardContainer:hover {
