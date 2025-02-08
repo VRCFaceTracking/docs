@@ -2,8 +2,7 @@
   "label": "Meta Quest",
   "collapsed": true,
   "link": {
-    "type": "generated-index",
-    "slug": "hardware/vr/meta",
-    "description": "Meta Quest headsets and info"
+    "type": "doc",
+    "id": "meta"
   }
 }

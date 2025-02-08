@@ -23,20 +23,28 @@ function DocCardListMapCallback(item, index) {
           href = href.slice(0, -1)
           hrefsplit = href.split("/")
         }
-        console.log(href);
-        console.log("type is link")
+        // console.log(href);
+        // console.log("type is link")
         try {
           // regular page
+          // + case: doc folder became page because only index page *not* named category root and explicitly declared in _category_.json
           img = require("@site/" + hrefsplit.slice(1,-1).join("/") + "/img/" + hrefsplit[hrefsplit.length - 1] + ".png").default;
         } catch (el) {
-          console.log(el);
+          // console.log(el);
           // rare case: link is actually a category root
           try {
             img = require("@site/" + hrefsplit.slice(1).join("/") + "/img/" + hrefsplit[hrefsplit.length - 1] + ".png").default;
           } catch (el1) {
-            console.log(el1);
-            // rare case 2: doc folder became page because only index page *not* named category root and explicitly declared in _category_.json
-            img = require("@site/" + hrefsplit.slice(1,-1).join("/") + "/img/" + hrefsplit[hrefsplit.length - 2] + ".png").default;
+            // console.log(el1);
+            // rare case 2: explicit image is missing for page, but category image exists
+            // also applies if page and category name are not the same, but link is directly to page (category type: doc)
+            try {
+              img = require("@site/" + hrefsplit.slice(1,-1).join("/") + "/img/" + hrefsplit[hrefsplit.length - 2] + ".png").default;
+            } catch (el2) {
+              // console.log(el2);
+              // rare case 3 and last resort: explicit image is missing for page, but category image exists and page name is not category name
+              img = require("@site/" + hrefsplit.slice(1,-2).join("/") + "/img/" + hrefsplit[hrefsplit.length - 3] + ".png").default; 
+            }
           }
         }
         break;
@@ -47,16 +55,28 @@ function DocCardListMapCallback(item, index) {
           href += '/'
           hrefsplit = href.split("/")
         }
-        console.log(href);
+        // console.log(href);
         try {
-          // at category level 
-          // console.log("href:"+ item.href);
-          // console.log("cat image:" + "@site/" + item.href.split("/").slice(1,-1).join("/") + "/img/" + item.href.split("/")[item.href.split("/").length - 2] + ".png");
+          // at category level (href isn't a page not the category name)
+          // length - 2 is fine because href should always be /docs/...
           img = require("@site/" + hrefsplit.slice(1,-1).join("/") + "/img/" + hrefsplit[hrefsplit.length - 2] + ".png").default;
         } catch (ec) {
-          console.log(ec)
-          // case: image at same level 
-          img = require("@site/" + hrefsplit.slice(1,-2).join("/") + "/img/" + hrefsplit[hrefsplit.length - 2] + ".png").default;
+          // console.log(ec)
+          // case: image at same level (parent category) or href is a page that isn't the category name
+          try {
+            img = require("@site/" + hrefsplit.slice(1,-2).join("/") + "/img/" + hrefsplit[hrefsplit.length - 2] + ".png").default;
+          } catch (ec1) {
+            // last resort: try to find parent category image (href isn't a page not the category name)
+            // console.log(ec1);
+            try {
+              img = require("@site/" + hrefsplit.slice(1,-2).join("/") + "/img/" + hrefsplit[hrefsplit.length - 3] + ".png").default;
+            } catch (ec2) {
+              // console.log(ec2);
+              // actual last resort if href is a page that is not the category name and under the category
+              // if somehow indexing hrefsplit fails, should be caught by master try/catch
+              img = require("@site/" + hrefsplit.slice(1,-3).join("/") + "/img/" + hrefsplit[hrefsplit.length - 4] + ".png").default;
+            }
+          }
         }
         break;
       default:

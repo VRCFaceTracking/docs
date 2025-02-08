@@ -2,8 +2,7 @@
   "label": "Vive",
   "collapsed": true,
   "link": {
-    "type": "generated-index",
-    "slug": "hardware/vr/vive",
-    "description": "HTC Vive Headset and software information"
+    "type": "doc",
+    "id": "vive"
   }
 }
