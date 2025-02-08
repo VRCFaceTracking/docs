@@ -1,0 +1,24 @@
+import Admonition from '@theme/Admonition';
+
+# ALXR Setup
+
+:::note
+Using ALXR will require you to [sideload applications to you Quest](#tips-and-tricks)
+:::
+
+
+<details>
+  <summary>ALXR Setup</summary>
+
+1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
+2. Download and install the latest ALXR client *and server* from the [ALXR-nightly](https://github.com/korejan/ALXR-nightly/releases) repository.
+If this is your first time using ALXR, follow the [Usage guide](https://github.com/korejan/ALVR/wiki/ALXR-Client#usage) and [Android-specific client install instructions](https://github.com/korejan/ALVR/wiki/ALXR-Client#android-all-flavors---questpicogenericetc)
+3. Install the **ALXR Remote** module from the VRCFaceTracking module repository.
+4. Open the `ALXRModuleConfig.json` found in the installed module directory.
+   - You may need to navigate to `C:\Users\[username]\AppData\Local\Packages\96ba052f-0948-44d8-86c4-a0212e4ae047_d7rcq4vxghz0r\LocalCache\Roaming\VRCFaceTracking\` to find the module directory and config json.
+   - [Learn more about the ALXR module configuration options](https://github.com/korejan/VRCFT-ALXR-Modules#module-settings)
+5. In `ALXRModuleConfig.json`, in the "RemoteConfig" section set "ClientIpAddress" to the headset IP, this can be found in the ALVR server dashboard.
+   - If the client is being run on the same host as the server (e.g. alxr windows client), use localhost IP (default, `127.0.0.1`) and set the server to TCP protocol.
+6. Restart VRCFT to reinitialize the ALXR Remote Module with the updated configuration.
+
+</details>

@@ -1,0 +1,78 @@
+import ReactPlayer from 'react-player'
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Admonition from '@theme/Admonition';
+
+# Meta Quest Link/Airlink Setup 
+
+<details>
+  <summary>Meta Quest Link/Airlink Setup</summary>
+
+Prefer a video? Community member Ninka has graciously created another tutorial video for the Quest Pro and VRCFT 5.0+ that goes over the entire setup procedure,
+including the VRCFT module installation for the Meta Quest (formerly "Oculus") Link/Airlink module "Quest Pro OpenXR".
+
+<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+    <ReactPlayer controls url='https://www.youtube.com/watch?v=Keh__Lw7dEk'/>
+</div>
+
+<Admonition type="info">
+  <p>Developer mode is only required if using Meta Quest Link/Airlink!</p>
+</Admonition>
+
+1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
+2. **CREATE DEVELOPER ACCOUNT AND ENABLE DEVELOPER MODE**: 
+
+    1. [Set up a Meta Quest developer account](https://developer.oculus.com/sign-up/)
+        * A developer account is still ***necessary*** as the eye and face over Meta Quest Link toggles are currently still in the developer settings of the Meta Quest Link PC application.
+      It is rather trivial to apply for and there is no check for being a "real organization".
+    2. Install the Meta Horizon (formerly "Oculus" and "Meta Quest") app on mobile device (if it isn't already) and login with your (developer) Meta Quest account. Register your headset in the app.
+    3. In the Meta Horizon mobile App, tap Menu at the bottom right, then Devices. Select your Quest Pro, then go to `Settings -> Developer Mode` and set the **Developer** Mode switch to enabled.
+        * Reboot the headset after enabling Developer Mode.
+        * This setting was formerly called "Developer Mode" in software versions before v60, became "Debug Mode" for a few cycles, and is now back again as "Developer Mode"
+
+    <div style={{
+        width: '100%',
+        height: 'auto',
+        margin: 'auto',
+        display: 'block'
+    }}>
+        <img src={require("./img/dev-mode.png").default} alt="Quest Developer Mode in phone app" />
+    </div>
+
+3. Install and start the [Meta Quest Link PC application](https://www.oculus.com/download_app/?id=1582076955407037) (if it isn't already).
+4. Follow setup instructions for logging in (with the same developer account created/used earlier to enable dev mode on the headset!) and adding your Quest Pro to `Devices`.
+5. In the Meta Quest PC application, click on `Settings` in the left sidebar, then `General` tab. Turn on `Unknown Sources`, and set the `OpenXR Runtime` to `Meta Quest Link`.
+
+:::warning
+**SET THE OPENXR RUNTIME TO Meta Quest Link**. Do not forget to do this step!
+:::
+
+<div style={{
+  width: '75%',
+  height: 'auto',
+  margin: 'auto',
+  display: 'block'
+}}>
+    <img src={require("./img/oculus_pc_app_general.png").default} alt="Meta Quest PC App General Tab" />
+</div>
+
+6. Navigate to the `Beta` tab. Enable `Developer Runtime Features`, `Eye tracking over Meta Quest Link`, and `Natural Facial Expressions over Meta Quest Link`.
+  - Note that `Passthrough over Meta Quest Link` option *may* cause issues and unless you are making or using PCVR apps that use Quest headset passthrough, you should just leave this disabled.
+  - Enable Public Test Channel only if you know you want to use some feature/fix in the latest Public Test Channel (*beta*) software. Generally, it is better to **stay off the PTC**. 
+
+:::warning
+If you do not see these options, you are not logged into a Meta Quest developer account or you may need to refresh your login. 
+:::
+
+<div style={{
+  width: '75%',
+  height: 'auto',
+  margin: 'auto',
+  display: 'block'
+}}>
+    <img src={require("./img/oculus_pc_app_beta.png").default} alt="Meta Quest PC app Beta Tab" />
+</div>
+
+7. Proceed to [Modules](#modules) for compatible modules to use with Link/Airlink. 
+  
+</details>

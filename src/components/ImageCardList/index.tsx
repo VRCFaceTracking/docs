@@ -94,10 +94,25 @@ function DocCardListMapCallback(item, index) {
   }
 }
 
+function filterCallback(item) {
+  try {
+    if (item.customProps?.hidden) {
+      console.log(item.label);
+      return false;
+    }
+    return true;
+  } catch(e) {
+    return true; 
+  }
+}
+
 function DocCardListForCurrentSidebarCategory({className}) {
   const category = useCurrentSidebarCategory();
-  return <ImageCardList items={category.items} className={className} />;
+  let filteredCategoryItems = category.items.filter(filterCallback)
+  console.log(filteredCategoryItems);
+  return <ImageCardList items={filteredCategoryItems} className={className} />;
 }
+
 export default function ImageCardList(props) {
   const {items, className} = props;
   if (!items) {
