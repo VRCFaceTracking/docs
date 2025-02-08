@@ -9,7 +9,7 @@ import DocCard from '@theme/DocCard';
 
 function DocCardListMapCallback(item, index) {
   var img = require('@site/static/img/docusaurus.png').default
-  console.log("looking for image for", item.label)
+  // console.log("looking for image for", item.label)
 
   let href = item.href
   let hrefsplit = href.split("/")
