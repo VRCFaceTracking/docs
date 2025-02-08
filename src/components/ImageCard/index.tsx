@@ -6,7 +6,6 @@ import {
   useDocById,
 } from '@docusaurus/theme-common/internal';
 import isInternalUrl from '@docusaurus/isInternalUrl';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import {translate} from '@docusaurus/Translate';
 import styles from './styles.module.css';
 
@@ -25,7 +24,7 @@ function CardLayout({href, image, icon, title, description}) {
     <CardContainer href={href}>
       <div className={clsx(styles.flex)}>
         <div className={clsx(styles.imageCardSplitImage)}>
-          <img src={image} alt={`${title} image`} />
+          <img src={image} alt={`${title} image`} className={clsx('card--image', styles.cardImg)} />
         </div>
         <div className={clsx('card--text', styles.imageCardSplitText)}>
           <h2 className={clsx('text--truncate', styles.cardTitle)} title={title}>
@@ -33,7 +32,7 @@ function CardLayout({href, image, icon, title, description}) {
           </h2>
           {description && (
             <p
-              className={clsx('text--truncate', styles.cardDescription)}
+              className={clsx(styles.cardDescription)}
               title={description}>
               {description}
             </p>
@@ -49,15 +48,25 @@ function CardCategory({item, img}) {
   if (!href) {
     return null;
   }
+  // console.log(item.items)
+  // there must be an href because of the null check above
+  var hrefSplit = item.href.split("/");
+  const genDocId = hrefSplit.slice(2).join("/") + hrefSplit[hrefSplit.length - 2];
+  // console.log(genDocId);
+  var doc;
+  try {
+    doc = useDocById(genDocId);
+  } catch (e) {
+    doc = undefined;
+  }
   return (
     <CardLayout
       href={href}
-      // image={require('@site/docs/vrcft-software/img/vrcft_installer.png').default}
       image={img}
       icon="🗃️"
       title={item.label}
       description={
-        item.description ??
+        doc?.description ??
         translate(
           {
             message: '{count} items',
@@ -74,8 +83,7 @@ function CardCategory({item, img}) {
 function CardLink({item, img}) {
   const icon = isInternalUrl(item.href) ? '📄️' : '🔗';
   const doc = useDocById(item.docId ?? undefined);
-  // this is a really, really stupid hack
-  // const img = require("@site/" + item.href.split("/").slice(1,-1).join("/") + "/img/" + item.href.split("/").pop() + ".png").default;
+  // console.log(doc);
   return (
     <CardLayout
       href={item.href}
@@ -87,6 +95,8 @@ function CardLink({item, img}) {
   );
 }
 export default function ImageCard({item, img}) {
+  // items of type PropSidebarItem
+  // see node_modules\@docusaurus\plugin-content-docs\src\sidebars\types.ts for definition
   switch (item.type) {
     case 'link':
       return <CardLink item={item} img={img} />;

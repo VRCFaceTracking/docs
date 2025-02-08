@@ -7,7 +7,7 @@
   border: 1px solid var(--ifm-color-emphasis-200);
   transition: all var(--ifm-transition-fast) ease;
   transition-property: border, box-shadow;
-  max-height: 250px;
+  display: flex;
 }
 
 .cardContainer:hover {
@@ -25,16 +25,23 @@
 
 .cardDescription {
   font-size: 0.8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
 }
 
 .imageCardSplitImage {
   height: 100%;
-  width: 30%;
+  width: 25%;
   float: left;
   margin-right: 5%;
 }
 
-img {
+.cardImg {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -44,9 +51,14 @@ img {
 .imageCardSplitText {
   height: 100%;
   width: 70%;
-  float: left;
+  float: right;
 }
 
 .flex {
   display: flex;
+  height: 100%; 
+}
+
+.flex *:last-child {
+  margin-bottom: 0;
 }
