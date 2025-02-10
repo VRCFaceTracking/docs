@@ -25,15 +25,16 @@ Previously, a beta version of the native VRChat Quest client included built in e
     <img src={require("./img/quest-pro.png").default} alt="Quest Pro headset" />
 </div>
 
+:::danger
+The Quest Pro face tracking is susceptible to moisture damage. [Learn more](./other-info/quest-pro-dead-ft.mdx)
+:::
+
 ## Why is this setup required?
 
 The Quest Pro provides developers with both eye and face tracking data from a single, contained device, making it easy for native Quest developers to incorporate.
 However, having it only accessible through Meta's Oculus OpenXR extensions means there must be an OpenXR application using the Oculus runtime running somewhere.
 Difficulty of the setup process depends on the desired PCVR connection method. 
 
-:::danger
-The Quest Pro face tracking is susceptible to moisture damage. [Learn more](./other-info/quest-pro-dead-ft.mdx)
-:::
 ---
 
 ## Setup
@@ -41,9 +42,9 @@ The Quest Pro face tracking is susceptible to moisture damage. [Learn more](./ot
 The basic Quest Pro setup flow:
 1. [Enable Eye and Face Tracking on the Headset](#enable-eye-and-face-tracking-on-the-headset)
 2. Complete set-up for desired PCVR connection method
-3. Install corresponding VRCFT module
+3. Install corresponding VRCFT module for your PCVR method
 
-### Enable Eye and Face Tracking on the Headset
+### 1️ Enable Eye and Face Tracking on the Headset
 
 1. Open up the Settings in your Quest Pro headset, and navigate to "Movement Settings"
 2. Select the "Natural Facial Expressions" tab on the left, then Enable Natural Facial Expressions
@@ -57,41 +58,35 @@ The basic Quest Pro setup flow:
     <img src={require("./img/quest_pro_settings_eye_tracking.png").default} alt="Quest Pro Eye Tracking settings" />
 </div>
 
+### 2️&3️ PCVR Method-specific Setup
+
 The Quest Pro currently has **5** readily available face-tracking compatible PCVR connection methods, listed in no particular order:
 
 <ShuffledList items={['Virtual Desktop', 'SteamLink', 'Meta Quest Link/Airlink', 'ALXR', 'ALVR']}/>
 
-Oculus Link/Airlink is Meta's own PCVR streaming solution, and is generally straight-forward to set up (the PCVR part, not the face tracking part) and network stable, but also is limited in customization.
-ALXR/ALVR are open-source projects and thus has many for features and customizability in the PCVR connection as compared to Airlink, but also may have more bugs, quirks, and generally may be harder to use.
-Virtual Desktop is commonly seen as the "best" PCVR streaming solution, but it is not *free*, unlike all the other options.
-SteamLink is Valve's (free) PCVR steaming solution meant specifically for using Quest headsets with SteamVR. 
-
 If you need a recommendation for what to use for PCVR streaming:
 
-- If you don't want to spend money and want to connect _wirelessly_: you should start with [**SteamLink**](#steamlink-setup) as it has the easiest and most straightfoward setup.
-- If you don't mind spending money: you should use [**Virtual Desktop**](#virtual-desktop-setup) for ease of use and additional features.
-- If you must use a wired (USB) connection: you should start with [**Oculus Link/Airlink**](#meta-quest-linkairlink-setup). 
-
+- If you don't want to spend money and want to connect _wirelessly_: you should try **SteamLink** as it has the easiest and most straightfoward setup.
+- If you don't mind spending money: you should try **Virtual Desktop** for performance and additional features.
+- If you must use a wired (USB) connection: you should start with **Oculus Link/Airlink**. 
+- If you want to tinker in-depth with your PCVR stream and don't mind some rough edges: try **ALVR** or it's fork **ALXR**, which are *open-source* PCVR streamers.
 
 With any option, the user is expected to have the VR PC and the Quest Pro on the same network, with the PC ideally connected to the network via ethernet cable (for wireless PCVR),
-or Quest Pro connected to the PC with a high-quality USB 3.0+ cable (for "wired" PCVR, Virtual Desktop and SteamLink excluded).
-You can learn more about improving your Quest PCVR streaming experience with the many guides available online.
+or Quest Pro connected to the PC with a high-quality USB 3.0+ cable if using USB streaming with Meta Quest Link or ALVR/ALXR.
+You can learn more about improving your Quest PCVR streaming experience with the numerous guides available online.
 
-### PCVR Connection Method-specific Setup
+Click the card below for setup instructions for your chosen PCVR connection method, in addition to what VRCFT module to install.
 
 <ImageCardList />
 
 ---
 
-## Modules
+<!-- ## Modules
 
 There are a total of **6** different VRCFT modules that can be used for the Quest Pro.
 The links are to Module source repositories, for those interested in contributing and improving the modules.
-All* modules are readily available for installation via the VRCFaceTracking built-in module registry.
-[Learn how to install modules from the module registry](@site/docs/intro/getting-started.mdx#installing-the-vrcfacetracking-module).
-
-Interested in the source code? Check out the [QuestProOpenXRTrackingModule source repository](https://github.com/regzo2/VRCFaceTracking-QuestProOpenXR)
-(Currently maintained by Regzo2 / Azmidi / "Mitchell Moment") -->
+All modules are readily available for installation via the VRCFaceTracking built-in module registry.
+[Learn how to install modules from the module registry](../../../vrcft-software/vrcft#installing-the-vrcfacetracking-module).
 
 - If you are using Meta Quest Link/Airlink, you have the options of:
     1. **[Quest Pro OpenXR module](https://github.com/regzo2/VRCFaceTracking-QuestProOpenXR)**
@@ -103,11 +98,11 @@ Interested in the source code? Check out the [QuestProOpenXRTrackingModule sourc
     **[ALXR Local module](https://github.com/korejan/VRCFT-ALXR-Modules)** *can be used* for VRCFT instead of the Virtual Desktop module if VDXR is set as the active runtime. 
 - If you are using SteamLink, you will need to use the **[SteamLink VRCFT Module](https://github.com/ykeara/LinkFT)**
 
----
+---  -->
 
 ## Tips and Tricks
 
-The following section contains various potentially useful but *completely optional* instructions. 
+The follow are various potentially useful tips for using the Quest Pro that apply for any PCVR method. 
 
 <details>
   <summary>Using Sidequest to Side-load Quest Apps</summary>
@@ -159,255 +154,14 @@ to be better:
 </details>
 
 <details>
-  <summary>Using Index Controllers with the Quest Pro with Link/Airlink</summary>
-
-Download these [Powershell Scripts (VRCFT Discord Link)](https://discord.com/channels/849300336128032789/1033745772979699775/1056009844701806643)
-
-To run, right-click the file -> `"Run with Powershell"`
-
-These scripts will prevent Meta Quest Link from adding the Quest controllers to the SteamVR devices, allowing the use of Index controllers or any other controller of your choosing. 
-
-You may have problems with running Powershell scripts downloaded from the internet (for good reason!). You can learn about [getting around Microsoft's default script security](https://adamtheautomator.com/run-powershell-script/).
-
-</details>
-
-<details>
-  <summary>Using Index Controllers with the Quest Pro with Virtual Desktop</summary>
-
-*Before* launching SteamVR from Virtual Desktop: 
-In the Virtual Desktop "Streaming" tab, untick the "Track controllers" option under "Advanced Options" in the Streaming tab.
-This will prevent Virtual Desktop from adding the Quest controllers to the SteamVR devices, allowing the use of Index controllers or any other controller of your choosing. 
-
-<div style={{
-  width: '66%',
-  height: 'auto',
-  margin: 'auto',
-  display: 'block'
-}}>
-    <img src={require("./img/virtual_desktop_track_controllers.png").default} alt="Virtual Desktop track controllers setting circled" />
-</div>
-
-</details>
-
-<details>
-  <summary>Using Index Controllers with the Quest Pro with ALVR/ALXR</summary>
-
-The customizability of ALVR allows a few options in this regard. All following mentioned settings can be found in the "Headset" tab of the ALVR server settings.
-
-- Option 1: Completely disable the Quest Pro controllers using the checkbox next to "Controllers"
-- Option 2: Set the Controller emulation to "HTC Vive Tracker". This allows real controllers such as the Index Controllers to take precedence in SteamVR, and allow
-  for using the Quest Pro controllers for manual playspace calibration.
-
-</details>
-
----
-
-## Troubleshooting
-
-### NO MODULES LOADED / Stuck on "Initializing Modules"
-
-Whenever you see this, the cause is because the currently installed module failed to initialize (or you're not even giving enough time for the module to fail attempting to load...).
-Switch to the VRCFT Output Log tab and find the relevant error message.
-
-<details>
-  <summary>[Meta Quest Link/Airlink] Error in headset: <code>com.oculus.bodyapiservice keeps stopping</code></summary>
-  <TroubleShootTable
-  cause="You do not have developer mode enabled on both the PC Oculus program and for the headset from the Oculus phone app.">
-
-  <i>Carefully</i> re-run through <Link to="#meta-quest-linkairlink-setup">the Link/Airlink setup</Link>, paying careful attention to all the steps.
-  <br/>
-  Double-check that "Developer Runtime Features" is enabled in the Oculus PC program and that <b>Debug Mode is switched on for the Quest Pro in the Oculus phone app</b>.
-  If you can't find these options, your Oculus/Meta account is not a Meta Quest Developer account, or may need to be re-verified as a Developer account.
-  Log in to or sign up at the <Link to="https://developer.oculus.com/">Meta Quest Developer Center</Link> to verify/resolve developer account status.
-
-  </TroubleShootTable>
-</details>
-
-<details>
-  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to GetFaceExpressionWeightsFB</summary>
-  <TroubleShootTable
-  cause="There is some permission in the setup that was not set correctly.">
-
-  <i>Carefully</i> re-run through <Link to="#meta-quest-linkairlink-setup">the setup</Link>, paying careful attention to all the steps.
-  <br/>
-  Double-check that "Developer Runtime Features" is enabled in the Meta Quest Link PC program and that <b>Developer Mode is switched on for the Quest Pro in the Meta Horizon mobile app</b>.
-  If you can't find these options, your Oculus/Meta account is not a Meta Quest Developer account, or may need to be re-verified as a Developer account.
-  Log in to or sign up at the <Link to="https://developer.oculus.com/">Meta Quest Developer Center</Link> to verify/resolve developer account status.
-
-  </TroubleShootTable>
-</details>
-
-<details>
-  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create Face Tracker</summary>
-  <TroubleShootTable
-  cause="There is some permission in the setup that was not set correctly or Quest Pro headset is not connected.">
-  
-  <i>Carefully</i> re-run through <Link to="#meta-quest-linkairlink-setup">the setup</Link>, paying careful attention to all the steps.
-  <br/>
-  Double-check that "Developer Runtime Features" is enabled in the Meta Quest Link PC program and that <b>Developer Mode is switched on for the Quest Pro in the Meta Horizon mobile app</b>.
-  If you can't find these options, your Oculus/Meta account is not a Meta Quest Developer account, or may need to be re-verified as a Developer account.
-  Log in to or sign up at the <Link to="https://developer.oculus.com/">Meta Quest Developer Center</Link> to verify/resolve developer account status.
-  <br/><br/>
-  Also make sure that your Quest Pro is actively connected via Link/Airlink before starting VRCFT!
-
-  </TroubleShootTable>
-</details>
-
-<details>
-  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to get XrSystemID</summary>
-  <TroubleShootTable
-  cause="There is some permission in the setup that was not set correctly or Quest Pro headset is not connected.">
-  
-  <i>Carefully</i> re-run through <Link to="#meta-quest-linkairlink-setup">the setup</Link>, paying careful attention to all the steps.
-  Doubly make sure that you have Meta Quest Link set as your OpenXR runtime in the Meta Quest Link Desktop app settings.
-  <br/><br/>
-  Make sure that your Quest Pro is *actively connected* (streaming content from PC and screens haven't gone to sleep) via Link/Airlink before starting VRCFT!
-  Try starting VRCFT with the headset on, through the Meta Quest Link Dash desktop view. 
-  </TroubleShootTable>
-</details>
-
-<details>
-  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create XrInstance</summary>
-  <TroubleShootTable
-  cause="There is some required setting in the setup that was not set correctly.">
-  
-  <i>Carefully</i> re-run through <Link to="#meta-quest-linkairlink-setup">the setup</Link>, paying careful attention to all the steps.
-  Doubly make sure that you have Meta Quest Link set as your OpenXR runtime in the Meta Quest Link Desktop app settings.
-  <br/><br/>
-  Make sure that your Quest Pro is *actively connected* (streaming content from PC and screens haven't gone to sleep) via Link/Airlink before starting VRCFT!
-  Try starting VRCFT with the headset on, through the Meta Quest Link Dash desktop view. 
-  </TroubleShootTable>
-</details>
-
-<details>
-  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create session and I am NOT using a laptop / eGPU</summary>
-  <TroubleShootTable
-  cause="There is something preventing an OpenXR session from being created for the Quest Pro">
-  
-  <i>Carefully</i> re-run through <Link to="#meta-quest-linkairlink-setup">the setup</Link>, paying careful attention to all the steps.
-  Doubly make sure that you have Meta Quest Link set as your OpenXR runtime in the Meta Quest Link Desktop app settings.
-  <br/><br/>
-  Make sure that your Quest Pro is *actively connected* (streaming content from PC and screens haven't gone to sleep) via Link/Airlink before starting VRCFT!
-  Try starting VRCFT with the headset on, through the Meta Quest Link Dash desktop view. 
-  </TroubleShootTable>
-</details>
-
-<details>
-  <summary>[QuestProTrackingModule] Error: [QuestOpenXR] Failed to create session and I AM using a laptop / eGPU</summary>
-  <TroubleShootTable
-  cause="There is something preventing an OpenXR session from being created for the Quest Pro, possibly related to Oculus trying to default init on laptop's iGPU">
-  
-  Make sure that you have Meta Quest Link set as your OpenXR runtime in the Meta Quest Link Desktop app settings.
-  Also make sure that your Quest Pro is actively connected via Link/Airlink before starting VRCFT.
-
-  Try to turn off using integrated GPU through your laptop's BIOS or control center program.
-
-  Alternatively, use Windows Settings to force VRCFaceTracking to "High Performance" (use discrete GPU).
-  Open Windows Settings and navigate through System -> Display -> Graphics Settings (a small link under "Multiple Displays" section in Win10, or under "Related Settings" in Win11).
-
-
-<div style={{
-    width: '90%',
-    height: 'auto',
-    margin: 'auto',
-    display: 'block'
-}}>
-    <img src={require("./img/windows_set_custom_graphics_settings.png").default} alt="Set Windows Custom Graphics Settings" />
-    <img src={require("./img/windows11_set_custom_graphics_settings.png").default} alt="Set Windows Custom Graphics Settings Windows 11" />
-</div>
-
-  </TroubleShootTable>
-</details>
-
-<details>
-  <summary>[QuestProTrackingModule] Information: Eye Tracking not supported</summary>
-  <TroubleShootTable
-  cause="Developer mode is not properly enabled.">
-  
-  On software versions v60, this error seems to be associated with the "Developer Mode" toggle not being enabled for the headset. 
-  Use the Meta Horizon mobile app to enable Debug Mode for the Quest Pro headset, then reboot the headset. 
-  If the issue persists or the module seems to initialize but doesn't send any data, try logging out then back into your Meta account on both
-  the headset (via mobile app) and Meta Quest Link PC application. 
-  </TroubleShootTable>
-</details>
-
-<details>
-  <summary>[Virtual Desktop] Error: [VirtualDesktop] Failed to open MemoryMappedFile. Make sure Virtual Desktop Streamer (v1.29 or later) is running.</summary>
-  <TroubleShootTable
-  cause="VRCFaceTracking was started before Virtual Desktop">
-  First, make sure both the Virtual Desktop app in the Quest and the Virtual Desktop streamer versions are at least v1.29.
-
-  Close VRCFaceTracking, start Virtual Desktop Streamer, reopen VRCFaceTracking.
-
-  If VRCFaceTracking is started before SteamVR/VRChat is launched from Virtual Desktop, the output log may show a warning that "Tracking is not active".
-  However, after launching SteamVR/VRChat (*from Virtual Desktop*) the Virtual Desktop module should log that "Tracking is now active!".
-
-  </TroubleShootTable>
-</details>
-
-### General Problems
-
-<!-- <details>
-  <summary>[Meta Quest Link/Airlink] VRCFT crashes or I get a "Failure to create instance" error</summary>
-  <TroubleShootTable
-  cause="Meta had broken their OpenXR runtime in the v67 and v68 updates, which causes module->VRCFT crashing (v68) or failure to create instance errors (v67).">
-    Meta engineers are aware of the issue and have pushed a hotfix to the PTC. Try <a href="https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-rift-s/public-test-channel/">switching your Meta Quest Link PC software to the Public Test Channel</a> (68.0.0.474.361 or above) or updating to the latest version (v69 and above) if higher software versions have been released.</TroubleShootTable>
-</details> -->
-
-<details>
-  <summary>[Meta Quest Link/Airlink] I cannot see SteamVR because Link environment is stuck loading some random app</summary>
-  <TroubleShootTable
-  cause="The nature of the way VRCFaceTracking must pull data from the Oculus OpenXR runtime from the PC is inherently hacky, effectively running 2 VR programs at once.">
-    If you started SteamVR first, you can simply switch back to SteamVR in the Oculus Dash.
-    You can also try switching up the program startup sequence, starting VRCFaceTracking then SteamVR through the desktop Steam app (not through the Oculus Dash in the headset).
-    Yet another solution is to use <Link to="https://github.com/LibreQuest/OculusKiller">OculusKiller</Link> to avoid dealing with the Oculus Dash entirely, though this has its own downsides. 
-  </TroubleShootTable>
-</details>
-
-<details>
-  <summary>[Meta Quest Link/Airlink] Starting VRCFT forces me out of VRChat and starts a program in SteamVR that never opens</summary>
-  <TroubleShootTable
-  cause="You have SteamVR set as the OpenXR runtime, which will cause the headless VRCFT module program to open in SteamVR instead of in the Meta Quest Link environment.">
-    Set your OpenXR runtime to Meta Quest Link in the Meta Quest Link software. 
-  </TroubleShootTable>
-</details>
-
-<details>
-  <summary>[Meta Quest Link/Airlink] "I'm <i>not getting any visible errors anywhere</i> and the Module loads, but VRC only receives 0 values for all parameters (and VRC loaded a non-zero number of parameters from config)"</summary>
-  <TroubleShootTable
-  cause="Meta Moment">
-  Try toggling the eye and face tracking enables in the headset settings, and restarting your headset completely. 
-  Logging out then back into the account in the PC Oculus application and headset may also help.
-  You may also need to re-verify developer account settings if using Oculus Link/Airlink, as well as developer account permissions by logging into the <Link to="https://developer.oculus.com/">Meta Quest Developer Center</Link>.
-  </TroubleShootTable>
-</details>
-
-
-<details>
-  <summary>[SteamLink] VRCFaceTracking crashes when I set the SteamVR OSC output port to 9015!</summary>
-  <TroubleShootTable
-  cause="You changed one of VRCFaceTracking's communication ports to 9015">
-  
-  Revert VRCFaceTracking's ports back to the defaults (9000 sending / 9001 receiving). 
-  VRCFaceTracking uses these ports to communicate with VRChat and should not be changed. 
-  Communication with the SteamVR OSC data happens in the SteamLink module on port 9015, and this is <b>handled internally by the module</b>, not the VRCFaceTracking base program! 
-
-  </TroubleShootTable>
-</details>
-
-<details>
   <summary>My playspace calibration resets if I take off the headset</summary>
   <TroubleShootTable
   cause="When the Quest headset enters sleep mode after detecting you have taken off the headset, it loses it's original reference space to which the SteamVR space was calibrated to.">
   Download the <Link to="https://developer.oculus.com/documentation/unity/ts-odh/">Meta Quest Developer Hub</Link> and follow the instructions for <i>Connect Headset to MQDH</i> and <i>Disable proximity sensor and guardian</i>.
   This will prevent the headset from entering sleep, but does mean your headset stays fully active even if you take it off.
-  Alternatively, use another PCVR streaming method that supports Stage Tracking (Virtual Desktop, ALXR, ALVR, SteamLink).
+  Alternatively, use another PCVR streaming method that supports Stage Tracking (Virtual Desktop, ALXR, ALVR, SteamLink) and enable Stage Tracking.
   </TroubleShootTable>
 </details>
 
-Don't see your problem here? Think your problem might be unrelated to the module but something else? Take a look at the [VRCFT software page](@site/docs/vrcft-software/vrcft.mdx) or search in the <TextColor color="#5763ee">#hardware-software-help</TextColor> forum in the <CustomLink to="discord"/>.
+Having issues that you can't find a solution to? Check the **Troubleshooting** section on the setup page for your PCVR streamer, and also the <TextColor color="#5763ee">#hardware-software-help</TextColor> forum in the VRCFT <CustomLink to="discord"/>.
 
-<!-- - **ALXR/ALVR methods: "[ERROR] No connection could be made because the target machine actively refused it"**
-  - Cause: The ALXR VRCFT server is not running.
-  - Solution: Usually the problem is related to [missing a step](#meta-quest-linkairlink-setup)
-     and the ALXR log may make it clear as to what step exactly was forgotten. -->

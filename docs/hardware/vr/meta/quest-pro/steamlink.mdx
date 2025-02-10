@@ -1,9 +1,18 @@
 import Admonition from '@theme/Admonition';
+import {TroubleShootTable} from '@site/src/components/Utils.tsx'
 
-# SteamLink Setup
+# SteamLink
 
-<details>
-  <summary>SteamLink Setup</summary>
+SteamLink is Valve's free PCVR steaming solution specifically meant for using Quest VR headsets with SteamVR. 
+SteamLink setup is fast and simple, allowing you to jump immediately into SteamVR after connecting to a compatible PC with SteamVR installed. 
+However, like every other third-party PCVR streamer, SteamLink only supports network connections to the headset, which means your Quest Pro must be connected to the same network as your PC and that it will not stream natively over a USB connection like Meta Quest Link does.
+
+:::warning
+**Steam**Link is not the same thing as **Meta Quest** Link. 
+If you are trying to use a USB cable and Meta Quest Link PC software, refer to [these instructions](./meta-quest-link) instead.
+:::
+
+## Setup
 
 :::danger
 Do **NOT** change the OSC port settings in the VRCFaceTracking program!
@@ -15,14 +24,6 @@ Those VRCFT port settings are for communication with *VRChat*, **not** SteamLink
 1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
 2. Once connected to SteamVR, open the SteamVR menu, open VR Settings, and enable "Advanced Settings" by moving the toggle to "Show" in the bottom left.
    You can also access this exact same settings menu from the desktop SteamVR devices window. 
-  <!-- <div style={{
-    width: '75%',
-    height: 'auto',
-    margin: 'auto',
-    display: 'block'
-  }}>
-    <img src={require("./img/SVRL-VRSettings.jpg").default} alt="Navigating to the VR Settings tab" />
-  </div>  -->
 3. Navigate to the Setting tab "Steam Link", and enable the following options:
    - Enable OSC
    - Share eye tracking data to other apps on this PC
@@ -36,7 +37,7 @@ Those VRCFT port settings are for communication with *VRChat*, **not** SteamLink
   }}>
     <img src={require("./img/steamlinksettings.png").default} alt="Required SteamLink settings for Face Tracking" />
   </div>
-5. Proceed to [Modules](#modules) for the module to use with SteamLink.  
+5. Install the **SteamLink VRCFT Module** module from the VRCFaceTracking module registry.
 
 :::danger
 Do **NOT** change the OSC port settings in the VRCFaceTracking program!
@@ -44,4 +45,17 @@ Changing either the input or output port to 9015 **WILL CAUSE PROBLEMS AND NOTHI
 Those VRCFT port settings are for communication with *VRChat*, **not** SteamLink. 
 :::
 
+
+## Troubleshooting
+
+<details>
+  <summary>[SteamLink] VRCFaceTracking crashes when I set the SteamVR OSC output port to 9015!</summary>
+  <TroubleShootTable
+  cause="You changed one of VRCFaceTracking's communication ports to 9015">
+  
+  Revert VRCFaceTracking's ports back to the defaults (9000 sending / 9001 receiving). 
+  VRCFaceTracking uses these ports to communicate with VRChat and should not be changed. 
+  Communication with the SteamVR OSC data happens in the SteamLink module on port 9015, and this is <b>handled internally by the module</b>, not the VRCFaceTracking base program! 
+
+  </TroubleShootTable>
 </details>

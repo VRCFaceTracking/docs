@@ -1,20 +1,37 @@
 import Admonition from '@theme/Admonition';
 
-# ALVR Setup
+# ALVR
 
-<details>
-  <summary>ALVR Setup</summary>
+[ALVR (Air-Light VR)](https://github.com/alvr-org/ALVR) is an open-source PCVR streamer compatible with many standalone devices. 
+
+## Setup
+
+:::note
+Using ALVR will require you to [sideload applications to you Quest](./#tips-and-tricks)
+:::
 
 1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
 2. Install the [ALVR streamer](https://github.com/alvr-org/ALVR/releases) on the PC and [ALVR client](https://www.meta.com/en-gb/experiences/alvr/7674846229245715/) on the Quest Pro if you have not already.
 Follow the [ALVR Install instructions](https://github.com/alvr-org/ALVR/wiki/Installation-guide) if this is your first time using ALVR.
 3. Launch ALVR streamer and set `Eye and face tracking` to `VRCFaceTracking`.
 4. Start the client on the Quest Pro and connect.
-5. Install the **ALVR Module** from the VRCFaceTracking module repository.
+5. Install the **ALVR Module** from the VRCFaceTracking module registry.
 
-</details>
-
-<!-- #### If you are planning on using a USB cable instead of Wi-Fi streaming for the ALVR connection
+## USB Streaming with ALVR
 
 1. Follow the [Official ALVR Community Instructions](https://github.com/alvr-org/ALVR/wiki/ALVR-wired-setup-(ALVR-over-USB)) for setting up the USB connection.
-2. Change the text in the `questProIP` file to `127.0.0.1` -->
+2. Change the text in the `questProIP` file to `127.0.0.1`
+
+## Tips and Tricks
+
+<details>
+  <summary>Using Index Controllers with the Quest Pro with ALVR</summary>
+
+The customizability of ALVR allows a few options. 
+All following mentioned settings can be found in the "Headset" tab of the ALVR server settings.
+
+- Option 1: Completely disable the Quest Pro controllers using the checkbox next to "Controllers"
+- Option 2: Set the Controller emulation to "HTC Vive Tracker". This allows real controllers such as the Index Controllers to take precedence in SteamVR, and allow
+  for using the Quest Pro controllers for manual playspace calibration.
+
+</details>

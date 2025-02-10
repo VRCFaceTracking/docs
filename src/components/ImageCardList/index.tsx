@@ -84,7 +84,7 @@ function DocCardListMapCallback(item, index) {
     }
   } catch (e) {
     img = require('@site/static/img/docusaurus.png').default
-    console.log(e);
+    // console.log(e);
   } finally {
     return (
       <article key={index} className="col col--6 margin-bottom--lg">
@@ -97,7 +97,7 @@ function DocCardListMapCallback(item, index) {
 function filterCallback(item) {
   try {
     if (item.customProps?.hidden) {
-      console.log(item.label);
+      // console.log(item.label);
       return false;
     }
     return true;
@@ -109,10 +109,11 @@ function filterCallback(item) {
 function DocCardListForCurrentSidebarCategory({className}) {
   const category = useCurrentSidebarCategory();
   let filteredCategoryItems = category.items.filter(filterCallback)
-  console.log(filteredCategoryItems);
+  // console.log(filteredCategoryItems);
   return <ImageCardList items={filteredCategoryItems} className={className} />;
 }
 
+// shuffling this kinda doesn't work for some reason on reloads, but works on page loads? maybe a plugin issue?
 export default function ImageCardList(props) {
   const {items, className} = props;
   if (!items) {
@@ -124,4 +125,5 @@ export default function ImageCardList(props) {
       {filteredItems.map(DocCardListMapCallback)}
     </section>
   );
+
 }
