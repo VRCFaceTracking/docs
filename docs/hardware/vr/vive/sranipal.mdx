@@ -1,0 +1,280 @@
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import {TroubleShootTable} from '@site/src/components/Utils.tsx'
+
+# SRanipal (VIVE)
+
+SRanipal is the runtime used to interface with the Vive Facial Tracker and other Vive eye / face tracking related hardware on Windows PCs.
+SRanipal is **required software** for the Vive Facial Tracker and Vive Pro Eye but **NOT REQUIRED** for running VRCFT if you are not using Vive hardware.
+
+:::info
+Trivia Fact: SRanipal stands for "*Super Runtime Animation Pal*"
+:::
+
+:::warning
+SRanipal is generally a *resource intensive* piece of software.
+Outside of when used with a Vive Streaming headset, SRanipal may cause a noticable performance and/or stability hit on weaker/older systems!
+:::
+
+## Hardware
+
+SRanipal is only intended for the following headsets/hardware:
+
+| Headset | Eye Tracking | Facial Tracking | Minimum SRanipal Version |
+| ---------------------------------- | -------- | --------- | --------- |
+| Vive Pro Eye                       | `✅` Yes | `❌` No  | `1.3.0.0` |
+| Droolon F1                         | `✅` Yes | `❌` No  | `1.3.0.0` |
+| Vive Facial Tracker                | `❌` No  | `✅` Yes | `1.3.0.0` |
+| Vive Focus 3 (with both add-ons)   | `✅` Yes | `✅` Yes | `1.3.6.8` |
+| Vive XR Elite (with add-on)        | `✅` Yes | `✅` Yes | `1.3.6.8` |
+
+## Setup
+
+To use the SRanipal Module, you'll need a compatible headset and the SRanipal Runtime from Vive installed.
+Which version of SRanipal you install is very important!
+Please read carefully to avoid any issues.
+
+There are three methods of installing SRanipal, in order of most to least recommended:
+
+1. Use the installer of SRanipal v1.3.1.1
+2. Use the v1.3.6.5 zip of SRanipal in the VRCFT Discord #file-share channel
+3. Install Vive Console (avaliable on Steam or Vive website)
+
+:::warning
+Version 1.3.2.0 is known to unnecessarily hog computer resources. We generally don't recommend using v1.3.2.0 if you can avoid it. 
+:::
+
+:::warning
+Versions of SRanipal including and after 1.3.6.10 (any version currently packaged with Vive Console) will **only work with a Vive Pro series headset connected to the computer**,
+or with a Vive Streaming Headset (Focus 3, XR Elite). 
+:::
+
+:::warning
+Versions of SRanipal including and after **1.3.6.5** will generate *an unreasonable* amount of spam in it's EyeModule log when eye tracking is initialized.
+Do not leave VRCFaceTracking unnecessarily running in the background for long periods of time as the size of the log file can easily get into the range of
+tens to hundreds of **gigabytes** if left unchecked.
+Until this is resolved, we recommend using older versions of SRanipal if possible.
+:::
+
+The recommended version to use as of now (January 2024):
+
+- If you aren't using a Focus 3 or XR Elite, you should use the [v1.3.1.1 installer](#installing-via-v1311-installer)
+- Focus 3 and XR Elite users **must** use the Vive Console version of SRanipal
+
+### Installing Via v1.3.1.1 Installer
+
+1. Download the [SRanipal v1.3.1.1 installer](https://drive.google.com/drive/folders/1hU1tvOiTHQbT-Ad-wBJ8II8uXkQ8bvvh?usp=share_link)
+2. Run the installer and complete the installation process
+
+:::info
+The installer for v1.3.1.1 has a known failure point during installation: **Error 1001**. It is not entirely clear why it happens
+in **all** of the cases, but most of the time it's because of either another version of
+SRanipal being present on the system, or an uninstall of a previous version
+not finishing properly.
+:::
+
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+}}>
+    <img src={require("./img/sranipal/vive_installer_error_1001.png").default} alt="sranipal error 1001" />
+</div>
+
+In case you encounter this error while attempting to install SRanipal v1.3.1.1,
+try this first:
+
+<details>
+ <summary>Remove existing SRanipal service</summary>
+ <div>
+  <div>
+    <ol>
+      <li>Exit/Finish out of SRanipal installer</li>
+      <li>Open Windows Terminal / Powershell (as admin)</li>
+      <li>Run <code>sc delete SRanipalService</code> or <code>Remove-Service -Name "SRanipalService"</code> if you have Powershell 6.0 or above.</li>
+      <li>Try installing again</li>
+    </ol>
+  </div>
+ </div>
+</details>
+
+If this fails as well, proceed with this workaround:
+
+<details>
+  <summary>Manual Installation Workaround for Error 1001</summary>
+  <div>
+    <div>
+      <b>KEEP THE INSTALLER WINDOW OPEN ON THE ERROR BEFORE CONTINUING</b>
+      <ol>
+        <li>Copy the installed SRanipal directory from <code>C:\Program Files\Vive\SRanipal</code> into a temporary directory somewhere else</li>
+        <li>Let the installer continue to fail and "uninstall" SRanipal </li>
+        <li>Copy SRanipal back from the temporary directory into the proper installation directory</li>
+        <li>Run the following command in a Windows terminal opened in the SRanipal install directory: <code>New-Service -Name "SRanipalService" -BinaryPathName "SRanipalService.exe" -StartupType Automatic -Description "SRanipal Service"</code></li>
+      </ol>
+      Or, just pull computer power so the installer doesn't uninstall anything. Use SRanipal normally after restarting the computer.
+    </div>
+  </div>
+</details>
+
+Finally, failing both of these, you can
+
+1. Attempt a complete [uninstall of SRanipal](#uninstalling-sranipal) and see if it installs correctly after
+2. (Last resort!) Install SRanipal via one of the other options (Vive Console or the v1.3.6.5 zip)
+
+### Installing Via v1.3.6.5 .zip
+
+:::note
+   Using SRanipal from this zip will not automatically install the SRanipalService, which means starting VRCFaceTracking or any other
+   program that uses SRanipal **will not start SRanipal automatically**.
+   Make sure to **run sr_runtime.exe first** before using VRCFaceTracking or install the SRanipalService manually / use it from the 1.3.1.1 installer.
+:::
+
+1. Download the [SRanipal v1.3.6.5 .zip (Discord Link)](https://discord.com/channels/849300336128032789/915075185328152606/1017600042837753906)
+2. Unzip the folder and run ``DriverInstaller.msi``
+3. Run the following command in a Windows Powershell terminal opened in unzipped SRanipal v1.3.6.5 directory: ``New-Service -Name "SRanipalService" -BinaryPathName "SRanipalService.exe" -StartupType Automatic -Description "SRanipal Service"``
+
+An alternative installation method would be to run the v1.3.1.1 (or v.1.3.2.0) installer, then copy the contents of the v1.3.6.5 version into the older version's installation directory.
+This will keep the service intact while using the newer runtime.
+
+### Installing Via Vive Console
+
+1. It is recommended to install [Vive Console via Steam](https://store.steampowered.com/app/1635730/VIVE_Console_for_SteamVR/)
+2. After install, run Vive Console once to let it's internal installers run. You never need to run Vive Console again.
+
+:::note
+Vive Console does take up a lot of space (~1.6Gb), so copying the SRanipal folder (``Steam\steamapps\common\VIVEDriver\App\SRanipal``) out , then uninstalling Vive Console is another avenue. Note that this will require manual registration of the SRanipal service and drivers as the Vive Console uninstall will remove them.
+Refer to the instructions for [installing via v1.3.6.5 .zip](#installing-via-v1365-zip) for how to manually add the SRanipalService.exe service.
+:::
+
+### Removing LipSyncNotification
+
+Many users have noted that this separate program ``LipSyncNotification.exe`` seems to take up way too much computer resources for doing absolutely nothing.
+While an optional step, we would recommend disabling this program.
+This does not affect SRanipal operation in any way.
+
+1. Navigate to your SRanipal installation
+
+   - If installed with standalone installer (1.3.1.1), this should be at ``C:\Program Files\VIVE\SRanipal``
+   - If you installed Vive Console, this should be at ``[VIVE Console Installation directory]\App\SRanipal``
+
+2. Navigate to ``tools\lip_sync_notification`` and delete or rename the ``LipSyncNotfication.exe``
+
+Note that if you are using VIVE Console you will need to re-disable the executable every time VIVE Console updates.
+
+## Using SRanipal
+
+Once SRanipal initializes, the tray icon can show a few possible states indicating the status of SRanipal-compatible hardware connected to the computer.
+You can find the Windows tray in your Windows taskbar, close to the clock. You might need to click the little right-pointing arrow to show hidden icons to find
+the little SRanipal robot icon.
+
+| Area/ Color        | Eye                                                             | Mouth                                                              |
+|--------------------|-----------------------------------------------------------------|--------------------------------------------------------------------|
+| `⬛` Black (Dark) | Eye tracker (VPE) was not detected                              | Vive Facial Tracker was not detected                               |
+| `🟧` Orange       | Eye tracker (VPE) was detected, currently uninitialized         | Vive Facial Tracker was detected, currently uninitialized          |
+| `🟩` Green        | Eye tracker (VPE) was initialized and sending eye tracking data | Vive Facial Tracker was initialized and sending face tracking data |
+| `🟪` Purple       | Eye tracker (over Vive Streaming) successful connection         | Face Tracker (over Vive Streaming) successful connection           |
+| `🟦` Blue         | Some uninitialized state in 1.3.6.10+ versions                  | Some uninitialized state in 1.3.6.10+ versions                     |
+
+To actually use your Vive hardware with VRChat, you will need to use the SRanipal VRCFT Module with the VRCFaceTracking software.
+For more information on how to install the VRCFT Module, see the <Link to={useBaseUrl('docs/vrcft-software/vrcft#module-registry')}>Module Registry</Link> section.
+
+Assuming there are no connection issues with the hardware, the connection hardware components (eye, face, or both) should be initialized by VRCFT after a few seconds.
+Note that upon first initlization of the Vive Facial Tracker and Vive Pro Eye in SteamVR it may prompt you for permission.
+Make sure to accept to the user agreement.
+
+### Checking Active SRanipal Version
+
+To see what version of SRanipal is currently running, start SRanipal and right click on the little SRanipal robot tray icon, then click "About".
+This should open a small info window containing information about the version of SRanipal and the firmware versions of any detected SRanipal-compatible hardware.
+If you can't seem to right-click the SRanipal tray icon, see the relevant point in [Troubleshooting](#troubleshooting).
+
+### Calibrating Eye Tracking
+
+After installing SRanipal, a new app will be added to your SteamVR dashboard called "Vive Pro Eye Calibration". This app is **only for Vive Pro Eye** (and the Droolon F1 module).
+The Vive Focus 3 eye tracker and Vive Full Facial tracker for the XR Elite are calibrated with the calibration sequence accessible from the standalone settings Inputs sub-menu.
+Eye tracking calibration is not required to be performed frequently, but should be done after initial SRanipal software installation, after a change to the headset (i.e. change the facial interface), or when switching the headset between users.
+Note that the calibration is only for gaze tracking.
+
+Start calibration by making sure "Use Eye Tracking" is enabled, then hitting the "Calibrate" button in the app. Follow the in-app instructions to finish calibrating the eye gaze tracking.  
+
+## Uninstalling SRanipal
+
+To uninstall SRanipal, uninstall Vive Console (if installed that route) or run the SRanipal installer .exe (v1.3.1.1) and select the "uninstall" option.
+
+In case SRanipal seems to have some issues (especially after having mixed different versions) and the SRanipal installer seems to be unable to uninstall SRanipal, follow [these instructions from Vive Admin C.T.](https://forum.htc.com/topic/5642-sranipal-getting-started-steps/?do=findComment&comment=46845)
+
+1. Open a Windows Terminal (cmd/Powershell/etc.) with Administrator priviledges and run ``sc delete SRanipalService``
+2. Delete the following registry entries using [regedit](https://support.microsoft.com/en-us/windows/how-to-open-registry-editor-in-windows-10-deab38e6-91d6-e0aa-4b7c-8878d9e07b11).
+   You may want to [back up your registry](https://support.microsoft.com/en-gb/topic/how-to-back-up-and-restore-the-registry-in-windows-855140ad-e318-2a13-2829-d428a2ab0692) before performing these edits.
+
+   - ``\HKEY_LOCAL_MACHINE\SOFTWARE\VIVE\SRWorks\``
+   - ``\HKEY_CURRENT_USER\Software\VIVE\SRWorks\``
+   - `` \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SranipalService\``
+
+3. Delete all the installed SRanipal files
+
+   - If installed with standalone installer (1.3.1.1), the installation directory should be at ``C:\Program Files\VIVE\SRanipal``
+   - If you installed Vive Console, the files would be at ``[VIVE Console Installation directory]\App\SRanipal`` if for some reason this still exists. Uninstall Vive Console!
+
+After completing these steps, your system should be 100% free of SRanipal and you can attempt a clean install again.
+
+## Troubleshooting
+
+You may find more troubleshooting steps specifically related to your Vive headset/hardware on its respective page.
+
+<details>
+  <summary>Installing SRanipal fails with Error 1001!?!</summary>
+  <TroubleShootTable
+  cause="Vive software being Vive software">
+  Follow the workarounds listed at the <Link to="#installing-via-v1311-installer">instructions for the 1.3.1.1 installer</Link>.
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>SRanipal does not automatically start with VRCFT</summary>
+  <TroubleShootTable
+  cause="Either you forgot to install the SRanipal module for VRCFT, or SRanipalService.exe is not registered as a Windows service.">
+
+  Make sure the SRanipal module is installed from the Module Registry in VRCFT. Then if SRanipal still does not start with VRCFT,
+  try manually registering the SRanipal Service by navigating to the SRanipal install directory and running the following command in a
+  Windows terminal opened to that directory:
+  <code>New-Service -Name "SRanipalService" -BinaryPathName "SRanipalService.exe" -StartupType Automatic -Description "SRanipal Service"</code>
+
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>Cannot right-click the SRanipal tray icon and the eyes and face stay dark/blue</summary>
+  <TroubleShootTable
+  cause="You are using a version of SRanipal that requires a Vive Pro headset connected, and you do not have a Vive Pro headset connected.">
+  Uninstall Vive Console and <Link to="#installing-via-v1311-installer">install an older version of SRanipal</Link>.
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>I have a Vive Facial Tracker connected to my headset but the SRanipal tray icon robot's mouth stays dark!</summary>
+  <TroubleShootTable
+  cause="SRanipal cannot initialize the Vive Facial Tracker for some reason, usually related to a USB connection problem.">
+  Please refer to the <Link to={useBaseUrl('docs/hardware/addons/vive/face-tracker')}>Vive Facial Tracker</Link> page on why there might be a connection issue, and
+  verify if it is a connection issue by plugging in the Facial Tracker directly into a USB-C port on your computer.
+  <br/><br/>
+  Another (rarer) possibility is that your Windows Settings has disabled any app from accessing any <i>Camera</i> device.
+  Make sure that VRCFT can access camera devices!
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>VRCFT with the SRanipal Module / SRanipal has high CPU and memory usage</summary>
+  <TroubleShootTable
+  cause="SRanipal is generally resource intensive, but SRanipal version 1.3.2.0 may be showing why you shouldn't use it or the pointless LipSyncNotification.exe is doing its thing.">
+  If you are using SRanipal 1.3.2.0 (<Link to="#checking-active-sranipal-version">How do I check SRanipal version?</Link>), you should try <Link to="#setup">installing another version of SRanipal</Link>. Please understand that SRanipal is generally a non-trivial background process and weaker/older machines may still have a noticable performance hit even on non-1.3.2.0 versions of SRanipal.
+  <br/><br/>
+  LipSyncNotifcation.exe is a generally useless overlay program that seems to do nothing other than needlessly consume a ton of your computer resources.
+  You can <Link to="#removing-lipsyncnotification">safely disable it</Link>.
+  </TroubleShootTable>
+</details>
+
+<!-- :::info
+If you're having performance issues and are using the Vive Pro Eye and/or the Vive Facial Tracker, try downgrading to SRanipal version 1.3.1.1
+::: -->

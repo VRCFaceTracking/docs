@@ -1,0 +1,11 @@
+{
+  "label": "iPhone / iPad",
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "iphone"
+  },
+  "customProps": {
+    "description": "This description can be used in the swizzled DocCard"
+  }
+}

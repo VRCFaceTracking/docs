@@ -1,0 +1,33 @@
+# Unreal Live Link Face
+
+This guide will walk-through setting up the *Live Link Face* iOS app from Unreal and the corresponding VRCFT tracking module.
+
+## Setup
+
+:::info
+Ensure that your Apple device is connected to the **same network as your computer**!
+:::
+
+1. Install the "[Live Link Face](https://apps.apple.com/us/app/live-link-face/id1495370836)" app by Unreal on your Apple device
+2. Start VRCFaceTracking and install the "**Live Link**" VRCFT module from the [VRCFaceTracking Module Registry](@site/docs/vrcft-software/vrcft.mdx#module-registry).
+3. Go to the Output tab in VRCFT and look for the message printing our your computer's *local IP address*
+   - Verify that the IP address is the local IP of your computer on your local network. See [INSERT LINK HERE] for more general networking tips. 
+4. Open the Live Link Face app on your Apple device, tap the gear in the top left to open settings, then tap the **Live Link** option under *Streaming*. 
+   - Do **not** tap `OSC Server` under the Remote Control section!
+5. Add your computer's local IP address obtained in step 3 to the list of *Targets*
+6. The first time setting this up, your phone should ask if you want to give permission for the Live Link Face app to access your Local Network. 
+   Make sure to tap "Allow", otherwise the app will be completely blocked from sending data! 
+
+<img
+    src={require('./img/livelink_setting.png').default}
+    alt="Example Live Link Streaming setting with target PC IP address"
+    style={{width: '40%', margin: "auto", display: "flex"}}
+/>
+
+7. Return to the main screen of the Live Link Face app and tap the **LIVE** button at the top. 
+   If it is *green*, the app is streaming data. 
+8. Verify that the module has initialized in VRCFT
+
+## Module
+
+Interested in the source code? Check out the [LiveLink module source repository](https://github.com/kusomaigo/VRCFaceTracking-LiveLink)

@@ -1,0 +1,66 @@
+import Admonition from '@theme/Admonition';
+import {TroubleShootTable} from '@site/src/components/Utils.tsx'
+
+# Virtual Desktop 
+
+Virtual Desktop is a PCVR streamer app [purchasable from the Quest store](https://www.meta.com/experiences/2017050365004772/) that provides many features, including but not limited to streaming facetracking data from the Quest Pro. 
+However, like every other third-party PCVR streamer, Virtual Desktop only supports network connections to the headset, which means your Quest Pro must be connected to the same network as your PC and that it will not stream natively over a USB connection like Meta Quest Link does.
+Visit the [Virtual Desktop website](https://www.vrdesktop.net/) for more information.  
+
+## Setup
+
+This following setup assumes that Virtual Desktop has already been purchased from the **Quest Store** in the headset and the Virtual Desktop Streamer PC-side app has been installed on the PC.
+Please refer to Virtual Desktop's built-in setup instructions to get started with using Virtual Desktop.
+
+1. [**MAKE SURE YOUR HEADSET HAS EYE AND FACE TRACKING ENABLED**](#enabling-eye-and-face-tracking-on-the-headset)
+2. In the Virtual Desktop app *on the headset*, go to the "Streaming" tab, and enable the option `Forward tracking data to PC`. Make sure to click **Yes** to the popup. 
+ <div style={{
+    width: '75%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+  }}>
+    <img src={require("./img/virtual_desktop_settings.png").default} alt="Virtual Desktop Settings" />
+  </div> 
+3. Start Virtual Desktop Streamer if you have not already and establish headset connection to the PC.
+4. Install the **Virtual Desktop** module from the VRCFaceTracking module registry.
+
+:::note
+To let the Virtual Desktop VRCFT module properly initialize, make sure to start VRCFT with the Virtual Desktop module installed *after* you start the Virtual Desktop Streamer program on the PC.
+:::
+
+## Tips and Tricks
+
+<details>
+  <summary>Using Index Controllers with the Quest Pro with Virtual Desktop</summary>
+
+*Before* launching SteamVR from Virtual Desktop: 
+In the Virtual Desktop "Streaming" tab, untick the "Track controllers" option under "Advanced Options" in the Streaming tab.
+This will prevent Virtual Desktop from adding the Quest controllers to the SteamVR devices, allowing the use of Index controllers or any other controller of your choosing. 
+
+<div style={{
+  width: '66%',
+  height: 'auto',
+  margin: 'auto',
+  display: 'block'
+}}>
+    <img src={require("./img/virtual_desktop_track_controllers.png").default} alt="Virtual Desktop track controllers setting circled" />
+</div>
+
+</details>
+
+## Troubleshooting
+
+<details>
+  <summary>[Virtual Desktop] Error: [VirtualDesktop] Failed to open MemoryMappedFile. Make sure Virtual Desktop Streamer (v1.29 or later) is running.</summary>
+  <TroubleShootTable
+  cause="VRCFaceTracking was started before Virtual Desktop">
+  First, make sure both the Virtual Desktop app in the Quest and the Virtual Desktop streamer versions are at least v1.29.
+
+  Close VRCFaceTracking, start Virtual Desktop Streamer, reopen VRCFaceTracking.
+
+  If VRCFaceTracking is started before SteamVR/VRChat is launched from Virtual Desktop, the output log may show a warning that "Tracking is not active".
+  However, after launching SteamVR/VRChat (*from Virtual Desktop*) the Virtual Desktop module should log that "Tracking is now active!".
+
+  </TroubleShootTable>
+</details>

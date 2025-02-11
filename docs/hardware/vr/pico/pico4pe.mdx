@@ -1,0 +1,40 @@
+# Pico 4 Pro / Enterprise
+
+The Pico 4 Pro / Enterprise is a standalone VR headset powered by the Qualcomm XR2, similar to the Quest 2 and Quest Pro headsets from Meta.
+Unlike the "consumer" version of the Pico 4, the Pro and Enterprise versions of the headset have additional eye and face tracking cameras, in addition to a few more hardware upgrades. 
+The Pro and Enterprise editions only differ in the available system software and region availability: the Pro only being sold in mainland China, while the Enterprise is sold in Europe with "limited" enterprise software.
+
+##  Pico Connect Setup
+
+1. Make sure your headset is using at least using v5.9.0 firmware. 
+2. Enable both Eye Tracking and Lip Tracking on Pico Settings, those can be found under LAB tab.
+3. Verify that you have Pico Connect installed on your headset. If not, you will need to get it from the Pico Store first before continuing.
+4. Install [Pico Connect](https://www.picoxr.com/global/software/pico-link) on your computer.
+5. After installing Pico Connect on your computer you should update a hidden configuration to change its facetracking to legacy protocol, 
+find the file at `C:\Users\{YourUsername}\AppData\Roaming\PICO Connect\setting.json` and change `faceTrackingTransferProtocol` to `2`. 
+This is a temporary fix; currently the Pico4SAFTExtTrackingModule does not support the newer protocol.
+
+##  Streaming Assistant Setup (Legacy)
+
+:::tip
+Streaming Assistant is only available for Headsets using firmaware older than 5.9.0. It is really recommend to update the firmware to latest version and use Pico Connect instead.
+:::
+
+1. Enable both Eye Tracking and Lip Tracking on Pico Settings, those can be found under the **LAB** tab.
+2. Install [Streaming Assistant](https://www.picoxr.com/global/software/pico-link) on your computer.
+
+## Module
+
+Install the **"Pico4SAFTExtTrackingModule"** from the [VRCFaceTracking Module Registry](@site/docs/vrcft-software/vrcft.mdx#module-registry).
+
+[Pico4SAFTExtTrackingModule source repository](https://github.com/regzo2/PicoStreamingAssistantFTUDP/tree/vrcfacetracking-module)
+
+### Startup Instructions
+
+1. Start PCVR using the Pico Connect or Pico Streaming Assistant 
+2. Once connected and in SteamVR, start VRCFaceTracking with the Pico4SAFTExtTrackingModule initialized
+
+:::warning
+The Pico 4 Pro/Enterprise module will currently (erroneously) always initialize, and will fail to shutdown its own update thread when tearing down modules (closing VRCFaceTracking).
+You may need to shut down VRCFaceTracking forcefully. 
+:::
