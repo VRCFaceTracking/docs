@@ -13,7 +13,7 @@ interface Props {
     name: string;
     image: string;
     url: string;
-    description: JSX.Element;
+    description: string;
 }
   
 // modified from Docusaurus example PlaygroundCard
@@ -58,8 +58,9 @@ export function ImageCard({name, image, url, description}: Props) {
 export function VRCFTInstallerCard() {
   return (<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
     <ImageCard name="VRCFaceTracking AppInstaller"
-    url="https://github.com/benaclejames/VRCFaceTracking/releases/latest/download/VRCFaceTracking_x64.appinstaller"
+    // url="https://github.com/benaclejames/VRCFaceTracking/releases/latest/download/VRCFaceTracking_x64.appinstaller"
+    url="https://github.com/benaclejames/VRCFaceTracking/releases/download/5.2.3.0/VRCFaceTracking_5.2.3.0_x64.msix"
     image={require('@site/docs/vrcft-software/img/vrcft_installer.png').default}
-    description="Get the latest Release lightweight Windows AppInstaller, just run and install!"/>
+    description="Get the latest Release"/>
   </div>)
 }

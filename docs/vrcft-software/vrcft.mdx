@@ -6,8 +6,9 @@ sidebar_position: 1
 
 import {EditUrl, CustomLink, TextColor} from '@site/src/components/Utils.tsx'
 import {ImageCard, VRCFTInstallerCard} from '@site/src/components/Cards.tsx'
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+import ReactPlayer from 'react-player'
 
 VRChat has no native face tracking integration,
 which means there must be an intermediary software accessing face tracking data from the hardware source then sending it to VRC via OSC as avatar parameters.
@@ -17,23 +18,18 @@ VRCFaceTracking works by the concept of "modules", which are add-on files that l
 
 ## Install VRCFaceTracking
 
-:::info
-VRCFaceTracking Unified Expressions Update has been released!
-Comes with brand new UI, installer with auto-updater, and more.
+:::danger
+The code signing certificate used for VRCFT expired April 1st, 2025. 
+The AppInstaller and .msix installer will **no longer work**.
+There is an alternative application distribution system that will become available soon. 
+Please follow the video instruction below on how to use VRCFT for now during this transition period. 
 :::
 
+<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+    <ReactPlayer controls url='https://www.youtube.com/watch?v=JX3t6yu42cY'/>
+</div>
+
 <VRCFTInstallerCard/>
-
-Don't want to use the Windows AppInstaller? Visit the [latest release page](https://github.com/benaclejames/VRCFaceTracking/releases/latest/) for the MSIX, or install via Winget
-
-```cmd
-winget install BenacleJames.VRCFaceTracking
-```
-
-You might want to create a desktop shortcut for the VRCFaceTracking app. To do so, follow these two simple steps:
-
-1. Search for VRCFaceTracking in your Start Menu, then click "Pin to Start".
-2. Drag and drop it onto your Desktop. This will create a shortcut.
 
 ## Using VRCFaceTracking
 
@@ -49,7 +45,7 @@ In the home view, you will find the most important "at-a-glance" information whe
    * Tracking toggle
 * OSC Status
    * Listening and Sending ports
-   * Number of OSC messages incoming *from* VRChat, and number of OSC messages sent *to* VRChat
+   * Number of OSC messages incoming ***from VRChat***, and number of OSC messages sent ***to VRChat***
 * VRChat Avatar Status
    * Avatar name and ID
    * Number of loaded VRCFT-compatible parameters
@@ -169,10 +165,7 @@ You can set the app to use light or dark modes, or follow your system setting (d
 
 #### Changing the OSC IP and Ports
 
-You can now easily change the OSC address and input/output ports by adjusting the values in the GUI.
-Typically, you will not need to adjust these from the defaults. 
-If you are trying to use multiple OSC applications for VRChat (i.e. bHaptics and VRCFaceTracking) and need to use an OSC router such as [VRChat OSC Router](https://github.com/SutekhVRC/VOR),
-you will find this setting essential!
+Do not attempt to change the OSC IP or receiving port if you are using VRCFT version 5.2.3.0. 
 
 #### Risky Functions
 
@@ -197,9 +190,8 @@ This is a quick way of clearing out your VRChat avatar osc config directory if (
 ## Resetting VRChat OSC Configs
 
 Because of the sheer number of possible face tracking parameter configurations, VRCFaceTracking does not blindly send OSC messages for every possible parameter.
-Until VRChat releases the ["OSC Query" update](https://ask.vrchat.com/t/developer-update-2-september-2022/13470#oscquery-9), which is [currently in closed beta](https://github.com/vrchat-community/osc/issues/143#issuecomment-1304419543),
-VRCFaceTracking will rely on the static OSC config .json generated for each avatar to know what parameters to send.
-This configuration file is **never** updated automatically, it must be reset manually to force VRC to generate an up-to-date version or manually edited yourself.
+VRCFaceTracking relies on the static OSC config .json generated for each avatar to know what parameters to send, even with VRChat's OSCQuery feature, as VRC OSCQuery will only advertise parameters in the *static OSC config file*.
+This configuration file is **never** updated automatically, it must be reset manually to force VRC to generate an up-to-date version, or manually edited yourself.
 
 There are three ways to reset configs:
 
