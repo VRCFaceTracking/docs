@@ -1,0 +1,52 @@
+# FoxyFace
+
+FoxyFace uses your webcam/camera connected to your computer to track your face.
+
+For those who don't have a webcam connected to their computer, FoxyFace Wiki has instructions on how to [use your phone/another computer as a camera](https://github.com/Jeka8833/FoxyFace/wiki/Using-another-device-as-a-camera), but this will require some extra steps.
+
+FoxyFace uses the neural network bundle from [MediaPipe Face landmark detection](https://ai.google.dev/edge/mediapipe/solutions/vision/face_landmarker) and the neural network from [Project Babble](https://github.com/Project-Babble) for face tracking.
+
+## Setup
+
+---
+
+:::tip
+The order in which the applications are launched is essential because you have 60 seconds after launching the FoxyFaceVRCFTInterface module to launch the main FoxyFace application.
+:::
+
+1. [Install the FoxyFace app on your computer](https://github.com/Jeka8833/FoxyFace/wiki/Install-FoxyFace).
+2. Start the FoxyFace application.
+3. Start the VRCFaceTracking application and install the "FoxyFaceVRCFTInterface" module from the [VRCFaceTracking Module Registry](/docs/vrcft-software/vrcft#module-registry).
+4. Everything should connect automatically, but it is better to [check the connection between FoxyFace and FoxyFaceVRCFTInterface](https://github.com/Jeka8833/FoxyFace/wiki/Check-Connection).
+
+More detailed instructions can be found in the [FoxyFace Wiki](https://github.com/Jeka8833/FoxyFace/wiki).
+
+## Module
+
+---
+
+You can find more detailed instructions and all the source code in the [FoxyFace GitHub repository](https://github.com/Jeka8833/FoxyFace).
+
+## Troubleshooting
+
+---
+
+### FoxyFace application did not connect to the FoxyFaceVRCFTInterface module in 60 seconds
+
+- If you just failed to start the FoxyFace application within 60 seconds of opening the VRCFaceTracking application with the FoxyFaceVRCFTInterface module installed, then you need to start FoxyFace first and then restart the VRCFaceTracking application.
+- If you use another computer as a camera or virtual machine, try a [manual connection](https://github.com/Jeka8833/FoxyFace/wiki/Manual-Connection).
+
+### The quality of tongue and cheek tracking is not very good
+
+1. [Update the neural network from Project Babble](https://github.com/Jeka8833/FoxyFace/wiki/Update-Babble-Model).
+2. Auto-calibrate those parameters that are not working well.
+
+### I have many cameras, and the wrong camera seems to be selected
+
+General instructions for setting up the camera can be found on the [FoxyFace Wiki Camera Settings page](https://github.com/Jeka8833/FoxyFace/wiki/Camera-Settings).
+
+### The FPS of face tracking is too low compared to the FPS of the webcam/camera.
+
+- Close any unnecessary FoxyFace windows, especially Preview windows.
+- You can also try reducing the image resolution of your webcam/camera. General instructions for setting up the camera can be found on the [FoxyFace Wiki Camera Settings page](https://github.com/Jeka8833/FoxyFace/wiki/Camera-Settings).
+- If that's not enough and you don't need tongue and cheeks tracking, you can turn off the neural model from Project Babble.
