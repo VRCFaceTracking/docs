@@ -67,6 +67,13 @@ decide what is best for your avatar's use case.
 
 ### Eye Gaze Parameters
 
+:::info Eye gaze normalization
+
+Eye tracking values are normalized from the original real value range of 0 to 45, to the OSC range of 0 to 1.
+These values can still exceed 1 however. Use a 2d simple directional blendtree with animations that set the rotations to 45 degree directions in order to match 1:1 with the real eye rotation
+
+:::
+
 | Name | Function |
 | :--- | :------- |
 | v2/EyeLeftX | `<0.0 -> 1.0>` Left Eye Look Right (Normalized Cartesian)<br/>`<0.0 -> -1.0>` Left Eye Look Left (Normalized Cartesian) |
