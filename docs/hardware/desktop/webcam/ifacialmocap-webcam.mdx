@@ -1,52 +1,72 @@
 # iFacialMocap (Desktop Application)
 
-:::info
-Under Construction
-:::
+iFacialMocap for Nvidia uses a Webcam with either RTX Nvidia cards or MediaPipe for Face Tracking 
 
 This guide will walk-through setting up the *iFacialMocap* PC App from the [Microsoft Store](https://apps.microsoft.com/detail/9n01fgs2zk3x?hl=en-US&gl=US) and the corresponding VRCFT tracking module.
 
 ## Setup
 
 :::info
-Ensure that your Apple device is connected to the **same network as your computer**!
+It's recommended to use the Nvidia BROADCAST Input which requieres an RTX Card (RTX 2000 or above).
+
+You can run this without an Nvidia RTX Card by changing the Input to Mediapipe.
 :::
 
-1. Install one of the following apps on your Apple device
-   - The original ($): [iFacialMocap](https://apps.apple.com/us/app/ifacialmocap/id1489470545)
-   - Free trial version: [iFacialMocapTr](https://apps.apple.com/us/app/ifacialmocaptr/id1520971310)
-   - "Newer" app ($ - streaming license for "Other/Unity"): [FaceMotion3D](https://apps.apple.com/us/app/facemotion3d/id1507538005) 
-2. Start VRCFaceTracking and install the "**iFacialMocap**" VRCFT module from the [VRCFaceTracking Module Registry](@site/docs/vrcft-software/vrcft.mdx#module-registry).
-3. Go to the Output tab in VRCFT and look for the message printing our your computer's *local IP address*
-   - Verify that the IP address is the local IP of your computer on your local network. See [INSERT LINK HERE] for more general networking tips. 
-4. Open the iFacialMocap app on your Apple device, tap the gear in the top right to open settings, then tap the **Destination IP address** option under *Destination setting*.
-   Enter in the local IP address of your computer as found in step 3 
-   - If you are using FaceMotion3D, tap the "Live" button in the top left, set the Live Stream type to "Other", and enter in the local IP address of your computer in the provided field
-5. The first time setting this up, your phone should ask if you want to give permission for the iFacialMocap/FaceMotion3D app to access your Local Network. 
-   Make sure to tap "Allow", otherwise the app will be completely blocked from sending data! 
-6. Return to the main iFacialMocap screen. Whenever you are in this screen, the app should be streaming data.
-   - If you are using FaceMotion3D, simply tap the "Connect" button
-7. Verify that the module has initialized in VRCFT
+:::tip
+The Input named "iFacialmocap" should allow you to connect either an iPhone or android running iFacialMocap / MeowFace, but you should be connecting them directly to VRCFT with their respective modules rather than directing them through this app
+:::
+
+1. Install [iFacialMocap for Nvidia BROADCAST](https://apps.microsoft.com/detail/9n01fgs2zk3x?hl=en-US&gl=US) from the microsoft store
+2. If you wish to use an RTX Card, install the latest [Nvidia AR SDK](https://www.nvidia.com/en-us/geforce/broadcasting/broadcast-sdk/resources/) from the webpage
+:::warning
+Make sure the AR SDK is downloaded for YOUR series of cards or it may not work correctly, make sure to also grab the latest version used by Vtube Studio
+:::
+
+3. Start VRCFaceTracking and install the "**iFacialMocap**" VRCFT module from the [VRCFaceTracking Module Registry](@site/docs/vrcft-software/vrcft.mdx#module-registry).
+4. Start the "**iFacialMocap Powered by Nvidia BROADCAST**" app from your taskbar
+5. Change the **INPUT** to either Nvidia Broadcast (if using an RTX Card) or Mediapipe
+6. Change the **OUTPUT** to iFacialMocap
+
+## Setting up iFacialMocap
+
+### Camera input
+
+You can click on "Open Advanced Setting" to open the settings menu, you can look for the section called "Nvidia Display" (RTX) or "Show/Hide Camera" (Mediapipe), just below these options you should see the name of your camera along with its index
+
+:::warning
+Sometimes this index can be wrong and your camera might get the name of another camera, this usually happens if you were to plug a new video device before opening the app (i.e. you connected a capture card).
+
+If the demo avatar or camera output is not showing, make sure that:
+A. The camera is not being used by another app
+B. Try out other cameras and see if it works
+:::
+
+:::warning
+Windows 11 has a lot of issues with getting the camera output working, so far the only method to get this working again is by reinstalling Windows, but take this as a last resort thing and try the troubleshooting mentioned above, or trying out other tracking methods such as [FoxyFace](https://docs.vrcft.io/docs/hardware/desktop/webcam/foxyface),
+:::
+
+### Calibration
+
+You can reset your head, eye and mouth rotations by clicking the **Calibration** button, for the best calibration
+
+1. Position your camera where you want it to be (preferably above the monitor)
+2. While looking forwards towards the center of your monitor (i.e. towards your VRC desktop cursor), tap the "Calibration" button in the app
+3. If using Nvidia broadcast, you should see a demo face shifting in place and looking straight, indicating that the head orientation and face tracking has successfully been reset
+
+### Adjusting Multipliers and Smoothing
+
+You can click on "Open Advanced Setting" to open the settings menu, below the Camera settings and "Send Version" section, you should find the Smoothing options, you can increase the value of the Blendshapes to reduce jitter, increasing this too much will introduce latency, so adjust carefully
+
+:::tip
+You can also increase the blendshape **Weight**, aka how likely it is to trigger a blendshape, by going further down into the individual blednshape settings, it's recommended to **ONLY** increase the weight value, as other options are aimed towards vtubing apps and not VRCFT
+::
+
+### Tracked Blendshapes
+Although the app lists all 52 ARKit blendshapes within its settings, it does not track the **tongueOut** and **cheekPuff* blendshapes, and may have trouble with suttle blendshapes such as **mouthShrug**, either way it's a very stable tracking method which works universally between vtubing apps and now VRCFT
 
 ## Module
 
 Interested in the source code? Check out the [iFacialMocap module source repository](https://github.com/Shuisho10/VRC_iFacialMocap)
-
-## Using iFacialMocap / FaceMotion3D
-
-### Recentering
-
-You can "zero out" your head's position and rotation values using the "look forward" (iFacialMocap) or "Reset" (FaceMotion3D) buttons at the bottom right the main screen.
-This is useful to help your avatar look straight forward when you look at the center of your screen, even if your phone is below, above, or to the side of your monitor. 
-
-1. Position your phone how you could like it to stay during use.
-2. While looking forwards towards the center of your monitor (i.e. towards your VRC desktop cursor), tap the "look forward"/Reset button in the app
-3. You should see the rotation of the demo face snap to face directly outwards from the screen, indicating that the head orientation has successfully been reset
-
-### Adjusting Multipliers and Smoothing
-
-iFacialMocap and FaceMotion3D allow you to artificially adjust the tracked blendshape values streamed to VRCFT (or other software). 
-Tap the "Settings" gear icon (top right in iFacialMocap, bottom left in FaceMotion3D)
 
 
 
