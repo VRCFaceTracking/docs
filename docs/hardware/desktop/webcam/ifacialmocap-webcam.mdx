@@ -7,18 +7,22 @@ This guide will walk-through setting up the *iFacialMocap* PC App from the [Micr
 ## Setup
 
 :::info
+
 It's recommended to use the Nvidia BROADCAST Input which requieres an RTX Card (RTX 2000 or above).
 
 You can run this without an Nvidia RTX Card by changing the Input to Mediapipe.
 :::
 
 :::tip
+
 The Input named "iFacialmocap" should allow you to connect either an iPhone or android running iFacialMocap / MeowFace, but you should be connecting them directly to VRCFT with their respective modules rather than directing them through this app
 :::
 
 1. Install [iFacialMocap for Nvidia BROADCAST](https://apps.microsoft.com/detail/9n01fgs2zk3x?hl=en-US&gl=US) from the microsoft store
 2. If you wish to use an RTX Card, install the latest [Nvidia AR SDK](https://www.nvidia.com/en-us/geforce/broadcasting/broadcast-sdk/resources/) from the webpage
+
 :::warning
+
 Make sure the AR SDK is downloaded for YOUR series of cards or it may not work correctly, make sure to also grab the latest version used by Vtube Studio
 :::
 
@@ -34,6 +38,7 @@ Make sure the AR SDK is downloaded for YOUR series of cards or it may not work c
 You can click on "Open Advanced Setting" to open the settings menu, you can look for the section called "Nvidia Display" (RTX) or "Show/Hide Camera" (Mediapipe), just below these options you should see the name of your camera along with its index
 
 :::warning
+
 Sometimes this index can be wrong and your camera might get the name of another camera, this usually happens if you were to plug a new video device before opening the app (i.e. you connected a capture card).
 
 If the demo avatar or camera output is not showing, make sure that:
@@ -42,6 +47,7 @@ B. Try out other cameras and see if it works
 :::
 
 :::warning
+
 Windows 11 has a lot of issues with getting the camera output working, so far the only method to get this working again is by reinstalling Windows, but take this as a last resort thing and try the troubleshooting mentioned above, or trying out other tracking methods such as [FoxyFace](https://docs.vrcft.io/docs/hardware/desktop/webcam/foxyface),
 :::
 
@@ -58,6 +64,7 @@ You can reset your head, eye and mouth rotations by clicking the **Calibration**
 You can click on "Open Advanced Setting" to open the settings menu, below the Camera settings and "Send Version" section, you should find the Smoothing options, you can increase the value of the Blendshapes to reduce jitter, increasing this too much will introduce latency, so adjust carefully
 
 :::tip
+
 You can also increase the blendshape **Weight**, aka how likely it is to trigger a blendshape, by going further down into the individual blednshape settings, it's recommended to **ONLY** increase the weight value, as other options are aimed towards vtubing apps and not VRCFT
 ::
 
