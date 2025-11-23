@@ -44,30 +44,21 @@ Follow the on-screen instructions.
 
 ### Face Tracking Calibration
 :::danger
-An Avatar is required for both Face and Eye tracking to work, selecting any one of the preset avatars should suffice.
+It is vital to initially calibrate face tracking for both Face & Eye tracking to fully work.
 :::
-
-To calibrate face tracking, open the Settings app, then select "Avatars", then create an avatar (or select any one of the presets).
-Then, calibrate face tracking by selecting "Calibrate Face Tracking" and following on-screen instructions.
+To calibrate face tracking, open the Settings app, then select "Avatars", then select "Start Calibration" under "Calibrate Face Tracking" and follow the on-screen instructions.
 <div style={{
-    display: 'flex',
-    'justify-content': 'space-between'
-}}>
-    <div style={{
-        width: '50%',
-        height: 'auto'
+    width: '60%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
     }}>
-        <img src={require("./img/face-tracking-calibration.jpg").default} alt="Face Tracking Calibration Settings App" />
-    </div>
-    <div style={{
-        width: '50%',
-        height: 'auto'
-    }}>
-        <img src={require("./img/galaxy-avatar.jpg").default} alt="Galaxy Avatars App" />
-    </div>
+    <img src={require("./img/face-tracking-calibration.jpg").default} alt="Face Tracking Calibration Settings App" />
 </div>
 
 ### PCVR Setup
+That's it for the standalone setup! Just use your compatible PCVR streamer of choice (following their respective setup guides) and you should be good to go.
+
 Current compatible PCVR Streamers:
 :::note
 These link to instructions for the Quest Pro, but should still apply to the Galaxy XR.
@@ -77,4 +68,3 @@ Any streamer apps that need to be sideloaded can be done within the headset WITH
 :::
 * <Link to="../meta/quest-pro/virtual-desktop" target="_blank" rel="noopener noreferrer">Virtual Desktop</Link>
 * <Link to="../meta/quest-pro/alxr" target="_blank" rel="noopener noreferrer">ALXR</Link>
-* <Link to="../meta/quest-pro/alvr" target="_blank" rel="noopener noreferrer">ALVR</Link>
