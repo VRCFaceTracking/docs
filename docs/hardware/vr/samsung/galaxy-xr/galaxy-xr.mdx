@@ -1,0 +1,71 @@
+---
+sidebar_position: 1
+---
+
+import ImageCardList from '@site/src/components/ImageCardList'
+import {TroubleShootTable, CustomLink, TextColor, ShuffledList} from '@site/src/components/Utils.tsx'
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Admonition from '@theme/Admonition';
+
+# Galaxy XR
+
+The Galaxy XR, running on Android XR, provides eye gaze tracking, detailed eye expression tracking, and face tracking.
+All eye and face tracking hardware is internal to the device (no additional hardware setup required).
+All eye and face tracking data is accessed via Android XR Face and Eye OpenXR extensions.
+
+<div style={{
+    width: '50%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+    }}>
+    <img src={require("./img/galaxy-xr.png").default} alt="Galaxy XR Headset" />
+</div>
+
+## Setup
+
+The basic Galaxy XR setup flow:
+1. [Calibrate Eye Tracking on the Headset](#eye-tracking-calibration)
+2. [Calibrate Face Tracking on the Headset](#face-tracking-calibration)
+3. [PCVR Setup](#pcvr-setup)
+
+### Eye Tracking Calibration
+To calibrate eye tracking, open the Settings app, select "Input", "Eye calibration", then "Calibrate eye tracking".
+Follow the on-screen instructions.
+<div style={{
+    width: '60%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+    }}>
+    <img src={require("./img/eye-tracking-calibration.jpg").default} alt="Galaxy XR Eye Tracking Calibration settings" />
+</div>
+
+### Face Tracking Calibration
+:::danger
+It is vital to initially calibrate face tracking for both Face & Eye tracking to fully work.
+:::
+To calibrate face tracking, open the Settings app, then select "Avatars", then select "Start Calibration" under "Calibrate Face Tracking" and follow the on-screen instructions.
+<div style={{
+    width: '60%',
+    height: 'auto',
+    margin: 'auto',
+    display: 'block'
+    }}>
+    <img src={require("./img/face-tracking-calibration.jpg").default} alt="Face Tracking Calibration Settings App" />
+</div>
+
+### PCVR Setup
+That's it for the standalone setup! Just use your compatible PCVR streamer of choice (following their respective setup guides) and you should be good to go.
+
+Current compatible PCVR Streamers:
+:::note
+These link to instructions for the Quest Pro, but should still apply to the Galaxy XR.
+:::
+:::note
+Any streamer apps that need to be sideloaded can be done within the headset WITHOUT needing a phone app or 'Developer Account'.
+:::
+* <Link to="../meta/quest-pro/virtual-desktop" target="_blank" rel="noopener noreferrer">Virtual Desktop</Link>
+* <Link to="../meta/quest-pro/alxr" target="_blank" rel="noopener noreferrer">ALXR</Link>
+* <Link to="https://github.com/WiVRn/WiVRn" target="_blank" rel="noopener noreferrer">WiVRn</Link>
