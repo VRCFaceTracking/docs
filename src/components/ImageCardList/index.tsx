@@ -96,11 +96,7 @@ function DocCardListMapCallback(item, index) {
 
 function filterCallback(item) {
   try {
-    if (item.customProps?.hidden) {
-      // console.log(item.label);
-      return false;
-    }
-    return true;
+    return !(item.customProps?.hidden || item.className?.includes('hidden'));
   } catch(e) {
     return true; 
   }
