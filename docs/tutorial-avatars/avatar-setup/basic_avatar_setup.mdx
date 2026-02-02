@@ -1,12 +1,38 @@
----
-sidebar_position: 1
----
+import ReactPlayer from 'react-player'
+
 
 # Basic Avatar Setup
 
-## *Setup* Setup
+## Prerequisites
 
 The first step to setting up your avatar with face tracking is to make sure that your face tracking works!
 
 Make sure that you have followed [Getting Started](../../intro/getting-started.mdx) and have a working hardware and software setup before getting down to working on your own avatars. 
 By doing this, you make your life when debugging your avatar *much* easier
+
+
+## Model Implementation
+:::info End Users
+If you're an end user, you should continue on with the recommended setup process of adding a pre-made template using VRCFury, like [Adjerry's template*](https://github.com/Adjerry91/VRCFaceTracking-Templates/wiki/Face-Tracking-Template-Setup).
+<small>*This is not software created by VRCFaceTracking and, therefore, we do not provide support or assistance using it.</small>
+:::
+Before doing anything else, you'll need to create blendshapes for your avatar that map to [Unified Expressions](../tutorial-avatars-extras/unified-blendshapes). These allow for a consistent look across headsets, as well as implementing most features headsets support.
+If you're editing a model, or this is your first time, [Hantnor](https://hantnor.com/) has made a video walking through her process:
+
+<div class="row" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+    <ReactPlayer controls url='https://www.youtube.com/watch?v=E2kx4kSoo8Y'/>
+</div>
+
+
+
+## Unity Implementation
+Generally, using a template is the fastest way to make your blendshapes functional with VRCFaceTracking, but you're always welcome to implement it yourself in whatever way you want.
+
+If you decide to implement it yourself a full list of parameters used by VRCFaceTracking is [here.](../tutorial-avatars-extras/parameters)
+
+The most popular[^1] template available is one by Adjerry91. You can look through the wiki for it [here.](https://github.com/Adjerry91/VRCFaceTracking-Templates/wiki/Face-Tracking-Template-Setup)
+
+[^1]: As declared by me.
+
+## Done!
+This is a very oversimplified guide, but it does lay out the general steps to follow, and should give you the stepping stones to follow for more information.
