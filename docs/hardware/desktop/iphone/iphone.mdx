@@ -2,12 +2,25 @@ import ImageCardList from '@site/src/components/ImageCardList'
 
 # iPhone / iPad
 
+An iPhone (or iPad) can send ARKit (“PerfectSync”) Face Tracking data to VRCFT for use in VRChat. Devices must be running iOS/iPadOS 11.0 or later.
+
+### Compatible devices
 :::info
-Under Construction
+Devices **with** FaceID will give better results thanks to the TrueDepth camera.
+
+Devices **without** FaceID can still provide respectable results under good lightning conditions. They **must** have the A12 Bionic Chip or newer.
 :::
 
-An iPhone (or iPad) with a TrueDepth camera or A12 Bionic Chip can send ARKit Face Tracking (“PerfectSync”) data to VRCFT for use in VRChat.
-You need an IPhone X/XS/XR or newer, 12.9-inch IPad Pro 3rd gen or newer, or 11-inch IPad Pro 1st gen or newer.
+**Devices with FaceID**
+• iPhone X/XS/XR or newer.
+• 12.9-inch iPad Pro 3rd gen or newer
+• 11-inch iPad Pro 1st gen or newer.
+
+**Devices without FaceID**
+• iPad 8th gen (2020) or newer.
+• iPad Air 3rd gen (2019) or newer.
+• iPad mini 5th gen (2019) or newer.
+
 
 Due to the nature of how Apple’s ARKit Face Tracking works, the iPhone cannot track only the bottom of your face while you are wearing a VR headset.
 The primary use case would be desktop VRC or for avatar creators wanting to test their avatars' face tracking features in Blender or Unity without using a VR headset.
@@ -18,9 +31,9 @@ The primary use case would be desktop VRC or for avatar creators wanting to test
 
 ## Network 
 
-## Tips
-
-These tips are not VRCFT-exclusive and are for using iPhones as full-face trackers generally, for V-Tubing and other applications.
+:::tip
+These tips are not VRCFT-exclusive and are for using iPhones as full-face trackers, generally for VTubing and other applications.
+:::
 
 ### Reducing Latency by connecting the phone directly to Router/PC
 
@@ -37,3 +50,4 @@ Using the Apple device as a USB-tethered hotspot can also work with a similar st
 
 When using the ARKit face tracking on the iPhone while simultaneously charging it, the iPhone may get hot and start thottling itself, affecting the responsiveness and quality of the face capture.
 Getting an active cooler for the iPhone (or iPad) can help prevent overheating and let you stream face tracking data smoothly.
+
