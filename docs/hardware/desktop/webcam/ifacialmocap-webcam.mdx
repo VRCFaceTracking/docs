@@ -1,72 +1,98 @@
 # iFacialMocap (Desktop Application)
 
-iFacialMocap for Nvidia uses a Webcam with either RTX Nvidia cards or MediaPipe for Face Tracking 
+iFacialMocap for Nvidia uses a Webcam with either RTX Nvidia cards or MediaPipe for Face Tracking.
 
 This guide will walk-through setting up the *iFacialMocap* PC App from the [Microsoft Store](https://apps.microsoft.com/detail/9n01fgs2zk3x?hl=en-US&gl=US) and the corresponding VRCFT tracking module.
 
 ## Setup
 
 :::info
-It's recommended to use the Nvidia BROADCAST Input which requieres an RTX Card (RTX 2000 or above).
+For the best quality, use the **Nvidia BROADCAST** Input which requieres an Nvidia RTX Series Card (RTX 2000 or above).
 
-You can run this without an Nvidia RTX Card by changing the Input to Mediapipe.
+You can run this without an Nvidia RTX Card by changing the Input to Mediapipe, but expect more limitations on the tracking quality.
+
+You **MUST** have good lightning to have good results, even more if using Mediapipe.
 :::
 
 :::tip
-The Input named "iFacialmocap" should allow you to connect either an iPhone or android running iFacialMocap / MeowFace, but you should be connecting them directly to VRCFT with their respective modules rather than directing them through this app
+The **INPUT** called *iFacialmocap* can be ignored. It allows you to connect either an iPhone or Android device running iFacialMocap / MeowFace, but you should be connecting them directly to VRCFT with their respective modules rather than directing them through this app.
 :::
 
-1. Install [iFacialMocap for Nvidia BROADCAST](https://apps.microsoft.com/detail/9n01fgs2zk3x?hl=en-US&gl=US) from the microsoft store
-2. If you wish to use an RTX Card, install the latest [Nvidia AR SDK](https://www.nvidia.com/en-us/geforce/broadcasting/broadcast-sdk/resources/) from the webpage
+1. Install [iFacialMocap for Nvidia BROADCAST](https://apps.microsoft.com/detail/9n01fgs2zk3x?hl=en-US&gl=US) from the Microsoft Store.
+2. If you wish to use an RTX Card, install the latest [Nvidia AR SDK](https://www.nvidia.com/en-us/geforce/broadcasting/broadcast-sdk/resources/) from the webpage.
 
 :::warning
-Make sure the AR SDK is downloaded for YOUR series of cards or it may not work correctly, make sure to also grab the latest version used by Vtube Studio
+Make sure the AR SDK is downloaded for YOUR series of cards or it may not work correctly.
+Grab the *latest* version of the SDK which should also be the version used by Vtube Studio. You can check this below the download options for the AR SDK column.
 :::
 
 3. Start VRCFaceTracking and install the "**iFacialMocap**" VRCFT module from the [VRCFaceTracking Module Registry](@site/docs/vrcft-software/vrcft.mdx#module-registry).
-4. Start the "**iFacialMocap Powered by Nvidia BROADCAST**" app from your taskbar
-5. Change the **INPUT** to either Nvidia Broadcast (if using an RTX Card) or Mediapipe
-6. Change the **OUTPUT** to iFacialMocap
+4. Start the "**iFacialMocap Powered by Nvidia BROADCAST**" app from your taskbar.
+5. Change the **INPUT** to either Nvidia Broadcast (if using an RTX Card) or Mediapipe.
+6. Change the **OUTPUT** to iFacialMocap.
 
 ## Setting up iFacialMocap
 
 ### Camera input
 
-You can click on "Open Advanced Setting" to open the settings menu, you can look for the section called "Nvidia Display" (RTX) or "Show/Hide Camera" (Mediapipe), just below these options you should see the name of your camera along with its index
+To change the camera used on iFacialMocap, click on "Open Advanced Setting" and look for the section called "Nvidia Display" (RTX) or "Show/Hide Camera" (Mediapipe), just below these options you should see the name of your camera along with its index number.
 
 :::warning
-Sometimes this index can be wrong and your camera might get the name of another camera, this usually happens if you were to plug a new video device before opening the app (i.e. you connected a capture card).
+Sometimes this index can be wrong and your camera might get a different name, this usually happens if you were to plug a new video device before opening the app (i.e. you connected a capture card) or due to camera driver installation.
+
+On these situations, you may have selected the correct camera (i.e. Logitech Camera) but you don't get any input.
 
 If the demo avatar or camera output is not showing, make sure that:
 A. The camera is not being used by another app
 B. Try out other cameras and see if it works
+
+Sometimes, switching to what would be the wrong input device fixes the issue, for example, changing to ElGato Capture Card starts using your actual webcam.
+Make sure to save the settings once the proper camera has been selected.
 :::
 
 :::warning
-Windows 11 has a lot of issues with getting the camera output working, so far the only method to get this working again is by reinstalling Windows, but take this as a last resort thing and try the troubleshooting mentioned above, or trying out other tracking methods such as [FoxyFace](https://docs.vrcft.io/docs/hardware/desktop/webcam/foxyface),
+iFacialMocap might not work with the default Windows drivers. If your camera is not initializing after the troubleshooting above, please look for your webcam or laptop model and install its respective drivers, or try other tracking methods such as [FoxyFace](https://docs.vrcft.io/docs/hardware/desktop/webcam/foxyface).
 :::
 
 ### Calibration
-You can reset your head, eye and mouth rotations by clicking the **Calibration** button, for the best calibration
+You can reset your head, eye and mouth rotations by clicking the **Calibration** button.
+
+For the best calibration:
 
 1. Position your camera where you want it to be (preferably above the monitor)
 2. While looking forwards towards the center of your monitor (i.e. towards your VRC desktop cursor), tap the "Calibration" button in the app
 3. If using Nvidia broadcast, you should see a demo face shifting in place and looking straight, indicating that the head orientation and face tracking has successfully been reset
 
-### Adjusting Multipliers and Smoothing
+### Adjusting Weight and Smoothing
 
-You can click on "Open Advanced Setting" to open the settings menu, below the Camera settings and "Send Version" section, you should find the Smoothing options, you can increase the value of the Blendshapes to reduce jitter, increasing this too much will introduce latency, so adjust carefully
+:::info
+Most people shouldn't need to mess around with these settings, but feel free to tweak them if you think you can improve something or you'd like a blendshape to be easier to trigger.
+:::
+
+Click on "Open Advanced Setting" to open the settings menu. Below the *Camera settings* and *Send Version* section, you should find the Smoothing options.
 
 :::tip
-You can also increase the blendshape **Weight**, aka how likely it is to trigger a blendshape, by going further down into the individual blednshape settings, it's recommended to **ONLY** increase the weight value, as other options are aimed towards vtubing apps and not VRCFT
-::
+You can increase the smoothing value to reduce jitter, but increasing this too much will introduce latency, so adjust carefully.
+:::
+
+:::tip
+Further down on the settings, you can increase or decrease specific blendshape **Weight** *(how likely it is to trigger a blendshape)*. If you're going to tweak this, it's recommended to **ONLY** increase the weight value, as other options are aimed towards vtubing apps and might have undesired side effects when using VRCFT.
+:::
 
 ### Tracked Blendshapes
-Although the app lists all 52 ARKit blendshapes within its settings, it does not track the **tongueOut** and **cheekPuff* blendshapes, and may have trouble with suttle blendshapes such as **mouthShrug**, either way it's a very stable tracking method which works universally between vtubing apps and now VRCFT
+Although the app lists all 52 ARKit blendshapes within its settings, **Nvidia Broadcast** does not track the *tongueOut* and *cheekPuff* blendshapes, and **Mediapipe** may track even less, and expect both tracking methods to have trouble with subtle blendshapes such as **mouthShrug**
+
+### Pros & Cons
+For a Webcam, this is one of the best tracking methods. It's easy to setup, and works universally between Vtubing apps and VRCFT.
+
+Compared to [FoxyFace](https://docs.vrcft.io/docs/hardware/desktop/webcam/foxyface), it will track less blendshapes, but should be easier to calibrate and faster to do the initial setup.
+
+Finally, compared to an [iPhone/iPad](https://docs.vrcft.io/docs/hardware/desktop/iphone), expect worse results and the need for very good lightning for this to work properly. Apple devices simply work better for Face Tracking.
 
 ## Module
 
 Interested in the source code? Check out the [iFacialMocap module source repository](https://github.com/Shuisho10/VRC_iFacialMocap)
+
 
 
 
