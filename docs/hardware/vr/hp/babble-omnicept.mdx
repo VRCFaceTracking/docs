@@ -7,12 +7,7 @@ sidebar_label: Project Babble - HP Reverb G2 Omnicept Setup Guide
 
 The [HP Reverb G2 Omnicept Edition](https://www.hp.com/us-en/vr/reverb-g2-vr-headset-omnicept-edition.html) is a VR headset with eye tracking and a lower face camera. While there is a module that allows you to use the headset's eye tracking with VRCFaceTracking, the face camera by itself does not do anything.
 
-<div style={{
-    width: '50%',
-    height: 'auto',
-    margin: 'auto',
-    display: 'block'
-}}>
+<div style={{width: '50%', height: 'auto', margin: 'auto', display: 'block'}}>
     <img src={require("./img/hp_face_cams_RTV.jpg").default} alt="HP Reverb G2 Omnicept eye and face cameras, circled in red" />
 </div>
 
@@ -38,12 +33,7 @@ Make sure you use the exact version of OBS and the plugin listed!
 
 Firstly, extract the contents of the `GliaLipViewer.zip` file to a folder of your choice. You can delete the zip file after this is done.
 
-<div style={{
-    width: '50%',
-    height: 'auto',
-    margin: 'auto',
-    display: 'block'
-}}>
+<div style={{width: '50%', height: 'auto', margin: 'auto', display: 'block'}}>
     <img src={require("./img/babble_unzipped.png").default} alt="The Glia Lip Viewer, extracted to a folder" />
 </div>
 
@@ -57,34 +47,19 @@ You may get a warning from the Glia Runtime about an application requesting acce
 
 Install OBS v27.2.4 as well as the OBS Virtual Camera Plugin. If you have a newer version, you should not have to uninstall it. Open OBS and add a new "Window Capture".
 
-<div style={{
-    width: '50%',
-    height: 'auto',
-    margin: 'auto',
-    display: 'block'
-}}>
+<div style={{width: '50%', height: 'auto', margin: 'auto', display: 'block'}}>
     <img src={require("./img/obs_window_creation.png").default} alt="Creating the OBS Window Capture" />
 </div>
 
 Select the Glia window from the list of windows...
 
-<div style={{
-    width: '50%',
-    height: 'auto',
-    margin: 'auto',
-    display: 'block'
-}}>
+<div style={{width: '50%', height: 'auto', margin: 'auto', display: 'block'}}>
     <img src={require("./img/obs_glia_capture.png").default} alt="Selecting the GliaLipViewer window" />
 </div>
 
 **Disable** cursor capture. Now resize OBS to fit the size of the window. This can be done by right clicking on the "Window Capture" source and selecting ""Resize output (source size)".
 
-<div style={{
-    width: '50%',
-    height: 'auto',
-    margin: 'auto',
-    display: 'block'
-}}>
+<div style={{width: '50%', height: 'auto', margin: 'auto', display: 'block'}}>
     <img src={require("./img/obs_window_resize.png").default} alt="Resizing the OBS Window" />
 </div>
 
@@ -106,34 +81,19 @@ This section is intended to fine tune and calibrate project babble, but isn't a 
 
 Open the filters tab for the window capture you created...
 
-<div style={{
-    width: '50%',
-    height: 'auto',
-    margin: 'auto',
-    display: 'block'
-}}>
+<div style={{width: '50%', height: 'auto', margin: 'auto', display: 'block'}}>
     <img src={require("./img/obs_window_filter.png").default} alt="OBS Window Capture filter" />
 </div>
 
 Add a "Color Correction" filter.
 
-<div style={{
-    width: '50%',
-    height: 'auto',
-    margin: 'auto',
-    display: 'block'
-}}>
+<div style={{width: '50%', height: 'auto', margin: 'auto', display: 'block'}}>
     <img src={require("./img/obs_filter_color_correction.png").default} alt="OBS Window Color Correction" />
 </div>
 
 Increase the brightness of the video by adjusting "Gamma", you want to make this about ~3 times as bright as it is by default. You can also adjust the contrast and saturation to your liking.
 
-<div style={{
-    width: '50%',
-    height: 'auto',
-    margin: 'auto',
-    display: 'block'
-}}>
+<div style={{width: '50%', height: 'auto', margin: 'auto', display: 'block'}}>
     <img src={require("./img/obs_filter_gamma.png").default} alt="OBS Window Color Correction Gamma" />
 </div>
 

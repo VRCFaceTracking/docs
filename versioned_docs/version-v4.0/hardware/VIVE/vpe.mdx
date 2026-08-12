@@ -12,12 +12,7 @@ Eye tracking data is accessed through [Vive's SRanipal interface](sranipal).
 
 export const Highlight = ({children, color}) => (
     <span
-        style={{
-            backgroundColor: color,
-            borderRadius: '2px',
-            color: '#fff',
-            padding: '0.2rem',
-        }}>
+        style={{backgroundColor: color, borderRadius: '2px', color: '#fff', padding: '0.2rem'}}>
     {children}
   </span>
 );
@@ -25,20 +20,11 @@ export const Highlight = ({children, color}) => (
 ## Common Issues
 - A regular Vive Pro is occasionally mistaken to be a Vive Pro Eye. 
 A Vive Pro Eye will have <Highlight color="#2aa5cd">light blue rings</Highlight> around the front two passthrough cameras and a plastic covered IR LED ring on the inside
-<div style={{
-    display: 'flex',
-    'justify-content': 'space-between'
-}}>
-    <div style={{
-        width: '50%',
-        height: 'auto'
-    }}>
+<div style={{display: 'flex', justifyContent: 'space-between'}}>
+    <div style={{width: '50%', height: 'auto'}}>
         <img src={require("../img/vive/vpe_front.jpg").default} alt="Front View" />
     </div>
-    <div style={{
-        width: '50%',
-        height: 'auto'
-    }}>
+    <div style={{width: '50%', height: 'auto'}}>
         <img src={require("../img/vive/vpe_inside.jpg").default} alt="Inside View" />
     </div>
 </div>

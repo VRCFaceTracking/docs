@@ -76,7 +76,7 @@ The following table shows how Binary Parameters work.
 | `Parameter` `4` | `0 1 0 0` `0`  | 2<sup>2</sup> (4) |
 | `Parameter` `8` | `1 0 0 0` `0` | 2<sup>3</sup> (8) |
 |||
-| `Parameter` `x` | `x` << `0 0 0 0` `0` | `x` |
+| `Parameter` `x` | `x` &lt;&lt; `0 0 0 0` `0` | `x` |
 
 The `Negative` parameter represents the sign of the parameter, whether it is 
 positive or negative (`+`/`-`)
