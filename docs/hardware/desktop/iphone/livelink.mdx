@@ -1,12 +1,10 @@
+import {TroubleShootTable} from '@site/src/components/Utils.tsx'
+
 # Unreal Live Link Face
 
 This guide will walk-through setting up the *Live Link Face* iOS app from Unreal and the corresponding VRCFT tracking module.
 
 ## Setup
-
-:::info
-Ensure that your Apple device is connected to the **same network as your computer**!
-:::
 
 1. Install the "[Live Link Face](https://apps.apple.com/us/app/live-link-face/id1495370836)" app by Unreal on your Apple device
 2. Start VRCFaceTracking and install the "**Live Link**" VRCFT module from the [VRCFaceTracking Module Registry](@site/docs/vrcft-software/vrcft.mdx#module-registry).
@@ -24,10 +22,39 @@ Ensure that your Apple device is connected to the **same network as your compute
     style={{width: '40%', margin: "auto", display: "flex"}}
 />
 
-7. Return to the main screen of the Live Link Face app and tap the **LIVE** button at the top. 
+7. Ensure that the Capture Mode is set to **ARKit**, and **not** MetaHuman Animator. If set to MetaHuman, the tracking will be erratic!
+8. Return to the main screen of the Live Link Face app and tap the **LIVE** button at the top. 
    If it is *green*, the app is streaming data. 
-8. Verify that the module has initialized in VRCFT
+9. Verify that the module has initialized in VRCFT
 
 ## Module
 
 Interested in the source code? Check out the [LiveLink module source repository](https://github.com/kusomaigo/VRCFaceTracking-LiveLink)
+
+## Troubleshooting
+
+<details>
+  <summary>The module fails to load / VRCFaceTracking continues to show "initializing modules"</summary>
+  <TroubleShootTable
+  cause="The LiveLink app failed to connect to VRCFT within 180 seconds.">
+  There are many potential causes for this issue as it is dependent on your network and PC setup.
+
+  First, make sure you are opening the LiveLink app within 180 seconds of opening VRCFaceTracking. If the module log says "Did not receive message within initialization period", you will need to restart VRCFaceTracking and try again.
+
+  Next, make sure your iPhone/iPad is on the same network as your PC. Additionally make sure that any "client isolation" features are disabled on your router. Ensure that your Windows network type is set to "private" and not "public".
+
+  Confirm that the correct IP address is entered into the correct setting in the app, not the "OSC Server" setting. The actual IP address of your computer may vary from what is listed in the output window of VRCFT, especially if you have VPN software installed.
+
+  Third party firewalls or VPN software may impact connectivity. Try to connect with them disabled to rule out any potential issues. When whitelisting VRCFT in firewalls/VPNs, you will need to add both VRCFaceTracking.exe as well as VRCFaceTracking.ModuleProcess.exe.
+
+  The built in Windows firewall should prompt you for network access upon the module's first load. If it does not, you may need to whitelist it manually.
+  </TroubleShootTable>
+</details>
+
+<details>
+  <summary>The eye/face tracking is erratic</summary>
+  <TroubleShootTable
+  cause="The LiveLink app is set to MetaHuman Animator instead of ARKit.">
+  Make sure capture mode is set to ARKit and not MetaHuman Animator.
+  </TroubleShootTable>
+</details>
